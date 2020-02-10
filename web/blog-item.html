@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Ideal template for game-related websites (gaming, communities, clans, guilds, news and entertainment content) but also for technology, CV or personal pages. Smart and compact. It's able to completely meet your needs. Unique design will increase the value of your page!">
+    <meta name="keywords" content="template, theme, html, css, bootstrap, game, event, culture, music, personal, cv">
+    <meta name="author" content="Jakub Kwarciński">
+
+    <title>GameR - blog post single page</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Loaders styles -->
+    <link href="assets/loaders.css-master/loaders.min.css" media="screen" rel="stylesheet" type="text/css">
+
+    <!-- Template styles -->
+    <link href="css/yellow.min.css" media="screen" rel="stylesheet" type="text/css" title="yellow">
+    <link href="css/pink.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="pink">
+    <link href="css/orange.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="orange">
+    <link href="css/red.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="red">
+    <link href="css/green.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="green">
+    <link href="css/blue.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="blue">
+
+    <!-- Modernizr -->
+    <script type="text/javascript" src="js/modernizr-custom.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png" type="image/png">
+
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="loader-overlay">
+        <div class="loader">
+            <div class="loader-inner pacman">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <h3 class="loader-text">Loading</h3>
+        </div>
+    </div>
+
+    <!-- Color switcher -->
+    <div class="sidebar">
+        <a class="sidebar-switcher" href="#" title="Color switcher">
+            <i class="fa fa-gear"></i>
+        </a>
+        <div class="sidebar-content">
+            <h4 class="sidebar-header">Color switcher</h4>
+            <a href="#" class="color-switcher bg-yellow" data-color="yellow"></a>
+            <a href="#" class="color-switcher bg-orange" data-color="orange"></a>
+            <a href="#" class="color-switcher bg-pink" data-color="pink"></a>
+            <a href="#" class="color-switcher bg-red" data-color="red"></a>
+            <a href="#" class="color-switcher bg-green" data-color="green"></a>
+            <a href="#" class="color-switcher bg-blue" data-color="blue"></a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar navbar-inverse">
+        <div class="triangle">
+            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+        </div>
+        <!-- Topbar -->
+        <div class="header-top clearfix">
+            <div class="container">
+                <ul class="list-inline social-links">
+                    <li>
+                        <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    </li><li class="hidden-xs">
+                        <a href="#" title="Skype"><i class="fa fa-skype"></i></a>
+                    </li><li class="hidden-xxs">
+                        <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                    </li><li class="hidden-xxs">
+                        <a href="#" title="Google +"><i class="fa fa-google-plus"></i></a>
+                    </li><li>
+                        <a href="#" title="Youtube"><i class="fa fa-youtube-play"></i></a>
+                    </li><li>
+                        <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                    </li>
+                </ul>
+                <div class="header-top-dropdown">
+                    <div class="btn-group dropdown">
+                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                            <span class="text"><i class="fa fa-search"></i> Search</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <form class="search-box" action="#">
+                                    <div class="form-group has-feedback no-margin">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                        <i class="fa fa-search form-control-feedback"></i>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-group dropdown">
+                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                            <span class="text"><i class="fa fa-user"></i> Login</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <form class="login-form" action="#">
+                                    <div class="form-group has-feedback">
+                                        <input type="text" class="form-control" placeholder="Username">
+                                        <i class="fa fa-user form-control-feedback"></i>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <input type="password" class="form-control" placeholder="Password">
+                                        <i class="fa fa-lock form-control-feedback"></i>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        <span class="text">Log In <i class="fa fa-arrow-right"></i></span>
+                                    </button>
+                                    <h3 class="text-center">or</h3>
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        <span class="text">Sign Up <i class="fa fa-arrow-right"></i></span>
+                                    </button>
+                                    <p class="text-center"><a href="#" title="Reset password">Forgot your password?</a></p>
+                                    <h3 class="text-center">Sign in with your social account</h3>
+                                    <ul class="list-inline text-center">
+                                        <li>
+                                            <a href="#" title="Login with Facebook"><span class="icon-circle-small"><i class="fa fa-facebook"></i></span></a>
+                                        </li><li>
+                                            <a href="#" title="Login with Twitter"><span class="icon-circle-small"><i class="fa fa-twitter"></i></span></a>
+                                        </li><li>
+                                            <a href="#" title="Login with Google +"><span class="icon-circle-small"><i class="fa fa-google-plus"></i></span></a>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!-- Topbar end -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html" title="GameR">
+                    <i class="fa fa-gamepad" aria-hidden="true"></i><span class="main-color">G</span>ame<span class="main-color">R</span>
+                </a><!-- Logo end -->
+            </div>
+            <!-- Main menu -->
+            <div class="collapse navbar-collapse" id="main-menu">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="index.html#home">
+                            <span class="main-link">Home</span>
+                            <span class="additional-info-link bracket">
+                                start here
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#about">
+                            <span class="main-link">About</span>
+                            <span class="additional-info-link bracket">
+                                who we are
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#gallery">
+                            <span class="main-link">Gallery</span>
+                            <span class="additional-info-link bracket">
+                                screenshots
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="main-link">Details <b class="caret"></b></span>
+                            <span class="additional-info-link bracket">
+                                extended info
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="index.html#timeline">Timeline</a>
+                            </li>
+                            <li>
+                                <a href="index.html#team">Team</a>
+                            </li>
+                            <li>
+                                <a href="index.html#flow">Getting started</a>
+                            </li>
+                            <li>
+                                <a href="index.html#faq">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="index.html#pricing">Pricing</a>
+                            </li>
+                            <li>
+                                <a href="index.html#testimonials">Testimonials</a>
+                            </li>
+                            <li>
+                                <a href="index.html#requirements">Requirements</a>
+                            </li>
+                            <li>
+                                <a href="index.html#somefunnumbers">Some fun numbers</a>
+                            </li>
+                            <li>
+                                <a href="index.html#comingsoon">Coming Soon</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="main-link">Blog <b class="caret"></b></span>
+                            <span class="additional-info-link bracket">
+                                recents posts
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="index.html#blog">Blog section</a>
+                            </li>
+                            <li>
+                                <a class="single-page" href="blog-list.html">List page</a>
+                            </li>
+                            <li>
+                                <a class="single-page" href="blog-item.html">Single page</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#partners">
+                            <span class="main-link">Partners</span>
+                            <span class="additional-info-link bracket">
+                                business friends
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="main-link">Contact <b class="caret"></b></span>
+                            <span class="additional-info-link bracket">
+                                stay in touch
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="index.html#contact-details">Contact details</a>
+                            </li>
+                            <li>
+                                <a href="index.html#map">Map</a>
+                            </li>
+                            <li>
+                                <a href="index.html#send-us-message">Send us message</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- Main menu end -->
+        </div>
+    </div><!-- Navbar end -->
+
+    <div class="single-page-section single-page-blog">
+
+        <!-- Page heading -->
+        <div class="single-page-header single-page-blog-header">
+            <div class="overlay"></div>
+            <div class="container">
+                <h2 class="digit-header">Blog post</h2>
+                <h3 class="signature-header"><small>Single page template / <strong>Blog post</strong></small></h3>
+            </div>
+            <div class="single-page-header-bg"></div>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <!-- Post item -->
+                    <h2 class="post-item-header">Post with large image</h2>
+                    <ul class="list-inline post-item-toolbar">
+                        <li>
+                            February 15, 2016
+                        </li>
+                        <li>
+                            By John Smith
+                        </li>
+                        <li>
+                            6 Comments
+                        </li>
+                    </ul>
+                    <div class="post-item-image">
+                        <div class="triangle triangle-up">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="triangle triangle-down">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <img class="img-responsive" src="img/screenshot-6-sm.jpg" alt="Minecraft">
+                    </div>
+                    <div class="post-item-text">
+                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum interdum augue massa, a varius libero feugiat iaculis. Duis malesuada vel quam ut semper. Donec mollis porta euismod. Donec quis massa in urna consequat aliquam ut sit amet lectus.</p>
+                        <p>Mauris feugiat lacus porttitor tellus porta, ut porta turpis consequat. Nulla eu tellus non risus ullamcorper vulputate a ac velit. Morbi at porta sapien, tempus laoreet tellus. Suspendisse malesuada suscipit nulla, eget ullamcorper lectus maximus vitae. Phasellus nec leo vel leo luctus malesuada. Integer lacus ipsum, tincidunt eget auctor vel, imperdiet sit amet diam. Pellentesque finibus, dui eu molestie cursus, risus ligula luctus lectus, ac tincidunt risus elit quis lectus. Sed tristique enim a purus congue, sed faucibus tellus mollis. Mauris tincidunt ac leo ut tempus. Donec imperdiet ut nibh at efficitur.</p>
+                        <p>Suspendisse potenti. Nullam elit enim, lobortis quis justo sit amet, molestie elementum enim. Duis fringilla erat sed efficitur finibus. Nulla facilisi. Vivamus sollicitudin lectus non aliquam cursus. Nunc et nunc ligula. Mauris vitae tempus libero. Mauris velit turpis, tristique et porttitor et, porttitor eu tellus. Nulla accumsan, mi at cursus rutrum, nisl massa tempor ex, sit amet porttitor diam nunc quis lorem. Sed at turpis in purus ultricies convallis. Pellentesque vel odio justo. Nunc tempus tempor dui vitae dapibus. Nunc euismod lorem in lacus aliquet, et pretium metus faucibus. Mauris nulla quam, luctus vitae sagittis gravida, maximus eget elit.</p>
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                        </blockquote>
+                        <p>Nunc nec auctor metus, eget egestas risus. Mauris nec arcu augue. Aliquam erat volutpat. Vestibulum dictum felis et turpis feugiat, et pharetra sapien convallis. Pellentesque consequat leo leo, at lobortis ipsum laoreet nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac ex nec augue gravida tempus. Pellentesque ultrices mauris euismod nunc vestibulum placerat. Suspendisse potenti. Curabitur nec dolor sed justo ullamcorper lacinia vitae vel nunc. Pellentesque rutrum, elit at vestibulum varius, odio nunc porta ex, et bibendum libero mauris et ex. Maecenas a aliquet libero. Vestibulum interdum justo sit amet massa porta condimentum. Fusce in elit accumsan magna ornare dignissim. Vestibulum ac tellus in purus maximus ullamcorper sit amet egestas odio. Aliquam eget mollis massa, quis vehicula lorem.</p>
+                    </div>
+                    <!-- Pagination -->
+                    <nav class="text-center" aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="prev">
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li><li>
+                                <a href="#">1</a>
+                            </li><li class="active">
+                                <a href="#">2</a>
+                            </li><li>
+                                <a href="#">3</a>
+                            </li><li>
+                                <a href="#">4</a>
+                            </li><li>
+                                <a href="#">5</a></li>
+                            <li class="next">
+                                <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav><!-- Pagination end -->
+                    <div class="standard-box clearfix">
+                        <h3 class="post-item-header">About the author</h3>
+                        <div class="clearfix"></div>
+                        <div class="testimonials-image author-image">
+                            <img class="img-responsive" src="img/pixel-man-1.jpg" alt="Person">
+                            <div class="testimonials-icon author-icon">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis mi eu purus bibendum aliquam ac sit amet mi. Donec lacinia consectetur convallis. Cras fermentum gravida luctus. Etiam imperdiet lacus in ante placerat, quis posuere tellus mollis. Sed porttitor, ante at semper placerat, libero diam convallis nunc, eu aliquam dui arcu quis est.</p>
+                    </div>
+                    <hr>
+                    <div class="standard-box">
+                        <h3 class="post-item-header">Comments (3)</h3>
+                        <ul class="list-unstyled comments-list">
+                            <li class="comment">
+                                <div class="comment-info">
+                                    <div class="testimonials-image author-image author-image-sm">
+                                        <img class="img-responsive" src="img/pixel-woman-1.jpg" alt="Person">
+                                    </div>
+                                    <p class="comment-author"><a href="#">Maria Zoe</a></p>
+                                    <p class="comment-date">April 18, 2013 AT 11:39 AM</p>
+                                </div>
+                                <div class="comment-content">
+                                    <p>Sed bibendum sed justo a fermentum. Ut eu aliquam tellus. Etiam a libero orci. Aliquam erat volutpat. Nam venenatis sed ipsum vel malesuada. Nullam aliquam urna ac elit convallis cursus. Donec rutrum ex vitae elementum maximus. Aliquam erat volutpat.</p>
+                                </div>
+                            </li>
+                            <li class="comment">
+                                <div class="comment-info">
+                                    <div class="testimonials-image author-image author-image-sm">
+                                        <img class="img-responsive" src="img/pixel-woman-2.jpg" alt="Person">
+                                    </div>
+                                    <p class="comment-author"><a href="#">Angelica Smith</a></p>
+                                    <p class="comment-date">April 18, 2013 AT 11:13 AM</p>
+                                </div>
+                                <div class="comment-content">
+                                    <p>Aliquam sagittis fringilla lorem, malesuada eleifend massa ullamcorper sodales. Mauris in maximus neque. Duis consequat vehicula diam, eu gravida ante suscipit sit amet. Aenean in est euismod, ultricies tellus a, pellentesque risus. Donec tincidunt diam eu quam tincidunt, quis cursus quam pellentesque. Integer sit amet vehicula enim, vitae vestibulum quam. Donec turpis elit, bibendum in tincidunt sit amet, porttitor sed metus. Fusce vel tortor non ligula imperdiet tempor. Proin eget sem eu tortor tincidunt malesuada. Etiam gravida, lacus et placerat aliquet, risus magna hendrerit justo, non lobortis risus velit eget massa. Suspendisse potenti. Nulla facilisi.</p>
+                                    <p>Cras scelerisque interdum eros in laoreet. Vestibulum quis ligula volutpat, sodales lacus vel, tincidunt justo. Proin varius laoreet lectus a molestie.</p>
+                                </div>
+                            </li>
+                            <li class="comment">
+                                <div class="comment-info">
+                                    <div class="testimonials-image author-image author-image-sm">
+                                        <img class="img-responsive" src="img/pixel-man-2.jpg" alt="Person">
+                                    </div>
+                                    <p class="comment-author"><a href="#">Josh Taylor</a></p>
+                                    <p class="comment-date">April 18, 2013 AT 10:58 AM</p>
+                                </div>
+                                <div class="comment-content">
+                                    <p>Aliquam a tellus eu massa lacinia ullamcorper sit amet sed sem. Cras a leo purus. Sed commodo semper ultricies. Quisque rhoncus, arcu eu tincidunt rutrum, lectus est tempor turpis, vel placerat lorem velit tincidunt lacus. Morbi sodales massa ut dolor sodales, vitae consequat arcu pulvinar.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="standard-box">
+                        <!-- Comment form -->
+                        <h3 class="post-item-header">Leave a message</h3>
+                        <form class="form-container form no-padding" method="POST" action="#">
+                            <div class="comment-form-content">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group has-feedback">
+                                            <input type="text" class="form-control" placeholder="Enter name">
+                                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <input type="email" class="form-control" placeholder="Enter email">
+                                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <input type="text" class="form-control" placeholder="Enter subject">
+                                            <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="3" cols="40" placeholder="Your Message"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-md-offset-6">
+                                        <button type="submit" class="btn btn-system btn-primary btn-block">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form><!-- Comment form end -->
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="standard-box">
+                        <h3 class="post-item-header">Text</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis mi eu purus bibendum aliquam ac sit amet mi. Donec lacinia consectetur convallis. Cras fermentum gravida luctus. Etiam imperdiet lacus in ante placerat, quis posuere tellus mollis. Sed porttitor, ante at semper placerat, libero diam convallis nunc, eu aliquam dui arcu quis est.</p>
+                    </div>
+                    <!-- Tags list -->
+                    <div class="standard-box">
+                        <h3 class="post-item-header">Tags</h3>
+                        <ul class="list-inline tags-list">
+                            <li><a class="tag" href="#"><i class="fa fa-tag"></i>action</a></li>
+                            <li><a class="tag" href="#"><i class="fa fa-tag"></i>RPG</a></li>
+                            <li><a class="tag" href="#"><i class="fa fa-tag"></i>adventure</a></li>
+                            <li><a class="tag" href="#"><i class="fa fa-tag"></i>open world</a></li>
+                            <li><a class="tag" href="#"><i class="fa fa-tag"></i>single player</a></li>
+                            <li><a class="tag" href="#"><i class="fa fa-tag"></i>fantasy</a></li>
+                            <li><a class="tag" href="#"><i class="fa fa-tag"></i>TPP</a></li>
+                            <li><a class="tag" href="#"><i class="fa fa-tag"></i>choices matter</a></li>
+                            <li><a class="tag" href="#"><i class="fa fa-tag"></i>dark</a></li>
+                        </ul>
+                    </div>
+                    <!-- Categories list -->
+                    <div class="standard-box">
+                        <h3 class="post-item-header">Categories</h3>
+                        <ul class="list-unstyled categories-list">
+                            <li>
+                                <a href="#">All <span class="number">(126)</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#">Reviews <span class="number">(60)</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#">News <span class="number">(26)</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#">Solutions <span class="number">(11)</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#">Video <span class="number">(12)</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#">Hyde Park <span class="number">(7)</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Most popular list -->
+                    <div class="standard-box">
+                        <h3 class="post-item-header">Most popular</h3>
+                        <ul class="popular-list list-unstyled">
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <a class="standard-box-image" href="#" title="Tips and tricks">
+                                            <img class="img-responsive" src="img/blog-4.jpg" alt="Tips and tricks">
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <h3>
+                                            <a href="#" title="Tips and tricks">Tips and tricks</a>
+                                        </h3>
+                                        <p>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star unactive">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                        </p>
+                                        <p><i class="fa fa-calendar"></i> <strong>2016-09-08</strong> &nbsp; <i class="fa fa-user"></i> <a href="#">adam</a></p>
+                                        <p class="no-margin"><a href="#" title="Read more">Read more &raquo;</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <a class="standard-box-image" href="#" title="Join the game!">
+                                            <img class="img-responsive" src="img/blog-6.jpg" alt="Join the game!">
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <h3>
+                                            <a href="#" title="Join the battle!">Join the game!</a>
+                                        </h3>
+                                        <p>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                        </p>
+                                        <p><i class="fa fa-calendar"></i> <strong>2016-09-01</strong> &nbsp; <i class="fa fa-user"></i> <a href="#">kate</a></p>
+                                        <p class="no-margin"><a href="#" title="Read more">Read more &raquo;</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <a class="standard-box-image" href="blog-item.html" title="Life Is Strange">
+                                            <img class="img-responsive" src="img/blog-5.jpg" alt="Life Is Strange">
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <h3>
+                                            <a href="#" title="Life Is Strange">Life Is Strange</a>
+                                        </h3>
+                                        <p>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                        </p>
+                                        <p><i class="fa fa-calendar"></i> <strong>2016-08-23</strong> &nbsp; <i class="fa fa-user"></i> <a href="#">unknown</a></p>
+                                        <p class="no-margin"><a href="#" title="Read more">Read more &raquo;</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <a class="standard-box-image" href="#" title="Sky is the limit?">
+                                            <img class="img-responsive" src="img/blog-4.jpg" alt="Sky is the limit?">
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <h3>
+                                            <a href="#" title="Sky is the limit?">Sky is the limit?</a>
+                                        </h3>
+                                        <p>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span><span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span><span class="star unactive">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span><span class="star unactive">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star unactive">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                        </p>
+                                        <p><i class="fa fa-calendar"></i> <strong>2016-08-21</strong> &nbsp; <i class="fa fa-user"></i> <a href="#">porcupine</a></p>
+                                        <p class="no-margin"><a href="#" title="Read more">Read more &raquo;</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <a class="standard-box-image" href="#" title="Get the treasure!">
+                                            <img class="img-responsive" src="img/blog-1.jpg" alt="Get the treasure!">
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <h3>
+                                            <a href="#" title="Witcher 3 again">Get the treasure!</a>
+                                        </h3>
+                                        <p>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                            <span class="star">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </span>
+                                        </p>
+                                        <p><i class="fa fa-calendar"></i> <strong>2016-08-16</strong> &nbsp; <i class="fa fa-user"></i> <a href="#">quartz</a></p>
+                                        <p class="no-margin"><a href="#" title="Read more">Read more &raquo;</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Calendar -->
+                    <div class="standard-box">
+                        <h3 class="post-item-header">Calendar</h3>
+                        <div class="calendar">
+                            <table>
+                                <caption>September '16</caption>
+                                <tbody><tr>
+                                        <th>M</th>
+                                        <th>T</th>
+                                        <th>W</th>
+                                        <th>T</th>
+                                        <th>F</th>
+                                        <th>S</th>
+                                        <th>S</th>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>12</td>
+                                        <td>13</td>
+                                        <td class="active">14</td>
+                                        <td>15</td>
+                                        <td>16</td>
+                                        <td>17</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18</td>
+                                        <td>19</td>
+                                        <td>20</td>
+                                        <td>21</td>
+                                        <td>22</td>
+                                        <td>23</td>
+                                        <td>24</td>
+                                    </tr>
+                                    <tr>
+                                        <td>25</td>
+                                        <td>26</td>
+                                        <td>27</td>
+                                        <td>28</td>
+                                        <td>29</td>
+                                        <td>30</td>
+                                        <td>31</td>
+                                    </tr>
+                                </tbody></table>
+                            <div class="calendar-nav">
+                                <a class="calendar-prev" href="#">
+                                    <i class="fa fa-angle-left"></i>
+                                </a><a class="calendar-next" href="#">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer footer-gray text-center" id="follow-us">
+        <div class="container">
+            <ul class="list-inline">
+                <li>
+                    <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="#" title="Dribble"><i class="fa fa-dribbble"></i></a>
+                </li>
+                <li>
+                    <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                </li>
+                <li>
+                    <a href="#" title="RSS"><i class="fa fa-rss"></i></a>
+                </li>
+            </ul>
+            <p> &copy; 2016 <a href="http://jakubkwarcinski.pl" title="Jakub Kwarciński - Frontend Developer">Jakub Kwarciński</a></p>
+            <p class="text-center"><a href="http://www.freepik.com/free-photos-vectors/people">People vector designed by Freepik</a></p>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <div id="toTop" class="to-top">
+        <a href="#" class="To the top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+    </div>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="assets/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+
+    <!-- Custom javascript -->
+    <script type="text/javascript" src="js/custom.min.js"></script>
+
+</body>
+</html>
