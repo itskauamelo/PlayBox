@@ -4454,6 +4454,9 @@ pre code {
   .col-lg-4 {
     width: 33.33333333%;
   }
+  .col-lg-4CAT {
+    width: 20%;
+  }
   .col-lg-3 {
     width: 25%;
   }
