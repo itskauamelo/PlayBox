@@ -17,7 +17,9 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <!-- Lightbox styles -->
     <link href="assets/lightbox2-master/dist/css/lightbox.min.css" rel="stylesheet">
+  
 
+    
     <!-- Loaders styles -->
     <link href="assets/loaders.css-master/loaders.min.css" media="screen" rel="stylesheet" type="text/css">
 
