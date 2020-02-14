@@ -31,11 +31,12 @@ public class Cliente {
     private String bairro;
     private String cidade;
     private String estado;
+    private String situacao;
 
     public Cliente() {
     }
 
-    public Cliente(int id, String cpf, String nomecompleto, Date datanascimento, String genero, String email, String senha, String celular, String endidentific, String nomedestinatario, String cep, String endereco, String numero, String complemento, String referencia, String bairro, String cidade, String estado) {
+    public Cliente(int id, String cpf, String nomecompleto, Date datanascimento, String genero, String email, String senha, String celular, String endidentific, String nomedestinatario, String cep, String endereco, String numero, String complemento, String referencia, String bairro, String cidade, String estado, String situacao) {
         this.id = id;
         this.cpf = cpf;
         this.nomecompleto = nomecompleto;
@@ -54,6 +55,7 @@ public class Cliente {
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
+        this.situacao = situacao;
     }
 
     public int getId() {
@@ -199,8 +201,13 @@ public class Cliente {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
-    
-    
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
 }

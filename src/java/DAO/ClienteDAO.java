@@ -5,10 +5,10 @@
  */
 package DAO;
 
-import Model.EnumPerfilAcesso;
 import Model.Cliente;
 import Util.ConectaBanco;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,63 +56,68 @@ public class ClienteDAO {
     public void cadastrar(Cliente cliente) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente VALUES (NEXTVAL('id_cliente'),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente VALUES (NEXTVAL('id_cliente'),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'ATIVO')");
             comando.setString(1, cliente.getCpf());
             comando.setString(2, cliente.getNomecompleto());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getGenero());
-            comando.setString(3, cliente.getEmail());
-            comando.setString(3, cliente.getSenha());
-            comando.setString(3, cliente.getCelular());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getDatanascimento());
-            comando.setString(3, cliente.getDatanascimento());
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            comando.setString(4, cliente.getPerfil().toString());
-            comando.setString(5, cliente.getSituacao());
+            comando.setDate(3, (Date) cliente.getDatanascimento()); // validar isso aqui pq eu to em choque
+            comando.setString(4, cliente.getGenero());
+            comando.setString(4, cliente.getEmail());
+            comando.setString(5, cliente.getSenha());
+            comando.setString(6, cliente.getCelular());
+            comando.setString(7, cliente.getEndidentific());
+            comando.setString(8, cliente.getNomedestinatario());
+            comando.setString(9, cliente.getCep());
+            comando.setString(10, cliente.getEndereco());
+            comando.setString(11, cliente.getNumero());
+            comando.setString(12, cliente.getComplemento());
+            comando.setString(13, cliente.getReferencia());
+            comando.setString(14, cliente.getBairro());
+            comando.setString(15, cliente.getCidade());
+            comando.setString(16, cliente.getEstado());
+            comando.setString(17, cliente.getSituacao());
             
             comando.execute();
         }
     }
 
-    public List<Usuario> consultarTodos() throws ClassNotFoundException, SQLException {
+    public List<Cliente> consultarTodos() throws ClassNotFoundException, SQLException {
 
-        List<Usuario> todosUsuario;
+        List<Cliente> todosClientes;
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("SELECT * FROM usuario WHERE situacao = 'ATIVO' ORDER BY id");
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM cliente WHERE situacao = 'ATIVO' ORDER BY id");
             ResultSet resultado = comando.executeQuery();
-            todosUsuario = new ArrayList<>();
+            todosClientes = new ArrayList<>();
             while (resultado.next()) {
-                Usuario u = new Usuario();
-                u.setId(resultado.getInt("id"));
-                u.setNome(resultado.getString("nome"));
-                u.setLogin(resultado.getString("login"));
-                u.setPw(resultado.getString("pw"));
-                u.setPerfil(EnumPerfilAcesso.valueOf(resultado.getString("perfil")));
-                u.setSituacao(resultado.getString("situacao"));
+                Cliente c = new Cliente();
+                c.setId(resultado.getInt("id"));
+                c.setCpf(resultado.getString("cpf"));
+                c.setNomecompleto(resultado.getString("nomecompleto"));
+                c.setDatanascimento(resultado.getDate(""));
+                c.setGenero(resultado.getString("genero"));
+                c.setEmail(resultado.getString("email"));
+                c.setSenha(resultado.getString("senha"));
+                c.setCelular(resultado.getString("celular"));
+                c.setEndidentific(resultado.getString("endidentific"));
+                c.setNomedestinatario(resultado.getString("nomedestinatario"));
+                c.setCep(resultado.getString("cep"));
+                c.setEndereco(resultado.getString("endereco"));
+                c.setNumero(resultado.getString("numero"));
+                c.setComplemento(resultado.getString("complemento"));
+                c.setReferencia(resultado.getString("referencia"));
+                c.setBairro(resultado.getString("bairro"));
+                c.setCidade(resultado.getString("cidade"));
+                c.setEstado(resultado.getString("estado"));
+                c.setSituacao(resultado.getString("situacao"));
                 
-                todosUsuario.add(u);
+                todosClientes.add(c);
             }
         }
-        return todosUsuario;
+        return todosClientes;
     }
 
-    public void Editar(Usuario usuario) throws ClassNotFoundException, SQLException {
+    /*
+    
+    public void Editar(Cliente usuario) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("UPDATE usuario SET nome = ?, login = ?, pw = ?, perfil = ?, situacao = ? WHERE id = ?");
         comando.setString(1, usuario.getNome());
@@ -124,26 +129,49 @@ public class ClienteDAO {
         comando.execute();
     }
 
-    public void Excluir(Usuario usuario) throws ClassNotFoundException, SQLException {
+*/
+    
+    public void EditarSenha(Cliente cliente) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("UPDATE usuario SET situacao = 'INATIVO' WHERE id = ?");
-        comando.setInt(1, usuario.getId());
+        PreparedStatement comando = con.prepareStatement("UPDATE cliente SET senha = ? WHERE id = ?");
+        comando.setString(1, cliente.getSenha());
+        comando.setInt(2, cliente.getId());
         comando.execute();
     }
 
-    public void consultarporId(Usuario usuario) throws ClassNotFoundException, SQLException {
+    public void Desativar(Cliente cliente) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("SELECT * FROM usuario WHERE id = ?");
-        comando.setInt(1, usuario.getId());
+        PreparedStatement comando = con.prepareStatement("UPDATE cliente SET situacao = 'INATIVO' WHERE id = ?");
+        comando.setInt(1, cliente.getId());
+        comando.execute();
+    }
+
+    public void consultarporId(Cliente cliente) throws ClassNotFoundException, SQLException {
+        Connection con = ConectaBanco.getConexao();
+        PreparedStatement comando = con.prepareStatement("SELECT * FROM cliente WHERE id = ?");
+        comando.setInt(1, cliente.getId());
         ResultSet resultado = comando.executeQuery();
 
         if (resultado.next()) {
-            usuario.setNome(resultado.getString("nome"));
-            usuario.setLogin(resultado.getString("login"));
-            usuario.setPw(resultado.getString("pw"));
-            usuario.setPerfil(EnumPerfilAcesso.valueOf(resultado.getString("perfil")));
-            usuario.setSituacao(resultado.getString("situacao"));
-            usuario.setId(resultado.getInt("id"));
+                cliente.setId(resultado.getInt("id"));
+                cliente.setCpf(resultado.getString("cpf"));
+                cliente.setNomecompleto(resultado.getString("nomecompleto"));
+                cliente.setDatanascimento(resultado.getDate(""));
+                cliente.setGenero(resultado.getString("genero"));
+                cliente.setEmail(resultado.getString("email"));
+                cliente.setSenha(resultado.getString("senha"));
+                cliente.setCelular(resultado.getString("celular"));
+                cliente.setEndidentific(resultado.getString("endidentific"));
+                cliente.setNomedestinatario(resultado.getString("nomedestinatario"));
+                cliente.setCep(resultado.getString("cep"));
+                cliente.setEndereco(resultado.getString("endereco"));
+                cliente.setNumero(resultado.getString("numero"));
+                cliente.setComplemento(resultado.getString("complemento"));
+                cliente.setReferencia(resultado.getString("referencia"));
+                cliente.setBairro(resultado.getString("bairro"));
+                cliente.setCidade(resultado.getString("cidade"));
+                cliente.setEstado(resultado.getString("estado"));
+                cliente.setSituacao(resultado.getString("situacao"));
         }
     }
     
