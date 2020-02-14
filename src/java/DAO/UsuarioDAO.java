@@ -59,7 +59,7 @@ public class UsuarioDAO {
             comando.execute();
         }
     }
-
+//teste binhos
     public List<Usuario> consultarTodos() throws ClassNotFoundException, SQLException {
 
         List<Usuario> todosUsuario;
