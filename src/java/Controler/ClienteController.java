@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
 package Controler;
 
 import DAO.ClienteDAO;
-import DAO.UsuarioDAO;
 import Model.Cliente;
-import Model.EnumPerfilAcesso;
-import Model.Usuario;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -20,18 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Kaua.Morateli
- */
 
-@WebServlet(name = "ClienteController", urlPatterns = {
-    "/cadastrarCliente",
-    "/listarUsuario",
-    "/excluirUsuario",
-    "/iniciarEdicaoUsuario",
-    "/editarUsuario"
-})
 
 public class ClienteController extends HttpServlet {
     
@@ -113,7 +101,7 @@ public class ClienteController extends HttpServlet {
         dao.consultarporId(cliente);
 
         request.setAttribute("usuario", cliente);
-        // request.getRequestDispatcher("admin/EdUser.jsp").forward(request, response);
+         request.getRequestDispatcher("admin/EdUser.jsp").forward(request, response);
     }
 
     private void confirmarEdicaoSenha(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
@@ -121,8 +109,7 @@ public class ClienteController extends HttpServlet {
         ClienteDAO dao = new ClienteDAO();
         cliente.setId(Integer.valueOf(request.getParameter("id")));
         cliente.setSenha(request.getParameter("txtSenha"));
-        
-
+       
         dao.EditarSenha(cliente);
         
     }
@@ -135,19 +122,15 @@ public class ClienteController extends HttpServlet {
         dao.consultarporId(cliente);
         dao.Desativar(cliente);
         
- 
     }
 
-   
+
     private void listarTodos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         ClienteDAO dao = new ClienteDAO();
 
         List<Cliente> todosCliente = dao.consultarTodos();
         request.setAttribute("todosCliente", todosCliente);
 
-        request.getRequestDispatcher("admin/listarClientes.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/index.jsp").forward(request, response);
     }
-
-    
-    
 }

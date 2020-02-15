@@ -235,8 +235,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-cadastro col-md-8">
-                    <div>
-                    <form action ="cadastrarCliente"> 
+                    <form action="cadastrarCliente"> 
                     <!-- Posts list -->
                     <h2 class="post-item-header"><a title="Inscrição">Inscrição</a></h2>
                     <br>
@@ -318,7 +317,7 @@
             </div>
         </div>
         <div class="centrocadastro">
-        <a href="#" class="btn btn-primary" title="Criar Conta" data-toggle="modal" data-target="#order-modal" id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Criar Conta</a>     
+        <a class="btn btn-primary" title="Criar Conta"  id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Criar Conta</a>     
         </div>
     </div>
 </form>
