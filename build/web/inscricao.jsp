@@ -240,21 +240,26 @@
                     <h2 class="post-item-header"><a title="Inscrição">Inscrição</a></h2>
                     <br>
                     <label>CPF</label>
-                    <input type="text" id="txtCpf" name="txtCpf" class="form-control"><br>
+                    <input type="text" id="txtCpf" name="txtCpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" class="form-control"><br>
                     <label>Nome Completo</label>
                     <input type="text" id="txtNome" name="txtNome" class="form-control"><br>
                     <label>Data de Nascimento</label>
-                    <input type="text" id="txtData" name="txtData" class="form-control"><br>
+                    <input type="date" id="txtData" name="txtData" class="form-control"><br>
                     <label>Genero</label>
-                    <input type="text" id="txtGenero" name="txtGenero" class="form-control"><br>
+                    <select id="optGenero" name="optGenero" class="form-control" style="color: black;">
+                        <option>Selecione genero</option>                  
+                        <option value="F">Feminino</option>
+                        <option value="M">Masculino</option>
+                        <option value="O">Outros</option>
+                    </select><br>
                     <label>Email</label>
                     <input type="email" id="txtEmail" name="txtEmail" class="form-control"><br>
                     <label>Senha</label>
                     <input type="password" id="txtSenha" name="txtSenha" class="form-control"><br>
                     <label>Confirmar senha</label>
-                    <input type="text" class="form-control"><br>
+                    <input type="password" class="form-control"><br>
                     <label>Celular</label>
-                    <input type="text" id="txtCelular" name="txtCelular" class="form-control"><br>
+                    <input type="text" id="txtCelular" name="txtCelular" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" class="form-control"><br>
 
                     <!-- Pagination -->
                 </div>
@@ -268,7 +273,7 @@
                         <label>Nome do destinatário</label>
                         <input type="text" id="txtDestinatario" name="txtDestinatario"class="form-control" ><br>
                         <label>CEP</label>
-                        <input type="text" id="txtCep" name="txtCep" class="form-control"><br>
+                        <input type="text" id="txtCep" name="txtCep" maxlength="9" OnKeyPress="formatar('#####-###', this)" class="form-control"><br>
                         <label>Endereço</label>
                         <input type="text" id="txtEndereco" name="txtEndereco" class="form-control"><br>
                         <label>Numero</label>
@@ -317,7 +322,7 @@
             </div>
         </div>
         <div class="centrocadastro">
-        <a class="btn btn-primary" title="Criar Conta"  id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Criar Conta</a>     
+        <button class="btn btn-primary" title="Criar Conta" id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Criar Conta</a>     
         </div>
     </div>
 </form>
@@ -367,6 +372,19 @@
 
     <!-- Custom javascript -->
     <script type="text/javascript" src="js/custom.min.js"></script>
+
+    <script>
+        function formatar(mascara, documento){
+          var i = documento.value.length;
+          var saida = mascara.substring(0,1);
+          var texto = mascara.substring(i)
+          
+          if (texto.substring(0,1) != saida){
+                    documento.value += texto.substring(0,1);
+          }
+          
+        }
+    </script>
 
 </body>
 </html>

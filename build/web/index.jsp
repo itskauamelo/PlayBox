@@ -115,7 +115,7 @@
                                         <span class="text">Entrar <i class="fa fa-arrow-right"></i></span>
                                     </button>
                                     <h3 class="text-center">ou</h3>
-                                    <button type="submit" class="btn btn-primary btn-block">
+                                    <button type="submit" href="inscricao.jsp" class="btn btn-primary btn-block">
                                         <span class="text">Inscrever-se <i class="fa fa-arrow-right"></i></span>
                                     </button>
                                     <p class="text-center"><a href="#" title="Reset password">Esqueceu sua senha?</a></p>
