@@ -56,7 +56,8 @@ public class ClienteDAO {
     public void cadastrar(Cliente cliente) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente VALUES (NEXTVAL('id_cliente'),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'ATIVO')");
+            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente VALUES (NEXTVAL('id_cliente'),'ATIVO',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            
             comando.setString(1, cliente.getCpf());
             comando.setString(2, cliente.getNomecompleto());
             comando.setDate(3, (Date) cliente.getDatanascimento()); // validar isso aqui pq eu to em choque
@@ -174,5 +175,4 @@ public class ClienteDAO {
                 cliente.setSituacao(resultado.getString("situacao"));
         }
     }
-    
 }

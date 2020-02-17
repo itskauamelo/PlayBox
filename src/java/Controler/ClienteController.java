@@ -19,7 +19,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+@WebServlet(name = "ClienteControle", urlPatterns = {
+    "/cadastrarCliente",
+    "/listarCliente",
+    "/excluirCliente",
+    "/iniciarEdicaoCliente",
+    "/editarCliente"
+})
 
 public class ClienteController extends HttpServlet {
     
@@ -70,7 +76,7 @@ public class ClienteController extends HttpServlet {
         cliente.setCpf(request.getParameter("txtCpf"));
         cliente.setNomecompleto(request.getParameter("txtNomecompleto"));
         cliente.setDatanascimento(Date.valueOf(request.getParameter("txtDatanascimento")));
-        cliente.setGenero(request.getParameter("txtGenero"));
+        cliente.setGenero(request.getParameter("optGenero"));
         cliente.setEmail(request.getParameter("txtEmail"));
         cliente.setSenha(request.getParameter("txtSenha"));
         cliente.setCelular(request.getParameter("txtCelular"));
@@ -89,7 +95,7 @@ public class ClienteController extends HttpServlet {
         ClienteDAO dao = new ClienteDAO();
         dao.cadastrar(cliente);
 
-        response.sendRedirect("pagamento.jsp");
+       // response.sendRedirect("pagamento.jsp");
         
     }
 
