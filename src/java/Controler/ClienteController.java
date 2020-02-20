@@ -24,7 +24,8 @@ import javax.servlet.http.HttpServletResponse;
     "/listarCliente",
     "/excluirCliente",
     "/iniciarEdicaoCliente",
-    "/editarCliente"
+    "/editarCliente",
+    "/ativarCadastro"
 })
 
 public class ClienteController extends HttpServlet {
@@ -62,6 +63,8 @@ public class ClienteController extends HttpServlet {
                 cadastrar(request, response);
             } else if (uri.equals(request.getContextPath() + "/editarSenhaCliente")) {
                 confirmarEdicaoSenha(request, response);
+            } else if (uri.equals(request.getContextPath() + "/ativarCadastro")) {
+                ativarCadastro(request, response);
             } else {
                 response.sendRedirect("404.jsp");
             }
@@ -75,7 +78,7 @@ public class ClienteController extends HttpServlet {
         Cliente cliente = new Cliente();
         cliente.setCpf(request.getParameter("txtCpf"));
         cliente.setNomecompleto(request.getParameter("txtNomecompleto"));
-        cliente.setDatanascimento(Date.valueOf(request.getParameter("txtDatanascimento")));
+        cliente.setDatanascimento(Date.valueOf(request.getParameter("txtData")));
         cliente.setGenero(request.getParameter("optGenero"));
         cliente.setEmail(request.getParameter("txtEmail"));
         cliente.setSenha(request.getParameter("txtSenha"));
@@ -95,7 +98,20 @@ public class ClienteController extends HttpServlet {
         ClienteDAO dao = new ClienteDAO();
         dao.cadastrar(cliente);
 
-       // response.sendRedirect("pagamento.jsp");
+       response.sendRedirect("cadastrado.jsp");
+        
+    }
+    
+    private void ativarCadastro(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+        
+        Cliente cliente = new Cliente();
+        cliente.setCpf(request.getParameter("txtCpf"));
+        
+        ClienteDAO dao = new ClienteDAO();
+        dao.ativarCadastro(cliente);
+
+        request.setAttribute("msg", "Cadastro ativado, redirecionando para página principal para que realize o login!");
+        response.sendRedirect("index.jsp");
         
     }
 
@@ -106,7 +122,7 @@ public class ClienteController extends HttpServlet {
 
         dao.consultarporId(cliente);
 
-        request.setAttribute("usuario", cliente);
+        request.setAttribute("cliente", cliente);
          request.getRequestDispatcher("admin/EdUser.jsp").forward(request, response);
     }
 
