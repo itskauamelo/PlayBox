@@ -56,26 +56,25 @@ public class ClienteDAO {
     public void cadastrar(Cliente cliente) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente VALUES (NEXTVAL('id_cliente'),'ATIVO',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente VALUES (NEXTVAL('id_cliente'),'DESATIVADO',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             
             comando.setString(1, cliente.getCpf());
             comando.setString(2, cliente.getNomecompleto());
             comando.setDate(3, (Date) cliente.getDatanascimento()); // validar isso aqui pq eu to em choque
             comando.setString(4, cliente.getGenero());
-            comando.setString(4, cliente.getEmail());
-            comando.setString(5, cliente.getSenha());
-            comando.setString(6, cliente.getCelular());
-            comando.setString(7, cliente.getEndidentific());
-            comando.setString(8, cliente.getNomedestinatario());
-            comando.setString(9, cliente.getCep());
-            comando.setString(10, cliente.getEndereco());
-            comando.setString(11, cliente.getNumero());
-            comando.setString(12, cliente.getComplemento());
-            comando.setString(13, cliente.getReferencia());
-            comando.setString(14, cliente.getBairro());
-            comando.setString(15, cliente.getCidade());
-            comando.setString(16, cliente.getEstado());
-            comando.setString(17, cliente.getSituacao());
+            comando.setString(5, cliente.getEmail());
+            comando.setString(6, cliente.getSenha());
+            comando.setString(7, cliente.getCelular());
+            comando.setString(8, cliente.getEndidentific());
+            comando.setString(9, cliente.getNomedestinatario());
+            comando.setString(10, cliente.getCep());
+            comando.setString(11, cliente.getEndereco());
+            comando.setString(12, cliente.getNumero());
+            comando.setString(13, cliente.getComplemento());
+            comando.setString(14, cliente.getReferencia());
+            comando.setString(15, cliente.getBairro());
+            comando.setString(16, cliente.getCidade());
+            comando.setString(17, cliente.getEstado());
             
             comando.execute();
         }
@@ -114,6 +113,18 @@ public class ClienteDAO {
             }
         }
         return todosClientes;
+    }
+    
+    
+    public void ativarCadastro(Cliente cliente) throws ClassNotFoundException, SQLException {
+        
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("UPDATE cliente SET situacao = 'ATIVADO' WHERE cpf = ?");
+            
+            comando.setString(1, cliente.getCpf());
+
+            comando.execute();
+        }
     }
 
     /*
