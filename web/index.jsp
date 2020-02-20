@@ -102,16 +102,16 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
-                                <form class="login-form" action="#">
+                                <form class="login-form" action="ControleAcessoCliente" method="POST">
                                     <div class="form-group has-feedback">
-                                        <input type="text" class="form-control" placeholder="Username">
+                                        <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="E-mail">
                                         <i style="color: black;" class="fa fa-user form-control-feedback"></i>
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" id="txtSenha" name="txtSenha" placeholder="Senha">
                                         <i style="color: black;" class="fa fa-lock form-control-feedback"></i>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-block">
+                                    <button type="submit" value="Entrar" name="acao" class="btn btn-primary btn-block">
                                         <span class="text">Entrar <i class="fa fa-arrow-right"></i></span>
                                     </button>
                                     <h3 class="text-center">ou</h3>

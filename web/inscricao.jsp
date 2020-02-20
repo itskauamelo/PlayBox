@@ -235,14 +235,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-cadastro col-md-8">
-                    <form action="cadastrarCliente"> 
+                    <form action="cadastrarCliente" method="POST"> 
                     <!-- Posts list -->
                     <h2 class="post-item-header"><a title="Inscrição">Inscrição</a></h2>
                     <br>
                     <label>CPF</label>
                     <input type="text" id="txtCpf" name="txtCpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" class="form-control"><br>
                     <label>Nome Completo</label>
-                    <input type="text" id="txtNome" name="txtNome" class="form-control"><br>
+                    <input type="text" id="txtNomecompleto" name="txtNomecompleto" class="form-control"><br>
                     <label>Data de Nascimento</label>
                     <input type="date" id="txtData" name="txtData" class="form-control"><br>
                     <label>Genero</label>
@@ -271,7 +271,7 @@
                         <label>Identificação do endereço:</label>
                         <input type="text" id="txtIdEnd" name="txtIdEnd" class="form-control" placeholder="Casa, trabalho, ..."><br>
                         <label>Nome do destinatário</label>
-                        <input type="text" id="txtDestinatario" name="txtDestinatario"class="form-control" ><br>
+                        <input type="text" id="txtNomedestinatario" name="txtNomedestinatario"class="form-control" ><br>
                         <label>CEP</label>
                         <input type="text" id="txtCep" name="txtCep" maxlength="9" OnKeyPress="formatar('#####-###', this)" class="form-control"><br>
                         <label>Endereço</label>
