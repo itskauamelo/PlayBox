@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/PlayBox/src/java/Controler/ClienteController.java</file>
             <file>file:/C:/PlayBox/web/inscricao.jsp</file>
+            <file>file:/C:/PlayBox/src/java/Model/Preferencia.java</file>
             <file>file:/C:/PlayBox/nbproject/build-impl.xml</file>
+            <file>file:/C:/PlayBox/src/java/DAO/ClienteDAO.java</file>
             <file>file:/C:/PlayBox/web/admin/usuario.jsp</file>
+            <file>file:/C:/PlayBox/src/java/Controler/UsuarioController.java</file>
         </group>
     </open-files>
 </project-private>
