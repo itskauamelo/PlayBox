@@ -36,6 +36,8 @@
     <!-- Favicon -->
     <link rel="icon" href="img/favicon.png" type="image/png">
 
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 </head>
 
 <body>
@@ -235,30 +237,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-cadastro col-md-8">
-                    <form action=" XXXX " method="POST"> 
+                    <form action="cadastrarPreferencia" method="POST"> 
                     <h2 class="post-item-header"><a title="Preferencia">Preferencias</a></h2>
                     <br>
                     <label>Qual estilo de jogo gosta de jogar? Escolha até 3 opções</label><br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Aventura<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Luta<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> RPG<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Terror<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Corrida<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Ação<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Esporte<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Simulação<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Estratégia<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Aventura<br>
+                    <input type="checkbox" class="jogo" id="chkAventura" name="check" value="Aventura"> Aventura<br>
+                    <input type="checkbox" class="jogo" id="chkLuta" name="check" value="Luta"> Luta<br>
+                    <input type="checkbox" class="jogo" id="chkRpg" name="check" value="RPG"> RPG<br>
+                    <input type="checkbox" class="jogo" id="chkTerror" name="check" value="Terror"> Terror<br>
+                    <input type="checkbox" class="jogo" id="chkCorrida" name="check" value="Corrida"> Corrida<br>
+                    <input type="checkbox" class="jogo" id="chkAcao" name="check" value="Acao"> Ação<br>
+                    <input type="checkbox" class="jogo" id="chkEsporte" name="check" value="Esporte"> Esporte<br>
+                    <input type="checkbox" class="jogo" id="chkSimulacao" name="check" value="Simulacao"> Simulação<br>
+                    <input type="checkbox" class="jogo" id="chkEstrategia" name="check" value="Estrategia"> Estratégia<br>
                     <br>
                     <label>Quantas horas passa por dia jogando</label><br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> 1 a 2 hrs<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> 3 a 4 hrs<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> 5 a 7 hrs<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Mais que isso todas as opções<br>
+                    <input type="radio" id="rb1a2" value="1 a 2 hrs" name="rbhr"> 1 a 2 hrs<br>
+                    <input type="radio" id="rb3a4" name="rbhr" value="3 a 4 hrs"> 3 a 4 hrs<br>
+                    <input type="radio" id="rb5a7" name="rbhr" value="5 a 7 hrs"> 5 a 7 hrs<br>
+                    <input type="radio" id="rbMais" name="rbhr" value="Mais"> Mais que todas as opções<br>
                     <br>
                     <label>Curte jogos online?</label><br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Sim<br>
-                    <input type="checkbox" id="chkAventura" name="chkAventura"> Não<br>
+                    <input type="radio" id="rbSim" name="rbonline" value="Sim"> Sim<br>
+                    <input type="radio" id="rbNao" name="rbonline" value="Nao"> Não<br>
                     <br>         
                 </div>
             </div>
@@ -323,6 +324,32 @@
           
         }
     </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $('.jogo').click(function () {
+               var text = "";
+               $('.jogo:checked').each(function () {
+                   text += $(this).val() + ',';
+               });
+               text = text.substring(0, text.length -1);
+               $('#TxtSelected').val(text);
+               var count=$("[type='checkbox']:checked").length;
+           });
+        });
+
+    </script>
+
+    <script>
+        var limit = 3;
+        $('input.jogo').on('change', function(evt) {
+        if($(this).siblings(':checked').length >= limit) {
+        this.checked = false;
+   }
+});
+    </script>
+
 
 </body>
 </html>
