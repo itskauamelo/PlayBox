@@ -107,7 +107,7 @@ public class ClienteController extends HttpServlet {
     }
     
     private void cadastrarPreferencia(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
-    
+        
         Preferencia preferencia = new Preferencia();
         
         preferencia.setPreferencia1(request.getParameter("check"));
@@ -132,7 +132,7 @@ public class ClienteController extends HttpServlet {
         dao.ativarCadastro(cliente);
 
         request.setAttribute("msg", "Cadastro ativado, redirecionando para página principal para que realize o login!");
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("preferenciaCliente.jsp");
         
     }
 

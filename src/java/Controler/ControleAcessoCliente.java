@@ -43,7 +43,7 @@ public class ControleAcessoCliente extends HttpServlet {
                     sessaoCliente.setAttribute("usuarioAutenticado", clienteAutenticado);
                     
                     //Redireciona para a pagina princiapal
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("dashCliente.jsp");
                     
                 } 
                 else {
