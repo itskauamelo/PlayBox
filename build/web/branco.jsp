@@ -227,92 +227,29 @@
         <div class="single-page-header single-page-blog-header">
             <div class="overlay"></div>
             <div class="container">
-                <h2 class="digit-header">Inscreva-se</h2>
-                <h3 class="signature-header"><small>Entre<strong> Gamers</strong></small></h3>
+                <h2 class="digit-header">XXXXXX</h2>
+                <h3 class="signature-header"><small>CXXXXXX<strong> XXXXXX</strong></small></h3>
             </div>
             <div class="single-page-header-bg"></div>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-cadastro col-md-8">
-                    <form action="cadastrarCliente" method="POST"> 
-                    <h2 class="post-item-header"><a title="Inscrição">Inscrição</a></h2>
+                    <form action=" XXXX " method="POST"> 
+                    <h2 class="post-item-header"><a title="Inscrição">XXXXXX</a></h2>
                     <br>
-                    <label>CPF</label>
-                    <input type="text" id="txtCpf" name="txtCpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" class="form-control"><br>
-                    <label>Nome Completo</label>
-                    <input type="text" id="txtNomecompleto" name="txtNomecompleto" class="form-control"><br>
-                    <label>Data de Nascimento</label>
-                    <input type="date" id="txtData" name="txtData" class="form-control"><br>
-                    <label>Genero</label>
-                    <select id="optGenero" name="optGenero" class="form-control" style="color: black;">
+                    <label>XXXX</label>
+                    <input type="text" id="XXX" name="XXX" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" class="form-control"><br>
+                    <select id="optXXX" name="optXXX" class="form-control" style="color: black;">
                         <option>Selecione genero</option>                  
                         <option value="F">Feminino</option>
                         <option value="M">Masculino</option>
                         <option value="O">Outros</option>
-                    </select><br>
-                    <label>Email</label>
-                    <input type="email" id="txtEmail" name="txtEmail" class="form-control"><br>
-                    <label>Senha</label>
-                    <input type="password" id="txtSenha" name="txtSenha" class="form-control"><br>
-                    <label>Confirmar senha</label>
-                    <input type="password" class="form-control"><br>
-                    <label>Celular</label>
-                    <input type="text" id="txtCelular" name="txtCelular" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" class="form-control"><br>
+                    </select><br>          
                 </div>
                 <div class="col-cadastro col-md-8">
                     <div class="standard-box">
-                        <h3 class="post-item-header">Endereço</h3>
-                        <br>
-                        <label>Identificação do endereço:</label>
-                        <input type="text" id="txtIdEnd" name="txtIdEnd" class="form-control" placeholder="Casa, trabalho, ..."><br>
-                        <label>Nome do destinatário</label>
-                        <input type="text" id="txtNomedestinatario" name="txtNomedestinatario"class="form-control" ><br>
-                        <label>CEP</label>
-                        <input type="text" id="txtCep" name="txtCep" maxlength="9" OnKeyPress="formatar('#####-###', this)" class="form-control"><br>
-                        <label>Endereço</label>
-                        <input type="text" id="txtEndereco" name="txtEndereco" class="form-control"><br>
-                        <label>Numero</label>
-                        <input type="text" id="txtNumero" name="txtNumero" class="form-control"><br>
-                        <label>Complemento</label>
-                        <input type="text" id="txtComplemento" name="txtComplemento" class="form-control"><br>
-                        <label>Referência</label>
-                        <input type="text" id="txtReferencia" name="txtReferencia" class="form-control"><br>
-                        <label>Bairro</label>
-                        <input type="text" id="txtBairro" name="txtBairro" class="form-control"><br>
-                        <label>Cidade</label>
-                        <input type="text" id="txtCidade" name="txtCidade" class="form-control"><br>
-                        <label>Estado</label>
-                        <select id="optEstado" name="optEstado" class="form-control" style="color: black;">
-                            <option>Selecione um estado</option>                  
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                        </select>
+                        
                     </div>
                 </div>
             </div>

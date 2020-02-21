@@ -13,16 +13,16 @@
 
     <title>PlayboX - A loja Gamer dos Gamers</title>
 
-    <!-- Fonts -->
+    <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <!-- Lightbox styles -->
     <link href="assets/lightbox2-master/dist/css/lightbox.min.css" rel="stylesheet">
 
-    <!-- Loaders styles -->
+    <!-- Carregar styles -->
     <link href="assets/loaders.css-master/loaders.min.css" media="screen" rel="stylesheet" type="text/css">
 
-    <!-- Template styles -->
+    <!-- styles -->
     <link href="css/yellow.css" media="screen" rel="stylesheet" type="text/css" title="yellow">
     <link href="css/pink.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="pink">
     <link href="css/orange.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="orange">
@@ -54,14 +54,14 @@
         </div>
     </div>
 
-    <!-- Color switcher -->
+    <!-- trocar cor vai aqui dps -->
 
     <!-- Navbar -->
     <div class="navbar navbar-inverse">
         <div class="triangle">
             <i class="fa fa-angle-double-down" aria-hidden="true"></i>
         </div>
-        <!-- Topbar -->
+        <!-- Topbar inicio -->
         <div class="header-top clearfix">
             <div class="container">
                 <ul class="list-inline social-links">
@@ -157,7 +157,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- Topbar end -->
+        </div><!-- Topbar final -->
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
@@ -166,12 +166,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- Logo -->
+                <!-- Logo inicio -->
                 <a class="navbar-brand" href="index.html" title="PlayBoX">
                     <i class="fa fa-gamepad" aria-hidden="true"></i><span class="main-color">P</span>laybo<span class="main-color">X</span>
-                </a><!-- Logo end -->
+                </a><!-- Logo final -->
             </div>
-            <!-- Main menu -->
+            <!-- Menu principal -->
             <div class="collapse navbar-collapse" id="main-menu">
                 <ul class="nav navbar-nav">
                     <li>
@@ -236,7 +236,6 @@
             <div class="row">
                 <div class="col-cadastro col-md-8">
                     <form action="cadastrarCliente" method="POST"> 
-                    <!-- Posts list -->
                     <h2 class="post-item-header"><a title="Inscrição">Inscrição</a></h2>
                     <br>
                     <label>CPF</label>
@@ -260,10 +259,7 @@
                     <input type="password" class="form-control"><br>
                     <label>Celular</label>
                     <input type="text" id="txtCelular" name="txtCelular" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" class="form-control"><br>
-
-                    <!-- Pagination -->
                 </div>
-                <!-- Archives list -->
                 <div class="col-cadastro col-md-8">
                     <div class="standard-box">
                         <h3 class="post-item-header">Endereço</h3>
@@ -327,11 +323,7 @@
     </div>
 </form>
 
-
     <br><br><br>
-
-
-
 
     <!-- Footer -->
     <footer class="footer footer-gray text-center" id="follow-us">
@@ -357,7 +349,7 @@
         </div>
     </footer>
 
-    <!-- Scroll to top button -->
+    <!-- Subir toda página -->
     <div id="toTop" class="to-top">
         <a href="#" class="To the top">
             <i class="fa fa-angle-up"></i>
@@ -370,7 +362,7 @@
     <!-- Bootstrap -->
     <script type="text/javascript" src="assets/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
 
-    <!-- Custom javascript -->
+    <!-- Custom JS -->
     <script type="text/javascript" src="js/custom.min.js"></script>
 
     <script>
