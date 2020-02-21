@@ -116,9 +116,9 @@
                                     </button>
                                 </form>
                                     <h3 class="text-center">ou</h3>
-                                    <button href="inscricao.jsp" class="btn btn-primary btn-block">
+                                    <a href="inscricao.jsp" class="btn btn-primary btn-block">
                                         <span class="text">Inscrever-se <i class="fa fa-arrow-right"></i></span>
-                                    </button>
+                                    </a>
                                     <p class="text-center"><a href="#" title="Reset password">Esqueceu sua senha?</a></p>
                                     <h3 class="text-center">Entrar com rede social</h3>
                                     <ul class="list-inline text-center">
@@ -300,7 +300,7 @@
                     <div data-100p-top="transform[swing]:translateX(-25px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">
                         <div class="price-item price-basic">
                             <div class="price-header">
-                                <h3>R$ <strong>50</strong> / mes</h3>
+                                <h3>R$ <strong>40</strong> / mes</h3>
                             </div>
                             <div class="price-description">Bronze</div>
                             <div class="price-image">
@@ -324,7 +324,7 @@
                     <div data-100p-top="transform[swing]:translateY(-25px);opacity[swing]:0" data-75p-top="transform[swing]:translateY(0);opacity[swing]:1">
                         <div class="price-item price-gold">
                             <div class="price-header">
-                                <h3>R$ <strong>60</strong> / mes</h3>
+                                <h3>R$ <strong>50</strong> / mes</h3>
                             </div>
                             <div class="price-description">Prata</div>
                             <div class="price-image">
@@ -338,7 +338,7 @@
                                 </h4>
                             </div>
                             <ul class="price-list list-unstyled">
-                                <li> 2 (dois) jogos</li>
+                                <li> 1 (um) jogo</li>
                                 <li> 1 (uma) camiseta</li>
                                 <li> 3 (três) brindes</li>
                             </ul>
@@ -355,7 +355,7 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="price-header">
-                                <h3>R$ <strong>70</strong> / mes</h3>
+                                <h3>R$ <strong>60</strong> / mes</h3>
                             </div>
                             <div class="price-description">Ouro</div>
                             <div class="price-image">
@@ -369,7 +369,7 @@
                                 </h4>
                             </div>
                             <ul class="price-list list-unstyled">
-                                <li> 3 (três) jogos</li>
+                                <li> 1 (um) jogo</li>
                                 <li> 1 (uma) camiseta</li>
                                 <li> 5 (cinco) brindes</li>
                             </ul>

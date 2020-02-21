@@ -333,9 +333,6 @@
                $('.jogo:checked').each(function () {
                    text += $(this).val() + ',';
                });
-               text = text.substring(0, text.length -1);
-               $('#TxtSelected').val(text);
-               var count=$("[type='checkbox']:checked").length;
            });
         });
 
