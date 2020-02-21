@@ -9,6 +9,7 @@ package Controler;
 
 import DAO.ClienteDAO;
 import Model.Cliente;
+import Model.Preferencia;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -25,7 +26,8 @@ import javax.servlet.http.HttpServletResponse;
     "/excluirCliente",
     "/iniciarEdicaoCliente",
     "/editarCliente",
-    "/ativarCadastro"
+    "/ativarCadastro",
+    "/cadastrarPreferencia"
 })
 
 public class ClienteController extends HttpServlet {
@@ -65,6 +67,8 @@ public class ClienteController extends HttpServlet {
                 confirmarEdicaoSenha(request, response);
             } else if (uri.equals(request.getContextPath() + "/ativarCadastro")) {
                 ativarCadastro(request, response);
+            } else if (uri.equals(request.getContextPath() + "/cadastrarPreferencia" )) {
+                cadastrarPreferencia(request, response);
             } else {
                 response.sendRedirect("404.jsp");
             }
@@ -100,6 +104,23 @@ public class ClienteController extends HttpServlet {
 
        response.sendRedirect("cadastrado.jsp");
         
+    }
+    
+    private void cadastrarPreferencia(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+    
+        Preferencia preferencia = new Preferencia();
+        
+        preferencia.setPreferencia1(request.getParameter("check"));
+        preferencia.setPreferencia2(request.getParameter("check"));
+        preferencia.setPreferencia3(request.getParameter("check"));
+        preferencia.setHorasjogo(request.getParameter("rbhr"));
+        preferencia.setJogoonline(request.getParameter("rbonline"));
+        
+        ClienteDAO dao = new ClienteDAO();
+        dao.cadastrarpreferencia(preferencia);
+        
+        response.sendRedirect("dashCliente.jsp");
+   
     }
     
     private void ativarCadastro(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {

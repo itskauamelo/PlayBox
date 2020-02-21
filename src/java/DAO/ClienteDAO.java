@@ -6,6 +6,7 @@
 package DAO;
 
 import Model.Cliente;
+import Model.Preferencia;
 import Util.ConectaBanco;
 import java.sql.Connection;
 import java.sql.Date;
@@ -79,6 +80,24 @@ public class ClienteDAO {
             comando.execute();
         }
     }
+    
+    
+    
+    public void cadastrarpreferencia(Preferencia preferencia) throws ClassNotFoundException, SQLException {
+        
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("INSERT INTO preferencia VALUES (NEXTVAL('id_preferencia'),?,?,?,?,?)");
+            
+            comando.setString(1, preferencia.getPreferencia1());
+            comando.setString(2, preferencia.getPreferencia2());
+            comando.setString(3, preferencia.getPreferencia3());
+            comando.setString(4, preferencia.getHorasjogo());
+            comando.setString(5, preferencia.getJogoonline());
+            
+            comando.execute();
+        }
+    }
+    
 
     public List<Cliente> consultarTodos() throws ClassNotFoundException, SQLException {
 
