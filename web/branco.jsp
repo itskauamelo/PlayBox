@@ -1,5 +1,8 @@
+<%@page import="Model.Produto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="Model.Cliente"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -235,27 +238,101 @@
         <div class="container">
             <div class="row">
                 <div class="col-cadastro col-md-8">
-                    <form action=" XXXX " method="POST"> 
-                    <h2 class="post-item-header"><a title="Inscrição">XXXXXX</a></h2>
-                    <br>
-                    <label>XXXX</label>
-                    <input type="text" id="XXX" name="XXX" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" class="form-control"><br>
-                    <select id="optXXX" name="optXXX" class="form-control" style="color: black;">
-                        <option>Selecione genero</option>                  
-                        <option value="F">Feminino</option>
-                        <option value="M">Masculino</option>
-                        <option value="O">Outros</option>
-                    </select><br>          
+                    <form action="cadastrarPacote" method="POST"> 
+                        <h2 class="post-item-header"><a title="Inscrição">Cadastro de Pacotes</a></h2>
+                        <br>
+                        <label>Nome</label>
+                        <input type="text" id="txtNome" name="txtNome" class="form-control">
+                        <br>
+                        
+                        <label>teste</label>
+                        
+                        <select id="Produto" name="produto" class="form-control" style="color: black;">  
+                            <option>...</option>
+                            <c:forEach var="produto" items="${todosProdutos}">   
+                              <option value="${produto.id}">   
+                                ${produto.nome}   
+                              </option>   
+                            </c:forEach>  
+                            <option>...</option>
+                        </select>
+                                                                                      
+                        <label>Jogo</label>
+                        <select id="txtJogo" name="txtJogo" class="form-control" style="color: black;">
+                            <option></option>                  
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <br>
+                        <label>Camiseta</label>
+                        <select id="txtCamiseta" name="txtCamiseta" class="form-control" style="color: black;">
+                            <option></option>                  
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <br>
+                        <label>Brinde1</label>
+                        <select id="txtBrinde1" name="txtBrinde1" class="form-control" style="color: black;">
+                            <option></option>                  
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <br>
+                        <label>Brinde2</label>
+                        <select id="txtBrinde2" name="txtBrinde2" class="form-control" style="color: black;">
+                            <option></option>                  
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <br>
+                        <label>Brinde3</label>
+                        <select id="txtBrinde3" name="txtBrinde3" class="form-control" style="color: black;">
+                            <option></option>                  
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <br>
+                        <label>Brinde4</label>
+                        <select id="txtBrinde4" name="txtBrinde4" class="form-control" style="color: black;">
+                            <option></option>                  
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <br>
+                        <label>Brinde5</label>
+                        <select id="txtBrinde5" name="txtBrinde5" class="form-control" style="color: black;">
+                            <option></option>                  
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <br>
+                        <label for="optSituacao">Situação</label>
+                        <select name="optSituacao" id="optSituacao" class="custom-select custom-select-sm form-control form-control-sm">
+                            <option value="ATIVO">ATIVO</option>
+                            <option value="INATIVO">INATIVO</option>
+                        </select>
+                        <br>
+                        <label>Preço</label>
+                        <input type="text" id="txtPreco" name="txtPreco" class="form-control">
+                        <br>
+                        <button class="btn btn-primary btn-medio" id="btngravar" type="submit" name="gravar" value="Gravar">Cadastrar</button>
+                    </form>
+                                      
                 </div>
+                             
                 <div class="col-cadastro col-md-8">
                     <div class="standard-box">
                         
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="centrocadastro">
-        <button class="btn btn-primary" title="Criar Conta" id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Criar Conta</a>     
         </div>
     </div>
 </form>

@@ -127,8 +127,8 @@ public class ControllerPacote extends HttpServlet{
     private void listarTodos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         PacoteDAO dao = new PacoteDAO();
 
-        List<Pacote> todosProdutos = dao.consultarTodos();
-        request.setAttribute("todosPacotes", todosProdutos);
+        List<Pacote> todosPacotes = dao.consultarTodos();
+        request.setAttribute("todosPacotes", todosPacotes);
         
         request.getRequestDispatcher("admin/listarPacotes.jsp").forward(request, response);
 

@@ -185,7 +185,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="branco.jsp">
                             <span class="main-link">Loja</span>
                             <span class="additional-info-link bracket">
                                 alguns produtos
