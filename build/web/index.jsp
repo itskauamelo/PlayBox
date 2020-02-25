@@ -97,9 +97,11 @@
                         </ul>
                     </div>
                     <div class="btn-group dropdown">
+                        
                         <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
                             <span class="text"><i class="fa fa-user"></i> Login</span>
                         </button>
+                        
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
                                 <form class="login-form" action="ControleAcessoCliente" method="POST">

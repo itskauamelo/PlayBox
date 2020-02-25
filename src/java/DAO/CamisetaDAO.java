@@ -54,6 +54,28 @@ public class CamisetaDAO {
         }
         return todasCamisetas;
     }
+    
+    
+            public List<Camiseta> listarOpt(){
+        List<Camiseta> camisetas = new ArrayList<>();       
+        
+        try {
+            
+            Connection conexao = ConectaBanco.getConexao();
+            String sql = "SELECT * FROM camiseta";
+            
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                camisetas.add(new Camiseta(rs.getInt("id"), rs.getString("nome")));
+            }
+ 
+        } catch (Exception e) {
+        }
+        
+        return camisetas;
+    }
 
     public void Editar(Camiseta camiseta) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();

@@ -50,6 +50,27 @@ public class ProdutoDAO {
         }
         return todosProdutos;
     }
+    
+            public List<Produto> listarOpt(){
+        List<Produto> produtos = new ArrayList<>();       
+        
+        try {
+            
+            Connection conexao = ConectaBanco.getConexao();
+            String sql = "SELECT * FROM Produto";
+            
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                produtos.add(new Produto(rs.getInt("id"), rs.getString("nome")));
+            }
+ 
+        } catch (Exception e) {
+        }
+        
+        return produtos;
+    }
 
     public void Editar(Produto produto) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();

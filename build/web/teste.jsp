@@ -9,17 +9,24 @@
         <title>Loja!</title>
     </head>
     <body>
-        <%
+        
+                <%
             List<Game> games = (List<Game>) request.getAttribute("games");
         %>
+        
         <h1>Novo</h1>
         <form>
             Nome: <input type="text"><br/>
             Game: <select>
                                 
-
+                            <%
+                                for (Game game : games) {                                           
+                            %>
                             
-                            <option></option>
+                            
+                            <option value="<%=game.getId()%>">  <%= game.getNome() %> </option>
+                            
+                            <% } %> 
 
                        </select>
             

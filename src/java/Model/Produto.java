@@ -32,6 +32,11 @@ public class Produto {
         this.situacao = situacao;
     }
 
+    public Produto(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public int getId() {
         return id;
     }

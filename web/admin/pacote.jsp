@@ -2,6 +2,8 @@
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@page import="java.util.List"%>
 <%@page import="Model.Game"%>
+<%@page import="Model.Camiseta"%>
+<%@page import="Model.Produto"%>
 <!DOCTYPE html>
 <html>
 
@@ -148,15 +150,28 @@
         <%
         List<Game> games = (List<Game>) request.getAttribute("games");
         %>
+        
+        <%
+        List<Camiseta> camisetas = (List<Camiseta>) request.getAttribute("camisetas");
+        %>
+        
+        <%
+        List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
+        %>
 
         <div class="card-body">
           <form action="../cadastrarPacote" method="POST">
               <label for="txtNome">Nome do Pacote</label>
-              <input type="text" id="txtNome" name="txtNome" class="form-control" required="required">
+              <select onchange="exibir_ocultar" id="txtNome" name="txtNome" class="form-control" required="required">
+                  <option selected="true" disabled="disabled" >Selecione o nome do pacote</option>
+                  <option value="Bronze">Bronze</option>
+                  <option value="Prata">Prata</option>
+                  <option value="Ouro">Ouro</option>
+              </select>
               <label for="optJogo">Jogo</label>
               <select name="optJogo" id="optJogo" class="custom-select custom-select-sm form-control form-control-sm">
                 <%
-                for (Game game : games) {                                           
+                for (Game game : games) {
                 %>
 
                 <option value="<%=game.getId()%>">  <%= game.getNome() %> </option>
@@ -166,59 +181,105 @@
 
               <label for="optCamiseta">Camiseta</label>
               <select name="optCamiseta" id="optCamiseta" class="custom-select custom-select-sm form-control form-control-sm">
-                <option></option>
+                <%
+                for (Camiseta camiseta : camisetas) {
+                %>
+
+                <option value="<%=camiseta.getId()%>">  <%= camiseta.getNome() %> </option>
+
+                <% } %> 
               </select>
-
-              <div name="1" style="display: none;">
-
+              <div id="optBrinde1" name="1"> 
               <label for="optBrinde1">Brinde 1</label>
               <select name="optBrinde1" id="optBrinde1" class="custom-select custom-select-sm form-control form-control-sm">
-                <option> </option>
-                <option> </option>
+                <%
+                for (Produto produto : produtos) {
+                %>
+
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
               </select>
-
               </div>
-
-              <div name="2" style="display: none;">
-
+              <div id="optBrinde2" name="2"> 
               <label for="optBrinde2">Brinde 2</label>
               <select name="optBrinde2" id="optBrinde2" class="custom-select custom-select-sm form-control form-control-sm">
-                <option> </option>
-                <option> </option>
+                <%
+                for (Produto produto : produtos) {
+                %>
+
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
               </select>
-
               </div>
-
-              <div name="3" style="display: none;">
-
+              <div id="optBrinde3" name="3"> 
               <label for="optBrinde3">Brinde 3</label>
               <select name="optBrinde3" id="optBrinde3" class="custom-select custom-select-sm form-control form-control-sm">
-                <option> </option>
-                <option> </option>
+                <%
+                for (Produto produto : produtos) {
+                %>
+
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
               </select>
-
               </div>
-
-              <div name="4" style="display: none;">
-
+              <div id="optBrinde4" name="4"> 
               <label for="optBrinde4">Brinde 4</label>
               <select name="optBrinde4" id="optBrinde4" class="custom-select custom-select-sm form-control form-control-sm">
-                <option> </option>
-                <option> </option>
+                <%
+                for (Produto produto : produtos) {
+                %>
+
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
               </select>
-
               </div>
-
-              <div name="5" style="display: none;">
-
+              <div id="optBrinde5" name="5"> 
               <label for="optBrinde5">Brinde 5</label>
               <select name="optBrinde5" id="optBrinde5" class="custom-select custom-select-sm form-control form-control-sm">
-                <option> </option>
-                <option> </option>
-              </select>
-            
-            </div>
+                <%
+                for (Produto produto : produtos) {
+                %>
 
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
+              </select>
+              </div>
+  <script>
+                    function exibir_ocultar(val){
+                      var optBrinde1 = document.getElementById('optBrinde1');
+                      var optBrinde2 = document.getElementById('optBrinde2');
+                      var optBrinde3 = document.getElementById('optBrinde3');
+                      var optBrinde4 = document.getElementById('optBrinde4');
+                      var optBrinde5 = document.getElementById('optBrinde5');
+                      
+                          if(val == 'Bronze'){
+                              $(optBrinde1).show();
+                              $(optBrinde2).hide();
+                              $(optBrinde3).hide();
+                              $(optBrinde4).hide();
+                              $(optBrinde5).hide();
+                          }else if(val == 'Prata'){
+                              $(optBrinde1).show();
+                              $(optBrinde2).show();
+                              $(optBrinde3).show();
+                              $(optBrinde4).hide();
+                              $(optBrinde5).hide();
+                          }else if(val == 'Ouro'){
+                              $(optBrinde1).show();
+                              $(optBrinde2).show();
+                              $(optBrinde3).show();
+                              $(optBrinde4).show();
+                              $(optBrinde5).show();
+                          }                              
+                        };
+                </script>
+              
+              
           </form>
           </div>
   
@@ -266,6 +327,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin.min.js"></script>
+
 
   <!-- Demo scripts for this page-->
   <script src="../js/demo/datatables-demo.js"></script>

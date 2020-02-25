@@ -1,7 +1,10 @@
 package Controler;
 
+import DAO.CamisetaDAO;
 import DAO.GameDAO;
 import DAO.PacoteDAO;
+import DAO.ProdutoDAO;
+import Model.Camiseta;
 import Model.Game;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.Pacote;
+import Model.Produto;
 import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -20,7 +24,7 @@ import javax.servlet.annotation.WebServlet;
     "/excluirPacote",
     "/iniciarEdicaoPacote",
     "/editarPacote",
-    "/produtos/form"
+    "/form/cadastroPacote"
 })
 
 public class ControllerPacote extends HttpServlet{
@@ -37,7 +41,7 @@ public class ControllerPacote extends HttpServlet{
                 List<Game> games = gameDAO.listarOpt();
                 
                 request.setAttribute("games", games);
-                RequestDispatcher rd = request.getRequestDispatcher("/teste.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("teste.jsp");
                 rd.forward(request, response);
             }   
     }
@@ -55,7 +59,9 @@ public class ControllerPacote extends HttpServlet{
                 listarTodos(request, response);
             } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoPacote")) {
                 iniciarEdicao(request, response);
-            } 
+            } else if (uri.contains("form")) {
+                listarCombo(request, response);
+            }
             
             } catch (Exception e) {
                 e.printStackTrace();
@@ -112,6 +118,22 @@ public class ControllerPacote extends HttpServlet{
 
         request.setAttribute("pacote", pacote);
         request.getRequestDispatcher("admin/EdProd.jsp").forward(request, response);
+    }
+    
+        private void listarCombo(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        
+        GameDAO gameDAO = new GameDAO();
+        CamisetaDAO camisetaDAO = new CamisetaDAO();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        List<Game> games = gameDAO.listarOpt();
+        List<Camiseta> camisetas = camisetaDAO.listarOpt();
+        List<Produto> produtos = produtoDAO.listarOpt();
+                
+        request.setAttribute("games", games);
+        request.setAttribute("camisetas", camisetas);
+        request.setAttribute("produtos", produtos);
+        RequestDispatcher rd = request.getRequestDispatcher("/admin/pacote.jsp");
+        rd.forward(request, response);
     }
 
     private void confirmarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {

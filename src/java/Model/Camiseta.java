@@ -25,6 +25,12 @@ public class Camiseta {
     public Camiseta() {
     }
 
+    public Camiseta(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+    
+
     public Camiseta(int id, String nome, String descricao, String sexo, String tamanho, String imagem, int quantidade, double preco) {
         this.id = id;
         this.nome = nome;
