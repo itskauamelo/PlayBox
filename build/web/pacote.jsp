@@ -164,9 +164,10 @@
                 <% } %> 
               </select>
 
+              
               <label for="optCamiseta">Camiseta</label>
               <select name="optCamiseta" id="optCamiseta" class="custom-select custom-select-sm form-control form-control-sm">
-                <option></option>
+              <option></option>
               </select>
 
               <div name="1" style="display: none;">

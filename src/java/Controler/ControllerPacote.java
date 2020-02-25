@@ -1,6 +1,8 @@
 package Controler;
 
+import DAO.GameDAO;
 import DAO.PacoteDAO;
+import Model.Game;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import Model.Pacote;
 import java.sql.SQLException;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "PacoteControle", urlPatterns = {
@@ -16,11 +19,29 @@ import javax.servlet.annotation.WebServlet;
     "/listarPacotes",
     "/excluirPacote",
     "/iniciarEdicaoPacote",
-    "/editarPacote"
+    "/editarPacote",
+    "/produtos/form"
 })
 
 public class ControllerPacote extends HttpServlet{
     
+    
+        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+         
+        String uri = request.getRequestURI();
+        
+            if(uri.contains("/form")){
+                GameDAO gameDAO = new GameDAO();
+                List<Game> games = gameDAO.listarOpt();
+                
+                request.setAttribute("games", games);
+                RequestDispatcher rd = request.getRequestDispatcher("/teste.jsp");
+                rd.forward(request, response);
+            }   
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -80,7 +101,6 @@ public class ControllerPacote extends HttpServlet{
         
         response.sendRedirect("listarPacotes");
 
-        
     }
 
     private void iniciarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
@@ -132,6 +152,11 @@ public class ControllerPacote extends HttpServlet{
         
         request.getRequestDispatcher("admin/listarPacotes.jsp").forward(request, response);
 
+    }
+    
+    @Override
+    public String getServletInfo() {
+        return "Short description";
     }
     
 } 

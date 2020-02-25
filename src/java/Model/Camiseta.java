@@ -19,13 +19,13 @@ public class Camiseta {
     public String imagem;
     public String situacao;
     public int quantidade;
-    public double preço;
+    public double preco;
 
 
     public Camiseta() {
     }
 
-    public Camiseta(int id, String nome, String descricao, String sexo, String tamanho, String imagem, int quantidade, double preço) {
+    public Camiseta(int id, String nome, String descricao, String sexo, String tamanho, String imagem, int quantidade, double preco) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -33,7 +33,7 @@ public class Camiseta {
         this.tamanho = tamanho;
         this.imagem = imagem;
         this.quantidade = quantidade;
-        this.preço = preço;
+        this.preco = preco;
     }
 
     public int getId() {
@@ -92,12 +92,12 @@ public class Camiseta {
         this.quantidade = quantidade;
     }
 
-    public double getPreço() {
-        return preço;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setPreço(double preço) {
-        this.preço = preço;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
     
     public String getSituacao() {

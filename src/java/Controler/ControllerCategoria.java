@@ -1,25 +1,25 @@
 package Controler;
 
-import DAO.PacoteDAO;
+import DAO.CategoriaDAO;
+import Model.Categoria;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Model.Pacote;
 import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "PacoteControle", urlPatterns = {
-    "/cadastrarPacote",
-    "/listarPacotes",
-    "/excluirPacote",
-    "/iniciarEdicaoPacote",
-    "/editarPacote"
+@WebServlet(name = "CategoriaControle", urlPatterns = {
+    "/cadastrarCategoria",
+    "/listarCategorias",
+    "/desativarCategoria",
+    "/iniciarEdicaoCategoria",
+    "/editarCategoria"
 })
 
-public class ControllerPacote extends HttpServlet{
+public class ControllerCategoria extends HttpServlet{
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,11 +28,11 @@ public class ControllerPacote extends HttpServlet{
         try {
             String uri = request.getRequestURI();
 
-            if (uri.equals(request.getContextPath() + "/excluirPacote")) {
+            if (uri.equals(request.getContextPath() + "/desativarCategoria")) {
                 excluir(request, response);
-            } else if (uri.equals(request.getContextPath() + "/listarPacotes")) {
+            } else if (uri.equals(request.getContextPath() + "/listarCategorias")) {
                 listarTodos(request, response);
-            } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoPacote")) {
+            } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoCategoria")) {
                 iniciarEdicao(request, response);
             } 
             
@@ -48,9 +48,9 @@ public class ControllerPacote extends HttpServlet{
         try {
             String uri = request.getRequestURI();
 
-            if (uri.equals(request.getContextPath() + "/cadastrarPacote")) {
+            if (uri.equals(request.getContextPath() + "/cadastrarCategoria")) {
                 cadastrar(request, response);
-            } else if (uri.equals(request.getContextPath() + "/editarPacote")) {
+            } else if (uri.equals(request.getContextPath() + "/editarCategoria")) {
                 confirmarEdicao(request, response);
             } else {
                 response.sendRedirect("404.jsp");
@@ -62,21 +62,11 @@ public class ControllerPacote extends HttpServlet{
     }
 
     private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
-        Pacote pacote = new Pacote();
-        pacote.setNome(request.getParameter("txtNome"));
-        pacote.setJogo(Integer.valueOf(request.getParameter("txtJogo")));
-        pacote.setCamiseta(Integer.valueOf(request.getParameter("txtCamiseta")));
-        pacote.setBrinde1(Integer.valueOf(request.getParameter("txtBrinde1")));
-        pacote.setBrinde2(Integer.valueOf(request.getParameter("txtBrinde2")));
-        pacote.setBrinde3(Integer.valueOf(request.getParameter("txtBrinde3")));
-        pacote.setBrinde4(Integer.valueOf(request.getParameter("txtBrinde4")));
-        pacote.setBrinde5(Integer.valueOf(request.getParameter("txtBrinde5")));
-        pacote.setSituacao(request.getParameter("optSituacao"));
-        pacote.setPreco(Double.parseDouble(request.getParameter("txtPreco")));
+        Categoria categoria = new Categoria();
+        categoria.setCategoria(request.getParameter("txtCategoria"));
         
-
-        PacoteDAO dao = new PacoteDAO();
-        dao.cadastrar(pacote);
+        CategoriaDAO dao = new CategoriaDAO();
+        dao.cadastrar(categoria);
         
         response.sendRedirect("listarPacotes");
 
@@ -84,53 +74,44 @@ public class ControllerPacote extends HttpServlet{
     }
 
     private void iniciarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
-        Pacote pacote = new Pacote();
-        PacoteDAO dao = new PacoteDAO();
-        pacote.setId(Integer.valueOf(request.getParameter("id")));
+        Categoria categoria = new Categoria();
+        CategoriaDAO dao = new CategoriaDAO();
+        categoria.setId(Integer.valueOf(request.getParameter("id")));
 
-        dao.consultarporId(pacote);
+        dao.consultarporId(categoria);
 
-        request.setAttribute("pacote", pacote);
-        request.getRequestDispatcher("admin/EdProd.jsp").forward(request, response);
+        request.setAttribute("categoria", categoria);
+        // request.getRequestDispatcher("admin/EdProd.jsp").forward(request, response);
     }
 
     private void confirmarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
-        Pacote pacote = new Pacote();
-        PacoteDAO dao = new PacoteDAO();
-        pacote.setId(Integer.valueOf(request.getParameter("id")));
-        pacote.setNome(request.getParameter("nome"));
-        pacote.setJogo(Integer.valueOf(request.getParameter("jogo")));
-        pacote.setCamiseta(Integer.valueOf(request.getParameter("camiseta")));
-        pacote.setBrinde1(Integer.valueOf(request.getParameter("brinde1")));
-        pacote.setBrinde2(Integer.valueOf(request.getParameter("brinde2")));
-        pacote.setBrinde3(Integer.valueOf(request.getParameter("brinde3")));
-        pacote.setBrinde4(Integer.valueOf(request.getParameter("brinde4")));
-        pacote.setBrinde5(Integer.valueOf(request.getParameter("brinde5")));
-        pacote.setSituacao(request.getParameter("situacao"));
-        pacote.setPreco(Double.valueOf(request.getParameter("preco")));
+        Categoria categoria = new Categoria();
+        CategoriaDAO dao = new CategoriaDAO();
+        categoria.setId(Integer.valueOf(request.getParameter("id")));
+        categoria.setCategoria(request.getParameter("categoria"));
 
-        dao.Editar(pacote);
-        response.sendRedirect("listarPacotes");
+        dao.Editar(categoria);
+        // response.sendRedirect("listarPacotes");
     }
 
     private void excluir(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
-        Pacote pacote = new Pacote();
-        PacoteDAO dao = new PacoteDAO();
-        pacote.setId(Integer.valueOf(request.getParameter("id")));
+        Categoria categoria = new Categoria();
+        CategoriaDAO dao = new CategoriaDAO();
+        categoria.setId(Integer.valueOf(request.getParameter("id")));
 
-        dao.consultarporId(pacote);
-        dao.Excluir(pacote);
+        dao.consultarporId(categoria);
+        dao.Excluir(categoria);
         
-        response.sendRedirect("listarProdutos");
+        // response.sendRedirect("listarProdutos");
     }
 
     private void listarTodos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
-        PacoteDAO dao = new PacoteDAO();
+        CategoriaDAO dao = new CategoriaDAO();
 
-        List<Pacote> todosPacotes = dao.consultarTodos();
-        request.setAttribute("todosPacotes", todosPacotes);
+        List<Categoria> todasCategorias = dao.consultarTodos();
+        request.setAttribute("todasCategorias", todasCategorias);
         
-        request.getRequestDispatcher("admin/listarPacotes.jsp").forward(request, response);
+        // request.getRequestDispatcher("admin/listarPacotes.jsp").forward(request, response);
 
     }
     

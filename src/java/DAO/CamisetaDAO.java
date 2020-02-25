@@ -1,6 +1,6 @@
 package DAO;
 
-import Model.Produto;
+import Model.Camiseta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -11,80 +11,88 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProdutoDAO {
+public class CamisetaDAO {
 
-    public void cadastrar(Produto produto) throws ClassNotFoundException, SQLException {
+    public void cadastrar(Camiseta camiseta) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO produto VALUES (NEXTVAL('id_produto'),?,?,?,?,?,?)");
-            comando.setString(1, produto.getNome());
-            comando.setString(2, produto.getDescricao());
-            comando.setString(3, produto.getImagem());
-            comando.setString(4, produto.getSituacao());
-            comando.setInt(5, produto.getQuantidade());
-            comando.setDouble(6, produto.getPreco());
+            PreparedStatement comando = con.prepareStatement("INSERT INTO camiseta VALUES (NEXTVAL('id_camiseta'),?,?,?,?,?,?,?,?)");
+            comando.setString(1, camiseta.getNome());
+            comando.setString(2, camiseta.getDescricao());
+            comando.setString(3, camiseta.getSexo());
+            comando.setString(4, camiseta.getTamanho());
+            comando.setString(5, camiseta.getImagem());
+            comando.setString(6, camiseta.getSituacao());
+            comando.setInt(7, camiseta.getQuantidade());
+            comando.setDouble(8, camiseta.getPreco());
             
             comando.execute();
         }
     }
 
-    public List<Produto> consultarTodos() throws ClassNotFoundException, SQLException {
+    public List<Camiseta> consultarTodos() throws ClassNotFoundException, SQLException {
 
-        List<Produto> todosProdutos;
+        List<Camiseta> todasCamisetas;
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("SELECT * FROM produto ORDER BY id");
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM camiseta ORDER BY id");
             ResultSet resultado = comando.executeQuery();
-            todosProdutos = new ArrayList<>();
+            todasCamisetas = new ArrayList<>();
             while (resultado.next()) {
-                Produto p = new Produto();
-                p.setId(resultado.getInt("id"));
-                p.setNome(resultado.getString("nome"));
-                p.setDescricao(resultado.getString("descricao"));
-                p.setImagem(resultado.getString("imagem"));
-                p.setSituacao(resultado.getString("situacao"));
-                p.setQuantidade(resultado.getInt("quantidade"));
-                p.setPreco(resultado.getDouble("preco"));
+                Camiseta ca = new Camiseta();
+                ca.setId(resultado.getInt("id"));
+                ca.setNome(resultado.getString("nome"));
+                ca.setDescricao(resultado.getString("descricao"));
+                ca.setSexo(resultado.getString("sexo"));
+                ca.setTamanho(resultado.getString("tamanho"));
+                ca.setImagem(resultado.getString("imagem"));
+                ca.setSituacao(resultado.getString("situacao"));
+                ca.setQuantidade(resultado.getInt("quantidade"));
+                ca.setPreco(resultado.getDouble("preco"));
                 
-                todosProdutos.add(p);
+                todasCamisetas.add(ca);
             }
         }
-        return todosProdutos;
+        return todasCamisetas;
     }
 
-    public void Editar(Produto produto) throws ClassNotFoundException, SQLException {
+    public void Editar(Camiseta camiseta) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("UPDATE produto SET nome = ?, descricao = ?, imagem = ?, situacao = ?, quantidade = ?, preco = ? WHERE id = ?");
-        comando.setString(1, produto.getNome());
-        comando.setString(2, produto.getDescricao());
-        comando.setString(3, produto.getImagem());
-        comando.setString(4, produto.getSituacao());
-        comando.setInt(5, produto.getQuantidade());
-        comando.setDouble(6, produto.getPreco());
-        comando.setInt(7, produto.getId());
+        PreparedStatement comando = con.prepareStatement("UPDATE camiseta SET nome = ?, descricao = ?, sexo = ?, tamanho = ?, imagem = ?, situacao = ?, quantidade = ?, preco = ? WHERE id = ?");
+        comando.setString(1, camiseta.getNome());
+        comando.setString(2, camiseta.getDescricao());
+        comando.setString(3, camiseta.getSexo());
+        comando.setString(4, camiseta.getTamanho());
+        comando.setString(5, camiseta.getImagem());
+        comando.setString(6, camiseta.getSituacao());
+        comando.setInt(7, camiseta.getQuantidade());
+        comando.setDouble(8, camiseta.getPreco());
+        comando.setInt(9, camiseta.getId());
         comando.execute();
     }
 
-    public void Excluir(Produto produto) throws ClassNotFoundException, SQLException {
+    public void Desativar(Camiseta camiseta) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("UPDATE produto SET situacao = 'INATIVO' WHERE id = ?");
-        comando.setInt(1, produto.getId());
+        PreparedStatement comando = con.prepareStatement("UPDATE camiseta SET situacao = 'INATIVO' WHERE id = ?");
+        comando.setInt(1, camiseta.getId());
         comando.execute();
     }
 
-    public void consultarporId(Produto produto) throws ClassNotFoundException, SQLException {
+    public void consultarporId(Camiseta camiseta) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("SELECT * FROM produto WHERE id = ?");
-        comando.setInt(1, produto.getId());
+        PreparedStatement comando = con.prepareStatement("SELECT * FROM camiseta WHERE id = ?");
+        comando.setInt(1, camiseta.getId());
         ResultSet resultado = comando.executeQuery();
 
         if (resultado.next()) {
-            produto.setNome(resultado.getString("nome"));
-            produto.setDescricao(resultado.getString("descricao"));
-            produto.setImagem(resultado.getString("imagem"));
-            produto.setSituacao(resultado.getString("situacao"));
-            produto.setQuantidade(resultado.getInt("quantidade"));
-            produto.setPreco(resultado.getDouble("preco"));
-            produto.setId(resultado.getInt("id"));
+            camiseta.setNome(resultado.getString("nome"));
+            camiseta.setDescricao(resultado.getString("descricao"));
+            camiseta.setSexo(resultado.getString("sexo"));
+            camiseta.setTamanho(resultado.getString("tamanho"));
+            camiseta.setImagem(resultado.getString("imagem"));
+            camiseta.setSituacao(resultado.getString("situacao"));
+            camiseta.setQuantidade(resultado.getInt("quantidade"));
+            camiseta.setPreco(resultado.getDouble("preco"));
+            camiseta.setId(resultado.getInt("id"));
         }
     }
 }

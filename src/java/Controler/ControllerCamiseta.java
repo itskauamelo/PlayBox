@@ -1,25 +1,25 @@
 package Controler;
 
-import DAO.ProdutoDAO;
+import DAO.CamisetaDAO;
+import Model.Camiseta;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Model.Produto;
 import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "ProdutoControle", urlPatterns = {
-    "/cadastrarProduto",
-    "/listarProdutos",
-    "/excluirProduto",
-    "/iniciarEdicaoProduto",
-    "/editarProduto"
+    "/cadastrarCamiseta",
+    "/listarCamisetas",
+    "/desativarCamiseta",
+    "/iniciarEdicaoCamiseta",
+    "/editarCamiseta"
 })
 
-public class ControllerProduto extends HttpServlet{
+public class ControllerCamiseta extends HttpServlet{
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,11 +28,11 @@ public class ControllerProduto extends HttpServlet{
         try {
             String uri = request.getRequestURI();
 
-            if (uri.equals(request.getContextPath() + "/excluirProduto")) {
-                excluir(request, response);
-            } else if (uri.equals(request.getContextPath() + "/listarProdutos")) {
+            if (uri.equals(request.getContextPath() + "/desativarCamiseta")) {
+                desativar(request, response);
+            } else if (uri.equals(request.getContextPath() + "/listarCamisetas")) {
                 listarTodos(request, response);
-            } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoProduto")) {
+            } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoCamiseta")) {
                 iniciarEdicao(request, response);
             } 
             
@@ -48,9 +48,9 @@ public class ControllerProduto extends HttpServlet{
         try {
             String uri = request.getRequestURI();
 
-            if (uri.equals(request.getContextPath() + "/cadastrarProduto")) {
+            if (uri.equals(request.getContextPath() + "/cadastrarCamiseta")) {
                 cadastrar(request, response);
-            } else if (uri.equals(request.getContextPath() + "/editarProduto")) {
+            } else if (uri.equals(request.getContextPath() + "/editarCamiseta")) {
                 confirmarEdicao(request, response);
             } else {
                 response.sendRedirect("404.jsp");
@@ -62,67 +62,71 @@ public class ControllerProduto extends HttpServlet{
     }
 
     private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
-        Produto produto = new Produto();
-        produto.setNome(request.getParameter("txtNome"));
-        produto.setDescricao(request.getParameter("txtDescricao"));
-        produto.setImagem(request.getParameter("txtImagem"));
-        produto.setSituacao(request.getParameter("optSituacao"));
-        produto.setQuantidade(Integer.valueOf(request.getParameter("txtQuantidade")));
-        produto.setPreco(Double.parseDouble(request.getParameter("txtPreco")));
+        Camiseta camiseta = new Camiseta();
+        camiseta.setNome(request.getParameter("txtNome"));
+        camiseta.setDescricao(request.getParameter("txtDescricao"));
+        camiseta.setSexo(request.getParameter("txtSexo"));
+        camiseta.setTamanho(request.getParameter("txtTamanho"));
+        camiseta.setImagem(request.getParameter("txtImagem"));
+        camiseta.setSituacao(request.getParameter("optSituacao"));
+        camiseta.setQuantidade(Integer.valueOf(request.getParameter("txtQuantidade")));
+        camiseta.setPreco(Double.parseDouble(request.getParameter("txtPreco")));
         
 
-        ProdutoDAO dao = new ProdutoDAO();
-        dao.cadastrar(produto);
+        CamisetaDAO dao = new CamisetaDAO();
+        dao.cadastrar(camiseta);
         
-        response.sendRedirect("listarProdutos");
+        //response.sendRedirect("listarProdutos");
 
         
     }
 
     private void iniciarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
-        Produto produto = new Produto();
-        ProdutoDAO dao = new ProdutoDAO();
-        produto.setId(Integer.valueOf(request.getParameter("id")));
+        Camiseta camiseta = new Camiseta();
+        CamisetaDAO dao = new CamisetaDAO();
+        camiseta.setId(Integer.valueOf(request.getParameter("id")));
 
-        dao.consultarporId(produto);
+        dao.consultarporId(camiseta);
 
-        request.setAttribute("produto", produto);
-        request.getRequestDispatcher("admin/EdProd.jsp").forward(request, response);
+        request.setAttribute("camiseta", camiseta);
+        // request.getRequestDispatcher("admin/EdProd.jsp").forward(request, response);
     }
 
     private void confirmarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
-        Produto produto = new Produto();
-        ProdutoDAO dao = new ProdutoDAO();
-        produto.setId(Integer.valueOf(request.getParameter("id")));
-        produto.setNome(request.getParameter("nome"));
-        produto.setDescricao(request.getParameter("descricao"));
-        produto.setImagem(request.getParameter("imagem"));
-        produto.setSituacao(request.getParameter("situacao"));
-        produto.setQuantidade(Integer.valueOf(request.getParameter("quantidade")));
-        produto.setPreco(Double.valueOf(request.getParameter("preco")));
+        Camiseta camiseta = new Camiseta();
+        CamisetaDAO dao = new CamisetaDAO();
+        camiseta.setId(Integer.valueOf(request.getParameter("id")));
+        camiseta.setNome(request.getParameter("nome"));
+        camiseta.setDescricao(request.getParameter("descricao"));
+        camiseta.setDescricao(request.getParameter("sexo"));
+        camiseta.setDescricao(request.getParameter("tamanho"));
+        camiseta.setImagem(request.getParameter("imagem"));
+        camiseta.setSituacao(request.getParameter("situacao"));
+        camiseta.setQuantidade(Integer.valueOf(request.getParameter("quantidade")));
+        camiseta.setPreco(Double.valueOf(request.getParameter("preco")));
 
-        dao.Editar(produto);
-        response.sendRedirect("listarProdutos");
+        dao.Editar(camiseta);
+        //response.sendRedirect("listarProdutos");
     }
 
-    private void excluir(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
-        Produto produto = new Produto();
-        ProdutoDAO dao = new ProdutoDAO();
-        produto.setId(Integer.valueOf(request.getParameter("id")));
+    private void desativar(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+        Camiseta camiseta = new Camiseta();
+        CamisetaDAO dao = new CamisetaDAO();
+        camiseta.setId(Integer.valueOf(request.getParameter("id")));
 
-        dao.consultarporId(produto);
-        dao.Excluir(produto);
+        dao.consultarporId(camiseta);
+        dao.Desativar(camiseta);
         
-        response.sendRedirect("listarProdutos");
+        //response.sendRedirect("listarProdutos");
     }
 
     private void listarTodos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
-        ProdutoDAO dao = new ProdutoDAO();
+        CamisetaDAO dao = new CamisetaDAO();
 
-        List<Produto> todosProdutos = dao.consultarTodos();
-        request.setAttribute("todosProdutos", todosProdutos);
+        List<Camiseta> todasCamisetas = dao.consultarTodos();
+        request.setAttribute("todasCamisetas", todasCamisetas);
         
-        request.getRequestDispatcher("admin/listarProdutos.jsp").forward(request, response);
+        //request.getRequestDispatcher("admin/listarProdutos.jsp").forward(request, response);
 
     }
     

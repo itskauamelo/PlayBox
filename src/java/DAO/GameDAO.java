@@ -1,90 +1,114 @@
 package DAO;
 
-import Model.Produto;
+import Model.Game;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import Util.ConectaBanco;
-import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProdutoDAO {
+public class GameDAO {
 
-    public void cadastrar(Produto produto) throws ClassNotFoundException, SQLException {
+    public void cadastrar(Game game) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO produto VALUES (NEXTVAL('id_produto'),?,?,?,?,?,?)");
-            comando.setString(1, produto.getNome());
-            comando.setString(2, produto.getDescricao());
-            comando.setString(3, produto.getImagem());
-            comando.setString(4, produto.getSituacao());
-            comando.setInt(5, produto.getQuantidade());
-            comando.setDouble(6, produto.getPreco());
+            PreparedStatement comando = con.prepareStatement("INSERT INTO games VALUES (NEXTVAL('id_game'),?,?,?,?,?,?,?)");
+            comando.setString(1, game.getNome());
+            comando.setString(2, game.getDescricao());
+            comando.setString(3, game.getPlataforma());
+            comando.setString(4, game.getImagem());
+            comando.setString(5, game.getSituacao());
+            comando.setInt(6, game.getQuantidade());
+            comando.setDouble(7, game.getPreco());
             
             comando.execute();
         }
     }
 
-    public List<Produto> consultarTodos() throws ClassNotFoundException, SQLException {
+    public List<Game> consultarTodos() throws ClassNotFoundException, SQLException {
 
-        List<Produto> todosProdutos;
+        List<Game> todosGames;
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("SELECT * FROM produto ORDER BY id");
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM games ORDER BY id");
             ResultSet resultado = comando.executeQuery();
-            todosProdutos = new ArrayList<>();
+            todosGames = new ArrayList<>();
             while (resultado.next()) {
-                Produto p = new Produto();
-                p.setId(resultado.getInt("id"));
-                p.setNome(resultado.getString("nome"));
-                p.setDescricao(resultado.getString("descricao"));
-                p.setImagem(resultado.getString("imagem"));
-                p.setSituacao(resultado.getString("situacao"));
-                p.setQuantidade(resultado.getInt("quantidade"));
-                p.setPreco(resultado.getDouble("preco"));
+                Game g = new Game();
+                g.setId(resultado.getInt("id"));
+                g.setNome(resultado.getString("nome"));
+                g.setDescricao(resultado.getString("descricao"));
+                g.setPlataforma(resultado.getString("plataforma"));
+                g.setImagem(resultado.getString("imagem"));
+                g.setSituacao(resultado.getString("situacao"));
+                g.setQuantidade(resultado.getInt("quantidade"));
+                g.setPreco(resultado.getDouble("preco"));
                 
-                todosProdutos.add(p);
+                todosGames.add(g);
             }
         }
-        return todosProdutos;
+        return todosGames;
+    }
+    
+        public List<Game> listarOpt(){
+        List<Game> games = new ArrayList<>();       
+        
+        try {
+            
+            Connection conexao = ConectaBanco.getConexao();
+            String sql = "SELECT * FROM GAMES";
+            
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                games.add(new Game(rs.getInt("id"), rs.getString("nome")));
+            }
+ 
+        } catch (Exception e) {
+        }
+        
+        return games;
     }
 
-    public void Editar(Produto produto) throws ClassNotFoundException, SQLException {
+    public void Editar(Game game) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("UPDATE produto SET nome = ?, descricao = ?, imagem = ?, situacao = ?, quantidade = ?, preco = ? WHERE id = ?");
-        comando.setString(1, produto.getNome());
-        comando.setString(2, produto.getDescricao());
-        comando.setString(3, produto.getImagem());
-        comando.setString(4, produto.getSituacao());
-        comando.setInt(5, produto.getQuantidade());
-        comando.setDouble(6, produto.getPreco());
-        comando.setInt(7, produto.getId());
+        PreparedStatement comando = con.prepareStatement("UPDATE games SET nome = ?, descricao = ?, plataforma = ?, imagem = ?, situacao = ?, quantidade = ?, preco = ? WHERE id = ?");
+        comando.setString(1, game.getNome());
+        comando.setString(2, game.getDescricao());
+        comando.setString(3, game.getPlataforma());
+        comando.setString(4, game.getImagem());
+        comando.setString(5, game.getSituacao());
+        comando.setInt(6, game.getQuantidade());
+        comando.setDouble(7, game.getPreco());
+        comando.setInt(8, game.getId());
         comando.execute();
     }
 
-    public void Excluir(Produto produto) throws ClassNotFoundException, SQLException {
+    public void Desativar(Game game) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("UPDATE produto SET situacao = 'INATIVO' WHERE id = ?");
-        comando.setInt(1, produto.getId());
+        PreparedStatement comando = con.prepareStatement("UPDATE games SET situacao = 'INATIVO' WHERE id = ?");
+        comando.setInt(1, game.getId());
         comando.execute();
     }
 
-    public void consultarporId(Produto produto) throws ClassNotFoundException, SQLException {
+    public void consultarporId(Game game) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("SELECT * FROM produto WHERE id = ?");
-        comando.setInt(1, produto.getId());
+        comando.setInt(1, game.getId());
         ResultSet resultado = comando.executeQuery();
 
         if (resultado.next()) {
-            produto.setNome(resultado.getString("nome"));
-            produto.setDescricao(resultado.getString("descricao"));
-            produto.setImagem(resultado.getString("imagem"));
-            produto.setSituacao(resultado.getString("situacao"));
-            produto.setQuantidade(resultado.getInt("quantidade"));
-            produto.setPreco(resultado.getDouble("preco"));
-            produto.setId(resultado.getInt("id"));
+            game.setNome(resultado.getString("nome"));
+            game.setDescricao(resultado.getString("descricao"));
+            game.setPlataforma(resultado.getString("plataforma"));
+            game.setImagem(resultado.getString("imagem"));
+            game.setSituacao(resultado.getString("situacao"));
+            game.setQuantidade(resultado.getInt("quantidade"));
+            game.setPreco(resultado.getDouble("preco"));
+            game.setId(resultado.getInt("id"));
         }
     }
 }
