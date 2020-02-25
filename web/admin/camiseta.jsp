@@ -15,7 +15,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Playbox - Cadastrar Produto</title>
+  <title>Playbox - Cadastrar Camiseta</title>
 
   <!-- Fonte Custom-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -68,15 +68,19 @@
           <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Cadastrar Produto</li>
+          <li class="breadcrumb-item active">Cadastrar Camiseta</li>
         </ol>
         
         <div class="card-body">
-        <form action="../cadastrarProduto" method="POST">
+        <form action="../cadastrarCamiseta" method="POST">
             <label for="txtNome">Nome</label>
             <input type="text" id="txtNome" name="txtNome" class="form-control" required="required"><br>
             <label for="txtDescricao">Descrição</label>
             <input type="text" id="txtDescricao" name="txtDescricao" class="form-control" required="required"><br>
+            <label for="txtSexo">Sexo</label>
+            <input type="text" id="txtSexo" name="txtSexo" class="form-control" required="required"><br>
+            <label for="txtTamanho">Tamanho</label>
+            <input type="text" id="txtTamanho" name="txtTamanho" class="form-control" required="required"><br>
             <label for="txtImagem">Imagem</label>
             <input accept="image/*" type="file" id="txtImagem" name="txtImagem" class="form-control" required="required"><br>
             <label for="optSituacao">Situação</label>
@@ -86,7 +90,7 @@
             </select>
             <br><br><label for="txtQuantidade">Quantidade</label>
             <input type="number" id="txtQuantidade" name="txtQuantidade" min="0" class="form-control" required="required"><br>
-            <label for="txtPreco">Preco</label>
+            <label for="txtPreco">Preço</label>
             <input type="text" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" />
              <br>
              <br>

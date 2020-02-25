@@ -15,7 +15,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Playbox - Cadastrar Produto</title>
+  <title>Playbox - Cadastrar Game</title>
 
   <!-- Fonte Custom-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -68,15 +68,17 @@
           <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Cadastrar Produto</li>
+          <li class="breadcrumb-item active">Cadastrar Game</li>
         </ol>
         
         <div class="card-body">
-        <form action="../cadastrarProduto" method="POST">
+        <form action="../cadastrarGame" method="POST">
             <label for="txtNome">Nome</label>
             <input type="text" id="txtNome" name="txtNome" class="form-control" required="required"><br>
             <label for="txtDescricao">Descrição</label>
             <input type="text" id="txtDescricao" name="txtDescricao" class="form-control" required="required"><br>
+            <label for="txtPlataforma">Plataforma</label>
+            <input type="text" id="txtPlataforma" name="txtPlataforma" class="form-control" required="required"><br>
             <label for="txtImagem">Imagem</label>
             <input accept="image/*" type="file" id="txtImagem" name="txtImagem" class="form-control" required="required"><br>
             <label for="optSituacao">Situação</label>
@@ -99,7 +101,7 @@
     </div>
     <!-- /.content-wrapper -->
 
-  </div>
+  </div><br><br><br><br><br>
             <jsp:include page="/admin/footer.jsp"/>
   <!-- /#wrapper -->
 
