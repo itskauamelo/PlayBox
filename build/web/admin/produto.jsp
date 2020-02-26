@@ -77,6 +77,7 @@
             <input type="text" id="txtNome" name="txtNome" class="form-control" required="required"><br>
             <label for="txtDescricao">Descrição</label>
             <input type="text" id="txtDescricao" name="txtDescricao" class="form-control" required="required"><br>
+            <form action ="../repo/upladFoto.jsp">
             <label for="txtImagem">Imagem</label>
             <input accept="image/*" type="file" id="txtImagem" name="txtImagem" class="form-control" required="required"><br>
             <label for="optSituacao">Situação</label>
