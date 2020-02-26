@@ -317,7 +317,7 @@
                                 <li> 1 (um) brinde</li>
                             </ul>
                             <div class="price-button">
-                                <a href="#" class="btn btn-primary btn-block" title="Buy it" data-toggle="modal" data-target="#order-modal"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="#" class="btn btn-primary btn-block" title="Quero esse" data-toggle="modal" data-target="#order-modal"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
@@ -376,7 +376,7 @@
                                 <li> 5 (cinco) brindes</li>
                             </ul>
                             <div class="price-button">
-                                <a href="#" class="btn btn-primary btn-block" title="Buy it" data-toggle="modal" data-target="#order-modal"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="#" class="btn btn-primary btn-block" title="Quero esse" data-toggle="modal" data-target="#order-modal"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
