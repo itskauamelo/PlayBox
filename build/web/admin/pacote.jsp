@@ -192,7 +192,7 @@
                 for (Game game : games) {
                 %>
 
-                <option value="<%=game.getId()%>">  <%= game.getNome() %> </option>
+                <option value="<%=game.getNome()%>">  <%= game.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -203,7 +203,7 @@
                 for (Camiseta camiseta : camisetas) {
                 %>
 
-                <option value="<%=camiseta.getId()%>">  <%= camiseta.getNome() %> </option>
+                <option value="<%=camiseta.getNome()%>">  <%= camiseta.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -214,7 +214,7 @@
                 for (Produto produto : produtos) {
                 %>
 
-                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -226,7 +226,7 @@
                 for (Produto produto : produtos) {
                 %>
 
-                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -238,7 +238,7 @@
                 for (Produto produto : produtos) {
                 %>
 
-                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -250,7 +250,7 @@
                 for (Produto produto : produtos) {
                 %>
 
-                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -262,12 +262,18 @@
                 for (Produto produto : produtos) {
                 %>
 
-                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>
               </div> 
-              
+              <label for="txtPreco">Preço</label>
+                <input type="text" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" />
+              <br>
+              <br>
+              <button class="btn btn-primary btn-medio" id="btngravar" type="submit" name="gravar" value="Gravar">Cadastrar</button>
+              <br>
+              <br>
               <script>
                   $('#txtNome').on('change', function() {
 

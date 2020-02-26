@@ -13,22 +13,20 @@ public class Pacote {
     
     public int id;
     public String nome;
-    public int jogo;
-    public int camiseta;
-    public int brinde1;
-    public int brinde2;
-    public int brinde3;
-    public int brinde4;
-    public int brinde5;
+    public String jogo;
+    public String camiseta;
+    public String brinde1;
+    public String brinde2;
+    public String brinde3;
+    public String brinde4;
+    public String brinde5;
     public String situacao;
     public double preco;
 
     public Pacote() {
     }
 
-    
-    
-    public Pacote(int id, String nome, int jogo, int camiseta, int brinde1, int brinde2, int brinde3, int brinde4, int brinde5, String situacao, double preco) {
+    public Pacote(int id, String nome, String jogo, String camiseta, String brinde1, String brinde2, String brinde3, String brinde4, String brinde5, String situacao, double preco) {
         this.id = id;
         this.nome = nome;
         this.jogo = jogo;
@@ -42,8 +40,6 @@ public class Pacote {
         this.preco = preco;
     }
 
-    
-    
     public int getId() {
         return id;
     }
@@ -60,59 +56,59 @@ public class Pacote {
         this.nome = nome;
     }
 
-    public int getJogo() {
+    public String getJogo() {
         return jogo;
     }
 
-    public void setJogo(int jogo) {
+    public void setJogo(String jogo) {
         this.jogo = jogo;
     }
 
-    public int getCamiseta() {
+    public String getCamiseta() {
         return camiseta;
     }
 
-    public void setCamiseta(int camiseta) {
+    public void setCamiseta(String camiseta) {
         this.camiseta = camiseta;
     }
 
-    public int getBrinde1() {
+    public String getBrinde1() {
         return brinde1;
     }
 
-    public void setBrinde1(int brinde1) {
+    public void setBrinde1(String brinde1) {
         this.brinde1 = brinde1;
     }
 
-    public int getBrinde2() {
+    public String getBrinde2() {
         return brinde2;
     }
 
-    public void setBrinde2(int brinde2) {
+    public void setBrinde2(String brinde2) {
         this.brinde2 = brinde2;
     }
 
-    public int getBrinde3() {
+    public String getBrinde3() {
         return brinde3;
     }
 
-    public void setBrinde3(int brinde3) {
+    public void setBrinde3(String brinde3) {
         this.brinde3 = brinde3;
     }
 
-    public int getBrinde4() {
+    public String getBrinde4() {
         return brinde4;
     }
 
-    public void setBrinde4(int brinde4) {
+    public void setBrinde4(String brinde4) {
         this.brinde4 = brinde4;
     }
 
-    public int getBrinde5() {
+    public String getBrinde5() {
         return brinde5;
     }
 
-    public void setBrinde5(int brinde5) {
+    public void setBrinde5(String brinde5) {
         this.brinde5 = brinde5;
     }
 
@@ -131,6 +127,7 @@ public class Pacote {
     public void setPreco(double preco) {
         this.preco = preco;
     }
+
 
     
 }

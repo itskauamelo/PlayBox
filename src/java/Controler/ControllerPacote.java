@@ -91,21 +91,19 @@ public class ControllerPacote extends HttpServlet{
     private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
         Pacote pacote = new Pacote();
         pacote.setNome(request.getParameter("txtNome"));
-        pacote.setJogo(Integer.valueOf(request.getParameter("txtJogo")));
-        pacote.setCamiseta(Integer.valueOf(request.getParameter("txtCamiseta")));
-        pacote.setBrinde1(Integer.valueOf(request.getParameter("txtBrinde1")));
-        pacote.setBrinde2(Integer.valueOf(request.getParameter("txtBrinde2")));
-        pacote.setBrinde3(Integer.valueOf(request.getParameter("txtBrinde3")));
-        pacote.setBrinde4(Integer.valueOf(request.getParameter("txtBrinde4")));
-        pacote.setBrinde5(Integer.valueOf(request.getParameter("txtBrinde5")));
-        pacote.setSituacao(request.getParameter("optSituacao"));
+        pacote.setJogo(request.getParameter("optJogo"));
+        pacote.setCamiseta(request.getParameter("optCamiseta"));
+        pacote.setBrinde1(request.getParameter("optBrinde1"));
+        pacote.setBrinde2(request.getParameter("optBrinde2"));
+        pacote.setBrinde3(request.getParameter("optBrinde3"));
+        pacote.setBrinde4(request.getParameter("optBrinde4"));
+        pacote.setBrinde5(request.getParameter("optBrinde5"));
         pacote.setPreco(Double.parseDouble(request.getParameter("txtPreco")));
         
-
         PacoteDAO dao = new PacoteDAO();
         dao.cadastrar(pacote);
         
-        response.sendRedirect("listarPacotes");
+        // response.sendRedirect("listarPacotes");
 
     }
 
@@ -141,13 +139,13 @@ public class ControllerPacote extends HttpServlet{
         PacoteDAO dao = new PacoteDAO();
         pacote.setId(Integer.valueOf(request.getParameter("id")));
         pacote.setNome(request.getParameter("nome"));
-        pacote.setJogo(Integer.valueOf(request.getParameter("jogo")));
-        pacote.setCamiseta(Integer.valueOf(request.getParameter("camiseta")));
-        pacote.setBrinde1(Integer.valueOf(request.getParameter("brinde1")));
-        pacote.setBrinde2(Integer.valueOf(request.getParameter("brinde2")));
-        pacote.setBrinde3(Integer.valueOf(request.getParameter("brinde3")));
-        pacote.setBrinde4(Integer.valueOf(request.getParameter("brinde4")));
-        pacote.setBrinde5(Integer.valueOf(request.getParameter("brinde5")));
+        pacote.setJogo(request.getParameter("jogo"));
+        pacote.setCamiseta(request.getParameter("camiseta"));
+        pacote.setBrinde1(request.getParameter("brinde1"));
+        pacote.setBrinde2(request.getParameter("brinde2"));
+        pacote.setBrinde3(request.getParameter("brinde3"));
+        pacote.setBrinde4(request.getParameter("brinde4"));
+        pacote.setBrinde5(request.getParameter("brinde5"));
         pacote.setSituacao(request.getParameter("situacao"));
         pacote.setPreco(Double.valueOf(request.getParameter("preco")));
 
