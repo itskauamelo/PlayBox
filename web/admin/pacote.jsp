@@ -202,7 +202,7 @@
                 <%
                 for (Camiseta camiseta : camisetas) {
                 %>
-
+                
                 <option value="<%=camiseta.getNome()%>">  <%= camiseta.getNome() %> </option>
 
                 <% } %> 
@@ -210,10 +210,11 @@
               <div id="optBrinde1" name="optBrinde1" style="display:none;"> 
               <label for="optBrinde1">Brinde 1</label>
               <select name="optBrinde1" id="optBrinde1" class="custom-select custom-select-sm form-control form-control-sm">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
-
+               
                 <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
@@ -222,6 +223,7 @@
               <div id="optBrinde2" name="optBrinde2" style="display:none;"> 
               <label for="optBrinde2">Brinde 2</label>
               <select name="optBrinde2" id="optBrinde2" class="custom-select custom-select-sm form-control form-control-sm">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
@@ -234,6 +236,7 @@
               <div id="optBrinde3" name="optBrinde3" style="display:none;"> 
               <label for="optBrinde3">Brinde 3</label>
               <select name="optBrinde3" id="optBrinde3" class="custom-select custom-select-sm form-control form-control-sm">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
@@ -246,6 +249,7 @@
               <div id="optBrinde4" name="optBrinde4" style="display:none;"> 
               <label for="optBrinde4">Brinde 4</label>
               <select name="optBrinde4" id="optBrinde4" class="custom-select custom-select-sm form-control form-control-sm">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
@@ -258,6 +262,7 @@
               <div id="optBrinde5" name="optBrinde5" style="display:none;"txt> 
               <label for="optBrinde5">Brinde 5</label>
               <select name="optBrinde5" id="optBrinde5" class="custom-select custom-select-sm form-control form-control-sm">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
@@ -266,7 +271,12 @@
 
                 <% } %> 
               </select>
-              </div> 
+              </div>
+              <label for="optSituacao">Situação</label>
+              <select name="optSituacao" id="optSituacao" class="custom-select custom-select-sm form-control form-control-sm">
+                <option value="ATIVO">ATIVO</option>
+                <option value="INATIVO">INATIVO</option>
+              </select>
               <label for="txtPreco">Preço</label>
                 <input type="text" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" />
               <br>

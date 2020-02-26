@@ -16,16 +16,16 @@ public class PacoteDAO {
         
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
-            ("        INSERT INTO pacote VALUES (NEXTVAL'id_pacote', '?', \n" +
-            "        (SELECT id FROM games WHERE nome = '?'), \n" +
-            "        (SELECT id FROM camiseta WHERE nome = '?'), \n" +
-            "        (SELECT id FROM produto WHERE nome = '?'), \n" +
-            "        (SELECT id FROM produto WHERE nome = '?'), \n" +
-            "        (SELECT id FROM produto WHERE nome = '?'), \n" +
-            "        (SELECT id FROM produto WHERE nome = '?'), \n" +
-            "        (SELECT id FROM produto WHERE nome = '?'),\n" +
-            "        'ATIVO',\n" +
-            "        ?);");
+            ("        INSERT INTO pacote VALUES (NEXTVAL('id_pacote'), ?, \n" +
+            "        (SELECT id FROM games WHERE nome = ?), \n" +
+            "        (SELECT id FROM camiseta WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?),\n" +
+            "        ?,\n" +
+            "        ?)");
             comando.setString(1, pacote.getNome());
             comando.setString(2, pacote.getJogo());
             comando.setString(3, pacote.getCamiseta());

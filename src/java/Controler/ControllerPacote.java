@@ -98,6 +98,7 @@ public class ControllerPacote extends HttpServlet{
         pacote.setBrinde3(request.getParameter("optBrinde3"));
         pacote.setBrinde4(request.getParameter("optBrinde4"));
         pacote.setBrinde5(request.getParameter("optBrinde5"));
+        pacote.setSituacao(request.getParameter("optSituacao"));
         pacote.setPreco(Double.parseDouble(request.getParameter("txtPreco")));
         
         PacoteDAO dao = new PacoteDAO();
