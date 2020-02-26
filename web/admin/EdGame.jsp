@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>PlayBox - Editar Produto</title>
+  <title>PlayBox - Editar Game</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -153,22 +153,35 @@
           </div>
            <div class="form-group">
             <div class="form-label-group">
-                <input type="text" id="id" name="id" class="form-control" placeholder="Id" required="required" value="${produto.id}" readonly>
+                <input type="text" id="id" name="id" class="form-control" placeholder="Id" required="required" value="${game.id}" readonly>
               <label for="id">Id</label>
             </div>
           </div>
             <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required="required" value="${produto.nome}">
-              <label for="nome">Nome</label>
+              <input type="text" id="txtNome" name="txtNome" class="form-control" placeholder="Nome" required="required" value="${game.nome}">
+              <label for="txtNome">Nome</label>
             </div>
           </div>
             <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="descricao" name="descricao" class="form-control" placeholder="Descricao" required="required" value="${produto.descricao}">
-              <label for="descricao">Descrição</label>
+              <input type="text" id="txtDescricao" name="descricao" class="form-control" placeholder="Descricao" required="required" value="${game.descricao}">
+              <label for="txtDescricao">Descrição</label>
             </div>
           </div>
+              
+            <div class="form-group">
+            <div class="form-label-group">
+              <select id="optPlataforma" name="optPlataforma" class="form-control" placeholder="Descricao" required="required" value="${game.plataforma}">
+              <label for="optPlataforma">Plataforma</label>
+              <option selected="true" disabled="disabled"> Selecione uma Plataforma </option>
+              <option value="Playstation"> Playstation </option>
+              <option value="XBox"> XBox </option>
+              <option value="PC"> PC </option>
+              </select>
+            </div>
+          </div>
+              
           <div class="form-group">
             <div class="form-label-group">
                   <input accept="image/*" type="file" id="txtImagem" name="txtImagem" class="form-control" required="required">
@@ -177,7 +190,7 @@
           </div>
           <div class="form-group">
             <div class="form-label-group">
-            <select name="situacao" id="situacao" class="custom-select custom-select-sm form-control form-control-sm" value="${produto.situacao}">
+            <select name="situacao" id="situacao" class="custom-select custom-select-sm form-control form-control-sm" value="${game.situacao}">
                 <option value="ATIVO">ATIVO</option>
                 <option value="INATIVO">INATIVO</option>
             </select>
@@ -186,14 +199,14 @@
                 
           <div class="form-group">
             <div class="form-label-group">
-                <input type="text" id="quantidade" name="quantidade" class="form-control" placeholder="Quantidade" value ="${produto.quantidade}" required="required">
+                <input type="text" id="quantidade" name="quantidade" class="form-control" placeholder="Quantidade" value ="${game.quantidade}" required="required">
                 <label for="quantidade">Quantidade</label>
             </div>
           </div>
                 
           <div class="form-group">
             <div class="form-label-group">
-                <input type="text" id="preco" name="preco" class="form-control" placeholder="Preco" value ="${produto.preco}" required="required">
+                <input type="text" id="preco" name="preco" class="form-control" placeholder="Preco" value ="${game.preco}" required="required">
                 <label for="preco">preco</label>
             </div>
           </div>

@@ -145,7 +145,7 @@
           <li class="breadcrumb-item"><a href="usuario.html">Cadastrar Produto</a></li>
           <li class="breadcrumb-item"><a href="listarProdutos">Listar Produto</a></li>
         </ol>
-        <div class="card-body">
+        <div class="card-body" >
         <form method="POST" action="editarProduto">
           <div class="form-group">
             <div class="form-row">
