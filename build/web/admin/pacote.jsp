@@ -25,6 +25,24 @@
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin.css" rel="stylesheet">
+  
+    <!-- Bootstrap core JavaScript-->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+  
+  <!-- Page level plugin JavaScript-->
+  <script src="../vendor/datatables/jquery.dataTables.js"></script>
+  <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../js/sb-admin.min.js"></script>
+
+
+  <!-- Demo scripts for this page-->
+  <script src="../js/demo/datatables-demo.js"></script>
 
 </head>
 
@@ -162,7 +180,7 @@
         <div class="card-body">
           <form action="../cadastrarPacote" method="POST">
               <label for="txtNome">Nome do Pacote</label>
-              <select onchange="exibir_ocultar" id="txtNome" name="txtNome" class="form-control" required="required">
+              <select onchange="exibir_ocultar(this)" id="txtNome" name="txtNome" class="form-control" required="required">
                   <option selected="true" disabled="disabled" >Selecione o nome do pacote</option>
                   <option value="Bronze">Bronze</option>
                   <option value="Prata">Prata</option>
@@ -189,7 +207,7 @@
 
                 <% } %> 
               </select>
-              <div id="optBrinde1" name="1"> 
+              <div id="optBrinde1" name="optBrinde1" style="display:none;"> 
               <label for="optBrinde1">Brinde 1</label>
               <select name="optBrinde1" id="optBrinde1" class="custom-select custom-select-sm form-control form-control-sm">
                 <%
@@ -201,7 +219,7 @@
                 <% } %> 
               </select>
               </div>
-              <div id="optBrinde2" name="2"> 
+              <div id="optBrinde2" name="optBrinde2" style="display:none;"> 
               <label for="optBrinde2">Brinde 2</label>
               <select name="optBrinde2" id="optBrinde2" class="custom-select custom-select-sm form-control form-control-sm">
                 <%
@@ -213,7 +231,7 @@
                 <% } %> 
               </select>
               </div>
-              <div id="optBrinde3" name="3"> 
+              <div id="optBrinde3" name="optBrinde3" style="display:none;"> 
               <label for="optBrinde3">Brinde 3</label>
               <select name="optBrinde3" id="optBrinde3" class="custom-select custom-select-sm form-control form-control-sm">
                 <%
@@ -225,7 +243,7 @@
                 <% } %> 
               </select>
               </div>
-              <div id="optBrinde4" name="4"> 
+              <div id="optBrinde4" name="optBrinde4" style="display:none;"> 
               <label for="optBrinde4">Brinde 4</label>
               <select name="optBrinde4" id="optBrinde4" class="custom-select custom-select-sm form-control form-control-sm">
                 <%
@@ -237,7 +255,7 @@
                 <% } %> 
               </select>
               </div>
-              <div id="optBrinde5" name="5"> 
+              <div id="optBrinde5" name="optBrinde5" style="display:none;"txt> 
               <label for="optBrinde5">Brinde 5</label>
               <select name="optBrinde5" id="optBrinde5" class="custom-select custom-select-sm form-control form-control-sm">
                 <%
@@ -248,36 +266,33 @@
 
                 <% } %> 
               </select>
-              </div>
-  <script>
-                    function exibir_ocultar(val){
-                      var optBrinde1 = document.getElementById('optBrinde1');
-                      var optBrinde2 = document.getElementById('optBrinde2');
-                      var optBrinde3 = document.getElementById('optBrinde3');
-                      var optBrinde4 = document.getElementById('optBrinde4');
-                      var optBrinde5 = document.getElementById('optBrinde5');
-                      
-                          if(val == 'Bronze'){
-                              $(optBrinde1).show();
-                              $(optBrinde2).hide();
-                              $(optBrinde3).hide();
-                              $(optBrinde4).hide();
-                              $(optBrinde5).hide();
-                          }else if(val == 'Prata'){
-                              $(optBrinde1).show();
-                              $(optBrinde2).show();
-                              $(optBrinde3).show();
-                              $(optBrinde4).hide();
-                              $(optBrinde5).hide();
-                          }else if(val == 'Ouro'){
-                              $(optBrinde1).show();
-                              $(optBrinde2).show();
-                              $(optBrinde3).show();
-                              $(optBrinde4).show();
-                              $(optBrinde5).show();
-                          }                              
-                        };
-                </script>
+              </div> 
+              
+              <script>
+                  $('#txtNome').on('change', function() {
+
+                  if(this.value == "Bronze") {
+                      $('#optBrinde1').show();
+                      $('#optBrinde2').hide();
+                      $('#optBrinde3').hide();
+                      $('#optBrinde4').hide();
+                      $('#optBrinde5').hide();
+                    } else 
+                    if (this.value == "Prata") {
+                      $('#optBrinde1').show();
+                      $('#optBrinde2').show();
+                      $('#optBrinde3').show();
+                      $('#optBrinde4').hide();
+                      $('#optBrinde5').hide();
+                    } else {
+                      $('#optBrinde1').show();
+                      $('#optBrinde2').show();
+                      $('#optBrinde3').show();
+                      $('#optBrinde4').show();
+                      $('#optBrinde5').show();
+                    }
+                  });
+              </script>
               
               
           </form>
@@ -313,24 +328,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Page level plugin JavaScript-->
-  <script src="../vendor/datatables/jquery.dataTables.js"></script>
-  <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="../js/sb-admin.min.js"></script>
-
-
-  <!-- Demo scripts for this page-->
-  <script src="../js/demo/datatables-demo.js"></script>
 
 </body>
 
