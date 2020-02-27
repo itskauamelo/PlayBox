@@ -100,13 +100,13 @@ public class PacoteDAO {
 
         if (resultado.next()) {
             pacote.setNome(resultado.getString("nome"));
-            pacote.setJogo(resultado.getString("jogo"));
-            pacote.setCamiseta(resultado.getString("camiseta"));
-            pacote.setBrinde1(resultado.getString("brinde1"));
-            pacote.setBrinde2(resultado.getString("brinde2"));
-            pacote.setBrinde3(resultado.getString("brinde3"));
-            pacote.setBrinde4(resultado.getString("brinde4"));
-            pacote.setBrinde5(resultado.getString("brinde5"));
+            pacote.setJogo(resultado.getString("gameFk"));
+            pacote.setCamiseta(resultado.getString("camisetaFk"));
+            pacote.setBrinde1(resultado.getString("brindeFk1"));
+            pacote.setBrinde2(resultado.getString("brindeFk2"));
+            pacote.setBrinde3(resultado.getString("brindeFk3"));
+            pacote.setBrinde4(resultado.getString("brindeFk4"));
+            pacote.setBrinde5(resultado.getString("brindeFk5"));
             pacote.setSituacao(resultado.getString("situacao"));
             pacote.setPreco(resultado.getDouble("preco"));
             pacote.setId(resultado.getInt("id"));
