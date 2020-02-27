@@ -39,6 +39,7 @@ public class ClienteDAO {
                 clienteAutenticado = new Cliente();
                 clienteAutenticado.setEmail(rsCliente.getString("email"));
                 clienteAutenticado.setSenha(rsCliente.getString("senha"));
+                clienteAutenticado.setNomecompleto(rsCliente.getString("nomecompleto"));
             }
         } catch (SQLException sqlErro) {
             throw new RuntimeException(sqlErro);

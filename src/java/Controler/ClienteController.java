@@ -119,7 +119,7 @@ public class ClienteController extends HttpServlet {
         ClienteDAO dao = new ClienteDAO();
         dao.cadastrarpreferencia(preferencia);
         
-        response.sendRedirect("dashCliente.jsp");
+        response.sendRedirect("indexLogado.jsp");
    
     }
     

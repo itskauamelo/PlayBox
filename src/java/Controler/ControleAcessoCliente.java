@@ -40,10 +40,10 @@ public class ControleAcessoCliente extends HttpServlet {
 
                     //Cria uma sessao para o usuario
                     HttpSession sessaoCliente = request.getSession();
-                    sessaoCliente.setAttribute("usuarioAutenticado", clienteAutenticado);
+                    sessaoCliente.setAttribute("clienteAutenticado", clienteAutenticado);
                     
                     //Redireciona para a pagina princiapal
-                    response.sendRedirect("dashCliente.jsp");
+                    response.sendRedirect("indexLogado.jsp");
                     
                 } 
                 else {
