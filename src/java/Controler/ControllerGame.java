@@ -75,7 +75,7 @@ public class ControllerGame extends HttpServlet{
         GameDAO dao = new GameDAO();
         dao.cadastrar(game);
         
-        //response.sendRedirect("listarProdutos");
+        response.sendRedirect("listarGames");
 
         
     }
@@ -88,7 +88,7 @@ public class ControllerGame extends HttpServlet{
         dao.consultarporId(game);
 
         request.setAttribute("game", game);
-        //request.getRequestDispatcher("admin/EdProd.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/EdGame.jsp").forward(request, response);
     }
 
     private void confirmarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
@@ -97,14 +97,14 @@ public class ControllerGame extends HttpServlet{
         game.setId(Integer.valueOf(request.getParameter("id")));
         game.setNome(request.getParameter("nome"));
         game.setDescricao(request.getParameter("descricao"));
-        game.setDescricao(request.getParameter("plataforma"));
+        game.setPlataforma(request.getParameter("plataforma"));
         game.setImagem(request.getParameter("imagem"));
         game.setSituacao(request.getParameter("situacao"));
         game.setQuantidade(Integer.valueOf(request.getParameter("quantidade")));
         game.setPreco(Double.valueOf(request.getParameter("preco")));
 
         dao.Editar(game);
-        // response.sendRedirect("listarProdutos");
+        response.sendRedirect("listarGames");
     }
 
     private void desativar(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
@@ -115,7 +115,7 @@ public class ControllerGame extends HttpServlet{
         dao.consultarporId(game);
         dao.Desativar(game);
         
-        // response.sendRedirect("listarProdutos");
+        response.sendRedirect("listarGames");
     }
 
     private void listarTodos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
@@ -124,7 +124,7 @@ public class ControllerGame extends HttpServlet{
         List<Game> todosGames = dao.consultarTodos();
         request.setAttribute("todosGames", todosGames);
         
-        // request.getRequestDispatcher("admin/listarProdutos.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/listarGames.jsp").forward(request, response);
 
     }
     

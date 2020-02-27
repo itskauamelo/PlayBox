@@ -146,7 +146,7 @@
           <li class="breadcrumb-item"><a href="listarProdutos">Listar Produto</a></li>
         </ol>
         <div class="card-body">
-        <form method="POST" action="editarProduto">
+        <form method="POST" action="editarGame">
           <div class="form-group">
             <div class="form-row">
             </div>
@@ -159,21 +159,21 @@
           </div>
             <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="txtNome" name="txtNome" class="form-control" placeholder="Nome" required="required" value="${game.nome}">
-              <label for="txtNome">Nome</label>
+              <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required="required" value="${game.nome}">
+              <label for="nome">Nome</label>
             </div>
           </div>
             <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="txtDescricao" name="descricao" class="form-control" placeholder="Descricao" required="required" value="${game.descricao}">
-              <label for="txtDescricao">Descrição</label>
+              <input type="text" id="descricao" name="descricao" class="form-control" placeholder="Descricao" required="required" value="${game.descricao}">
+              <label for="descricao">Descrição</label>
             </div>
           </div>
               
             <div class="form-group">
             <div class="form-label-group">
-              <select id="optPlataforma" name="optPlataforma" class="form-control" placeholder="Descricao" required="required" value="${game.plataforma}">
-              <label for="optPlataforma">Plataforma</label>
+              <select id="plataforma" name="plataforma" class="form-control" placeholder="Plataforma" required="required" value="${game.plataforma}">
+              <label for="plataforma">Plataforma</label>
               <option selected="true" disabled="disabled"> Selecione uma Plataforma </option>
               <option value="Playstation"> Playstation </option>
               <option value="XBox"> XBox </option>
@@ -184,7 +184,7 @@
               
           <div class="form-group">
             <div class="form-label-group">
-                  <input accept="image/*" type="file" id="txtImagem" name="txtImagem" class="form-control" required="required">
+                  <input accept="image/*" type="file" id="imagem" name="imagem" class="form-control" required="required">
                   <label for="imagem">Imagem</label>
             </div>
           </div>

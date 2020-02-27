@@ -52,13 +52,13 @@ public class PacoteDAO {
                 Pacote p = new Pacote();
                 p.setId(resultado.getInt("id"));
                 p.setNome(resultado.getString("nome"));
-                p.setJogo(resultado.getString("jogo"));
-                p.setCamiseta(resultado.getString("camiseta"));
-                p.setBrinde1(resultado.getString("brinde1"));
-                p.setBrinde2(resultado.getString("brinde2"));
-                p.setBrinde3(resultado.getString("brinde3"));
-                p.setBrinde4(resultado.getString("brinde4"));
-                p.setBrinde5(resultado.getString("brinde5"));
+                p.setJogo(resultado.getString("gameFk"));
+                p.setCamiseta(resultado.getString("camisetaFk"));
+                p.setBrinde1(resultado.getString("brindeFk1"));
+                p.setBrinde2(resultado.getString("brindeFk2"));
+                p.setBrinde3(resultado.getString("brindeFk3"));
+                p.setBrinde4(resultado.getString("brindeFk4"));
+                p.setBrinde5(resultado.getString("brindeFk5"));
                 p.setSituacao(resultado.getString("situacao"));
                 p.setPreco(resultado.getDouble("preco"));
                 
