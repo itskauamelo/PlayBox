@@ -62,29 +62,21 @@
         <div class="triangle">
             <i class="fa fa-angle-double-down" aria-hidden="true"></i>
         </div>
+
+
         <!-- Topbar -->
         <div class="header-top clearfix">
             <div class="container">
                 <ul class="list-inline social-links">
                     <li>
                         <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
-                    </li><li class="hidden-xs">
-                        <a href="#" title="Skype"><i class="fa fa-skype"></i></a>
-                    </li><li class="hidden-xxs">
-                        <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                    </li><li class="hidden-xxs">
-                        <a href="#" title="Google +"><i class="fa fa-google-plus"></i></a>
                     </li><li>
                         <a href="#" title="Youtube"><i class="fa fa-youtube-play"></i></a>
                     </li><li>
                         <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                    </li>
                 </ul>
                 <div class="header-top-dropdown">
                     <div class="btn-group dropdown">
-                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                            <span class="text"><i class="fa fa-search"></i> Procurar</span>
-                        </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
                                 <form class="search-box" action="#">
@@ -96,7 +88,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="btn-group dropdown">
+                    <div id="login" name="login" class="btn-group dropdown">
                         
                         <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
                             <span class="text"><i class="fa fa-user"></i> Login</span>
@@ -137,7 +129,9 @@
                     </div>
                 </div>
             </div>
-        </div><!-- Topbar end -->
+        </div>
+        
+        <!-- Topbar end -->
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
@@ -317,7 +311,7 @@
                                 <li> 1 (um) brinde</li>
                             </ul>
                             <div class="price-button">
-                                <a href="#" class="btn btn-primary btn-block" title="Quero esse" data-toggle="modal" data-target="#order-modal"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="#" class="btn btn-primary btn-block dropdown-toggle" title="Quero esse" data-toggle="dropdown" data-target="#login"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
@@ -345,7 +339,7 @@
                                 <li> 3 (três) brindes</li>
                             </ul>
                             <div class="price-button">
-                                <a href="#" class="btn btn-primary btn-block" title="Quero esse" data-toggle="modal" data-target="#order-modal"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="#" class="btn btn-primary btn-block dropdown-toggle" title="Quero esse" data-toggle="dropdown" data-target="#login"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
@@ -376,7 +370,7 @@
                                 <li> 5 (cinco) brindes</li>
                             </ul>
                             <div class="price-button">
-                                <a href="#" class="btn btn-primary btn-block" title="Quero esse" data-toggle="modal" data-target="#order-modal"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="#" class="btn btn-primary btn-block dropdown-toggle" title="Quero esse" data-toggle="dropdown" data-target="#login"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
