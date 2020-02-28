@@ -70,20 +70,25 @@
             <tr>
                 <th class="cabecalho">Id</th>
                 <th class="cabecalho">Nome</th>
-                <th class="cabecalho">Login</th>
-                <th class="cabecalho">Senha</th>
-                <th class="cabecalho">Perfil</th>
+                <th class="cabecalho">descricao</th>
+                <th class="cabecalho">Sexo</th>
+                <th class="cabecalho">tamanho</th>
+                <th class="cabecalho">Imagem</th>
                 <th class="cabecalho">Situação</th>
+                <th class="cabecalho">Quantidade</th>
+                <th class="cabecalho">Preço</th>
                 <th class="cabecalho">Editar/Excluir</th>
             </tr>
-            <c:forEach items="${todasCamisetas}" var="user">
+            <c:forEach items="${todasCamisetas}" var="camiseta">
             <tr>
                 <td class="conteudo" align="center">${camiseta.id}</td>
                 <td class="conteudo" align="center">${camiseta.nome}</td>
-                <td class="conteudo" align="center">${camiseta.login}</td>
-                <td class="conteudo" align="center">${camiseta.pw}</td>
-                <td class="conteudo" align="center">${camiseta.perfil}</td>
+                <td class="conteudo" align="center">${camiseta.descricao}</td>
+                <td class="conteudo" align="center">${camiseta.sexo}</td>
+                <td class="conteudo" align="center">${camiseta.tamalho}</td>
+                <td class="conteudo" align="center">${camiseta.imagem}</td>
                 <td class="conteudo" align="center">${camiseta.situacao}</td>
+                <td class="conteudo" align="center">${camiseta.nome}</td>
                 <td class="conteudo" align="center"><a href="iniciarEdicaoCamiseta?id=${camiseta.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>        <a href="excluirCamiseta?id=${user.id}"><img style="height: 25px; width: 25px;" src="images/5599.png" alt="" id="iconTable"/></a></td>
             </tr>
             </c:forEach>
