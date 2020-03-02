@@ -45,7 +45,17 @@ public class PacoteDAO {
 
         List<Pacote> todosPacotes;
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("SELECT * FROM Pacote ORDER BY id");
+            PreparedStatement comando = con.prepareStatement
+            ("select id, nome, \n" +
+            "(select nome from games where id = ?),\n" +
+            "(select nome from camiseta where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "situacao, preco\n" +
+            "from pacote");
             ResultSet resultado = comando.executeQuery();
             todosPacotes = new ArrayList<>();
             while (resultado.next()) {
