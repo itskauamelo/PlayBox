@@ -104,7 +104,7 @@ public class ControllerPacote extends HttpServlet{
         PacoteDAO dao = new PacoteDAO();
         dao.cadastrar(pacote);
         
-        // response.sendRedirect("listarPacotes");
+        response.sendRedirect("listarPacotes");
 
     }
 
@@ -116,7 +116,7 @@ public class ControllerPacote extends HttpServlet{
         dao.consultarporId(pacote);
 
         request.setAttribute("pacote", pacote);
-        request.getRequestDispatcher("admin/EdProd.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/EdPacote.jsp").forward(request, response);
     }
     
         private void listarCombo(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
@@ -162,7 +162,7 @@ public class ControllerPacote extends HttpServlet{
         dao.consultarporId(pacote);
         dao.Excluir(pacote);
         
-        response.sendRedirect("listarProdutos");
+        response.sendRedirect("listarPacotes");
     }
 
     private void listarTodos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {

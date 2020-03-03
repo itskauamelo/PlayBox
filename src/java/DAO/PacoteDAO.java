@@ -45,20 +45,30 @@ public class PacoteDAO {
 
         List<Pacote> todosPacotes;
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("SELECT * FROM Pacote ORDER BY id");
+            PreparedStatement comando = con.prepareStatement
+            ("select id, nome, \n" +
+            "(select nome from games where id = ?),\n" +
+            "(select nome from camiseta where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "(select nome from produto where id = ?),\n" +
+            "situacao, preco\n" +
+            "from pacote");
             ResultSet resultado = comando.executeQuery();
             todosPacotes = new ArrayList<>();
             while (resultado.next()) {
                 Pacote p = new Pacote();
                 p.setId(resultado.getInt("id"));
                 p.setNome(resultado.getString("nome"));
-                p.setJogo(resultado.getString("jogo"));
-                p.setCamiseta(resultado.getString("camiseta"));
-                p.setBrinde1(resultado.getString("brinde1"));
-                p.setBrinde2(resultado.getString("brinde2"));
-                p.setBrinde3(resultado.getString("brinde3"));
-                p.setBrinde4(resultado.getString("brinde4"));
-                p.setBrinde5(resultado.getString("brinde5"));
+                p.setJogo(resultado.getString("gameFk"));
+                p.setCamiseta(resultado.getString("camisetaFk"));
+                p.setBrinde1(resultado.getString("brindeFk1"));
+                p.setBrinde2(resultado.getString("brindeFk2"));
+                p.setBrinde3(resultado.getString("brindeFk3"));
+                p.setBrinde4(resultado.getString("brindeFk4"));
+                p.setBrinde5(resultado.getString("brindeFk5"));
                 p.setSituacao(resultado.getString("situacao"));
                 p.setPreco(resultado.getDouble("preco"));
                 
@@ -100,13 +110,13 @@ public class PacoteDAO {
 
         if (resultado.next()) {
             pacote.setNome(resultado.getString("nome"));
-            pacote.setJogo(resultado.getString("jogo"));
-            pacote.setCamiseta(resultado.getString("camiseta"));
-            pacote.setBrinde1(resultado.getString("brinde1"));
-            pacote.setBrinde2(resultado.getString("brinde2"));
-            pacote.setBrinde3(resultado.getString("brinde3"));
-            pacote.setBrinde4(resultado.getString("brinde4"));
-            pacote.setBrinde5(resultado.getString("brinde5"));
+            pacote.setJogo(resultado.getString("gameFk"));
+            pacote.setCamiseta(resultado.getString("camisetaFk"));
+            pacote.setBrinde1(resultado.getString("brindeFk1"));
+            pacote.setBrinde2(resultado.getString("brindeFk2"));
+            pacote.setBrinde3(resultado.getString("brindeFk3"));
+            pacote.setBrinde4(resultado.getString("brindeFk4"));
+            pacote.setBrinde5(resultado.getString("brindeFk5"));
             pacote.setSituacao(resultado.getString("situacao"));
             pacote.setPreco(resultado.getDouble("preco"));
             pacote.setId(resultado.getInt("id"));

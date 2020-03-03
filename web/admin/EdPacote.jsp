@@ -5,6 +5,10 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="Model.Game"%>
+<%@page import="Model.Camiseta"%>
+<%@page import="Model.Produto"%>
 <!DOCTYPE html>
 <html>
 
@@ -145,6 +149,19 @@
           <li class="breadcrumb-item"><a href="usuario.html">Cadastrar Produto</a></li>
           <li class="breadcrumb-item"><a href="listarProdutos">Listar Produto</a></li>
         </ol>
+        
+        <%
+        List<Game> games = (List<Game>) request.getAttribute("games");
+        %>
+        
+        <%
+        List<Camiseta> camisetas = (List<Camiseta>) request.getAttribute("camisetas");
+        %>
+        
+        <%
+        List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
+        %>
+        
         <div class="card-body">
         <form method="POST" action="editarGame">
           <div class="form-group">
@@ -153,64 +170,153 @@
           </div>
            <div class="form-group">
             <div class="form-label-group">
-                <input type="text" id="id" name="id" class="form-control" placeholder="Id" required="required" value="${game.id}" readonly>
+                <input type="text" id="id" name="id" class="form-control" placeholder="Id" required="required" value="${pacote.id}" readonly>
               <label for="id">Id</label>
             </div>
           </div>
             <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required="required" value="${game.nome}">
-              <label for="nome">Nome</label>
+              <label for="txtNome">Nome do Pacote</label>
+              <select onchange="exibir_ocultar(this)" id="txtNome" name="txtNome" class="form-control" required="required" value="${pacote.nome}" >
+                  <option selected="true" disabled="disabled" >Selecione o nome do pacote</option>
+                  <option value="Bronze">Bronze</option>
+                  <option value="Prata">Prata</option>
+                  <option value="Ouro">Ouro</option>
+              </select>
             </div>
           </div>
             <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="descricao" name="descricao" class="form-control" placeholder="Descricao" required="required" value="${game.descricao}">
-              <label for="descricao">Descrição</label>
-            </div>
-          </div>
-              
-            <div class="form-group">
-            <div class="form-label-group">
-              <select id="plataforma" name="plataforma" class="form-control" placeholder="Plataforma" required="required" value="${game.plataforma}">
-              <label for="plataforma">Plataforma</label>
-              <option selected="true" disabled="disabled"> Selecione uma Plataforma </option>
-              <option value="Playstation"> Playstation </option>
-              <option value="XBox"> XBox </option>
-              <option value="PC"> PC </option>
+              <label for="optJogo">Jogo</label>
+              <select name="optJogo" id="optJogo" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.gameFk}">
+                <%
+                for (Game game : games) {
+                %>
+
+                <option value="<%=game.getNome()%>">  <%= game.getNome() %> </option>
+
+                <% } %> 
               </select>
             </div>
           </div>
               
-          <div class="form-group">
+            <div class="form-group">
             <div class="form-label-group">
-                  <input accept="image/*" type="file" id="imagem" name="imagem" class="form-control" required="required">
-                  <label for="imagem">Imagem</label>
+              <label for="optCamiseta">Camiseta</label>
+              <select name="optCamiseta" id="optCamiseta" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.camisetaFk}">
+                <%
+                for (Camiseta camiseta : camisetas) {
+                %>
+                
+                <option value="<%=camiseta.getNome()%>">  <%= camiseta.getNome() %> </option>
+
+                <% } %> 
+              </select>
             </div>
           </div>
-          <div class="form-group">
-            <div class="form-label-group">
-            <select name="situacao" id="situacao" class="custom-select custom-select-sm form-control form-control-sm" value="${game.situacao}">
+              
+          <div id="optBrinde1" name="optBrinde1" style="display:none;"> 
+              <label for="optBrinde1">Brinde 1</label>
+              <select name="optBrinde1" id="optBrinde1" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde1Fk}">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
+                <%
+                for (Produto produto : produtos) {
+                %>
+               
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
+              </select>
+              </div>
+          <div id="optBrinde2" name="optBrinde2" style="display:none;"> 
+              <label for="optBrinde2">Brinde 2</label>
+              <select name="optBrinde2" id="optBrinde2" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde2Fk}">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
+                <%
+                for (Produto produto : produtos) {
+                %>
+
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
+              </select>
+              </div>
+                
+          <div id="optBrinde3" name="optBrinde3" style="display:none;"> 
+              <label for="optBrinde3">Brinde 3</label>
+              <select name="optBrinde3" id="optBrinde3" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde3Fk}">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
+                <%
+                for (Produto produto : produtos) {
+                %>
+
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
+              </select>
+              </div>
+                
+          <div id="optBrinde4" name="optBrinde4" style="display:none;"> 
+              <label for="optBrinde4">Brinde 4</label>
+              <select name="optBrinde4" id="optBrinde4" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde4Fk}">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
+                <%
+                for (Produto produto : produtos) {
+                %>
+
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
+              </select>
+              </div>
+              <div id="optBrinde5" name="optBrinde5" style="display:none;"txt> 
+              <label for="optBrinde5">Brinde 5</label>
+              <select name="optBrinde5" id="optBrinde5" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde5Fk}">
+                  <option selected="true" disabled="disabled" >Selecione um brinde</option>
+                <%
+                for (Produto produto : produtos) {
+                %>
+
+                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+
+                <% } %> 
+              </select>
+              </div>
+              <label for="optSituacao">Situação</label>
+              <select name="optSituacao" id="optSituacao" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.situacao}">
                 <option value="ATIVO">ATIVO</option>
                 <option value="INATIVO">INATIVO</option>
-            </select>
-            </div>
-            </div>
-                
-          <div class="form-group">
-            <div class="form-label-group">
-                <input type="text" id="quantidade" name="quantidade" class="form-control" placeholder="Quantidade" value ="${game.quantidade}" required="required">
-                <label for="quantidade">Quantidade</label>
-            </div>
-          </div>
-                
-          <div class="form-group">
-            <div class="form-label-group">
-                <input type="text" id="preco" name="preco" class="form-control" placeholder="Preco" value ="${game.preco}" required="required">
-                <label for="preco">preco</label>
-            </div>
-          </div>
+              </select>
+              <label for="txtPreco">Preço</label>
+                <input type="text" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" value="${pacote.preco}">
+              
             <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar">Registrar</button>
+            
+            <script>
+                  $('#txtNome').on('change', function() {
+
+                  if(this.value == "Bronze") {
+                      $('#optBrinde1').show();
+                      $('#optBrinde2').hide();
+                      $('#optBrinde3').hide();
+                      $('#optBrinde4').hide();
+                      $('#optBrinde5').hide();
+                    } else 
+                    if (this.value == "Prata") {
+                      $('#optBrinde1').show();
+                      $('#optBrinde2').show();
+                      $('#optBrinde3').show();
+                      $('#optBrinde4').hide();
+                      $('#optBrinde5').hide();
+                    } else {
+                      $('#optBrinde1').show();
+                      $('#optBrinde2').show();
+                      $('#optBrinde3').show();
+                      $('#optBrinde4').show();
+                      $('#optBrinde5').show();
+                    }
+                  });
+              </script>
             
         </form>
         </div>

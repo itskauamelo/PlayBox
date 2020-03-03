@@ -96,7 +96,7 @@ public class GameDAO {
 
     public void consultarporId(Game game) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("SELECT * FROM produto WHERE id = ?");
+        PreparedStatement comando = con.prepareStatement("SELECT * FROM games WHERE id = ?");
         comando.setInt(1, game.getId());
         ResultSet resultado = comando.executeQuery();
 
