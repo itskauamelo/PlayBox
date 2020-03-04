@@ -62,7 +62,6 @@
 
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="admin/listarProdutos.jsp">Cadastrar Camiseta</a></li>
           <li class="breadcrumb-item"><a href="listarCamiseta">Listar Camiseta</a></li>
         </ol>
         
@@ -72,32 +71,29 @@
                 <th class="cabecalho">Nome</th>
                 <th class="cabecalho">descricao</th>
                 <th class="cabecalho">Sexo</th>
-                <th class="cabecalho">tamanho</th>
+                <th class="cabecalho">Tamanho</th>
                 <th class="cabecalho">Imagem</th>
                 <th class="cabecalho">Situação</th>
                 <th class="cabecalho">Quantidade</th>
                 <th class="cabecalho">Preço</th>
                 <th class="cabecalho">Editar/Excluir</th>
             </tr>
-            <c:forEach items="${todasCamisetas}" var="camiseta">
+            <c:forEach items="${todasCamisetas}" var="c">
             <tr>
-                <td class="conteudo" align="center">${camiseta.id}</td>
-                <td class="conteudo" align="center">${camiseta.nome}</td>
-                <td class="conteudo" align="center">${camiseta.descricao}</td>
-                <td class="conteudo" align="center">${camiseta.sexo}</td>
-                <td class="conteudo" align="center">${camiseta.tamalho}</td>
-                <td class="conteudo" align="center">${camiseta.imagem}</td>
-                <td class="conteudo" align="center">${camiseta.situacao}</td>
-                <td class="conteudo" align="center">${camiseta.nome}</td>
-                <td class="conteudo" align="center"><a href="iniciarEdicaoCamiseta?id=${camiseta.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>        <a href="excluirCamiseta?id=${user.id}"><img style="height: 25px; width: 25px;" src="images/5599.png" alt="" id="iconTable"/></a></td>
+                <td class="conteudo" align="center">${c.imagem}</td>
+                <td class="conteudo" align="center">${c.id}</td>
+                <td class="conteudo" align="center">${c.nome}</td>
+                <td class="conteudo" align="center">${c.descricao}</td>
+                <td class="conteudo" align="center">${c.sexo}</td>
+                <td class="conteudo" align="center">${c.tamanho}</td>
+                <td class="conteudo" align="center">${c.situacao}</td>
+                <td class="conteudo" align="center">${c.quantidade}</td>
+                <td class="conteudo" align="center">${c.preco}</td>
+                <td class="conteudo" align="center"><a href="iniciarEdicaoCamiseta?id=${c.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>        <a href="desativarCamiseta?id=${c.id}"><img style="height: 25px; width: 25px;" src="images/5599.png" alt="" id="iconTable"/></a></td>
             </tr>
             </c:forEach>
         </table>
                       
-        <!-- Area Chart Example-->
-      <!-- /.container-fluid -->
-
-      <!-- Sticky Footer -->
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
@@ -107,12 +103,10 @@
       </footer>
 
     </div>
-    <!-- /.content-wrapper -->
+
 
   </div>
-  <!-- /#wrapper -->
 
-  <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>

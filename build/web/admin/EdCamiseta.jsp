@@ -142,42 +142,53 @@
 
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="usuario.html">Cadastrar Produto</a></li>
-          <li class="breadcrumb-item"><a href="listarProdutos">Listar Produto</a></li>
+          <li class="breadcrumb-item"><a href="listarCamisetas">Editar Camiseta</a></li>
         </ol>
         <div class="card-body">
-        <form method="POST" action="editarProduto">
+        <form method="POST" action="editarCamiseta">
           <div class="form-group">
             <div class="form-row">
             </div>
           </div>
            <div class="form-group">
             <div class="form-label-group">
-                <input type="text" id="id" name="id" class="form-control" placeholder="Id" required="required" value="${produto.id}" readonly>
+                <input type="text" id="id" name="id" class="form-control" placeholder="Id" required="required" value="${camiseta.id}" readonly>
               <label for="id">Id</label>
             </div>
           </div>
             <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required="required" value="${produto.nome}">
+              <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required="required" value="${camiseta.nome}">
               <label for="nome">Nome</label>
             </div>
           </div>
             <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="descricao" name="descricao" class="form-control" placeholder="Descricao" required="required" value="${produto.descricao}">
+              <input type="text" id="descricao" name="descricao" class="form-control" placeholder="Descricao" required="required" value="${camiseta.descricao}">
               <label for="descricao">Descrição</label>
+            </div>
+          </div>
+            <div class="form-group">
+            <div class="form-label-group">
+              <input type="text" id="sexo" name="sexo" class="form-control" placeholder="Sexo" required="required" value="${camiseta.sexo}">
+              <label for="descricao">Sexo</label>
+            </div>
+          </div>
+            <div class="form-group">
+            <div class="form-label-group">
+              <input type="text" id="tamanho" name="tamanho" class="form-control" placeholder="Tamanho" required="required" value="${camiseta.tamanho}">
+              <label for="descricao">Tamanho</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-                  <input accept="image/*" type="file" id="txtImagem" name="txtImagem" class="form-control" required="required">
+                  <input accept="image/*" type="file" id="imagem" name="imagem" name="txtImagem" class="form-control" required="required">
                   <label for="imagem">Imagem</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-            <select name="situacao" id="situacao" class="custom-select custom-select-sm form-control form-control-sm" value="${produto.situacao}">
+            <select name="situacao" id="situacao" class="custom-select custom-select-sm form-control form-control-sm" value="${camiseta.situacao}">
                 <option value="ATIVO">ATIVO</option>
                 <option value="INATIVO">INATIVO</option>
             </select>
@@ -186,15 +197,15 @@
                 
           <div class="form-group">
             <div class="form-label-group">
-                <input type="text" id="quantidade" name="quantidade" class="form-control" placeholder="Quantidade" value ="${produto.quantidade}" required="required">
+                <input type="text" id="quantidade" name="quantidade" class="form-control" placeholder="Quantidade" value ="${camiseta.quantidade}" required="required">
                 <label for="quantidade">Quantidade</label>
             </div>
           </div>
                 
           <div class="form-group">
             <div class="form-label-group">
-                <input type="text" id="preco" name="preco" class="form-control" placeholder="Preco" value ="${produto.preco}" required="required">
-                <label for="preco">preco</label>
+                <input type="text" id="preco" name="preco" class="form-control" placeholder="Preco" value ="${camiseta.preco}" required="required">
+                <label for="preco">Preço</label>
             </div>
           </div>
             <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar">Registrar</button>

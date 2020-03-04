@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import Util.ConectaBanco;
-import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,7 @@ public class CamisetaDAO {
     }
     
     
-            public List<Camiseta> listarOpt(){
+        public List<Camiseta> listarOpt(){
         List<Camiseta> camisetas = new ArrayList<>();       
         
         try {

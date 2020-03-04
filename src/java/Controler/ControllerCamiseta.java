@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "ProdutoControle", urlPatterns = {
+@WebServlet(name = "CamisetaControle", urlPatterns = {
     "/cadastrarCamiseta",
     "/listarCamisetas",
     "/desativarCamiseta",
@@ -76,7 +76,7 @@ public class ControllerCamiseta extends HttpServlet{
         CamisetaDAO dao = new CamisetaDAO();
         dao.cadastrar(camiseta);
         
-        //response.sendRedirect("listarProdutos");
+       response.sendRedirect("listarCamisetas");
 
         
     }
@@ -89,7 +89,7 @@ public class ControllerCamiseta extends HttpServlet{
         dao.consultarporId(camiseta);
 
         request.setAttribute("camiseta", camiseta);
-        // request.getRequestDispatcher("admin/EdProd.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/EdCamiseta.jsp").forward(request, response);
     }
 
     private void confirmarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
@@ -98,15 +98,15 @@ public class ControllerCamiseta extends HttpServlet{
         camiseta.setId(Integer.valueOf(request.getParameter("id")));
         camiseta.setNome(request.getParameter("nome"));
         camiseta.setDescricao(request.getParameter("descricao"));
-        camiseta.setDescricao(request.getParameter("sexo"));
-        camiseta.setDescricao(request.getParameter("tamanho"));
+        camiseta.setSexo(request.getParameter("sexo"));
+        camiseta.setTamanho(request.getParameter("tamanho"));
         camiseta.setImagem(request.getParameter("imagem"));
         camiseta.setSituacao(request.getParameter("situacao"));
         camiseta.setQuantidade(Integer.valueOf(request.getParameter("quantidade")));
         camiseta.setPreco(Double.valueOf(request.getParameter("preco")));
 
         dao.Editar(camiseta);
-        //response.sendRedirect("listarProdutos");
+        response.sendRedirect("listarCamisetas");
     }
 
     private void desativar(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
@@ -117,7 +117,7 @@ public class ControllerCamiseta extends HttpServlet{
         dao.consultarporId(camiseta);
         dao.Desativar(camiseta);
         
-        //response.sendRedirect("listarProdutos");
+        response.sendRedirect("listarCamisetas");
     }
 
     private void listarTodos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
@@ -126,7 +126,7 @@ public class ControllerCamiseta extends HttpServlet{
         List<Camiseta> todasCamisetas = dao.consultarTodos();
         request.setAttribute("todasCamisetas", todasCamisetas);
         
-        //request.getRequestDispatcher("admin/listarProdutos.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/listarCamiseta.jsp").forward(request, response);
 
     }
     
