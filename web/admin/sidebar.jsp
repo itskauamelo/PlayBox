@@ -38,7 +38,7 @@
           <a class="dropdown-item" href="produto.jsp">Brindes</a>
           <a class="dropdown-item" href="camiseta.jsp">Camiseta</a>
           <a class="dropdown-item" href="game.jsp">Game</a>
-          <a class="dropdown-item" href="pacote.jsp">Pacotes</a>
+          <a class="dropdown-item" href="../form/cadastroPacote">Pacotes</a>
 
         </div>
       </li>
