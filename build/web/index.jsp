@@ -64,7 +64,7 @@
         </div>
 
 
-        <!-- Topbar -->
+        <!-- Topbar -->  
         <div class="header-top clearfix">
             <div class="container">
                 <ul class="list-inline social-links">
@@ -296,7 +296,7 @@
                     <div data-100p-top="transform[swing]:translateX(-25px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">
                         <div class="price-item price-basic">
                             <div class="price-header">
-                                <h3>R$ <strong>40</strong> / mes</h3>
+                                <h3>R$ <strong>40</strong> / mês</h3>
                             </div>
                             <div class="price-description">Bronze</div>
                             <div class="price-image">
@@ -320,7 +320,7 @@
                     <div data-100p-top="transform[swing]:translateY(-25px);opacity[swing]:0" data-75p-top="transform[swing]:translateY(0);opacity[swing]:1">
                         <div class="price-item price-gold">
                             <div class="price-header">
-                                <h3>R$ <strong>50</strong> / mes</h3>
+                                <h3>R$ <strong>50</strong> / mês</h3>
                             </div>
                             <div class="price-description">Prata</div>
                             <div class="price-image">
@@ -351,7 +351,7 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="price-header">
-                                <h3>R$ <strong>60</strong> / mes</h3>
+                                <h3>R$ <strong>60</strong> / mês</h3>
                             </div>
                             <div class="price-description">Ouro</div>
                             <div class="price-image">

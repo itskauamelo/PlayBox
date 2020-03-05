@@ -222,13 +222,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="feature-box text-center">
-                        <span class="icon-circle-outer" data-toggle="tooltip" data-placement="top" data-100p-top="transform[swing]:scale(0.5);opacity[swing]:0" data-75p-top="transform[swing]:scale(1);opacity[swing]:1" title="
-                            <ul class='list'>
-                                <li><span>10 different difficult levels</span></li>
-                                <li><span>Extended tutorials</span></li>
-                                <li><span>Unique rating system</span></li>
-                            </ul>
-                        ">
+                        <span class="icon-circle-outer" data-toggle="tooltip" data-placement="top" data-100p-top="transform[swing]:scale(0.5);opacity[swing]:0" data-75p-top="transform[swing]:scale(1);opacity[swing]:1">
                             <span class="icon-circle-inner">
                                 <span class="fa fa-hand-o-up"></span>
                             </span>
@@ -240,13 +234,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="feature-box text-center">
-                        <span class="icon-circle-outer" data-toggle="tooltip" data-placement="top" data-100p-top="transform[swing]:scale(0.5);opacity[swing]:0" data-75p-top="transform[swing]:scale(1);opacity[swing]:1" title="
-                            <ul class='list'>
-                                <li><span>Programming</span></li>
-                                <li><span>Design</span></li>
-                                <li><span>Marketing</span></li>
-                            </ul>
-                        ">
+                        <span class="icon-circle-outer" data-toggle="tooltip" data-placement="top" data-100p-top="transform[swing]:scale(0.5);opacity[swing]:0" data-75p-top="transform[swing]:scale(1);opacity[swing]:1">
                             <span class="icon-circle-inner">
                                 <span class="fa fa-space-shuttle"></span>
                             </span>
@@ -258,13 +246,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="feature-box text-center">
-                        <span class="icon-circle-outer" data-toggle="tooltip" data-placement="top" data-100p-top="transform[swing]:scale(0.5);opacity[swing]:0" data-75p-top="transform[swing]:scale(1);opacity[swing]:1" title="
-                            <ul class='list'>
-                                <li><span>Amazing game experience</span></li>
-                                <li><span>Over 100 hours of playing</span></li>
-                                <li><span>Pixel art graphic</span></li>
-                            </ul>
-                        ">
+                        <span class="icon-circle-outer" data-toggle="tooltip" data-placement="top" data-100p-top="transform[swing]:scale(0.5);opacity[swing]:0" data-75p-top="transform[swing]:scale(1);opacity[swing]:1">
                             <span class="icon-circle-inner">
                                 <span class="fa fa-smile-o"></span>
                             </span>
