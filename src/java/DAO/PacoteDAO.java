@@ -24,8 +24,8 @@ public class PacoteDAO {
             "        (SELECT id FROM produto WHERE nome = ?), \n" +
             "        (SELECT id FROM produto WHERE nome = ?), \n" +
             "        (SELECT id FROM produto WHERE nome = ?),\n" +
-            "        ?,\n" +
-            "        ?)");
+            "        ?, ?)");
+            
             comando.setString(1, pacote.getNome());
             comando.setString(2, pacote.getJogo());
             comando.setString(3, pacote.getCamiseta());
@@ -46,30 +46,13 @@ public class PacoteDAO {
         List<Pacote> todosPacotes;
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
-            ("select id, nome, \n" +
-            "(select nome from games where id = ?),\n" +
-            "(select nome from camiseta where id = ?),\n" +
-            "(select nome from produto where id = ?),\n" +
-            "(select nome from produto where id = ?),\n" +
-            "(select nome from produto where id = ?),\n" +
-            "(select nome from produto where id = ?),\n" +
-            "(select nome from produto where id = ?),\n" +
-            "situacao, preco\n" +
-            "from pacote");
+            ("select id, nome, preco from pacote");
             ResultSet resultado = comando.executeQuery();
             todosPacotes = new ArrayList<>();
             while (resultado.next()) {
                 Pacote p = new Pacote();
                 p.setId(resultado.getInt("id"));
                 p.setNome(resultado.getString("nome"));
-                p.setJogo(resultado.getString("gameFk"));
-                p.setCamiseta(resultado.getString("camisetaFk"));
-                p.setBrinde1(resultado.getString("brindeFk1"));
-                p.setBrinde2(resultado.getString("brindeFk2"));
-                p.setBrinde3(resultado.getString("brindeFk3"));
-                p.setBrinde4(resultado.getString("brindeFk4"));
-                p.setBrinde5(resultado.getString("brindeFk5"));
-                p.setSituacao(resultado.getString("situacao"));
                 p.setPreco(resultado.getDouble("preco"));
                 
                 todosPacotes.add(p);

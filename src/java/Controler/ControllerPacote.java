@@ -22,14 +22,13 @@ import javax.servlet.annotation.WebServlet;
     "/cadastrarPacote",
     "/listarPacotes",
     "/excluirPacote",
-    "/iniciarEdicaoPacote",
+    "/edit/iniciarEdicaoPacote",
     "/editarPacote",
     "/form/cadastroPacote"
 })
 
 public class ControllerPacote extends HttpServlet{
-    
-    
+/*
         protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,13 +37,29 @@ public class ControllerPacote extends HttpServlet{
         
             if(uri.contains("/form")){
                 GameDAO gameDAO = new GameDAO();
+
                 List<Game> games = gameDAO.listarOpt();
+      
+                request.setAttribute("games", games);
+      
+                RequestDispatcher rd = request.getRequestDispatcher("../pacote.jsp");
+                rd.forward(request, response);
+                
+            } else if (uri.contains("/edit/")){
+                GameDAO gameDAO = new GameDAO();
+                CamisetaDAO camisetaDAO = new CamisetaDAO();
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                List<Game> games = gameDAO.listarOpt();
+                List<Camiseta> camisetas = camisetaDAO.listarOpt();
+                List<Produto> produtos = produtoDAO.listarOpt();
                 
                 request.setAttribute("games", games);
-                RequestDispatcher rd = request.getRequestDispatcher("teste.jsp");
+                request.setAttribute("camisetas", camisetas);
+                request.setAttribute("produtos", produtos);
+                RequestDispatcher rd = request.getRequestDispatcher("admin/EdPacote.jsp");
                 rd.forward(request, response);
-            }   
-    }
+            }
+    }*/
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -61,6 +76,8 @@ public class ControllerPacote extends HttpServlet{
                 iniciarEdicao(request, response);
             } else if (uri.contains("form")) {
                 listarCombo(request, response);
+            } else if (uri.contains("edit")){
+                listarComboEd(request, response);
             }
             
             } catch (Exception e) {
@@ -120,18 +137,34 @@ public class ControllerPacote extends HttpServlet{
     }
     
         private void listarCombo(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
-        
+
         GameDAO gameDAO = new GameDAO();
         CamisetaDAO camisetaDAO = new CamisetaDAO();
         ProdutoDAO produtoDAO = new ProdutoDAO();
         List<Game> games = gameDAO.listarOpt();
         List<Camiseta> camisetas = camisetaDAO.listarOpt();
         List<Produto> produtos = produtoDAO.listarOpt();
-                
+
         request.setAttribute("games", games);
         request.setAttribute("camisetas", camisetas);
         request.setAttribute("produtos", produtos);
         RequestDispatcher rd = request.getRequestDispatcher("/admin/pacote.jsp");
+        rd.forward(request, response);
+    }
+        
+        private void listarComboEd(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+
+        GameDAO gameDAO = new GameDAO();
+        CamisetaDAO camisetaDAO = new CamisetaDAO();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        List<Game> games = gameDAO.listarOpt();
+        List<Camiseta> camisetas = camisetaDAO.listarOpt();
+        List<Produto> produtos = produtoDAO.listarOpt();
+
+        request.setAttribute("games", games);
+        request.setAttribute("camisetas", camisetas);
+        request.setAttribute("produtos", produtos);
+        RequestDispatcher rd = request.getRequestDispatcher("/admin/EdPacote.jsp");
         rd.forward(request, response);
     }
 
@@ -170,7 +203,7 @@ public class ControllerPacote extends HttpServlet{
 
         List<Pacote> todosPacotes = dao.consultarTodos();
         request.setAttribute("todosPacotes", todosPacotes);
-        
+
         request.getRequestDispatcher("admin/listarPacotes.jsp").forward(request, response);
 
     }

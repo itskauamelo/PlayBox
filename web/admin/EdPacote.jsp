@@ -20,7 +20,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>PlayBox - Editar Game</title>
+  <title>PlayBox - Editar Pacote</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -163,7 +163,7 @@
         %>
         
         <div class="card-body">
-        <form method="POST" action="editarGame">
+        <form method="POST" action="editarPacote">
           <div class="form-group">
             <div class="form-row">
             </div>
@@ -178,7 +178,7 @@
             <div class="form-label-group">
               <label for="txtNome">Nome do Pacote</label>
               <select onchange="exibir_ocultar(this)" id="txtNome" name="txtNome" class="form-control" required="required" value="${pacote.nome}" >
-                  <option selected="true" disabled="disabled" >Selecione o nome do pacote</option>
+                  <option disabled="disabled" >Selecione o nome do pacote</option>
                   <option value="Bronze">Bronze</option>
                   <option value="Prata">Prata</option>
                   <option value="Ouro">Ouro</option>
@@ -193,7 +193,7 @@
                 for (Game game : games) {
                 %>
 
-                <option value="<%=game.getNome()%>">  <%= game.getNome() %> </option>
+                <option value="<%=game.getId()%>">  <%= game.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -208,7 +208,7 @@
                 for (Camiseta camiseta : camisetas) {
                 %>
                 
-                <option value="<%=camiseta.getNome()%>">  <%= camiseta.getNome() %> </option>
+                <option value="<%=camiseta.getId()%>">  <%= camiseta.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -217,26 +217,26 @@
               
           <div id="optBrinde1" name="optBrinde1" style="display:none;"> 
               <label for="optBrinde1">Brinde 1</label>
-              <select name="optBrinde1" id="optBrinde1" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde1Fk}">
+              <select name="optBrinde1" id="optBrinde1" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brindeFk1}">
                   <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
                
-                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>
               </div>
           <div id="optBrinde2" name="optBrinde2" style="display:none;"> 
               <label for="optBrinde2">Brinde 2</label>
-              <select name="optBrinde2" id="optBrinde2" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde2Fk}">
+              <select name="optBrinde2" id="optBrinde2" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brindeFk2}">
                   <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
 
-                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -244,13 +244,13 @@
                 
           <div id="optBrinde3" name="optBrinde3" style="display:none;"> 
               <label for="optBrinde3">Brinde 3</label>
-              <select name="optBrinde3" id="optBrinde3" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde3Fk}">
+              <select name="optBrinde3" id="optBrinde3" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brindeFk3}">
                   <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
 
-                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>
@@ -258,26 +258,26 @@
                 
           <div id="optBrinde4" name="optBrinde4" style="display:none;"> 
               <label for="optBrinde4">Brinde 4</label>
-              <select name="optBrinde4" id="optBrinde4" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde4Fk}">
+              <select name="optBrinde4" id="optBrinde4" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brindeFk4}">
                   <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
 
-                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>
               </div>
               <div id="optBrinde5" name="optBrinde5" style="display:none;"txt> 
               <label for="optBrinde5">Brinde 5</label>
-              <select name="optBrinde5" id="optBrinde5" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brinde5Fk}">
+              <select name="optBrinde5" id="optBrinde5" class="custom-select custom-select-sm form-control form-control-sm" value="${pacote.brindeFk5}">
                   <option selected="true" disabled="disabled" >Selecione um brinde</option>
                 <%
                 for (Produto produto : produtos) {
                 %>
 
-                <option value="<%=produto.getNome()%>">  <%= produto.getNome() %> </option>
+                <option value="<%=produto.getId()%>">  <%= produto.getNome() %> </option>
 
                 <% } %> 
               </select>

@@ -69,33 +69,17 @@
             <table id="tabela">
             <tr>                
                 <th class="cabecalho">Id</th>
-                <th class="cabecalho">Nome</th>
-                <th class="cabecalho">Jogo</th>
-                <th class="cabecalho">Camiseta</th>
-                <th class="cabecalho">Brinde1</th>
-                <th class="cabecalho">Brinde2</th>
-                <th class="cabecalho">Brinde3</th>
-                <th class="cabecalho">Brinde4</th>
-                <th class="cabecalho">Brinde5</th>
-                <th class="cabecalho">Situacao</th>               
+                <th class="cabecalho">Nome</th>              
                 <th class="cabecalho">Preco</th>
-                <th class="cabecalho">Editar/Excluir</th>
+                <th class="cabecalho">Editar</th>
                 
             </tr>
             <c:forEach items="${todosPacotes}" var="pac">
             <tr>              
                 <td class="conteudo" align="center">${pac.id}</td>
                 <td class="conteudo" align="center">${pac.nome}</td>
-                <td class="conteudo" align="center">${pac.jogo}</td>               
-                <td class="conteudo" align="center">${pac.camiseta}</td>
-                <td class="conteudo" align="center">${pac.brinde1}</td>
-                <td class="conteudo" align="center">${pac.brinde2}</td>
-                <td class="conteudo" align="center">${pac.brinde3}</td>
-                <td class="conteudo" align="center">${pac.brinde4}</td>
-                <td class="conteudo" align="center">${pac.brinde5}</td>
-                <td class="conteudo" align="center">${pac.situacao}</td>
                 <td class="conteudo" align="center">${pac.preco}</td>
-                <td class="conteudo" align="center"><a href="iniciarEdicaoPacote?id=${pac.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>        <a href="excluirPacote?id=${pac.id}"><img style="height: 25px; width: 25px;" src="images/5599.png" alt="" id="iconTable"/></a></td>
+                <td class="conteudo" align="center"><a href="edit/iniciarEdicaoPacote?id=${pac.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>
             </tr>
             </c:forEach>
         </table>
