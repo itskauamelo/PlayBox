@@ -22,7 +22,7 @@ import javax.servlet.annotation.WebServlet;
     "/cadastrarPacote",
     "/listarPacotes",
     "/excluirPacote",
-    "/edit/iniciarEdicaoPacote",
+    "/iniciarEdicaoPacote",
     "/editarPacote",
     "/form/cadastroPacote"
 })
@@ -127,13 +127,26 @@ public class ControllerPacote extends HttpServlet{
 
     private void iniciarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         Pacote pacote = new Pacote();
-        PacoteDAO dao = new PacoteDAO();
+        GameDAO gameDAO = new GameDAO();
+        CamisetaDAO camisetaDAO = new CamisetaDAO();
+        PacoteDAO pacoteDAO = new PacoteDAO();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+  
         pacote.setId(Integer.valueOf(request.getParameter("id")));
 
-        dao.consultarporId(pacote);
+        pacoteDAO.consultarporId(pacote);
 
+        
+        List<Game> games = gameDAO.listarOpt();
+        List<Camiseta> camisetas = camisetaDAO.listarOpt();
+        List<Produto> produtos = produtoDAO.listarOpt();
+        
+        request.setAttribute("games", games);
+        request.setAttribute("camisetas", camisetas);
+        request.setAttribute("produtos", produtos);
         request.setAttribute("pacote", pacote);
-        request.getRequestDispatcher("admin/EdPacote.jsp").forward(request, response);
+        RequestDispatcher rd = request.getRequestDispatcher("admin/EdPacote.jsp");
+        rd.forward(request, response);
     }
     
         private void listarCombo(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {

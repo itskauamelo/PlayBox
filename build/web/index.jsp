@@ -114,6 +114,7 @@
                                         <span class="text">Inscrever-se <i class="fa fa-arrow-right"></i></span>
                                     </a>
                                     <p class="text-center"><a href="#" title="Reset password">Esqueceu sua senha?</a></p>
+                                    <p class="text-center"><a href="login.jsp" title="Login Gestão">Login Gestão</a></p>
                                     <h3 class="text-center">Entrar com rede social</h3>
                                     <ul class="list-inline text-center">
                                         <li>

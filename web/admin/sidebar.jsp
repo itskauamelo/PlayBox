@@ -49,7 +49,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../listarProdutos">
-          <i class="fas fa-fw fa-gift"></i>
+          <i class="fas fa-fw fa-bone"></i>
           <span>Brindes</span></a>
       </li>
       
@@ -62,6 +62,11 @@
         <a class="nav-link" href="produtos.html">
           <i class="fas fa-fw fa-gamepad"></i>
           <span>Games</span></a>
+                
+            <li class="nav-item">
+        <a class="nav-link" href="../listarPacotes">
+          <i class="fas fa-fw fa-gift"></i>
+          <span>Pacotes</span></a>
       </li>
     </ul>
 </html>

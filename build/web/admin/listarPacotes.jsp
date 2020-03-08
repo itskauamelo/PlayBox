@@ -79,7 +79,7 @@
                 <td class="conteudo" align="center">${pac.id}</td>
                 <td class="conteudo" align="center">${pac.nome}</td>
                 <td class="conteudo" align="center">${pac.preco}</td>
-                <td class="conteudo" align="center"><a href="edit/iniciarEdicaoPacote?id=${pac.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>
+                <td class="conteudo" align="center"><a href="iniciarEdicaoPacote?id=${pac.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>
             </tr>
             </c:forEach>
         </table>
