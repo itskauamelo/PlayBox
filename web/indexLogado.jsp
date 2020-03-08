@@ -18,8 +18,6 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <!-- Lightbox styles -->
     <link href="assets/lightbox2-master/dist/css/lightbox.min.css" rel="stylesheet">
-  
-
     
     <!-- Loaders styles -->
     <link href="assets/loaders.css-master/loaders.min.css" media="screen" rel="stylesheet" type="text/css">
@@ -447,9 +445,6 @@
         </a>
     </div>
     
-    
-    
-    
         <div class="modal fade" id="modal-logout" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -467,65 +462,6 @@
                     </div>
                     <div class="modal-footer">
                         <a href="ControleAcessoCliente?acao=Sair" type="submit" class="btn btn-primary"><i class="fa fa-sign-out" aria-hidden="true"></i> Sim</a><button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    
-    
-    
-
-    <!-- Order modal -->
-    <div class="modal fade" id="order-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3 class="modal-title">Order form</h3>
-                </div>
-                <form method="post" action="#">
-                    <div class="modal-body">
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis leo ut sapien tristique adipiscing. Nunc vitae nisi id ipsum congue ullamcorper.</p>
-                            <footer>Bill Archway <cite title="Source Title">100 games you must have</cite></footer>
-                        </blockquote>
-                        <div class="form-group has-feedback">
-                            <label for="order-first-name">First Name:</label>
-                            <input type="text" class="form-control" id="order-first-name" placeholder="Enter first name">
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label for="order-last-name">Last Name:</label>
-                            <input type="text" class="form-control" id="order-last-name" placeholder="Enter last name">
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label for="order-email">Email:</label>
-                            <input type="email" class="form-control" id="order-email" placeholder="Enter email">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label for="order-phone">Phone:</label>
-                            <input type="text" class="form-control" id="order-phone" placeholder="Enter phone">
-                            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label for="order-company">Company:</label>
-                            <input type="text" class="form-control" id="order-company" placeholder="Your company">
-                            <span class="glyphicon glyphicon-home form-control-feedback"></span>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Yes, I want to get the newsletter
-                            </label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Order now</button><button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                     </div>
                 </form>
             </div>
