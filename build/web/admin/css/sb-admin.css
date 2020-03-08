@@ -4900,6 +4900,15 @@ input[type="button"].btn-block {
   flex-basis: auto;
 }
 
+.centralizar {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.conteudo {
+    margin-left: 100px;
+}
+
 .navbar-expand .navbar-toggler {
   display: none;
 }
