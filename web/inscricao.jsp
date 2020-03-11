@@ -284,7 +284,7 @@
                         <input type="text" id="txtCidade" name="txtCidade" class="form-control"><br>
                         <label>Estado</label>
                         <select id="optEstado" name="optEstado" class="form-control" style="color: black;">
-                            <option>Selecione um estado</option>                  
+                            <option disabled="disabled">Selecione um estado</option>                  
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
                             <option value="AP">Amapá</option>
