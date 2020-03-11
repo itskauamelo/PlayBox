@@ -11,6 +11,7 @@
 <%@page import="Model.Carrinho"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.List"%>
+<%@page import="java.text.NumberFormat"%>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -163,21 +164,32 @@
                         <th>#</th>
                         <th>Img</th>
                         <th>Produto</th>
-                        <th>Entrega</th>
+                        <th>Camiseta</th>
                         <th>Preço</th>
                     </tr>
                 </thead>
                 
                 <tbody>
                    <c:set var="total" value="0"></c:set>
+                   <c:forEach items="${carrinho.pacotesNoCarrinho}" var="pacote" varStatus="status" >
                    <tr>
                        <td>${status.count}</td>
-                       <td><img src="${pacote.imagem}" width="40"></td>
+                       <td><img src="" width="40"></td>
                        <td>${pacote.nome}</td>
-                       <td>-</td>
+                       <td>
+                           <select style="color: black;" id="optTamanho" name="optTamanho">
+                               <option disabled="disabled">Escolha um tamanho</option>
+                               <option value ="P">P</option>
+                               <option value ="M">M</option>
+                               <option value ="G">G</option>
+                               <option value ="GG">GG</option>
+                               <option value ="GGX">GGX</option>
+                           </select>
+                       </td>
                        <td><c:set var="total" value="${total + pacote.preco}"></c:set>
                        <fmt:formatNumber type="currency" currencySymbol="R$" value="${pacote.preco}"></fmt:formatNumber></td>
                    </tr>
+                   </c:forEach>
                 </tbody>
                 
                 <tfoot>

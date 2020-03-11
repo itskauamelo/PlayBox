@@ -14,24 +14,24 @@ import java.util.List;
  */
 public class Carrinho {
     
-    private List<Game> jogosNoCarrinho = new ArrayList<>();
+    private List<Pacote> pacotesNoCarrinho = new ArrayList<>();
     
-    public void addJogo(Game jogo) {
-        jogosNoCarrinho.add(jogo);
+    public void addPacote(Pacote pacote) {
+        pacotesNoCarrinho.add(pacote);
     }
     
-    public List<Game> getJogosNoCarrinho() {
-        return jogosNoCarrinho;
+    public List<Pacote> getPacotesNoCarrinho() {
+        return pacotesNoCarrinho;
     }
 
-    public void remover(Game jogoARemover) {
-        jogosNoCarrinho.remove(jogoARemover);
+    public void remover(Pacote pacoteARemover) {
+        pacotesNoCarrinho.remove(pacoteARemover);
     }
     
     public double calcularTotal() {
         double total = 0;
-        for (Game jogo : jogosNoCarrinho) {
-            total += jogo.getPreco();
+        for (Pacote pacote : pacotesNoCarrinho) {
+            total += pacote.getPreco();
         }
         return total;
     }
