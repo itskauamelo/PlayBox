@@ -76,7 +76,6 @@ public class ControllerProduto extends HttpServlet{
         
         response.sendRedirect("listarProdutos");
 
-        
     }
 
     private void iniciarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
