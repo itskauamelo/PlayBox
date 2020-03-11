@@ -105,4 +105,14 @@ public class PacoteDAO {
             pacote.setId(resultado.getInt("id"));
         }
     }
+
+    public Pacote consultarPorIdCarrinho(String nome) throws ClassNotFoundException, SQLException {
+        List<Pacote> todosPacotes = consultarTodos();
+        
+        for (Pacote pacote : todosPacotes) {
+            if (pacote.getNome() == nome) 
+                return pacote;
+        }
+        return null;
+    }
 }
