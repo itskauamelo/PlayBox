@@ -28,8 +28,8 @@ public class Carrinho {
         pacotesNoCarrinho.remove(pacoteARemover);
     }
     
-    public double calcularTotal() {
-        double total = 0;
+    public double calcularTotal(double total) {
+        total = 0;
         for (Pacote pacote : pacotesNoCarrinho) {
             total += pacote.getPreco();
         }

@@ -9,6 +9,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@page import="Model.Cliente"%>
 <%@page import="Model.Carrinho"%>
+<%@page import="Model.Pacote"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.NumberFormat"%>
@@ -159,6 +160,17 @@
             <br>
             <br>
             <table class="table table-striped" style>
+                
+                <c:if test="${cart.lineItemCount==0}">
+                    <tr>
+                        <td colspan="4">
+                            <font size="2" face="Verdana, Arial, Helvetica, sans-serif"/>
+                            - Você ainda não possui produtos no carrinho-
+                            <br/>
+                        </td>
+                    </tr>
+                </c:if>
+                
                 <thead>
                     <tr>
                         <th>#</th>
@@ -168,10 +180,11 @@
                         <th>Preço</th>
                     </tr>
                 </thead>
-                
+
                 <tbody>
                    <c:set var="total" value="0"></c:set>
                    <c:forEach items="${carrinho.pacotesNoCarrinho}" var="pacote" varStatus="status" >
+                       
                    <tr>
                        <td>${status.count}</td>
                        <td><img src="" width="40"></td>
@@ -186,15 +199,22 @@
                                <option value ="GGX">GGX</option>
                            </select>
                        </td>
+
                        <td><c:set var="total" value="${total + pacote.preco}"></c:set>
-                       <fmt:formatNumber type="currency" currencySymbol="R$" value="${pacote.preco}"></fmt:formatNumber></td>
+                       <fmt:formatNumber type="currency" currencySymbol="R$" value="${pacote.preco}"></fmt:formatNumber>
+                       </td>
+                       <td>
+                            <a href="removerDoCarrinho?id=${pacote.id}">
+                            <span class="glyphicon glyphicon-remove icone-botao"></span>
+                            </a>
+                        </td>
                    </tr>
                    </c:forEach>
                 </tbody>
                 
                 <tfoot>
                     <tr>
-                        <th colspan="4">Total</th>
+                        <th colspan="5">Total</th>
                         <th><fmt:formatNumber type="currency" currencySymbol="R$" value=""></fmt:formatNumber></th>
                     </tr>
                 </tfoot>
@@ -204,7 +224,7 @@
             <a href="." class="btn btn-primary btn-block dropdown-toggle" title="Continuar" data-toggle="dropdown" data-target="#login"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Continuar Comprando</a>
             </div><br><br><br>
             <div class="price-button">
-            <a href="metodoPagamento.jsp" class="btn btn-primary btn-block dropdown-toggle" title="Continuar" data-toggle="dropdown" data-target="#login"><i class="fa fa-play" aria-hidden="true"></i> Continuar</a>
+            <a href="metodoPagamento.jsp" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Continuar</a>
             </div>
             <br><br><br>
             ⠀<img src="img/pagamentos.png" alt="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto" title="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto">
