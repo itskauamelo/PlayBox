@@ -128,6 +128,16 @@ public class Pacote {
         this.preco = preco;
     }
 
+    
+        @Override
+    public boolean equals(Object obj) {
+        try {
+            Pacote p = (Pacote) obj;
+            return p.getId() == id;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     
 }
