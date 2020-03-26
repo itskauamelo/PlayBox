@@ -204,7 +204,7 @@
                        <fmt:formatNumber type="currency" currencySymbol="R$" value="${pacote.preco}"></fmt:formatNumber>
                        </td>
                        <td>
-                            <a href="removerDoCarrinho?id=${pacote.id}">
+                            <a href="removerCarrinho?id=${pacote.id}">
                             <span class="glyphicon glyphicon-remove icone-botao"></span>
                             </a>
                         </td>
