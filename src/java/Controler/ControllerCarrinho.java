@@ -70,10 +70,10 @@ public class ControllerCarrinho extends HttpServlet {
         
     private void removerDoCarrinho(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String nome = request.getParameter("nome");
+            int id = Integer.parseInt(request.getParameter("id"));
 
             PacoteDAO dao = new PacoteDAO();
-            Pacote pacoteARemover = dao.consultarPorIdCarrinho(nome);
+            Pacote pacoteARemover = dao.consultarPorIdCarrinho(id);
 
             Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
             carrinho.remover(pacoteARemover);
