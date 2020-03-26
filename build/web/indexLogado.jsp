@@ -288,7 +288,7 @@
                                 <li> 1 (um) brinde</li>
                             </ul>
                             <div class="price-button">
-                                <a href="adicionarCarrinho?nome=Bronze" class="btn btn-primary btn-block" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="adicionarCarrinho?id=8" class="btn btn-primary btn-block" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
@@ -316,7 +316,7 @@
                                 <li> 3 (três) brindes</li>
                             </ul>
                             <div class="price-button">
-                                <a href="adicionarCarrinho?nome=Prata" class="btn btn-primary btn-block" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="adicionarCarrinho?id=11" class="btn btn-primary btn-block" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
@@ -347,7 +347,7 @@
                                 <li> 5 (cinco) brindes</li>
                             </ul>
                             <div class="price-button">
-                                <a href="adicionarCarrinho?nome=Ouro" class="btn btn-primary btn-block" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="adicionarCarrinho?id=13" class="btn btn-primary btn-block" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>

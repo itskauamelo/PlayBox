@@ -106,11 +106,11 @@ public class PacoteDAO {
         }
     }
 
-    public Pacote consultarPorIdCarrinho(String nome) throws ClassNotFoundException, SQLException {
+    public Pacote consultarPorIdCarrinho(int id) throws ClassNotFoundException, SQLException {
         List<Pacote> todosPacotes = consultarTodos();
         
         for (Pacote pacote : todosPacotes) {
-            if (pacote.getNome() == nome) 
+            if (pacote.getId() == id) 
                 return pacote;
         }
         return null;
