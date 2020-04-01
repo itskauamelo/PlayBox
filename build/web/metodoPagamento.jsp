@@ -194,9 +194,6 @@
                            Validade <input type="text" size="3"> / <input type="text" size="3"> <br>
                             Codigo de segurança <input type="text" size="4"> <br>
                             
-                            
-                            
-                            
                         </div>
                     </center>
                    

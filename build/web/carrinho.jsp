@@ -191,7 +191,7 @@
                        <td>${pacote.nome}</td>
                        <td>
                            <select style="color: black;" id="optTamanho" name="optTamanho">
-                               <option disabled="disabled">Escolha um tamanho</option>
+                               <option disabled="disabled" selected>Escolha um tamanho</option>
                                <option value ="P">P</option>
                                <option value ="M">M</option>
                                <option value ="G">G</option>
