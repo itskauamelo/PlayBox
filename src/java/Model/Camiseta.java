@@ -21,7 +21,6 @@ public class Camiseta {
     public int quantidade;
     public double preco;
 
-
     public Camiseta() {
     }
 
