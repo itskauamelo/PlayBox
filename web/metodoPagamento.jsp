@@ -5,7 +5,7 @@
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@page import="Model.Cliente"%>
 <%@page import="Model.Carrinho"%>
@@ -52,7 +52,11 @@
     <link rel="icon" href="img/favicon.png" type="image/png">
 
 </head>
-
+            <%
+    Cliente cliente = (Cliente)session.getAttribute("clienteAutenticado");
+    
+    if (cliente != null){
+    %>
 <body data-spy="scroll" data-offset="122" data-target="#main-menu" data-skrollr="true">
 
     <!-- Preloader -->
@@ -102,9 +106,9 @@
                     <div class="btn-group dropdown">
                         
                         <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                            <span class="text"><i class="fa fa-user"></i> Bem-vindo,  </span>
+                            <span class="text"><i class="fa fa-user"></i> Bem-vindo, <%= cliente.getNomecompleto()%>  </span>
                         </button>
-                        
+                        <%}%>
                         
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
@@ -165,35 +169,90 @@
                 <div class="col-cadastro col-md-8">
                     
                     <center>
+                        <form method="GET">
                         <h3 class="post-item-header"> Entrega </h3>
                         <br>
                         <label>CEP</label>
-                        <input type="text" id="txtCep" name="txtCep" maxlength="9" OnKeyPress="formatar('#####-###', this)" class="form-control"><br>
-                        
-                    
-                    
+                        <input type="text" id="txtCep" name="txtCep" maxlength="9" class="form-control" onblur="pesquisacep(this.value);" /><br>
+                        <label>Rua</label>
+                        <input type="text" id="txtRua" name="txtCep" maxlength="9" class="form-control"><br>
+                        <label>Numero</label>
+                        <input type="text" id="txtNumero" name="txtCep" maxlength="9" class="form-control"><br>
+                        <label>Complemento</label>
+                        <input type="text" id="txtComplemento" name="txtCep" maxlength="9" class="form-control"><br>
+                        <label>Bairro</label>
+                        <input type="text" id="txtBairro" name="txtCep" maxlength="9" class="form-control"><br>
+                        <label>Cidade</label>
+                        <input type="text" id="txtCidade" name="txtCep" maxlength="9" class="form-control"><br>
+                        <label>UF</label>
+                        <input type="text" id="txtUf" name="txtCep" maxlength="9" class="form-control"><br>
+                        </form>
                     </center>
                    
                 </div>
                 
                 <div class="col-cadastro col-md-8">
                     
+                    
+                    <style>
+                        #rcorners2 
+                    {
+                        border-radius: 25px;
+                        border: 2px solid #FFFFFF;
+                        padding: 20px; 
+                        width: 70%;
+                        height: auto;  
+                    }
+                    </style>
+                    
                     <center>
                         <h3 class="post-item-header"> Pagamento </h3>
                         <br>
                         <label>Metodo de Pagamento</label>
                         <br>
-                        <input type="radio" id="rbtMetodo" name="rbtMetodo"> Boleto      <input type="radio" id="rbtMetodo" name="rbtMetodo"> Cartão de Crédito
-                        <br>
-                        <div class="boleto" style="display:none;">
-                            <input type="text">CPF
+                        <input type="radio" id="rbtMetodo" name="rbtMetodo" onclick="mostrarboleto();"> Boleto      <input type="radio" id="rbtMetodo" name="rbtMetodo" onclick="mostrarcartao();"> Cartão de Crédito
+                        <br><br>
+                        <div id="boleto" style="display:none;">
+                            <label>CPF</label>
+                            <input type="text" style="color: black">
                         </div>
-                        <div class="cartao">
-                            Numero do cartão <input type="text"> <br>
-                            Nome impresso no cartão <input type="text"> <br>
-                           Validade <input type="text" size="3"> / <input type="text" size="3"> <br>
-                            Codigo de segurança <input type="text" size="4"> <br>
+                        <div id="cartao" style="display:none;">
                             
+                            <br>
+                            <p id="rcorners2">
+                            <label>Cartões cadastrados</label>
+                            <br>
+                            <c:forEach items="${todosCartoes}" var="c">
+                                <input type="checkbox" selected="false" value="${c.id}">${c.bandeira} final ****<br>
+                            </c:forEach>
+                            </p>
+                            <br>
+                            <form method="POST" action="cadastrarCartao">
+                                <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                            <script>
+                                $(function() {
+                                    $('#txtNumeroCartao').validateCreditCard(function(result) {
+                                        $('.bandeira').html('Card type: ' + (result.card_type == null ? '-' : result.card_type.name)
+                                                 + '<br>Valid: ' + result.valid
+                                                 + '<br>Length valid: ' + result.length_valid
+                                                 + '<br>Luhn valid: ' + result.luhn_valid);
+                                    });
+                                });
+                            </script>
+                                
+                            <label>Bandeira</label>
+                            <input type="text" id="txtBandeira" name="txtBandeira" maxlength="16" style="color: black"><br>
+                            <label>Numero do cartão</label>
+                            <input type="text" id="txtNumeroCartao" name="txtNumeroCartao" maxlength="16" style="color: black"> <!--<p class="bandeira"></p>--><br>
+                            <label>Nome impresso no cartão </label>
+                            <input type="text" id="txtNomeCartao" name="txtNomeCartao" style="color: black"> <br>
+                            <label>Validade</label><input type="text" id="txtValidadeCartao" name="txtValidadeCartao" size="3" maxlength="5" style="color: black"><br>
+                            <label>Codigo de segurança</label>
+                            <input type="password" id="txtCodigoCartao" name="txtCodigoCartao" maxlength="3" size="4" style="color: black"> <br>
+                            <div class="price-button">
+                                <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Cartão"><i class="fa fa-credit-card" aria-hidden="true"></i> Adicionar cartão</button>
+                            </div>
+                            </form>
                         </div>
                     </center>
                    
@@ -202,14 +261,6 @@
             </div>
         </div>
 
-            
-            
-            
-            
-            
-            
-            
-            
 
             <br><br><br>
 
@@ -273,6 +324,9 @@
 
     <!-- jQuery -->
     <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    
+    <!-- Cartão de Credito -->
+    <script src="assets/jquery.creditCardValidator.js"></script>
 
     <!-- Bootstrap -->
     <script type="text/javascript" src="assets/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
@@ -294,6 +348,95 @@
 
     <!-- raphael -->
     <script src="js/raphael.min.js"></script>
+    
+    
+    
+    
+    <script type="text/javascript" >
+        
+        
+    function mostrarboleto()
+    {
+        document.getElementById('boleto').style.display = 'block';
+        document.getElementById('cartao').style.display = 'none';
+    }
+    
+    function mostrarcartao()
+    {
+        document.getElementById('boleto').style.display = 'none';
+        document.getElementById('cartao').style.display = 'block';
+        
+    }
+        
+    
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('txtRua').value=("");
+            document.getElementById('txtNumero').value=("");
+            document.getElementById('txtComplemento').value=("");
+            document.getElementById('txtBairro').value=("");
+            document.getElementById('txtCidade').value=("");
+            document.getElementById('txtUf').value=("");
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('txtRua').value=(conteudo.logradouro);
+            document.getElementById('txtBairro').value=(conteudo.bairro);
+            document.getElementById('txtCidade').value=(conteudo.localidade);
+            document.getElementById('txtUf').value=(conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('txtRua').value="...";
+                document.getElementById('txtBairro').value="...";
+                document.getElementById('txtCidade').value="...";
+                document.getElementById('txtUf').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    </script>
 
     <!-- particles -->
     <script src="js/TweenLite.min.js"></script>

@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Model.Cartao;
 import Model.Cliente;
 import Model.Preferencia;
 import Util.ConectaBanco;
@@ -84,6 +85,7 @@ public class ClienteDAO {
     
     
     
+    
     public void cadastrarpreferencia(Preferencia preferencia) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
@@ -145,6 +147,39 @@ public class ClienteDAO {
 
             comando.execute();
         }
+    }
+    
+    public void adicionarCartao(Cartao cartao) throws ClassNotFoundException, SQLException {
+        
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("INSERT INTO cartaocredito VALUES (NEXTVAL('id_cartaocredito'), ?, ?, ?, ?, ?, (SELECT id FROM cliente WHERE nomecompleto = ?))");
+            
+            comando.setString(1, cartao.getNumero());
+            comando.setString(2, cartao.getNomecartao());
+            comando.setString(3, cartao.getValidade());
+            comando.setInt(4, cartao.getCodigo());
+            comando.setString(5, cartao.getBandeira());
+            comando.setString(6, cartao.getCliente());
+
+            comando.execute();
+        }
+    }
+    
+        public List<Cartao> consultarTodosCartoes() throws ClassNotFoundException, SQLException {
+
+        List<Cartao> todosCartoes;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM cartaocredito ORDER BY id");
+            ResultSet resultado = comando.executeQuery();
+            todosCartoes = new ArrayList<>();
+            while (resultado.next()) {
+                Cartao c = new Cartao();
+                c.setId(resultado.getInt("id"));
+                c.setBandeira(resultado.getString("bandeira"));
+                todosCartoes.add(c);
+            }
+        }
+        return todosCartoes;
     }
 
     /*
