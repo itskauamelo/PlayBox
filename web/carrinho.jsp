@@ -52,7 +52,11 @@
     <link rel="icon" href="img/favicon.png" type="image/png">
 
 </head>
-
+            <%
+    Cliente cliente = (Cliente)session.getAttribute("clienteAutenticado");
+    
+    if (cliente != null){
+    %>
 <body data-spy="scroll" data-offset="122" data-target="#main-menu" data-skrollr="true">
 
     <!-- Preloader -->
@@ -102,8 +106,9 @@
                     <div class="btn-group dropdown">
                         
                         <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                            <span class="text"><i class="fa fa-user"></i> Bem-vindo,  </span>
+                            <span class="text"><i class="fa fa-user"></i> Bem-vindo, <%= cliente.getNomecompleto()%>  </span>
                         </button>
+                        <%}%>
                         
                         
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -143,12 +148,12 @@
                 <!-- Logo -->
                 <a class="navbar-brand" href="index.html" title="PlayBoX" style="">
                     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<i class="fa fa-gamepad" aria-hidden="true"></i><span class="main-color">P</span>laybo<span class="main-color">X</span>
-                </a><!-- Logo end -->
+                </a><!-- Logo final -->
             </div>
-            <!-- Main menu -->
-<!-- Main menu end -->
+            <!-- Menu -->
+<!-- Menu final -->
         </div>
-    </div><!-- Navbar end -->
+    </div><!-- Navbar final -->
     <br><br>
     <br><br>
     <br><br>
@@ -224,7 +229,7 @@
             <a href="indexLogado.jsp" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Continuar Comprando</a>
             </div><br><br><br>
             <div class="price-button">
-            <a href="metodoPagamento.jsp" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Continuar</a>
+            <a href="pagamento" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Continuar</a>
             </div>
             <br>
             ⠀<img src="img/pagamentos.png" alt="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto" title="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto">
