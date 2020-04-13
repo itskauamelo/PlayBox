@@ -15,20 +15,12 @@ import java.util.Date;
 public class Compra {
     
     private int id;
-    private Usuario usuario;
+    private Cliente cliente;
     private Date data;
     private Carrinho carrinho;
     private double total;
 
     public Compra() {
-    }
-
-    public Compra(int id, Usuario usuario, Date data, Carrinho carrinho, double total) {
-        this.id = id;
-        this.usuario = usuario;
-        this.data = data;
-        this.carrinho = carrinho;
-        this.total = total;
     }
 
     public int getId() {
@@ -39,12 +31,12 @@ public class Compra {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Date getData() {

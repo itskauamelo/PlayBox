@@ -224,7 +224,8 @@
                     </tr>
                 </tfoot>
             </table>
-            <br><br><br>
+            Frete: Gratis
+                    <br><br><br>
             <div class="col-sm-4">
             <a href="indexLogado.jsp" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Continuar Comprando</a>
             </div><br><br><br>
