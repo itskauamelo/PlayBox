@@ -43,8 +43,8 @@ public class ControllerCompra extends HttpServlet {
     private void finalizarCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         Cliente usuarioLogado = (Cliente) request.getSession().getAttribute("usuarioLogado");
-
         Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
+    
         Compra compra = new Compra();
         compra.setCarrinho(carrinho);
         compra.setData(new Date());
