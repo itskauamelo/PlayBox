@@ -14,6 +14,33 @@ import java.util.List;
  */
 public class Carrinho {
     
+    private int id;
+    private double total;
+
+    public Carrinho() {
+    }
+
+    public Carrinho(int id, double total) {
+        this.id = id;
+        this.total = total;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
     private List<Pacote> pacotesNoCarrinho = new ArrayList<>();
     
     public void addPacote(Pacote pacote) {
@@ -34,6 +61,16 @@ public class Carrinho {
             total += pacote.getPreco();
         }
         return total;
+    }
+
+    public double calcularTotal() {
+        
+        total = 0;
+        for (Pacote pacote : pacotesNoCarrinho) {
+            total += pacote.getPreco();
+        }
+        return total;
+        
     }
 
 }

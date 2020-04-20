@@ -1,5 +1,6 @@
 package DAO;
 
+import Model.Cliente;
 import Model.Pacote;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -115,4 +116,41 @@ public class PacoteDAO {
         }
         return null;
     }
+    
+        public Pacote cadastrarCarrinho(int id) throws ClassNotFoundException, SQLException {
+        List<Pacote> todosPacotes = consultarTodos();
+        Connection con = ConectaBanco.getConexao();
+        for (Pacote pacote : todosPacotes) {
+            if (pacote.getId() == id) 
+            {
+            PreparedStatement comando = con.prepareStatement //ISSO AQUI
+            ("        INSERT INTO carrinho VALUES (NEXTVAL('id_pacote'), ?, \n" +
+            "        (SELECT id FROM games WHERE nome = ?), \n" +
+            "        (SELECT id FROM camiseta WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?), \n" +
+            "        (SELECT id FROM produto WHERE nome = ?),\n" +
+            "        ?, ?)");
+            
+            comando.setString(1, pacote.getNome());
+            comando.setString(2, pacote.getJogo());
+            comando.setString(3, pacote.getCamiseta());
+            comando.setString(4, pacote.getBrinde1());
+            comando.setString(5, pacote.getBrinde2());
+            comando.setString(6, pacote.getBrinde3());
+            comando.setString(7, pacote.getBrinde4());
+            comando.setString(8, pacote.getBrinde5());
+            comando.setString(9, pacote.getSituacao());
+            comando.setDouble(10, pacote.getPreco());
+            
+            comando.execute();
+                
+                
+            }
+        }
+        return null;
+    }
+
 }

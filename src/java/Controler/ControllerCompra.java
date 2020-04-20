@@ -52,7 +52,6 @@ public class ControllerCompra extends HttpServlet {
         compra.setTotal(carrinho.calcularTotal());
 
         CompraDAO dao = new CompraDAO();
-        dao.cadastrar(compra);
         
         request.getSession().removeAttribute("carrinho");
         

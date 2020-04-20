@@ -53,6 +53,7 @@ public class ControllerCarrinho extends HttpServlet {
             Pacote pacote = new Pacote();
             PacoteDAO dao = new PacoteDAO();
             Pacote pacoteAdicionar = dao.consultarPorIdCarrinho(id);
+            Pacote pacoteBanco = dao.cadastrarCarrinho(id);
             
             Carrinho carrinho = (Carrinho) request.getSession(true).getAttribute("carrinho"); 
             
@@ -60,7 +61,8 @@ public class ControllerCarrinho extends HttpServlet {
                 carrinho = new Carrinho();
                 request.getSession().setAttribute("carrinho", carrinho);
             }
-            carrinho.addPacote(pacoteAdicionar); 
+            carrinho.addPacote(pacoteAdicionar);
+            carrinho.addPacote(pacoteBanco);
             response.sendRedirect("carrinho");
         
         } catch (Exception ex) {

@@ -10,6 +10,10 @@ import java.util.Collections;
 import java.util.List;
 import Model.Compra;
 import Model.Cliente;
+import Util.ConectaBanco;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,7 +24,15 @@ public class CompraDAO {
 
     private static List<Compra> todasCompras = new ArrayList<Compra>();
 
-    public void cadastrar(Compra compra) {
+    public void cadastrar(Compra compra) throws ClassNotFoundException, SQLException {
+        
+                
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("INSERT INTO compra VALUES (NEXTVAL('id_compra'), NOW() ,?,?,?,?,?,?,?)");
+            
+            comando.execute();
+        }
+        
         todasCompras.add(compra);
     }
 
