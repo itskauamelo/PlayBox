@@ -63,6 +63,7 @@ public class ControllerCarrinho extends HttpServlet {
             carrinho.addPacote(pacoteAdicionar);
             dao.cadastrarCarrinho(id);
             response.sendRedirect("carrinho");
+            
         
         } catch (Exception ex) {
             Logger.getLogger(ControllerCarrinho.class.getName()).log(Level.SEVERE, null, ex);
