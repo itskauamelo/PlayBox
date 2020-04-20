@@ -49,7 +49,7 @@ public class ControllerCompra extends HttpServlet {
         compra.setCarrinho(carrinho);
         compra.setData(new Date());
         compra.setCliente(usuarioLogado);
-        compra.setTotal(carrinho.calcularTotal());
+        //compra.setTotal(carrinho.calcularTotal());
 
         CompraDAO dao = new CompraDAO();
         

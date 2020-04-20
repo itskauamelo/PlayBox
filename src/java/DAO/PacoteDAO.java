@@ -124,26 +124,10 @@ public class PacoteDAO {
             if (pacote.getId() == id) 
             {
             PreparedStatement comando = con.prepareStatement //ISSO AQUI
-            ("        INSERT INTO carrinho VALUES (NEXTVAL('id_pacote'), ?, \n" +
-            "        (SELECT id FROM games WHERE nome = ?), \n" +
-            "        (SELECT id FROM camiseta WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?),\n" +
-            "        ?, ?)");
+            ("INSERT INTO carrinho VALUES (NEXTVAL('id_carrinho'),now(),?,(select id from pacote where id = ?))");
             
-            comando.setString(1, pacote.getNome());
-            comando.setString(2, pacote.getJogo());
-            comando.setString(3, pacote.getCamiseta());
-            comando.setString(4, pacote.getBrinde1());
-            comando.setString(5, pacote.getBrinde2());
-            comando.setString(6, pacote.getBrinde3());
-            comando.setString(7, pacote.getBrinde4());
-            comando.setString(8, pacote.getBrinde5());
-            comando.setString(9, pacote.getSituacao());
-            comando.setDouble(10, pacote.getPreco());
+            comando.setDouble(1, pacote.getPreco());
+            comando.setInt(2, pacote.getId());
             
             comando.execute();
                 
