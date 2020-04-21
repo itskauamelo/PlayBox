@@ -54,8 +54,7 @@ public class CamisetaDAO {
         return todasCamisetas;
     }
     
-    
-        public List<Camiseta> listarOpt(){
+    public List<Camiseta> listarOpt(){
         List<Camiseta> camisetas = new ArrayList<>();       
         
         try {

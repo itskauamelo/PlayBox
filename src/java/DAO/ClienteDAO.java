@@ -25,7 +25,7 @@ public class ClienteDAO {
         
     private static final String AUTENTICA_CLIENTE = "SELECT * FROM cliente WHERE email=? AND senha=?";
     
-        public Cliente autenticaCliente(Cliente cliente) throws ClassNotFoundException {
+    public Cliente autenticaCliente(Cliente cliente) throws ClassNotFoundException {
         Cliente clienteAutenticado = null;
         Connection conexao = null;
         PreparedStatement pstmt = null;
@@ -83,9 +83,6 @@ public class ClienteDAO {
         }
     }
     
-    
-    
-    
     public void cadastrarpreferencia(Preferencia preferencia) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
@@ -101,7 +98,6 @@ public class ClienteDAO {
         }
     }
     
-
     public List<Cliente> consultarTodos() throws ClassNotFoundException, SQLException {
 
         List<Cliente> todosClientes;
@@ -137,7 +133,6 @@ public class ClienteDAO {
         return todosClientes;
     }
     
-    
     public void ativarCadastro(Cliente cliente) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
@@ -165,7 +160,7 @@ public class ClienteDAO {
         }
     }
     
-        public List<Cartao> consultarTodosCartoes() throws ClassNotFoundException, SQLException {
+    public List<Cartao> consultarTodosCartoes() throws ClassNotFoundException, SQLException {
 
         List<Cartao> todosCartoes;
         try (Connection con = ConectaBanco.getConexao()) {

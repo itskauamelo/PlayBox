@@ -16,7 +16,7 @@ public class Compra {
     
     private int id;
     private Cliente cliente;
-    private Date data;
+    private String data;
     private Carrinho carrinho;
     private double total;
 
@@ -39,11 +39,11 @@ public class Compra {
         this.cliente = cliente;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

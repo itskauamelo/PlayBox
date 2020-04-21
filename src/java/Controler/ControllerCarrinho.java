@@ -46,11 +46,10 @@ public class ControllerCarrinho extends HttpServlet {
         
     }
 
-        private void colocarCarrinho(HttpServletRequest request, HttpServletResponse response) {
+    private void colocarCarrinho(HttpServletRequest request, HttpServletResponse response) {
         try {
             int id = Integer.parseInt(request.getParameter("id")); 
 
-            Pacote pacote = new Pacote();
             PacoteDAO dao = new PacoteDAO();
             Pacote pacoteAdicionar = dao.consultarPorIdCarrinho(id);
             
@@ -61,7 +60,6 @@ public class ControllerCarrinho extends HttpServlet {
                 request.getSession().setAttribute("carrinho", carrinho);
             }
             carrinho.addPacote(pacoteAdicionar);
-            dao.cadastrarCarrinho(id);
             response.sendRedirect("carrinho");
             
         
@@ -79,7 +77,6 @@ public class ControllerCarrinho extends HttpServlet {
 
             Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
             carrinho.remover(pacoteARemover);
-
             response.sendRedirect("carrinho");
         
         } catch (Exception ex) {

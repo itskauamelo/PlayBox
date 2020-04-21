@@ -230,7 +230,7 @@
             <a href="indexLogado.jsp" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Continuar Comprando</a>
             </div><br><br><br>
             <div class="price-button">
-            <a href="pagamento" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Continuar</a>
+            <a href="finalizarCompra" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Continuar</a>
             </div>
             <br>
             ⠀<img src="img/pagamentos.png" alt="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto" title="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto">

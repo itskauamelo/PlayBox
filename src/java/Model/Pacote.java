@@ -40,6 +40,11 @@ public class Pacote {
         this.preco = preco;
     }
 
+    public Pacote(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public int getId() {
         return id;
     }

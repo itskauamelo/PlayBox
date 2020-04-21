@@ -8,8 +8,11 @@
 package Controler;
 
 import DAO.ClienteDAO;
+import DAO.PacoteDAO;
+import Model.Carrinho;
 import Model.Cartao;
 import Model.Cliente;
+import Model.Pacote;
 import Model.Preferencia;
 import java.io.IOException;
 import java.sql.Date;

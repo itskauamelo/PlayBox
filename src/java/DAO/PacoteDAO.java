@@ -117,7 +117,7 @@ public class PacoteDAO {
         return null;
     }
     
-        public Pacote cadastrarCarrinho(int id) throws ClassNotFoundException, SQLException {
+    public Pacote cadastrarCarrinho(int id) throws ClassNotFoundException, SQLException {
         List<Pacote> todosPacotes = consultarTodos();
         Connection con = ConectaBanco.getConexao();
         for (Pacote pacote : todosPacotes) {
@@ -136,5 +136,17 @@ public class PacoteDAO {
         }
         return null;
     }
-
+        
+    public void removerCarrinho(int id) throws ClassNotFoundException, SQLException {
+        List<Pacote> todosPacotes = consultarTodos();
+        Connection con = ConectaBanco.getConexao();
+        for (Pacote pacote : todosPacotes) {
+            if (pacote.getId() == id)
+            {
+        PreparedStatement comando = con.prepareStatement("DELETE Pacote p FROM carrinho WHERE p.id = ?");
+        comando.setInt(1, pacote.getId());
+        comando.execute();
+    }
+    }
+    }
 }
