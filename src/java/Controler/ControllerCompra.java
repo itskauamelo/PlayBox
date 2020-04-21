@@ -38,8 +38,8 @@ public class ControllerCompra extends HttpServlet {
 
         if (uri.equals(request.getContextPath() + "/minhasCompras")) {
             minhasCompras(request, response);
-        } else if (uri.equals(request.getContextPath() + "/finalizarCompra")) {
-                finalizarCompra(request, response);
+        } else {
+                response.sendRedirect("404.jsp");
         } 
         
         } catch (Exception e) {
@@ -48,15 +48,31 @@ public class ControllerCompra extends HttpServlet {
             }
     }
     
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String uri = request.getRequestURI();
+
+            if (uri.equals(request.getContextPath() + "/finalizarCompra")) {
+                 finalizarCompra(request, response);            
+            } else {
+                response.sendRedirect("404.jsp");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("../Erro.jsp");
+        }
+    }
+    
     private void finalizarCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
 
-        Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
+        //Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
         Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
     
         Compra compra = new Compra();
-        compra.setCliente(cliente);
+        //compra.setCliente(cliente);
         compra.setCarrinho(carrinho);
-        compra.setTotal(carrinho.calcularTotal());
+        compra.setTotal((int) carrinho.calcularTotal());
 
         CompraDAO dao = new CompraDAO();
         
@@ -74,7 +90,7 @@ public class ControllerCompra extends HttpServlet {
 
         if (usuarioLogado != null) {
             CompraDAO dao = new CompraDAO();
-            comprasUsuario = dao.listarComprasUsuario(usuarioLogado);
+            //comprasUsuario = dao.listarComprasUsuario(usuarioLogado);
         }
 
         request.setAttribute("compras", comprasUsuario);

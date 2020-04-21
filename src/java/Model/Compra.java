@@ -15,12 +15,16 @@ import java.util.Date;
 public class Compra {
     
     private int id;
-    private Cliente cliente;
-    private String data;
     private Carrinho carrinho;
-    private double total;
+    private int total;
 
     public Compra() {
+    }
+
+    public Compra(int id, String data, Carrinho carrinho, int total) {
+        this.id = id;
+        this.carrinho = carrinho;
+        this.total = total;
     }
 
     public int getId() {
@@ -29,22 +33,6 @@ public class Compra {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
     }
 
     public Carrinho getCarrinho() {
@@ -59,9 +47,19 @@ public class Compra {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(int total) {
         this.total = total;
     }
+
+    /*public static Comparator<Compra> getOrdenar_por_data_desc() {
+        return ordenar_por_data_desc;
+    }
+
+    public static void setOrdenar_por_data_desc(Comparator<Compra> ordenar_por_data_desc) {
+        Compra.ordenar_por_data_desc = ordenar_por_data_desc;
+    }
+
+    
     
     public static Comparator<Compra> ordenar_por_data_desc = new Comparator<Compra>() {
         @Override
@@ -69,5 +67,5 @@ public class Compra {
         return o2.getData().compareTo(o1.getData());
         
         }
-    };
+    };*/
 }

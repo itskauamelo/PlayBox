@@ -27,15 +27,15 @@ public class CompraDAO {
     public void cadastrar(Compra compra) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO compra VALUES (NEXTVAL('id_compra'),now(),?,?,?)");
+            PreparedStatement comando = con.prepareStatement("INSERT INTO compra VALUES (NEXTVAL('id_compra'),?,?)");           
             comando.setString(1, compra.getCarrinho().toString());
-            comando.setDouble(2, compra.getTotal());
-            comando.setString(3, compra.getCliente().toString());
+            //comando.setString(2, compra.getCliente().toString());
+            comando.setInt(2, (int) compra.getTotal());
             comando.execute();
         }
     }
 
-    public List<Compra> listarComprasUsuario(Cliente cliente) {
+    /*public List<Compra> listarComprasUsuario(Cliente cliente) {
         
         List<Compra> comprasUsuario = new ArrayList<>();
         
@@ -47,5 +47,5 @@ public class CompraDAO {
         
         Collections.sort(comprasUsuario, Compra.ordenar_por_data_desc);
         return comprasUsuario;
-    }
+    }*/
 }
