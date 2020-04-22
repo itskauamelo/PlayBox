@@ -16,14 +16,16 @@ public class Compra {
     
     private int id;
     private Carrinho carrinho;
-    private int total;
+    private Date data;
+    private double total;
 
     public Compra() {
     }
 
-    public Compra(int id, String data, Carrinho carrinho, int total) {
+    public Compra(int id, Carrinho carrinho, Date data, double total) {
         this.id = id;
         this.carrinho = carrinho;
+        this.data = data;
         this.total = total;
     }
 
@@ -43,15 +45,25 @@ public class Compra {
         this.carrinho = carrinho;
     }
 
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
     public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
-
-    /*public static Comparator<Compra> getOrdenar_por_data_desc() {
+    
+    
+/*
+    public static Comparator<Compra> getOrdenar_por_data_desc() {
         return ordenar_por_data_desc;
     }
 
@@ -68,4 +80,5 @@ public class Compra {
         
         }
     };*/
+
 }

@@ -25,6 +25,11 @@ public class Carrinho {
         this.total = total;
     }
 
+    public Carrinho(int id) {
+        this.id = id;
+    }
+    
+
     public int getId() {
         return id;
     }
