@@ -169,23 +169,34 @@
                 <div class="col-cadastro col-md-8">
                     
                     <center>
-                        <form method="GET">
+                        <form method="POST">
                         <h3 class="post-item-header"> Entrega </h3>
                         <br>
+                                                    <p id="rcorners2">
+                            <label>Endereços cadastrados</label>
+                            <br>
+                            <c:forEach items="${todosCartoes}" var="c">
+                                <input type="checkbox" selected="false" value="${c.id}">${c.bandeira} final ****<br>
+                            </c:forEach>
+                            </p>
+                            <br>
                         <label>CEP</label>
                         <input type="text" id="txtCep" name="txtCep" maxlength="9" class="form-control" onblur="pesquisacep(this.value);" /><br>
                         <label>Rua</label>
-                        <input type="text" id="txtRua" name="txtCep" maxlength="9" class="form-control"><br>
+                        <input type="text" id="txtRua" name="txtCep" class="form-control" disabled><br>
                         <label>Numero</label>
-                        <input type="text" id="txtNumero" name="txtCep" maxlength="9" class="form-control"><br>
+                        <input type="text" id="txtNumero" name="txtCep" class="form-control"><br>
                         <label>Complemento</label>
-                        <input type="text" id="txtComplemento" name="txtCep" maxlength="9" class="form-control"><br>
+                        <input type="text" id="txtComplemento" name="txtCep" class="form-control"><br>
                         <label>Bairro</label>
-                        <input type="text" id="txtBairro" name="txtCep" maxlength="9" class="form-control"><br>
+                        <input type="text" id="txtBairro" name="txtCep" class="form-control" disabled><br>
                         <label>Cidade</label>
-                        <input type="text" id="txtCidade" name="txtCep" maxlength="9" class="form-control"><br>
+                        <input type="text" id="txtCidade" name="txtCep" class="form-control" disabled><br>
                         <label>UF</label>
-                        <input type="text" id="txtUf" name="txtCep" maxlength="9" class="form-control"><br>
+                        <input type="text" id="txtUf" name="txtCep" maxlength="2" class="form-control" disabled><br>
+                        <div class="price-button">
+                                <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Endereco"><i class="fa fa-map-marker" aria-hidden="true"></i> Adicionar Endereço</button>
+                        </div>
                         </form>
                     </center>
                    
@@ -210,7 +221,7 @@
                         <br>
                         <label>Metodo de Pagamento</label>
                         <br>
-                        <input type="radio" id="rbtMetodo" name="rbtMetodo" onclick="mostrarboleto();"> Boleto      <input type="radio" id="rbtMetodo" name="rbtMetodo" onclick="mostrarcartao();"> Cartão de Crédito
+                        <input type="radio" id="rbtMetodo" value="Boleto" name="rbtMetodo" onclick="mostrarboleto();"> Boleto      <input type="radio" id="rbtMetodo" name="rbtMetodo" value="Cartao de Credito" onclick="mostrarcartao();"> Cartão de Crédito
                         <br><br>
                         <div id="boleto" style="display:none;">
                             <label>CPF</label>
@@ -241,12 +252,22 @@
                             </script>
                                 
                             <label>Bandeira</label>
-                            <input type="text" id="txtBandeira" name="txtBandeira" maxlength="16" style="color: black"><br>
+                            <select id="txtBandeira" name="txtBandeira" style="color: black">
+                                <option disabled>Selecione a bandeira</option>
+                                <option value="MasterCard">MasterCard</option>
+                                <option value="Visa">Visa</option>
+                                <option value="Elo">Elo</option>
+                                <option value="Hipercard">Hipercard</option>
+                                <option value="Diners Club">Diners Club</option>
+                                <option value="American Express">American Express</option>
+                                <option value="Maestro">Maestro</option>
+                            </select>
+                                <br>
                             <label>Numero do cartão</label>
                             <input type="text" id="txtNumeroCartao" name="txtNumeroCartao" maxlength="16" style="color: black"> <!--<p class="bandeira"></p>--><br>
                             <label>Nome impresso no cartão </label>
                             <input type="text" id="txtNomeCartao" name="txtNomeCartao" style="color: black"> <br>
-                            <label>Validade</label><input type="text" id="txtValidadeCartao" name="txtValidadeCartao" size="3" maxlength="5" style="color: black"><br>
+                            <label>Validade</label><input type="text" id="txtValidadeCartao" name="txtValidadeCartao" size="5" maxlength="5" style="color: black"><br>
                             <label>Codigo de segurança</label>
                             <input type="password" id="txtCodigoCartao" name="txtCodigoCartao" maxlength="3" size="4" style="color: black"> <br>
                             <div class="price-button">
