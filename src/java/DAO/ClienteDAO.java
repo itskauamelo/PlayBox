@@ -7,6 +7,7 @@ package DAO;
 
 import Model.Cartao;
 import Model.Cliente;
+import Model.Endereco;
 import Model.Preferencia;
 import Util.ConectaBanco;
 import java.sql.Connection;
@@ -155,6 +156,24 @@ public class ClienteDAO {
             comando.setInt(4, cartao.getCodigo());
             comando.setString(5, cartao.getBandeira());
             comando.setString(6, cartao.getCliente());
+
+            comando.execute();
+        }
+    }
+    
+    public void adicionarEndereco(Endereco endereco) throws ClassNotFoundException, SQLException {
+        
+        try (Connection con = ConectaBanco.getConexao()) { //fazer query
+            PreparedStatement comando = con.prepareStatement("INSERT INTO endereco VALUES (NEXTVAL('id_cartaocredito'), ?, ?, ?, ?, ?, (SELECT id FROM cliente WHERE nomecompleto = ?))");
+            
+            comando.setInt(1, endereco.getCep());
+            comando.setString(2, endereco.getRua());
+            comando.setInt(3, endereco.getNumero());
+            comando.setString(4, endereco.getComplemento());
+            comando.setString(5, endereco.getBairro());
+            comando.setString(6, endereco.getCidade());
+            comando.setString(7, endereco.getUf());
+            comando.setString(8, endereco.getCliente());
 
             comando.execute();
         }
