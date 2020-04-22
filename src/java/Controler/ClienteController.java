@@ -12,6 +12,7 @@ import DAO.PacoteDAO;
 import Model.Carrinho;
 import Model.Cartao;
 import Model.Cliente;
+import Model.Endereco;
 import Model.Pacote;
 import Model.Preferencia;
 import java.io.IOException;
@@ -72,6 +73,8 @@ public class ClienteController extends HttpServlet {
                 cadastrar(request, response);
             } else if (uri.equals(request.getContextPath() + "/cadastrarCartao")) {
                 cadastrarCartao(request, response);
+            } else if (uri.equals(request.getContextPath() + "/cadastrarEndereco")) {
+                cadastrarEndereco(request, response);
             } else if (uri.equals(request.getContextPath() + "/editarSenhaCliente")) {
                 confirmarEdicaoSenha(request, response);
             } else if (uri.equals(request.getContextPath() + "/ativarCadastro")) {
@@ -191,10 +194,26 @@ public class ClienteController extends HttpServlet {
         dao.adicionarCartao(cartao);
 
         response.sendRedirect("pagamento");
-/*
-        request.setAttribute("msg", "Cadastro ativado, redirecionando para página principal para que realize o login!");
-        
-*/
+
+    }
+    
+    private void cadastrarEndereco(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+
+        Endereco endereco = new Endereco();
+//arrumar campo que importa
+        endereco.setCep(Integer.valueOf(request.getParameter("txtCep")));
+        endereco.setRua(request.getParameter("txtNumeroCartao"));
+        endereco.setNumero(Integer.valueOf(request.getParameter("txtNomeCartao")));
+        endereco.setComplemento(request.getParameter("txtValidadeCartao"));
+        endereco.setBairro(request.getParameter("txtCodigoCartao"));
+        endereco.setCidade(request.getParameter("txtValidadeCartao"));
+        endereco.setUf(request.getParameter("txtValidadeCartao"));
+        endereco.setCliente(request.getParameter("txtIdCliente"));
+
+        ClienteDAO dao = new ClienteDAO();
+        dao.adicionarEndereco(endereco);
+
+        response.sendRedirect("pagamento");
         
     }
     

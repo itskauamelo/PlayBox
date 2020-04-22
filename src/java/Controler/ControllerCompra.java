@@ -7,8 +7,6 @@ package Controler;
 
 import DAO.CompraDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +17,6 @@ import Model.Carrinho;
 import Model.Compra;
 import Model.Cliente;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -29,38 +25,18 @@ import java.util.logging.Logger;
 @WebServlet(name = "ControllerCompra", urlPatterns = {"/finalizarCompra", "/minhasCompras"})
 public class ControllerCompra extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        try {
-        String uri = request.getRequestURI();
-
-        if (uri.equals(request.getContextPath() + "/minhasCompras")) {
-            minhasCompras(request, response);
-        } else {
-                response.sendRedirect("404.jsp");
-        } 
-        
-        } catch (Exception e) {
-                e.printStackTrace();
-                response.sendRedirect("Erro.jsp");
-            }
-    }
     
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String uri = request.getRequestURI();
 
             if (uri.equals(request.getContextPath() + "/finalizarCompra")) {
                  finalizarCompra(request, response);            
-            } else {
-                response.sendRedirect("404.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("../Erro.jsp");
+            response.sendRedirect("Erro.jsp");
         }
     }
     
@@ -71,8 +47,7 @@ public class ControllerCompra extends HttpServlet {
     
         Compra compra = new Compra();
         //compra.setCliente(cliente);
-        compra.setCarrinho(carrinho);
-        compra.setTotal((int) carrinho.calcularTotal());
+        compra.setTotal(carrinho.calcularTotal());
 
         CompraDAO dao = new CompraDAO();
         
@@ -80,7 +55,8 @@ public class ControllerCompra extends HttpServlet {
         
         request.getSession().removeAttribute("carrinho");
         
-        request.setAttribute("msgSucesso", "Sua compra foi finalizada com sucesso!");
+        response.sendRedirect("pagamento");
+
     }
 
     private void minhasCompras(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
