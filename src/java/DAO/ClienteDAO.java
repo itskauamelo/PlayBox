@@ -163,8 +163,8 @@ public class ClienteDAO {
     
     public void adicionarEndereco(Endereco endereco) throws ClassNotFoundException, SQLException {
         
-        try (Connection con = ConectaBanco.getConexao()) { //fazer query
-            PreparedStatement comando = con.prepareStatement("INSERT INTO endereco VALUES (NEXTVAL('id_cartaocredito'), ?, ?, ?, ?, ?, (SELECT id FROM cliente WHERE nomecompleto = ?))");
+        try (Connection con = ConectaBanco.getConexao()) { 
+            PreparedStatement comando = con.prepareStatement("INSERT INTO endereco VALUES (NEXTVAL('id_endereco'), ?, ?, ?, ?, ?, ?, ?, (SELECT id FROM cliente WHERE nomecompleto = ?))");
             
             comando.setInt(1, endereco.getCep());
             comando.setString(2, endereco.getRua());
@@ -194,6 +194,24 @@ public class ClienteDAO {
             }
         }
         return todosCartoes;
+    }
+    
+    public List<Endereco> consultarTodosEnderecos() throws ClassNotFoundException, SQLException {
+
+        List<Endereco> todosEnderecos;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM endereco ORDER BY id");
+            ResultSet resultado = comando.executeQuery();
+            todosEnderecos = new ArrayList<>();
+            while (resultado.next()) {
+                Endereco e = new Endereco();
+                e.setId(resultado.getInt("id"));
+                e.setCep(Integer.valueOf(resultado.getString("cep")));
+                e.setNumero(Integer.valueOf(resultado.getString("numero")));
+                todosEnderecos.add(e);
+            }
+        }
+        return todosEnderecos;
     }
 
     /*

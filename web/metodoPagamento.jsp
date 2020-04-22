@@ -24,7 +24,7 @@
     <meta name="keywords" content="template, theme, html, css, bootstrap, game, event, culture, music, personal, cv">
     <meta name="author" content="Kauã Morateli, Renato Alberti, Rodrigo Kenji">
 
-    <title>PlayboX - Carrinho de Compras</title>
+    <title>PlayboX - Entrega e Pagamento</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -169,31 +169,32 @@
                 <div class="col-cadastro col-md-8">
                     
                     <center>
-                        <form method="POST">
+                        <form method="POST" action="cadastrarEndereco">
+                        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
                         <h3 class="post-item-header"> Entrega </h3>
                         <br>
-                                                    <p id="rcorners2">
+                            <p id="rcorners2">
                             <label>Endereços cadastrados</label>
                             <br>
-                            <c:forEach items="${todosCartoes}" var="c">
-                                <input type="checkbox" selected="false" value="${c.id}">${c.bandeira} final ****<br>
+                            <c:forEach items="${todosEnderecos}" var="e">
+                                <input type="checkbox" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}<br>
                             </c:forEach>
                             </p>
                             <br>
                         <label>CEP</label>
                         <input type="text" id="txtCep" name="txtCep" maxlength="9" class="form-control" onblur="pesquisacep(this.value);" /><br>
                         <label>Rua</label>
-                        <input type="text" id="txtRua" name="txtCep" class="form-control" disabled><br>
+                        <input type="text" id="txtRua" name="txtRua" class="form-control"><br>
                         <label>Numero</label>
-                        <input type="text" id="txtNumero" name="txtCep" class="form-control"><br>
+                        <input type="text" id="txtNumero" name="txtNumero" class="form-control"><br>
                         <label>Complemento</label>
-                        <input type="text" id="txtComplemento" name="txtCep" class="form-control"><br>
+                        <input type="text" id="txtComplemento" name="txtComplemento" class="form-control"><br>
                         <label>Bairro</label>
-                        <input type="text" id="txtBairro" name="txtCep" class="form-control" disabled><br>
+                        <input type="text" id="txtBairro" name="txtBairro" class="form-control"><br>
                         <label>Cidade</label>
-                        <input type="text" id="txtCidade" name="txtCep" class="form-control" disabled><br>
+                        <input type="text" id="txtCidade" name="txtCidade" class="form-control"><br>
                         <label>UF</label>
-                        <input type="text" id="txtUf" name="txtCep" maxlength="2" class="form-control" disabled><br>
+                        <input type="text" id="txtUf" name="txtUf" maxlength="2" class="form-control"><br>
                         <div class="price-button">
                                 <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Endereco"><i class="fa fa-map-marker" aria-hidden="true"></i> Adicionar Endereço</button>
                         </div>

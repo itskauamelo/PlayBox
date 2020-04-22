@@ -34,7 +34,8 @@ import javax.servlet.http.HttpServletResponse;
     "/ativarCadastro",
     "/cadastrarPreferencia",
     "/cadastrarCartao",
-    "/pagamento"
+    "/pagamento",
+    "/cadastrarEndereco"
 })
 
 public class ClienteController extends HttpServlet {
@@ -52,6 +53,7 @@ public class ClienteController extends HttpServlet {
             } else if (uri.equals(request.getContextPath() + "/listarCliente")) {
                 listarTodos(request, response);
             } else if (uri.equals(request.getContextPath() + "/pagamento")) {
+                listarTodosEnderecos(request, response);
                 listarTodosCartoes(request, response);
             } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoCliente")) {
                 iniciarEdicao(request, response);
@@ -202,12 +204,12 @@ public class ClienteController extends HttpServlet {
         Endereco endereco = new Endereco();
 //arrumar campo que importa
         endereco.setCep(Integer.valueOf(request.getParameter("txtCep")));
-        endereco.setRua(request.getParameter("txtNumeroCartao"));
-        endereco.setNumero(Integer.valueOf(request.getParameter("txtNomeCartao")));
-        endereco.setComplemento(request.getParameter("txtValidadeCartao"));
-        endereco.setBairro(request.getParameter("txtCodigoCartao"));
-        endereco.setCidade(request.getParameter("txtValidadeCartao"));
-        endereco.setUf(request.getParameter("txtValidadeCartao"));
+        endereco.setRua(request.getParameter("txtRua"));
+        endereco.setNumero(Integer.valueOf(request.getParameter("txtNumero")));
+        endereco.setComplemento(request.getParameter("txtComplemento"));
+        endereco.setBairro(request.getParameter("txtBairro"));
+        endereco.setCidade(request.getParameter("txtCidade"));
+        endereco.setUf(request.getParameter("txtUf"));
         endereco.setCliente(request.getParameter("txtIdCliente"));
 
         ClienteDAO dao = new ClienteDAO();
@@ -231,6 +233,15 @@ public class ClienteController extends HttpServlet {
 
         List<Cartao> todosCartoes = dao.consultarTodosCartoes();
         request.setAttribute("todosCartoes", todosCartoes);
+
+        request.getRequestDispatcher("metodoPagamento.jsp").forward(request, response);
+    }
+    
+    private void listarTodosEnderecos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        ClienteDAO dao = new ClienteDAO();
+
+        List<Endereco> todosEnderecos = dao.consultarTodosEnderecos();
+        request.setAttribute("todosEnderecos", todosEnderecos);
 
         request.getRequestDispatcher("metodoPagamento.jsp").forward(request, response);
     }
