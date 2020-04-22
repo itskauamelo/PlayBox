@@ -17,18 +17,21 @@ public class Compra {
     private int id;
     private Carrinho carrinho;
     private Date data;
+    private Cliente cliente;
     private double total;
 
     public Compra() {
     }
 
-    public Compra(int id, Carrinho carrinho, Date data, double total) {
+        public Compra(int id, Carrinho carrinho, Date data, Cliente cliente, double total) {
         this.id = id;
         this.carrinho = carrinho;
         this.data = data;
+        this.cliente = cliente;
         this.total = total;
     }
-
+        
+    
     public int getId() {
         return id;
     }
@@ -53,6 +56,14 @@ public class Compra {
         this.data = data;
     }
 
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public double getTotal() {
         return total;
     }
@@ -60,7 +71,6 @@ public class Compra {
     public void setTotal(double total) {
         this.total = total;
     }
-    
     
 /*
     public static Comparator<Compra> getOrdenar_por_data_desc() {

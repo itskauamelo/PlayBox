@@ -25,7 +25,7 @@ public class CompraDAO {
     public void cadastrar(Compra compra) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO compra VALUES (NEXTVAL('id_compra'), now(),?)");           
+            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor) VALUES (NEXTVAL('id_compra'), now(),?)");           
             //comando.setString(1, compra.getCarrinho().toString());
             //comando.setString(2, compra.getCliente().toString());
             comando.setDouble(1, compra.getTotal());

@@ -216,7 +216,6 @@
                    </tr>
                    </c:forEach>
                 </tbody>
-                
                 <tfoot>
                     <tr>
                         <th colspan="5">Total</th>

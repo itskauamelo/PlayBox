@@ -42,7 +42,7 @@ public class ControllerCompra extends HttpServlet {
     
     private void finalizarCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
 
-        //Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
+        Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
         Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
     
         Compra compra = new Compra();
