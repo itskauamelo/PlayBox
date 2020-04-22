@@ -12,6 +12,7 @@ import DAO.PacoteDAO;
 import Model.Carrinho;
 import Model.Cartao;
 import Model.Cliente;
+import Model.Compra;
 import Model.Endereco;
 import Model.Pacote;
 import Model.Preferencia;
@@ -35,7 +36,8 @@ import javax.servlet.http.HttpServletResponse;
     "/cadastrarPreferencia",
     "/cadastrarCartao",
     "/pagamento",
-    "/cadastrarEndereco"
+    "/cadastrarEndereco",
+    "/cadastrarFk"
 })
 
 public class ClienteController extends HttpServlet {
@@ -54,8 +56,7 @@ public class ClienteController extends HttpServlet {
                 listarTodos(request, response);
             } else if (uri.equals(request.getContextPath() + "/pagamento")) {
                 listarTodosEnderecos(request, response);
-                listarTodosCartoes(request, response);
-            } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoCliente")) {
+            }else if (uri.equals(request.getContextPath() + "/iniciarEdicaoCliente")) {
                 iniciarEdicao(request, response);
             } else {
                 listarTodos(request, response);
@@ -77,6 +78,8 @@ public class ClienteController extends HttpServlet {
                 cadastrarCartao(request, response);
             } else if (uri.equals(request.getContextPath() + "/cadastrarEndereco")) {
                 cadastrarEndereco(request, response);
+            } else if (uri.equals(request.getContextPath() + "/cadastrarFk")) {
+                cadastrarFk(request, response);
             } else if (uri.equals(request.getContextPath() + "/editarSenhaCliente")) {
                 confirmarEdicaoSenha(request, response);
             } else if (uri.equals(request.getContextPath() + "/ativarCadastro")) {
@@ -199,10 +202,23 @@ public class ClienteController extends HttpServlet {
 
     }
     
+    private void cadastrarFk(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+
+        Compra compra = new Compra();
+
+        compra.setCliente(request.getParameter("txtIdCliente"));
+
+        ClienteDAO dao = new ClienteDAO();
+        dao.cadastrarFk(compra);
+
+        response.sendRedirect("pagamento");
+
+    }
+    
     private void cadastrarEndereco(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
 
         Endereco endereco = new Endereco();
-//arrumar campo que importa
+
         endereco.setCep(Integer.valueOf(request.getParameter("txtCep")));
         endereco.setRua(request.getParameter("txtRua"));
         endereco.setNumero(Integer.valueOf(request.getParameter("txtNumero")));
@@ -214,8 +230,9 @@ public class ClienteController extends HttpServlet {
 
         ClienteDAO dao = new ClienteDAO();
         dao.adicionarEndereco(endereco);
+        
 
-        response.sendRedirect("pagamento");
+        response.sendRedirect("cadastrarFk");
         
     }
     
@@ -241,8 +258,9 @@ public class ClienteController extends HttpServlet {
         ClienteDAO dao = new ClienteDAO();
 
         List<Endereco> todosEnderecos = dao.consultarTodosEnderecos();
+        List<Cartao> todosCartoes = dao.consultarTodosCartoes();
         request.setAttribute("todosEnderecos", todosEnderecos);
-
+        request.setAttribute("todosCartoes", todosCartoes);
         request.getRequestDispatcher("metodoPagamento.jsp").forward(request, response);
     }
     

@@ -16,15 +16,31 @@ import javax.servlet.http.HttpServletResponse;
 import Model.Carrinho;
 import Model.Compra;
 import Model.Cliente;
+import Model.Usuario;
 import java.sql.SQLException;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author alunocmc
  */
-@WebServlet(name = "ControllerCompra", urlPatterns = {"/finalizarCompra", "/minhasCompras"})
+@WebServlet(name = "ControllerCompra", urlPatterns = {"/finalizarCompra", "/minhasCompras", "/fecharCompra"})
 public class ControllerCompra extends HttpServlet {
 
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String uri = request.getRequestURI();
+
+            if (uri.equals(request.getContextPath() + "/fecharCompra")) {
+                 fecharCompra(request, response);            
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("Erro.jsp");
+        }
+    }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,13 +58,10 @@ public class ControllerCompra extends HttpServlet {
     
     private void finalizarCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
 
-        Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
         Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
     
         Compra compra = new Compra();
-        //compra.setCliente(cliente);
         compra.setTotal(carrinho.calcularTotal());
-
         CompraDAO dao = new CompraDAO();
         
         dao.cadastrar(compra);
@@ -56,6 +69,17 @@ public class ControllerCompra extends HttpServlet {
         request.getSession().removeAttribute("carrinho");
         
         response.sendRedirect("pagamento");
+
+    }
+    private void fecharCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
+    
+        Compra compra = new Compra();
+        compra.setEnderecoentrega(Integer.valueOf(request.getParameter("chkEndereco")));
+        compra.setMetodopagamento(Integer.valueOf(request.getParameter("rbtMetodo")));
+        compra.setCartaocredito(Integer.valueOf(request.getParameter("chkCartao")));
+        CompraDAO dao = new CompraDAO();
+        
+        dao.fecharCompra(compra);
 
     }
 

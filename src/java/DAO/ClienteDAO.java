@@ -7,6 +7,7 @@ package DAO;
 
 import Model.Cartao;
 import Model.Cliente;
+import Model.Compra;
 import Model.Endereco;
 import Model.Preferencia;
 import Util.ConectaBanco;
@@ -156,6 +157,19 @@ public class ClienteDAO {
             comando.setInt(4, cartao.getCodigo());
             comando.setString(5, cartao.getBandeira());
             comando.setString(6, cartao.getCliente());
+
+            comando.execute();
+        }
+    }
+    
+    public void cadastrarFk(Compra compra) throws ClassNotFoundException, SQLException {
+        
+        try (Connection con = ConectaBanco.getConexao()) { //ARRUMAR
+            PreparedStatement comando = con.prepareStatement("UPDATE compra\n" +
+            "SET clienteFk = (SELECT id FROM Cliente WHERE nomecompleto= ?)\n" +
+            "WHERE id IN (SELECT MAX(ID) FROM compra)");
+            
+            comando.setString(1, compra.getCliente());
 
             comando.execute();
         }

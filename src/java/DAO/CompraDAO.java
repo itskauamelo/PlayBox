@@ -32,6 +32,18 @@ public class CompraDAO {
             comando.execute();
         }
     }
+    
+    public void fecharCompra(Compra compra) throws ClassNotFoundException, SQLException {
+            
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("UPDATE compra SET enderecoentregaFk = ?, metodopagamentofk = ?, cartaocreditoFk = ? WHERE id IN (SELECT MAX(ID) FROM compra)");           
+
+            comando.setInt(1, compra.getEnderecoentrega());
+            comando.setInt(2, compra.getMetodopagamento());
+            comando.setInt(3, compra.getCartaocredito());
+            comando.execute();
+        }
+    }
 
     /*public List<Compra> listarComprasUsuario(Cliente cliente) {
         

@@ -17,21 +17,50 @@ public class Compra {
     private int id;
     private Carrinho carrinho;
     private Date data;
-    private Cliente cliente;
+    private String cliente;
+    private int enderecoentrega;
+    private int metodopagamento;
+    private int cartaocredito;
     private double total;
 
     public Compra() {
     }
 
-        public Compra(int id, Carrinho carrinho, Date data, Cliente cliente, double total) {
+    public Compra(int id, Carrinho carrinho, Date data, String cliente, int enderecoentrega, int metodopagamento, int cartaocredito, double total) {
         this.id = id;
         this.carrinho = carrinho;
         this.data = data;
         this.cliente = cliente;
+        this.enderecoentrega = enderecoentrega;
+        this.metodopagamento = metodopagamento;
+        this.cartaocredito = cartaocredito;
         this.total = total;
     }
-        
-    
+
+    public int getEnderecoentrega() {
+        return enderecoentrega;
+    }
+
+    public void setEnderecoentrega(int enderecoentrega) {
+        this.enderecoentrega = enderecoentrega;
+    }
+
+    public int getMetodopagamento() {
+        return metodopagamento;
+    }
+
+    public void setMetodopagamento(int metodopagamento) {
+        this.metodopagamento = metodopagamento;
+    }
+
+    public int getCartaocredito() {
+        return cartaocredito;
+    }
+
+    public void setCartaocredito(int cartaocredito) {
+        this.cartaocredito = cartaocredito;
+    }
+
     public int getId() {
         return id;
     }
@@ -60,7 +89,7 @@ public class Compra {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
     }
 

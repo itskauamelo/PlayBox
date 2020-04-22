@@ -163,24 +163,47 @@
                 <center><h3 class="standard-header">Entrega e Pagamento</h3></center>
             <br>
             <br>
+
             
         <div class="container">
             <div class="row">
                 <div class="col-cadastro col-md-8">
                     
                     <center>
-                        <form method="POST" action="cadastrarEndereco">
-                        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
-                        <h3 class="post-item-header"> Entrega </h3>
-                        <br>
+                        <form method="POST" action="fecharCompra">
+                            <h3 class="post-item-header"> Entrega </h3>
                             <p id="rcorners2">
                             <label>Endereços cadastrados</label>
                             <br>
                             <c:forEach items="${todosEnderecos}" var="e">
-                                <input type="checkbox" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}<br>
+                                <input type="checkbox" name="chkEndereco" id="chkEndereco" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}<br>
                             </c:forEach>
                             </p>
+                            
+                            
+                            <p id="rcorners2">
+                            <label>Cartões cadastrados</label>
                             <br>
+                            <c:forEach items="${todosCartoes}" var="c">
+                                <input type="checkbox" name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****<br>
+                            </c:forEach>
+                            </p>
+                            <input type="radio" id="rbtMetodo" name="rbtMetodo" value="2"> Cartão de Crédito
+                            <div class="price-button">
+                                <button class="btn btn-primary btn-block dropdown-toggle" title="Finalizar Compra"><i class="fa fa-credit-card" aria-hidden="true"></i> Finalizar Compra</button>
+                            </div>
+                        </form>
+                    </center> 
+                    
+                    <form method="POST" action="cadastrarFk">
+                        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                        <button title="Fk"><i class="fa fa-map-marker" aria-hidden="true"></i> Fk</button>
+                    </form>
+                    <center>
+                        <form method="POST" action="cadastrarEndereco">
+                        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                        <br>
+                        <br>
                         <label>CEP</label>
                         <input type="text" id="txtCep" name="txtCep" maxlength="9" class="form-control" onblur="pesquisacep(this.value);" /><br>
                         <label>Rua</label>
@@ -196,15 +219,12 @@
                         <label>UF</label>
                         <input type="text" id="txtUf" name="txtUf" maxlength="2" class="form-control"><br>
                         <div class="price-button">
-                                <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Endereco"><i class="fa fa-map-marker" aria-hidden="true"></i> Adicionar Endereço</button>
+                        <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Endereco"><i class="fa fa-map-marker" aria-hidden="true"></i> Adicionar Endereço</button>
                         </div>
                         </form>
                     </center>
-                   
                 </div>
-                
                 <div class="col-cadastro col-md-8">
-                    
                     
                     <style>
                         #rcorners2 
@@ -222,7 +242,7 @@
                         <br>
                         <label>Metodo de Pagamento</label>
                         <br>
-                        <input type="radio" id="rbtMetodo" value="Boleto" name="rbtMetodo" onclick="mostrarboleto();"> Boleto      <input type="radio" id="rbtMetodo" name="rbtMetodo" value="Cartao de Credito" onclick="mostrarcartao();"> Cartão de Crédito
+                        <input type="radio" id="rbtMetodo" value="Boleto" name="rbtMetodo" onclick="mostrarboleto();" value="1"> Boleto      <input type="radio" id="rbtMetodo" name="rbtMetodo" value="Cartao de Credito" onclick="mostrarcartao();"> Cartão de Crédito
                         <br><br>
                         <div id="boleto" style="display:none;">
                             <label>CPF</label>
@@ -279,7 +299,8 @@
                     </center>
                    
                 </div>
-                
+                        
+                        
             </div>
         </div>
 
