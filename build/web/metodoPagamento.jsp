@@ -206,11 +206,10 @@
                 <div class="col-cadastro col-md-8">
                     <center>
                         <form method="POST" action="cadastrarEndereco">
-                        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                        
                         <br>
                         <h3 class="post-item-header"> Entrega </h3>
                         <br>
-                        
                         <label>CEP</label>
                         <input type="text" id="txtCep" name="txtCep" maxlength="9" class="form-control" onblur="pesquisacep(this.value);" /><br>
                         <label>Rua</label>
@@ -225,6 +224,7 @@
                         <input type="text" id="txtCidade" name="txtCidade" class="form-control"><br>
                         <label>UF</label>
                         <input type="text" id="txtUf" name="txtUf" maxlength="2" class="form-control"><br>
+                        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
                         <div class="price-button">
                         <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Endereco"><i class="fa fa-map-marker" aria-hidden="true"></i> Adicionar Endereço</button>
                         </div>

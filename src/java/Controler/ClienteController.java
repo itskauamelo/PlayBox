@@ -78,8 +78,6 @@ public class ClienteController extends HttpServlet {
                 cadastrarCartao(request, response);
             } else if (uri.equals(request.getContextPath() + "/cadastrarEndereco")) {
                 cadastrarEndereco(request, response);
-            } else if (uri.equals(request.getContextPath() + "/cadastrarFk")) {
-                cadastrarFk(request, response);
             } else if (uri.equals(request.getContextPath() + "/editarSenhaCliente")) {
                 confirmarEdicaoSenha(request, response);
             } else if (uri.equals(request.getContextPath() + "/ativarCadastro")) {
@@ -202,19 +200,6 @@ public class ClienteController extends HttpServlet {
 
     }
     
-    private void cadastrarFk(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
-
-        Compra compra = new Compra();
-
-        compra.setCliente(request.getParameter("txtIdCliente"));
-
-        ClienteDAO dao = new ClienteDAO();
-        dao.cadastrarFk(compra);
-
-        response.sendRedirect("pagamento");
-
-    }
-    
     private void cadastrarEndereco(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
 
         Endereco endereco = new Endereco();
@@ -232,7 +217,7 @@ public class ClienteController extends HttpServlet {
         dao.adicionarEndereco(endereco);
         
 
-        response.sendRedirect("cadastrarFk");
+        response.sendRedirect("pagamento");
         
     }
     
