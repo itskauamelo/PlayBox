@@ -245,14 +245,6 @@ public class ClienteController extends HttpServlet {
         request.getRequestDispatcher("admin/index.jsp").forward(request, response);
     }
     
-    private void listarTodosCartoes(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
-        ClienteDAO dao = new ClienteDAO();
-
-        List<Cartao> todosCartoes = dao.consultarTodosCartoes();
-        request.setAttribute("todosCartoes", todosCartoes);
-
-        request.getRequestDispatcher("metodoPagamento.jsp").forward(request, response);
-    }
     
     private void listarTodosEnderecos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         ClienteDAO dao = new ClienteDAO();

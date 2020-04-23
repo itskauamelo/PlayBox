@@ -11,6 +11,7 @@ import Model.Compra;
 import Util.ConectaBanco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -20,7 +21,6 @@ import java.sql.SQLException;
 
 public class CompraDAO {
 
-    private static List<Compra> todasCompras = new ArrayList<Compra>();
 
     public void cadastrar(Compra compra) throws ClassNotFoundException, SQLException {
             
@@ -43,6 +43,22 @@ public class CompraDAO {
             comando.setInt(3, compra.getCartaocredito());
             comando.execute();
         }
+    }
+    
+    public List<Compra> consultarUltimaCompra() throws ClassNotFoundException, SQLException {
+
+        List<Compra> ultimaCompra;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM compra ORDER BY id DESC LIMIT 1");
+            ResultSet resultado = comando.executeQuery();
+            ultimaCompra = new ArrayList<>();
+            while (resultado.next()) {
+                Compra c = new Compra();
+                c.setId(resultado.getInt("id"));
+                ultimaCompra.add(c);
+            }
+        }
+        return ultimaCompra;
     }
 
     /*public List<Compra> listarComprasUsuario(Cliente cliente) {

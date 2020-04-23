@@ -166,12 +166,14 @@
 
             
         <div class="container">
+            
+            
             <div class="row">
-                <div class="col-cadastro col-md-8">
-                    
-                    <center>
+                
+                        <center>
                         <form method="POST" action="fecharCompra">
-                            <h3 class="post-item-header"> Entrega </h3>
+                            <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                            
                             <p id="rcorners2">
                             <label>Endereços cadastrados</label>
                             <br>
@@ -180,30 +182,35 @@
                             </c:forEach>
                             </p>
                             
-                            
                             <p id="rcorners2">
-                            <label>Cartões cadastrados</label>
+                            <label>Pagamentos cadastrados</label>
                             <br>
+                            <input type="radio" id="rbtMetodo" name="rbtMetodo" onclick="mostrarcartaoCad();" value="2"> Cartão de Crédito
+                            <input type="radio" id="rbtMetodo" name="rbtMetodo" onclick="mostrarboletoCad();" value="1"> Boleto Bancário
+                            <br><input type="checkbox" name="chkCartao" id="chkCartao" selected="false" value="7">
+                            <div id="cartaocad" style="display:none;">
                             <c:forEach items="${todosCartoes}" var="c">
                                 <input type="checkbox" name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****<br>
                             </c:forEach>
+                                
+                            </div>
+                            <div id="boletocad" style="display:none;">
+                                
+                            </div>
                             </p>
-                            <input type="radio" id="rbtMetodo" name="rbtMetodo" value="2"> Cartão de Crédito
                             <div class="price-button">
                                 <button class="btn btn-primary btn-block dropdown-toggle" title="Finalizar Compra"><i class="fa fa-credit-card" aria-hidden="true"></i> Finalizar Compra</button>
                             </div>
                         </form>
                     </center> 
-                    
-                    <form method="POST" action="cadastrarFk">
-                        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
-                        <button title="Fk"><i class="fa fa-map-marker" aria-hidden="true"></i> Fk</button>
-                    </form>
+                <div class="col-cadastro col-md-8">
                     <center>
                         <form method="POST" action="cadastrarEndereco">
                         <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
                         <br>
+                        <h3 class="post-item-header"> Entrega </h3>
                         <br>
+                        
                         <label>CEP</label>
                         <input type="text" id="txtCep" name="txtCep" maxlength="9" class="form-control" onblur="pesquisacep(this.value);" /><br>
                         <label>Rua</label>
@@ -225,7 +232,7 @@
                     </center>
                 </div>
                 <div class="col-cadastro col-md-8">
-                    
+                    <br>
                     <style>
                         #rcorners2 
                     {
@@ -249,16 +256,6 @@
                             <input type="text" style="color: black">
                         </div>
                         <div id="cartao" style="display:none;">
-                            
-                            <br>
-                            <p id="rcorners2">
-                            <label>Cartões cadastrados</label>
-                            <br>
-                            <c:forEach items="${todosCartoes}" var="c">
-                                <input type="checkbox" selected="false" value="${c.id}">${c.bandeira} final ****<br>
-                            </c:forEach>
-                            </p>
-                            <br>
                             <form method="POST" action="cadastrarCartao">
                                 <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
                             <script>
@@ -398,6 +395,16 @@
     <script type="text/javascript" >
         
         
+    function marcarboleto()
+    {
+        document.getElementById('chkBoleto').selected;
+    }
+    
+        function desmarcarboleto()
+    {
+        document.getElementById('chkBoleto').sele;
+    }
+    
     function mostrarboleto()
     {
         document.getElementById('boleto').style.display = 'block';
@@ -408,6 +415,19 @@
     {
         document.getElementById('boleto').style.display = 'none';
         document.getElementById('cartao').style.display = 'block';
+        
+    }
+    
+    function mostrarboletoCad()
+    {
+        document.getElementById('boletocad').style.display = 'block';
+        document.getElementById('cartaocad').style.display = 'none';
+    }
+    
+    function mostrarcartaoCad()
+    {
+        document.getElementById('boletocad').style.display = 'none';
+        document.getElementById('cartaocad').style.display = 'block';
         
     }
         

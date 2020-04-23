@@ -26,6 +26,10 @@ public class Compra {
     public Compra() {
     }
 
+    public Compra(int id) {
+        this.id = id;
+    }
+
     public Compra(int id, Carrinho carrinho, Date data, String cliente, int enderecoentrega, int metodopagamento, int cartaocredito, double total) {
         this.id = id;
         this.carrinho = carrinho;

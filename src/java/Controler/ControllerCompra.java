@@ -5,6 +5,7 @@
  */
 package Controler;
 
+import DAO.ClienteDAO;
 import DAO.CompraDAO;
 import java.io.IOException;
 import java.util.List;
@@ -16,15 +17,19 @@ import javax.servlet.http.HttpServletResponse;
 import Model.Carrinho;
 import Model.Compra;
 import Model.Cliente;
-import Model.Usuario;
 import java.sql.SQLException;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author alunocmc
  */
-@WebServlet(name = "ControllerCompra", urlPatterns = {"/finalizarCompra", "/minhasCompras", "/fecharCompra"})
+@WebServlet(name = "ControllerCompra", urlPatterns = {
+    "/finalizarCompra", 
+    "/minhasCompras", 
+    "/fecharCompra",
+    "/compraFinalizada"
+})
+
 public class ControllerCompra extends HttpServlet {
 
     
@@ -49,6 +54,8 @@ public class ControllerCompra extends HttpServlet {
 
             if (uri.equals(request.getContextPath() + "/finalizarCompra")) {
                  finalizarCompra(request, response);            
+            } else if (uri.equals(request.getContextPath() + "/compraFinalizada" )){
+                listarUltimaCompra(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,27 +81,27 @@ public class ControllerCompra extends HttpServlet {
     private void fecharCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
     
         Compra compra = new Compra();
+        compra.setCliente(request.getParameter("txtIdCliente"));
+        ClienteDAO daocli = new ClienteDAO();
+        daocli.cadastrarFk(compra);
+        
         compra.setEnderecoentrega(Integer.valueOf(request.getParameter("chkEndereco")));
         compra.setMetodopagamento(Integer.valueOf(request.getParameter("rbtMetodo")));
         compra.setCartaocredito(Integer.valueOf(request.getParameter("chkCartao")));
         CompraDAO dao = new CompraDAO();
-        
         dao.fecharCompra(compra);
+        
+        response.sendRedirect("compraFinalizada");
 
     }
+    
+        private void listarUltimaCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        CompraDAO dao = new CompraDAO();
 
-    private void minhasCompras(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Compra> ultimaCompra = dao.consultarUltimaCompra();
+        request.setAttribute("ultimaCompra", ultimaCompra);
 
-        Cliente usuarioLogado = (Cliente) request.getSession().getAttribute("usuarioLogado");
-        List<Compra> comprasUsuario = null;
-
-        if (usuarioLogado != null) {
-            CompraDAO dao = new CompraDAO();
-            //comprasUsuario = dao.listarComprasUsuario(usuarioLogado);
-        }
-
-        request.setAttribute("compras", comprasUsuario);
-        request.getRequestDispatcher("minhasCompras.jsp").forward(request, response);
+        request.getRequestDispatcher("compraFinalizada.jsp").forward(request, response);
     }
 
 }
