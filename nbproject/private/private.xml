@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PlayBox/src/java/Controler/ClienteController.java</file>
-            <file>file:/C:/PlayBox/src/java/Controler/UsuarioController.java</file>
-            <file>file:/C:/PlayBox/test/DAO/ProdutoDAOTest.java</file>
-            <file>file:/C:/PlayBox/src/java/DAO/UsuarioDAO.java</file>
-            <file>file:/C:/PlayBox/src/java/Controler/ControllerProduto.java</file>
+            <file>file:/C:/PlayBox/PlayBox/src/java/Util/ConectaBanco.java</file>
+            <file>file:/C:/PlayBox/PlayBox/src/java/DAO/PacoteDAO.java</file>
+            <file>file:/C:/PlayBox/PlayBox/src/java/Controler/ControllerCompra.java</file>
+            <file>file:/C:/PlayBox/PlayBox/web/listarPedidos.jsp</file>
+            <file>file:/C:/PlayBox/PlayBox/web/carrinho.jsp</file>
+            <file>file:/C:/PlayBox/PlayBox/src/java/DAO/CompraDAO.java</file>
+            <file>file:/C:/PlayBox/PlayBox/web/compraFinalizada.jsp</file>
         </group>
     </open-files>
 </project-private>

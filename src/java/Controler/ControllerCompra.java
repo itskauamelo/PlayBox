@@ -27,7 +27,8 @@ import java.sql.SQLException;
     "/finalizarCompra", 
     "/minhasCompras", 
     "/fecharCompra",
-    "/compraFinalizada"
+    "/compraFinalizada",
+    "/listarCompras"
 })
 
 public class ControllerCompra extends HttpServlet {
@@ -54,8 +55,10 @@ public class ControllerCompra extends HttpServlet {
 
             if (uri.equals(request.getContextPath() + "/finalizarCompra")) {
                  finalizarCompra(request, response);            
-            } else if (uri.equals(request.getContextPath() + "/compraFinalizada" )){
+            }else if (uri.equals(request.getContextPath() + "/compraFinalizada" )){
                 listarUltimaCompra(request, response);
+            } else if (uri.equals(request.getContextPath() + "/listarCompras" )){
+                listarTodas(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,5 +106,14 @@ public class ControllerCompra extends HttpServlet {
 
         request.getRequestDispatcher("compraFinalizada.jsp").forward(request, response);
     }
+        
+        private void listarTodas(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        CompraDAO dao = new CompraDAO();
 
+        List<Compra> todasCompras = dao.consultarTodas();
+        request.setAttribute("todasCompras", todasCompras);
+
+        request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
+
+    }
 }

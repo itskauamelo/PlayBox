@@ -60,7 +60,27 @@ public class CompraDAO {
         }
         return ultimaCompra;
     }
+    
+    public List<Compra> consultarTodas() throws ClassNotFoundException, SQLException {
 
+        List<Compra> todasCompras;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement
+            ("select id, datahora, valor from compra");
+            ResultSet resultado = comando.executeQuery();
+            todasCompras = new ArrayList<>();
+            while (resultado.next()) {
+                Compra c = new Compra();
+                c.setId(resultado.getInt("id"));
+                c.setData(resultado.getDate("datahora"));
+                c.setTotal(resultado.getDouble("valor"));
+                
+                todasCompras.add(c);
+            }
+        }
+        return todasCompras;
+    }
+    
     /*public List<Compra> listarComprasUsuario(Cliente cliente) {
         
         List<Compra> comprasUsuario = new ArrayList<>();

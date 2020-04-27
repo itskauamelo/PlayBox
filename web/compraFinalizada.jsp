@@ -169,7 +169,7 @@
             <br>
             <br>
             <div class="centrocadastro">
-                <button class="btn btn-primary btn-block dropdown-toggle" title="Acompanhar compra">Acompanhar</button>
+                <a href="listarCompras" class="btn btn-primary btn-block dropdown-toggle" title="Acompanhar compra">Acompanhar</a>
             </div>
 
     
