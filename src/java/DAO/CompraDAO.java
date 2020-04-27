@@ -66,7 +66,7 @@ public class CompraDAO {
         List<Compra> todasCompras;
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
-            ("select id, datahora, valor from compra");
+            ("SELECT id, datahora, valor FROM compra ORDER BY id DESC");
             ResultSet resultado = comando.executeQuery();
             todasCompras = new ArrayList<>();
             while (resultado.next()) {

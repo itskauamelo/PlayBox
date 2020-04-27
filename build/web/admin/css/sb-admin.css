@@ -139,6 +139,7 @@ tr:hover td {
   background:#4E5066;
   color:#FFFFFF;
   border-top: 1px solid #22262e;
+  padding: 30px;
 }
  
 tr:first-child {
@@ -4907,6 +4908,7 @@ input[type="button"].btn-block {
 
 .conteudo {
     margin-left: 100px;
+    height: 50px;
 }
 
 .navbar-expand .navbar-toggler {

@@ -239,26 +239,41 @@
             </div>
             <div class="single-page-header-bg"></div>
         </div>
+ 
         <div class="container">
+            <div class="recol">
+            <ul class="side-menu">
+                <center><br>
+                    <a class="link-menu">Pedidos</a><br>
+                    <center>_______________</center><br>
+                    <a class="link-menu">Dados Pessoais</a><br>
+                    <center>_______________</center><br>
+                    <a class="link-menu">Atendimento</a><br>
+                    <center>_______________</center><br>
+                    <a class="link-menu">Sair</a><br><br>
+                </center>
+
+            </ul>
+            </div>
+            
             <div class="row">
-                <div class="col-cadastro col-md-8">
-                    <table id="tabela" border="2px" style="border-color: gold">
+                <div class="col-cadastro" style="margin-top: -300px;">
+
+                        <table id="tabela" border="2px" style="border-color: gold">
                         <tr>                
-                            <th class="cabecalho">Id</th>
-                            <th class="cabecalho">Data</th>              
-                            <th class="cabecalho">Total</th>
-                            <th class="cabecalho">Status</th>
                         </tr>
+                        <center> <ul> <h3 style="color: gold">SEUS PEDIDOS</h3> </ul> </center>
                         <c:forEach items="${todasCompras}" var="com">
-                        <tr>              
-                            <td class="conteudo" align="center">${com.id}</td>
-                            <td class="conteudo" align="center">${com.data}</td>
-                            <td class="conteudo" align="center">${com.total}</td>
-                            <!--<td class="conteudo" align="center"><a href="iniciarEdicaoPacote?id="><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>
-                            -->
+                        
+                        <tr style="position:center;">
+                            <td class="conteudo" style="width: 30px"><img src="img/pack.png" style="width:40px;"</td>
+                        <td class="conteudo">#<a href="listarPedido?id=${com.id}" style="font-weight: bold">${com.id}</div></td></a>
+                            <a><td class="conteudo">Realizado em ${com.data}</td></a>
+                            <a><td class="conteudo" style="text-align:right;"><h96 style="font-weight: bold">R$ ${com.total}0</h96></td></a>
                         </tr>
                         </c:forEach>
                     </table>
+                    
                 </div>
                 <div class="col-cadastro col-md-8">
                     <div class="standard-box">
