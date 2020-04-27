@@ -80,5 +80,9 @@ public class Usuario {
         this.situacao = situacao;
     }
 
+    public void getPerfil(String administrador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

@@ -70,9 +70,9 @@ public class ControllerProduto extends HttpServlet{
         produto.setQuantidade(Integer.valueOf(request.getParameter("txtQuantidade")));
         produto.setPreco(Double.parseDouble(request.getParameter("txtPreco")));
         
-
         ProdutoDAO dao = new ProdutoDAO();
         dao.cadastrar(produto);
+        request.setAttribute("msg", "Produto Cadastrado!");
         
         response.sendRedirect("listarProdutos");
 
