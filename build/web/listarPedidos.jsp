@@ -267,9 +267,10 @@
                         
                         <tr style="position:center;">
                             <td class="conteudo" style="width: 30px"><img src="img/pack.png" style="width:40px;"</td>
-                        <td class="conteudo">#<a href="listarPedido?id=${com.id}" style="font-weight: bold">${com.id}</div></td></a>
+                        <td class="conteudo">#<a href="mostrarPedido?id=${com.id}" style="font-weight: bold">${com.id}</div></td></a>
                             <a><td class="conteudo">Realizado em ${com.data}</td></a>
                             <a><td class="conteudo" style="text-align:right;"><h96 style="font-weight: bold">R$ ${com.total}0</h96></td></a>
+                            <a><td class="conteudo">Status ${com.status}</td></a>
                         </tr>
                         </c:forEach>
                     </table>

@@ -17,6 +17,7 @@ public class Compra {
     private int id;
     private Carrinho carrinho;
     private Date data;
+    private int status = 3;
     private String cliente;
     private int enderecoentrega;
     private int metodopagamento;
@@ -24,10 +25,6 @@ public class Compra {
     private double total;
 
     public Compra() {
-    }
-
-    public Compra(int id) {
-        this.id = id;
     }
 
     public Compra(int id, Carrinho carrinho, Date data, String cliente, int enderecoentrega, int metodopagamento, int cartaocredito, double total) {
@@ -39,30 +36,6 @@ public class Compra {
         this.metodopagamento = metodopagamento;
         this.cartaocredito = cartaocredito;
         this.total = total;
-    }
-
-    public int getEnderecoentrega() {
-        return enderecoentrega;
-    }
-
-    public void setEnderecoentrega(int enderecoentrega) {
-        this.enderecoentrega = enderecoentrega;
-    }
-
-    public int getMetodopagamento() {
-        return metodopagamento;
-    }
-
-    public void setMetodopagamento(int metodopagamento) {
-        this.metodopagamento = metodopagamento;
-    }
-
-    public int getCartaocredito() {
-        return cartaocredito;
-    }
-
-    public void setCartaocredito(int cartaocredito) {
-        this.cartaocredito = cartaocredito;
     }
 
     public int getId() {
@@ -89,6 +62,14 @@ public class Compra {
         this.data = data;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public String getCliente() {
         return cliente;
     }
@@ -97,14 +78,37 @@ public class Compra {
         this.cliente = cliente;
     }
 
+    public int getEnderecoentrega() {
+        return enderecoentrega;
+    }
+
+    public void setEnderecoentrega(int enderecoentrega) {
+        this.enderecoentrega = enderecoentrega;
+    }
+
+    public int getMetodopagamento() {
+        return metodopagamento;
+    }
+
+    public void setMetodopagamento(int metodopagamento) {
+        this.metodopagamento = metodopagamento;
+    }
+
+    public int getCartaocredito() {
+        return cartaocredito;
+    }
+
+    public void setCartaocredito(int cartaocredito) {
+        this.cartaocredito = cartaocredito;
+    }
+
     public double getTotal() {
         return total;
     }
 
     public void setTotal(double total) {
         this.total = total;
-    }
-    
+    }   
 /*
     public static Comparator<Compra> getOrdenar_por_data_desc() {
         return ordenar_por_data_desc;
@@ -123,5 +127,4 @@ public class Compra {
         
         }
     };*/
-
 }
