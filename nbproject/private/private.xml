@@ -3,9 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/PlayBox/PlayBox/web/listarPedidos.jsp</file>
             <file>file:/C:/PlayBox/PlayBox/src/java/Controler/ControllerCompra.java</file>
             <file>file:/C:/PlayBox/PlayBox/src/java/DAO/CompraDAO.java</file>
+=======
+            <file>file:/C:/PlayBox/src/java/Controler/ControllerCompra.java</file>
+            <file>file:/C:/PlayBox/web/compraFinalizada.jsp</file>
+            <file>file:/C:/PlayBox/src/java/DAO/CompraDAO.java</file>
+            <file>file:/C:/PlayBox/src/java/Controler/ControllerGame.java</file>
+            <file>file:/C:/PlayBox/web/admin/EdGame.jsp</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
