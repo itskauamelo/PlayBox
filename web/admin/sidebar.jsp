@@ -24,7 +24,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Pedidos:</h6>
-            <a class="dropdown-item" href="#">Alterar Status</a>
+            <a class="dropdown-item" href="listarComprasADM">Alterar Status</a>
           <h6 class="dropdown-header">Relatórios:</h6>
           <a class="dropdown-item" href="#">Faturamento</a>
           <a class="dropdown-item" href="#">Preferencia de Clientes</a>
