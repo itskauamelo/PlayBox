@@ -30,6 +30,8 @@ import javax.servlet.RequestDispatcher;
     "/fecharCompra",
     "/compraFinalizada",
     "/listarCompras",
+    "/listarComprasADM",
+    "/acusarPagamento",
     "/mostrarPedido"
 })
 
@@ -57,11 +59,15 @@ public class ControllerCompra extends HttpServlet {
 
             if (uri.equals(request.getContextPath() + "/finalizarCompra")) {
                  finalizarCompra(request, response);            
-            }else if (uri.equals(request.getContextPath() + "/compraFinalizada" )){
+            } else if (uri.equals(request.getContextPath() + "/compraFinalizada" )){
                 listarUltimaCompra(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarCompras" )){
                 listarTodas(request, response);
-            }else if (uri.equals(request.getContextPath() + "/mostrarPedido" )){
+            } else if (uri.equals(request.getContextPath() + "/listarComprasADM" )){
+                listarTodasADM(request, response);
+            } else if (uri.equals(request.getContextPath() + "/acusarPagamento" )){
+                acusarPagamento(request, response);
+            } else if (uri.equals(request.getContextPath() + "/mostrarPedido" )){
                 mostrarPedido(request, response);
             }
         } catch (Exception e) {
@@ -118,6 +124,25 @@ public class ControllerCompra extends HttpServlet {
         request.setAttribute("todasCompras", todasCompras);
 
         request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
+
+    }
+        
+        private void listarTodasADM(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        CompraDAO dao = new CompraDAO();
+
+        List<Compra> todasComprasPagamento = dao.consultarTodasAgPagamento();
+        request.setAttribute("todasComprasPagamento", todasComprasPagamento);
+
+        request.getRequestDispatcher("admin/listarPedidos.jsp").forward(request, response);
+
+    }
+        
+    private void acusarPagamento(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        Compra compra = new Compra();
+        CompraDAO dao = new CompraDAO();
+        compra.setId(Integer.valueOf(request.getParameter("id")));
+
+        dao.consultarporId(compra);
 
     }
     

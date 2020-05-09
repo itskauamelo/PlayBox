@@ -17,7 +17,7 @@ public class Compra {
     private int id;
     private Carrinho carrinho;
     private Date data;
-    private int status = 3;
+    private int status;
     private String cliente;
     private int enderecoentrega;
     private int metodopagamento;

@@ -25,11 +25,10 @@ public class CompraDAO {
     public void cadastrar(Compra compra) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk) VALUES (NEXTVAL('id_compra'), now(),?,?)");           
+            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk) VALUES (NEXTVAL('id_compra'), now(),?,'1')");           
             //comando.setString(1, compra.getCarrinho().toString());
             //comando.setString(2, compra.getCliente().toString());
             comando.setDouble(1, compra.getTotal());
-            comando.setInt(2, compra.getStatus());
             comando.execute();
         }
     }
@@ -83,10 +82,34 @@ public class CompraDAO {
         return todasCompras;
     }
     
+    public List<Compra> consultarTodasAgPagamento() throws ClassNotFoundException, SQLException {
+
+        List<Compra> todasComprasPagamento;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement
+            ("SELECT id, datahora, valor, statusfk FROM compra WHERE statusfk = 1 ORDER BY id DESC");
+            ResultSet resultado = comando.executeQuery();
+            todasComprasPagamento = new ArrayList<>();
+            while (resultado.next()) {
+                Compra c = new Compra();
+                c.setId(resultado.getInt("id"));
+                c.setData(resultado.getDate("datahora"));
+                c.setTotal(resultado.getDouble("valor"));
+                c.setStatus(resultado.getInt("statusfk"));
+                
+                todasComprasPagamento.add(c);
+            }
+        }
+        return todasComprasPagamento;
+    }
+    
+    
+    
     public void consultarporId(Compra compra) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("SELECT datahora, valor, statusfk from compra  WHERE id = ?");
-        comando.setInt(1, compra.getId());
+        PreparedStatement comando = con.prepareStatement("SELECT datahora, valor, (SELECT nome FROM status WHERE id = ?) from compra  WHERE id = ?");
+        comando.setInt(1, compra.getStatus());
+        comando.setInt(2, compra.getId());
         ResultSet resultado = comando.executeQuery();
 
         if (resultado.next()) {

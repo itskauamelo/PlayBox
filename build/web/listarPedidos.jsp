@@ -262,15 +262,42 @@
                         <table id="tabela" border="2px" style="border-color: gold">
                         <tr>                
                         </tr>
+                        
                         <center> <ul> <h3 style="color: gold">SEUS PEDIDOS</h3> </ul> </center>
                         <c:forEach items="${todasCompras}" var="com">
                         
+                        <c:choose>
+                        <c:when test="${com.status == '1'}">
+                            
+                            <c:set var = "statusNome" scope = "session" value = "${'Aguardando baixa no pagamento'}"/>
+                        
+                        </c:when>
+                        
+                        <c:when test="${com.status == '2'}">
+                            
+                            <c:set var = "statusNome" scope = "session" value = "${'Separando pedido'}"/>
+                        
+                        </c:when>
+                        
+                        <c:when test="${com.status == '3'}">
+                            
+                            <c:set var = "statusNome" scope = "session" value = "${'Pedido despachado p/ transportadora'}"/>
+                        
+                        </c:when>
+                        
+                        <c:otherwise>
+                            
+                            <c:set var = "statusNome" scope = "session" value = "${'Pedido em transporte'}"/>
+                        
+                        </c:otherwise>
+                        
+                        </c:choose>
                         <tr style="position:center;">
                             <td class="conteudo" style="width: 30px"><img src="img/pack.png" style="width:40px;"</td>
                         <td class="conteudo">#<a href="mostrarPedido?id=${com.id}" style="font-weight: bold">${com.id}</div></td></a>
                             <a><td class="conteudo">Realizado em ${com.data}</td></a>
                             <a><td class="conteudo" style="text-align:right;"><h96 style="font-weight: bold">R$ ${com.total}0</h96></td></a>
-                            <a><td class="conteudo">Status ${com.status}</td></a>
+                            <a><td class="conteudo">${statusNome}</td></a>
                         </tr>
                         </c:forEach>
                     </table>
