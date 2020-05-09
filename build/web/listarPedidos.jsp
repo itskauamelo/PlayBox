@@ -285,9 +285,15 @@
                         
                         </c:when>
                         
-                        <c:otherwise>
+                        <c:when test="${com.status == '4'}">
                             
                             <c:set var = "statusNome" scope = "session" value = "${'Pedido em transporte'}"/>
+                        
+                        </c:when>
+                        
+                        <c:otherwise>
+                            
+                            <c:set var = "statusNome" scope = "session" value = "${'Pedido entregue'}"/>
                         
                         </c:otherwise>
                         

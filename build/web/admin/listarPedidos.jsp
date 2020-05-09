@@ -75,7 +75,7 @@
                         <th class="cabecalho">Data</th>
                         <th class="cabecalho">Valor</th>
                         <th class="cabecalho">Status atual</th>
-                        <th class="cabecalho">Aprovar</th>
+                        <th class="cabecalho">Alterar para</th>
                         </tr>
                        
                         <c:forEach items="${todasComprasPagamento}" var="com">
@@ -99,9 +99,15 @@
                         
                         </c:when>
                         
-                        <c:otherwise>
+                        <c:when test="${com.status == '4'}">
                             
                             <c:set var = "statusNome" scope = "session" value = "${'Pedido em transporte'}"/>
+                        
+                        </c:when>
+                        
+                        <c:otherwise>
+                            
+                            <c:set var = "statusNome" scope = "session" value = "${'Pedido entregue'}"/>
                         
                         </c:otherwise>
                         
@@ -111,7 +117,19 @@
                             <a><td class="conteudo">Realizado em ${com.data}</td></a>
                             <a><td class="conteudo" style="text-align:right;"><h96 style="font-weight: bold">R$ ${com.total}0</h96></td></a>
                             <a><td class="conteudo">${statusNome}</td></a>
-                            <td class="conteudo" align="center"><a href="acusarPagamento?id=${com.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>
+                            <td class="conteudo">
+                                <form method="POST" action="alterarStatus">
+                                    <select name="optStatus" id="optStatus">
+                                    <option disabled selected>Alterar para:</option>
+                                    <option value="1">Aguardando baixa no pagamento</option>
+                                    <option value="2">Separando pedido</option>
+                                    <option value="3">Pedido despachado p/ transportadora</option>
+                                    <option value="4">Pedido em transporte</option>
+                                    </select><br><br>
+                                    <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar">Alterar</button>
+                                </form>
+
+                            </td>
                         </tr>
                         </c:forEach>
                     </table>

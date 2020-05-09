@@ -33,6 +33,14 @@ public class CompraDAO {
         }
     }
     
+        public void alterarStatus(Compra compra) throws ClassNotFoundException, SQLException {
+        Connection con = ConectaBanco.getConexao();
+        PreparedStatement comando = con.prepareStatement("UPDATE compra SET status = ? WHERE id = ?");
+        comando.setInt(1, compra.getStatus());
+        comando.setInt(2, compra.getId());
+        comando.execute();
+    }
+    
     public void fecharCompra(Compra compra) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
@@ -103,7 +111,12 @@ public class CompraDAO {
         return todasComprasPagamento;
     }
     
-    
+        public void aprovarPagamento(Compra compra) throws ClassNotFoundException, SQLException {
+        Connection con = ConectaBanco.getConexao();
+        PreparedStatement comando = con.prepareStatement("UPDATE compra SET statusFk = 2 WHERE id = ?");
+        comando.setInt(1, compra.getId());
+        comando.execute();
+    }
     
     public void consultarporId(Compra compra) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();

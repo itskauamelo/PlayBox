@@ -31,7 +31,7 @@ import javax.servlet.RequestDispatcher;
     "/compraFinalizada",
     "/listarCompras",
     "/listarComprasADM",
-    "/acusarPagamento",
+    "/alterarStatus",
     "/mostrarPedido"
 })
 
@@ -45,6 +45,8 @@ public class ControllerCompra extends HttpServlet {
 
             if (uri.equals(request.getContextPath() + "/fecharCompra")) {
                  fecharCompra(request, response);            
+            } else if (uri.equals(request.getContextPath() + "/alterarStatus" )) {
+                alterarStatus(request, response); 
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,8 +67,6 @@ public class ControllerCompra extends HttpServlet {
                 listarTodas(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarComprasADM" )){
                 listarTodasADM(request, response);
-            } else if (uri.equals(request.getContextPath() + "/acusarPagamento" )){
-                acusarPagamento(request, response);
             } else if (uri.equals(request.getContextPath() + "/mostrarPedido" )){
                 mostrarPedido(request, response);
             }
@@ -91,6 +91,17 @@ public class ControllerCompra extends HttpServlet {
         response.sendRedirect("pagamento");
 
     }
+    
+    private void alterarStatus(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+        Compra compra = new Compra();
+        CompraDAO dao = new CompraDAO();
+        compra.setId(Integer.valueOf(request.getParameter("id")));
+        compra.setStatus(Integer.valueOf(request.getParameter("optStatus")));
+
+        dao.alterarStatus(compra);
+        //response.sendRedirect("listarProdutos");
+    }
+    
     private void fecharCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
     
         Compra compra = new Compra();
@@ -134,15 +145,6 @@ public class ControllerCompra extends HttpServlet {
         request.setAttribute("todasComprasPagamento", todasComprasPagamento);
 
         request.getRequestDispatcher("admin/listarPedidos.jsp").forward(request, response);
-
-    }
-        
-    private void acusarPagamento(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
-        Compra compra = new Compra();
-        CompraDAO dao = new CompraDAO();
-        compra.setId(Integer.valueOf(request.getParameter("id")));
-
-        dao.consultarporId(compra);
 
     }
     
