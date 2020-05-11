@@ -101,7 +101,7 @@ public class ControllerPacote extends HttpServlet{
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("../Erro.jsp");
+            response.sendRedirect("Erro.jsp");
         }
     }
 
@@ -120,6 +120,7 @@ public class ControllerPacote extends HttpServlet{
         
         PacoteDAO dao = new PacoteDAO();
         dao.cadastrar(pacote);
+        dao.subtrairQuantidade(pacote);
         
         response.sendRedirect("listarPacotes");
 
