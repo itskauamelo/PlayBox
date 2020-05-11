@@ -32,7 +32,7 @@ public class ControllerProduto extends HttpServlet{
                 excluir(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarProdutos")) {
                 listarTodos(request, response);
-            } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoProduto")) {
+            }  else if (uri.equals(request.getContextPath() + "/iniciarEdicaoProduto")) {
                 iniciarEdicao(request, response);
             } 
             

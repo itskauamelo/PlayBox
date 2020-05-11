@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.Carrinho;
 import Model.Compra;
-import Model.Cliente;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 
@@ -31,6 +30,7 @@ import javax.servlet.RequestDispatcher;
     "/compraFinalizada",
     "/listarCompras",
     "/listarComprasADM",
+    "/iniciarAltStatus",
     "/alterarStatus",
     "/mostrarPedido"
 })
@@ -45,9 +45,9 @@ public class ControllerCompra extends HttpServlet {
 
             if (uri.equals(request.getContextPath() + "/fecharCompra")) {
                  fecharCompra(request, response);            
-            } else if (uri.equals(request.getContextPath() + "/alterarStatus" )) {
-                alterarStatus(request, response); 
-            }
+            } else if (uri.equals(request.getContextPath() + "/alterarStatus")) {
+                alterarStatus(request, response);
+            } 
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("Erro.jsp");
@@ -69,6 +69,8 @@ public class ControllerCompra extends HttpServlet {
                 listarTodasADM(request, response);
             } else if (uri.equals(request.getContextPath() + "/mostrarPedido" )){
                 mostrarPedido(request, response);
+            } else if (uri.equals(request.getContextPath() + "/iniciarAltStatus" )) {
+                iniciarAltStatus(request, response); 
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,16 +94,29 @@ public class ControllerCompra extends HttpServlet {
 
     }
     
-    private void alterarStatus(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+    private void iniciarAltStatus(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        Compra compra = new Compra();
+        CompraDAO dao = new CompraDAO();
+        
+        compra.setId(Integer.valueOf(request.getParameter("id")));
+        
+        dao.consultarporId(compra);
+        request.setAttribute("compra", compra);
+        request.getRequestDispatcher("admin/altStatus.jsp").forward(request, response);
+    }
+    
+        private void alterarStatus(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
         Compra compra = new Compra();
         CompraDAO dao = new CompraDAO();
         compra.setId(Integer.valueOf(request.getParameter("id")));
         compra.setStatus(Integer.valueOf(request.getParameter("optStatus")));
 
         dao.alterarStatus(compra);
-        //response.sendRedirect("listarProdutos");
+        
+        response.sendRedirect("listarComprasADM");
+       
     }
-    
+
     private void fecharCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
     
         Compra compra = new Compra();

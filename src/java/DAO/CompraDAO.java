@@ -35,7 +35,7 @@ public class CompraDAO {
     
         public void alterarStatus(Compra compra) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("UPDATE compra SET status = ? WHERE id = ?");
+        PreparedStatement comando = con.prepareStatement("UPDATE compra SET statusfk = ? WHERE id = ?");
         comando.setInt(1, compra.getStatus());
         comando.setInt(2, compra.getId());
         comando.execute();
@@ -95,7 +95,7 @@ public class CompraDAO {
         List<Compra> todasComprasPagamento;
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
-            ("SELECT id, datahora, valor, statusfk FROM compra WHERE statusfk = 1 ORDER BY id DESC");
+            ("SELECT id, datahora, valor, statusfk FROM compra ORDER BY id DESC");
             ResultSet resultado = comando.executeQuery();
             todasComprasPagamento = new ArrayList<>();
             while (resultado.next()) {
@@ -120,14 +120,11 @@ public class CompraDAO {
     
     public void consultarporId(Compra compra) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("SELECT datahora, valor, (SELECT nome FROM status WHERE id = ?) from compra  WHERE id = ?");
-        comando.setInt(1, compra.getStatus());
-        comando.setInt(2, compra.getId());
+        PreparedStatement comando = con.prepareStatement("SELECT * from compra WHERE id = ?");
+        comando.setInt(1, compra.getId());
         ResultSet resultado = comando.executeQuery();
 
         if (resultado.next()) {
-            compra.setData(resultado.getDate("datahora"));
-            compra.setTotal(resultado.getDouble("valor"));
             compra.setStatus(resultado.getInt("statusfk"));
             compra.setId(resultado.getInt("id"));
         }

@@ -75,7 +75,7 @@
                         <th class="cabecalho">Data</th>
                         <th class="cabecalho">Valor</th>
                         <th class="cabecalho">Status atual</th>
-                        <th class="cabecalho">Alterar para</th>
+                        <th class="cabecalho">Alterar</th>
                         </tr>
                        
                         <c:forEach items="${todasComprasPagamento}" var="com">
@@ -113,23 +113,11 @@
                         
                         </c:choose>
                         <tr style="position:center;">
-                        <td class="conteudo">#<a href="mostrarPedido?id=${com.id}" style="font-weight: bold">${com.id}</div></td></a>
+                        <td class="conteudo">#<a href="#" style="font-weight: bold">${com.id}</div></a></td>
                             <a><td class="conteudo">Realizado em ${com.data}</td></a>
                             <a><td class="conteudo" style="text-align:right;"><h96 style="font-weight: bold">R$ ${com.total}0</h96></td></a>
                             <a><td class="conteudo">${statusNome}</td></a>
-                            <td class="conteudo">
-                                <form method="POST" action="alterarStatus">
-                                    <select name="optStatus" id="optStatus">
-                                    <option disabled selected>Alterar para:</option>
-                                    <option value="1">Aguardando baixa no pagamento</option>
-                                    <option value="2">Separando pedido</option>
-                                    <option value="3">Pedido despachado p/ transportadora</option>
-                                    <option value="4">Pedido em transporte</option>
-                                    </select><br><br>
-                                    <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar">Alterar</button>
-                                </form>
-
-                            </td>
+                            <td class="conteudo"> <a class="btn btn-primary btn-block" id="btngravar" href="iniciarAltStatus?id=${com.id}"> Alterar </a></td>
                         </tr>
                         </c:forEach>
                     </table>
