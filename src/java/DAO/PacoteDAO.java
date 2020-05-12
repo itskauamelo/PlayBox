@@ -1,6 +1,5 @@
 package DAO;
 
-import Model.Cliente;
 import Model.Pacote;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -62,29 +61,30 @@ public class PacoteDAO {
         return todosPacotes;
     }
     
-    public void subtrairQuantidade(Pacote pacote) throws SQLException, ClassNotFoundException {
-        Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement
-                
-        ("UPDATE games SET quantidade = quantidade - 1 WHERE id = ?\n" +
-        "UPDATE camiseta SET quantidade = quantidade - 1 WHERE id = ?\n" +
-        "UPDATE produto SET quantidade = quantidade - 1 WHERE id = ?\n" +
-        "UPDATE produto SET quantidade = quantidade - 1 WHERE id = ?\n" +
-        "UPDATE produto SET quantidade = quantidade - 1 WHERE id = ?\n" +
-        "UPDATE produto SET quantidade = quantidade - 1 WHERE id = ?");
-        
-        comando.setString(1, pacote.getJogo());
-        comando.setString(2, pacote.getCamiseta());
-        comando.setString(3, pacote.getBrinde1());
-        comando.setString(4, pacote.getBrinde2());
-        comando.setString(5, pacote.getBrinde3());
-        comando.setString(6, pacote.getBrinde4());
-        comando.setString(7, pacote.getBrinde5());
-        
-        comando.execute();
-        
-    }
+public void subtrairQuantidade(Pacote pacote) throws SQLException, ClassNotFoundException {
+        try(Connection con = ConectaBanco.getConexao()){
+            PreparedStatement comando = con.prepareStatement
 
+            ("UPDATE games SET quantidade = quantidade - 1 WHERE nome = ?;"
+            + "UPDATE camiseta SET quantidade = quantidade - 1 WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;");
+
+            comando.setString(1, pacote.getJogo());
+            comando.setString(2, pacote.getCamiseta());
+            comando.setString(3, pacote.getBrinde1());
+            comando.setString(4, pacote.getBrinde2());
+            comando.setString(5, pacote.getBrinde3());
+            comando.setString(6, pacote.getBrinde4());
+            comando.setString(7, pacote.getBrinde5());
+
+            comando.execute();
+        }      
+    }
+    
     public void Editar(Pacote pacote) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("UPDATE Pacote SET nome = ?, jogo = ?, camiseta = ?, brinde1 = ?,brinde2 = ?,brinde3 = ?,brinde4 = ?, brinde5 = ?, situacao = ?, preco = ? WHERE id = ?");
