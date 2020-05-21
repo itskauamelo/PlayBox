@@ -60,13 +60,6 @@ public class Carrinho {
         pacotesNoCarrinho.remove(pacoteARemover);
     }
     
-    public double calcularTotal(double total) {
-        total = 0;
-        for (Pacote pacote : pacotesNoCarrinho) {
-            total += pacote.getPreco();
-        }
-        return total;
-    }
 
     public double calcularTotal() {
         
