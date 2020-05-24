@@ -289,7 +289,7 @@ public class ClienteDAO {
         comando.setDate(4, (Date) cliente.getDatanascimento()); 
         comando.setString(5, cliente.getEmail());
         comando.setString(6, cliente.getCelular());
-        comando.setInt(7kmel, cliente.getId());
+        comando.setInt(7, cliente.getId());
         comando.execute();
     }
 

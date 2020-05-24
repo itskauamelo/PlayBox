@@ -130,6 +130,28 @@ public class CompraDAO {
         }
     }
     
+    public List<Compra> consultarComprasFinalizadas() throws ClassNotFoundException, SQLException {
+
+        List<Compra> todasComprasFinalizadas;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement
+            ("select id, datahora, clientefk, metodopagamentofk, valor from compra where statusfk = 5");
+            ResultSet resultado = comando.executeQuery();
+            todasComprasFinalizadas = new ArrayList<>();
+            while (resultado.next()) {
+                Compra c = new Compra();
+                c.setId(resultado.getInt("id"));
+                c.setData(resultado.getDate("datahora"));
+                c.setCliente(resultado.getString("clientefk"));
+                c.setMetodopagamento(resultado.getInt("metodopagamentofk"));
+                c.setTotal(resultado.getDouble("valor"));
+                
+                todasComprasFinalizadas.add(c);
+            }
+        }
+        return todasComprasFinalizadas;
+    }
+    
     /*public List<Compra> listarComprasUsuario(Cliente cliente) {
         
         List<Compra> comprasUsuario = new ArrayList<>();
