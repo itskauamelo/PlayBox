@@ -18,7 +18,7 @@
     <meta name="keywords" content="template, theme, html, css, bootstrap, game, event, culture, music, personal, cv">
     <meta name="author" content="Kauã Morateli, Renato Alberti, Rodrigo Kenji">
 
-    <title>PlayboX - Editar dados</title>
+    <title>PlayboX - Alterar Senha</title>
 
     <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -171,29 +171,15 @@
             
             <div class="row">
                 <div class="col-cadastro" style="margin-top: -300px;">
-                    <center> <ul> <h3 style="color: gold">EDITAR DADOS PESSOAIS</h3> </ul> </center>
+                    <center> <ul> <h3 style="color: gold">ALTERAR SENHA</h3> </ul> </center>
                     <BR>
-                    <form method="POST" action="editarCliente">
+                    <form method="POST" action="alterarSenha">
                         <div style="margin-left: 200px; margin-right: 200px;">
                         <input type="text" style="display:none;" class="form-control" id="id" name="id" value="${cliente.id}"><br>
-                        <label>CPF: </label>
-                        <input type="text" class="form-control" id="cpf" name="cpf" value="${cliente.cpf}"><br>
-                        <label>Nome Completo: </label>
-                        <input type="text" class="form-control" id="nome" name="nome" value="${cliente.nomecompleto}"><br>
-                        <label>Genero: </label>
-                        <select id="genero" name="genero" class="form-control" style="color: black;">
-                        <option disabled selected required>Selecione genero</option>                  
-                        <option value="F">Feminino</option>
-                        <option value="M">Masculino</option>
-                        <option value="O">Outros</option>
-                        </select><br>
-                        <label>Data de Nascimento: </label>
-                        <input type="date" class="form-control" id="datanascimento" name="datanascimento" value="${cliente.datanascimento}"><br>
-                        <label>Email: </label>
-                        <input type="email" class="form-control" id="email" name="email" value="${cliente.email}"><br>
-                        <label>Celular: </label>
-                        <input type="text" OnKeyPress="formatar('##-#####-####', this)" class="form-control" id="celular" name="celular" value="${cliente.celular}"><br>
-                        </div>
+                        <label>Nova senha: </label>
+                        <input type="password" class="form-control" id="pw" name="pw"><br>
+                        <label>Confirmar senha: </label>
+                        <input type="password" class="form-control"><br>
                         <div style="margin-left: 340px;">
                         <button class="btn btn-primary" title="Criar Conta" id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Alterar</a>
                         </div>

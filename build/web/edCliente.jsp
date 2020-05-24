@@ -18,7 +18,7 @@
     <meta name="keywords" content="template, theme, html, css, bootstrap, game, event, culture, music, personal, cv">
     <meta name="author" content="Kauã Morateli, Renato Alberti, Rodrigo Kenji">
 
-    <title>PlayboX - A loja Gamer dos Gamers</title>
+    <title>PlayboX - Editar dados</title>
 
     <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
