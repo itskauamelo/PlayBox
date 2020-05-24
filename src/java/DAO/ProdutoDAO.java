@@ -32,7 +32,7 @@ public class ProdutoDAO {
 
         List<Produto> todosProdutos;
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("SELECT * FROM produto ORDER BY id");
+            PreparedStatement comando = con.prepareStatement("SELECT id, imagem, nome, descricao, situacao, quantidade, preco FROM produto WHERE situacao = 'ATIVO'");
             ResultSet resultado = comando.executeQuery();
             todosProdutos = new ArrayList<>();
             while (resultado.next()) {
