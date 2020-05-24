@@ -62,32 +62,27 @@
             <button class="btn btn-primary btn-medio" type="submit">Emitir</button>
         </form>
         
-        <!--
+        
             <table id="tabela">
             <tr>
-                <th class="cabecalho">Imagem</th>
-                <th class="cabecalho">Id</th>
-                <th class="cabecalho">Nome</th>
-                <th class="cabecalho">Descrição</th>
-                <th class="cabecalho">Situação</th>
-                <th class="cabecalho">Quantidade</th>
-                <th class="cabecalho">Preço</th>
-                <th class="cabecalho">Editar/Excluir</th>
+                <th class="cabecalho">Id</th>                
+                <th class="cabecalho">Data</th>
+                <th class="cabecalho">Cliente</th>
+                <th class="cabecalho">Metodo Pagamento</th>
+                <th class="cabecalho">Valor Total</th>
             </tr>
-            <c:forEach items="${todosProdutos}" var="p">
+            <c:forEach items="${todasComprasFinalizadas}" var="p">
             <tr>
-                <td class="conteudo" align="center">${p.imagem}</td>
                 <td class="conteudo" align="center">${p.id}</td>
-                <td class="conteudo" align="center">${p.nome}</td>
-                <td class="conteudo" align="center">${p.descricao}</td>               
-                <td class="conteudo" align="center">${p.situacao}</td>
-                <td class="conteudo" align="center">${p.quantidade}</td>
-                <td class="conteudo" align="center">${p.preco}</td>
-                <td class="conteudo" align="center"><a href="iniciarEdicaoProduto?id=${p.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>        <a href="excluirProduto?id=${p.id}"><img style="height: 25px; width: 25px;" src="images/5599.png" alt="" id="iconTable"/></a></td>
+                <td class="conteudo" align="center">${p.data}</td>
+                <td class="conteudo" align="center">${p.cliente}</td>
+                <td class="conteudo" align="center">${p.metodopagamento}</td>               
+                <td class="conteudo" align="center">${p.total}</td>
+                <!--<td class="conteudo" align="center"><a href="iniciarEdicaoProduto?id=${p.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>        <a href="excluirProduto?id=${p.id}"><img style="height: 25px; width: 25px;" src="images/5599.png" alt="" id="iconTable"/></a></td>-->
             </tr>
             </c:forEach>
         </table>
-                      -->
+                      
         <!-- Area Chart Example-->
       <!-- /.container-fluid -->
 
