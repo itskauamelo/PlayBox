@@ -265,12 +265,12 @@
                         
                         <center> <ul> <h3 style="color: gold">SEUS PEDIDOS</h3> </ul> </center>
                         <c:forEach items="${todasCompras}" var="com">
-                        
+
                         <c:choose>
                         <c:when test="${com.status == '1'}">
-                            
+
                             <c:set var = "statusNome" scope = "session" value = "${'Aguardando baixa no pagamento'}"/>
-                        
+
                         </c:when>
                         
                         <c:when test="${com.status == '2'}">

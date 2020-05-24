@@ -107,7 +107,7 @@
                                 
                                 <div class="text-center">
                                     <div class="form-group has-feedback">
-                                        - <a href="#"> Minha conta </a> -
+                                        - <a href="minhaConta"> Minha conta </a> -
                                     </div>
                                     <div class="form-group has-feedback">
                                         - <a href="#"> Pedidos </a> -

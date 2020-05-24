@@ -259,67 +259,15 @@
                     <input type="password" class="form-control"><br>
                     <label>Celular</label>
                     <input type="text" id="txtCelular" name="txtCelular" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" class="form-control"><br>
-                </div>
-                <div class="col-cadastro col-md-8">
-                    <div class="standard-box">
-                        <h3 class="post-item-header">Endereço</h3>
-                        <br>
-                        <label>Identificação do endereço:</label>
-                        <input type="text" id="txtIdEnd" name="txtIdEnd" class="form-control" placeholder="Casa, trabalho, ..."><br>
-                        <label>Nome do destinatário</label>
-                        <input type="text" id="txtNomedestinatario" name="txtNomedestinatario"class="form-control" ><br>
-                        <label>CEP</label>
-                        <input type="text" id="txtCep" name="txtCep" maxlength="9" OnKeyPress="formatar('#####-###', this)" class="form-control"><br>
-                        <label>Endereço</label>
-                        <input type="text" id="txtEndereco" name="txtEndereco" class="form-control"><br>
-                        <label>Numero</label>
-                        <input type="text" id="txtNumero" name="txtNumero" class="form-control"><br>
-                        <label>Complemento</label>
-                        <input type="text" id="txtComplemento" name="txtComplemento" class="form-control"><br>
-                        <label>Referência</label>
-                        <input type="text" id="txtReferencia" name="txtReferencia" class="form-control"><br>
-                        <label>Bairro</label>
-                        <input type="text" id="txtBairro" name="txtBairro" class="form-control"><br>
-                        <label>Cidade</label>
-                        <input type="text" id="txtCidade" name="txtCidade" class="form-control"><br>
-                        <label>Estado</label>
-                        <select id="optEstado" name="optEstado" class="form-control" style="color: black;">
-                            <option disabled="disabled">Selecione um estado</option>                  
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                        </select>
-                    </div>
+                            <div class="centrocadastro">
+        <button class="btn btn-primary" title="Criar Conta" id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Criar Conta</a>     
+        </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>
-        <div class="centrocadastro">
-        <button class="btn btn-primary" title="Criar Conta" id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Criar Conta</a>     
-        </div>
+
     </div>
 </form>
 

@@ -3,16 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PlayBox/web/indexLogado.jsp</file>
-            <file>file:/C:/PlayBox/web/admin/listarPedidos.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Controler/ControllerPacote.java</file>
-            <file>file:/C:/PlayBox/src/java/Model/Carrinho.java</file>
-            <file>file:/C:/PlayBox/web/admin/produto.jsp</file>
-            <file>file:/C:/PlayBox/web/admin/pacote.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Model/Pacote.java</file>
-            <file>file:/C:/PlayBox/web/admin/relatorioFaturamento.jsp</file>
-            <file>file:/C:/PlayBox/src/java/DAO/PacoteDAO.java</file>
-            <file>file:/C:/PlayBox/web/index.jsp</file>
+            <file>file:/C:/PlayBox/src/java/Controler/ClienteController.java</file>
+            <file>file:/C:/PlayBox/web/edCliente.jsp</file>
+            <file>file:/C:/PlayBox/web/inscricao.jsp</file>
+            <file>file:/C:/PlayBox/src/java/DAO/ClienteDAO.java</file>
+            <file>file:/C:/PlayBox/web/listarPedidos.jsp</file>
+            <file>file:/C:/PlayBox/web/manutencaoCliente.jsp</file>
         </group>
     </open-files>
 </project-private>
