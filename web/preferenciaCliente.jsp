@@ -240,7 +240,7 @@
                     <form action="cadastrarPreferencia" method="POST"> 
                     <h2 class="post-item-header"><a title="Preferencia">Preferencias</a></h2>
                     <br>
-                    <label>Qual estilo de jogo gosta de jogar? Escolha até 3 opções</label><br>
+                    <label>Qual estilo de jogo gosta de jogar? Escolha a 1ª opção</label><br>
                     <input type="checkbox" class="jogo" id="chkAventura" name="check" value="Aventura"> Aventura<br>
                     <input type="checkbox" class="jogo" id="chkLuta" name="check" value="Luta"> Luta<br>
                     <input type="checkbox" class="jogo" id="chkRpg" name="check" value="RPG"> RPG<br>
@@ -250,6 +250,28 @@
                     <input type="checkbox" class="jogo" id="chkEsporte" name="check" value="Esporte"> Esporte<br>
                     <input type="checkbox" class="jogo" id="chkSimulacao" name="check" value="Simulacao"> Simulação<br>
                     <input type="checkbox" class="jogo" id="chkEstrategia" name="check" value="Estrategia"> Estratégia<br>
+                    <br>
+                    <label>Escolha a 2ª opção</label><br>
+                    <input type="checkbox" class="jogo" id="chkAventura" name="check2" value="Aventura"> Aventura<br>
+                    <input type="checkbox" class="jogo" id="chkLuta" name="check2" value="Luta"> Luta<br>
+                    <input type="checkbox" class="jogo" id="chkRpg" name="check2" value="RPG"> RPG<br>
+                    <input type="checkbox" class="jogo" id="chkTerror" name="check2" value="Terror"> Terror<br>
+                    <input type="checkbox" class="jogo" id="chkCorrida" name="check2" value="Corrida"> Corrida<br>
+                    <input type="checkbox" class="jogo" id="chkAcao" name="check2" value="Acao"> Ação<br>
+                    <input type="checkbox" class="jogo" id="chkEsporte" name="check2" value="Esporte"> Esporte<br>
+                    <input type="checkbox" class="jogo" id="chkSimulacao" name="check2" value="Simulacao"> Simulação<br>
+                    <input type="checkbox" class="jogo" id="chkEstrategia" name="check2" value="Estrategia"> Estratégia<br>
+                    <br>
+                    <label>E a última</label><br>
+                    <input type="checkbox" class="jogo" id="chkAventura" name="check3" value="Aventura"> Aventura<br>
+                    <input type="checkbox" class="jogo" id="chkLuta" name="check3" value="Luta"> Luta<br>
+                    <input type="checkbox" class="jogo" id="chkRpg" name="check3" value="RPG"> RPG<br>
+                    <input type="checkbox" class="jogo" id="chkTerror" name="check3" value="Terror"> Terror<br>
+                    <input type="checkbox" class="jogo" id="chkCorrida" name="check3" value="Corrida"> Corrida<br>
+                    <input type="checkbox" class="jogo" id="chkAcao" name="check3" value="Acao"> Ação<br>
+                    <input type="checkbox" class="jogo" id="chkEsporte" name="check3" value="Esporte"> Esporte<br>
+                    <input type="checkbox" class="jogo" id="chkSimulacao" name="check3" value="Simulacao"> Simulação<br>
+                    <input type="checkbox" class="jogo" id="chkEstrategia" name="check3" value="Estrategia"> Estratégia<br>
                     <br>
                     <label>Quantas horas passa por dia jogando</label><br>
                     <input type="radio" id="rb1a2" value="1 a 2 hrs" name="rbhr"> 1 a 2 hrs<br>
