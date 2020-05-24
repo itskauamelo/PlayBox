@@ -8,13 +8,9 @@
 package Controler;
 
 import DAO.ClienteDAO;
-import DAO.PacoteDAO;
-import Model.Carrinho;
 import Model.Cartao;
 import Model.Cliente;
-import Model.Compra;
 import Model.Endereco;
-import Model.Pacote;
 import Model.Preferencia;
 import java.io.IOException;
 import java.sql.Date;
@@ -37,7 +33,10 @@ import javax.servlet.http.HttpServletResponse;
     "/cadastrarCartao",
     "/pagamento",
     "/cadastrarEndereco",
-    "/cadastrarFk"
+    "/cadastrarFk",
+    "/relatorioPreferencia",
+    "/minhaConta",
+    "/editarCliente"
 })
 
 public class ClienteController extends HttpServlet {
@@ -58,6 +57,10 @@ public class ClienteController extends HttpServlet {
                 listarTodosEnderecos(request, response);
             }else if (uri.equals(request.getContextPath() + "/iniciarEdicaoCliente")) {
                 iniciarEdicao(request, response);
+            } else if (uri.equals(request.getContextPath() + "/relatorioPreferencia")) {
+                relatorioPreferencia(request, response);
+            } else if (uri.equals(request.getContextPath() + "/minhaConta")) {
+                minhaConta(request, response);
             } else {
                 listarTodos(request, response);
             }
@@ -84,7 +87,12 @@ public class ClienteController extends HttpServlet {
                 ativarCadastro(request, response);
             } else if (uri.equals(request.getContextPath() + "/cadastrarPreferencia" )) {
                 cadastrarPreferencia(request, response);
-            } else {
+            } else if (uri.equals(request.getContextPath() + "/editarCliente" )) {
+                confirmarEdicao(request, response);
+            }
+            
+            
+            else {
                 response.sendRedirect("404.jsp");
             }
         } catch (Exception e) {
@@ -102,18 +110,7 @@ public class ClienteController extends HttpServlet {
         cliente.setEmail(request.getParameter("txtEmail"));
         cliente.setSenha(request.getParameter("txtSenha"));
         cliente.setCelular(request.getParameter("txtCelular"));
-        cliente.setEndidentific(request.getParameter("txtIdEnd"));
-        cliente.setNomedestinatario(request.getParameter("txtNomedestinatario"));
-        cliente.setCep(request.getParameter("txtCep"));
-        cliente.setEndereco(request.getParameter("txtEndereco"));
-        cliente.setNumero(request.getParameter("txtNumero"));
-        cliente.setComplemento(request.getParameter("txtComplemento"));
-        cliente.setReferencia(request.getParameter("txtReferencia"));
-        cliente.setBairro(request.getParameter("txtBairro"));
-        cliente.setCidade(request.getParameter("txtCidade"));
-        cliente.setEstado(request.getParameter("optEstado"));
         
-
         ClienteDAO dao = new ClienteDAO();
         dao.cadastrar(cliente);
 
@@ -126,15 +123,15 @@ public class ClienteController extends HttpServlet {
         Preferencia preferencia = new Preferencia();
         
         preferencia.setPreferencia1(request.getParameter("check"));
-        preferencia.setPreferencia2(request.getParameter("check"));
-        preferencia.setPreferencia3(request.getParameter("check"));
+        preferencia.setPreferencia2(request.getParameter("check2"));
+        preferencia.setPreferencia3(request.getParameter("check3"));
         preferencia.setHorasjogo(request.getParameter("rbhr"));
         preferencia.setJogoonline(request.getParameter("rbonline"));
         
         ClienteDAO dao = new ClienteDAO();
         dao.cadastrarpreferencia(preferencia);
         
-        response.sendRedirect("indexLogado.jsp");
+        response.sendRedirect(request.getContextPath());
    
     }
     
@@ -159,7 +156,7 @@ public class ClienteController extends HttpServlet {
         dao.consultarporId(cliente);
 
         request.setAttribute("cliente", cliente);
-         request.getRequestDispatcher("admin/EdUser.jsp").forward(request, response);
+        request.getRequestDispatcher("edCliente.jsp").forward(request, response);
     }
 
     private void confirmarEdicaoSenha(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
@@ -230,6 +227,29 @@ public class ClienteController extends HttpServlet {
         request.getRequestDispatcher("admin/index.jsp").forward(request, response);
     }
     
+    private void minhaConta(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+
+        request.getRequestDispatcher("manutencaoCliente.jsp").forward(request, response);
+    }
+    
+    
+        private void confirmarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        Cliente cliente = new Cliente();
+        ClienteDAO dao = new ClienteDAO();
+        cliente.setId(Integer.valueOf(request.getParameter("id")));
+        cliente.setCpf(request.getParameter("cpf"));
+        cliente.setNomecompleto(request.getParameter("nome"));
+        cliente.setGenero(request.getParameter("genero"));
+        cliente.setDatanascimento(Date.valueOf(request.getParameter("datanascimento")));
+        cliente.setEmail(request.getParameter("email"));
+        cliente.setCelular(request.getParameter("celular"));
+
+        dao.Editar(cliente);
+        
+        response.sendRedirect("minhaConta");
+        
+    }
+    
     
     private void listarTodosEnderecos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         ClienteDAO dao = new ClienteDAO();
@@ -239,6 +259,14 @@ public class ClienteController extends HttpServlet {
         request.setAttribute("todosEnderecos", todosEnderecos);
         request.setAttribute("todosCartoes", todosCartoes);
         request.getRequestDispatcher("metodoPagamento.jsp").forward(request, response);
+    }
+    
+    private void relatorioPreferencia(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        ClienteDAO dao = new ClienteDAO();
+
+        List<Preferencia> todasPreferencias = dao.consultarTodasPreferencias();
+        request.setAttribute("todasPreferencias", todasPreferencias);
+        request.getRequestDispatcher("admin/relatorioPreferencia.jsp").forward(request, response);
     }
     
 }

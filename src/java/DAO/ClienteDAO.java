@@ -40,6 +40,7 @@ public class ClienteDAO {
             rsCliente = pstmt.executeQuery();
             if (rsCliente.next()) {
                 clienteAutenticado = new Cliente();
+                clienteAutenticado.setId(rsCliente.getInt("id"));
                 clienteAutenticado.setEmail(rsCliente.getString("email"));
                 clienteAutenticado.setSenha(rsCliente.getString("senha"));
                 clienteAutenticado.setNomecompleto(rsCliente.getString("nomecompleto"));
@@ -61,7 +62,7 @@ public class ClienteDAO {
     public void cadastrar(Cliente cliente) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente VALUES (NEXTVAL('id_cliente'),'DESATIVADO',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente VALUES (NEXTVAL('id_cliente'),'DESATIVADO',?,?,?,?,?,?,?)");
             
             comando.setString(1, cliente.getCpf());
             comando.setString(2, cliente.getNomecompleto());
@@ -69,7 +70,7 @@ public class ClienteDAO {
             comando.setString(4, cliente.getGenero());
             comando.setString(5, cliente.getEmail());
             comando.setString(6, cliente.getSenha());
-            comando.setString(7, cliente.getCelular());
+            comando.setString(7, cliente.getCelular());/*
             comando.setString(8, cliente.getEndidentific());
             comando.setString(9, cliente.getNomedestinatario());
             comando.setString(10, cliente.getCep());
@@ -79,7 +80,7 @@ public class ClienteDAO {
             comando.setString(14, cliente.getReferencia());
             comando.setString(15, cliente.getBairro());
             comando.setString(16, cliente.getCidade());
-            comando.setString(17, cliente.getEstado());
+            comando.setString(17, cliente.getEstado());*/
             
             comando.execute();
         }
@@ -116,7 +117,7 @@ public class ClienteDAO {
                 c.setGenero(resultado.getString("genero"));
                 c.setEmail(resultado.getString("email"));
                 c.setSenha(resultado.getString("senha"));
-                c.setCelular(resultado.getString("celular"));
+                c.setCelular(resultado.getString("celular"));/*
                 c.setEndidentific(resultado.getString("endidentific"));
                 c.setNomedestinatario(resultado.getString("nomedestinatario"));
                 c.setCep(resultado.getString("cep"));
@@ -126,7 +127,7 @@ public class ClienteDAO {
                 c.setReferencia(resultado.getString("referencia"));
                 c.setBairro(resultado.getString("bairro"));
                 c.setCidade(resultado.getString("cidade"));
-                c.setEstado(resultado.getString("estado"));
+                c.setEstado(resultado.getString("estado"));*/
                 c.setSituacao(resultado.getString("situacao"));
                 
                 todosClientes.add(c);
@@ -138,7 +139,7 @@ public class ClienteDAO {
     public void ativarCadastro(Cliente cliente) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("UPDATE cliente SET situacao = 'ATIVADO' WHERE cpf = ?");
+            PreparedStatement comando = con.prepareStatement("UPDATE cliente SET situacao = 'ATIVO' WHERE cpf = ?");
             
             comando.setString(1, cliente.getCpf());
 
@@ -227,6 +228,26 @@ public class ClienteDAO {
         }
         return todosEnderecos;
     }
+    
+    public List<Preferencia> consultarTodasPreferencias() throws ClassNotFoundException, SQLException {
+
+        List<Preferencia> todasPreferencias;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM preferencia ORDER BY id");
+            ResultSet resultado = comando.executeQuery();
+            todasPreferencias = new ArrayList<>();
+            while (resultado.next()) {
+                Preferencia p = new Preferencia();
+                p.setPreferencia1(resultado.getString("preferencia1"));
+                p.setPreferencia2(resultado.getString("preferencia2"));
+                p.setPreferencia3(resultado.getString("preferencia3"));
+                p.setHorasjogo(resultado.getString("horasjogo"));
+                p.setJogoonline(resultado.getString("jogoonline"));
+                todasPreferencias.add(p);
+            }
+        }
+        return todasPreferencias;
+    }
 
     /*
     
@@ -258,6 +279,19 @@ public class ClienteDAO {
         comando.setInt(1, cliente.getId());
         comando.execute();
     }
+    
+        public void Editar(Cliente cliente) throws ClassNotFoundException, SQLException {
+        Connection con = ConectaBanco.getConexao();
+        PreparedStatement comando = con.prepareStatement("UPDATE cliente SET cpf = ?, nomecompleto = ?, genero = ?, datanascimento = ?, email = ?, celular = ? WHERE id = ?");
+        comando.setString(1, cliente.getCpf());
+        comando.setString(2, cliente.getNomecompleto());
+        comando.setString(3, cliente.getGenero());
+        comando.setDate(4, (Date) cliente.getDatanascimento()); 
+        comando.setString(5, cliente.getEmail());
+        comando.setString(6, cliente.getCelular());
+        comando.setInt(7kmel, cliente.getId());
+        comando.execute();
+    }
 
     public void consultarporId(Cliente cliente) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
@@ -269,11 +303,11 @@ public class ClienteDAO {
                 cliente.setId(resultado.getInt("id"));
                 cliente.setCpf(resultado.getString("cpf"));
                 cliente.setNomecompleto(resultado.getString("nomecompleto"));
-                cliente.setDatanascimento(resultado.getDate(""));
+                cliente.setDatanascimento(resultado.getDate("datanascimento"));
                 cliente.setGenero(resultado.getString("genero"));
                 cliente.setEmail(resultado.getString("email"));
                 cliente.setSenha(resultado.getString("senha"));
-                cliente.setCelular(resultado.getString("celular"));
+                cliente.setCelular(resultado.getString("celular"));/*
                 cliente.setEndidentific(resultado.getString("endidentific"));
                 cliente.setNomedestinatario(resultado.getString("nomedestinatario"));
                 cliente.setCep(resultado.getString("cep"));
@@ -283,7 +317,7 @@ public class ClienteDAO {
                 cliente.setReferencia(resultado.getString("referencia"));
                 cliente.setBairro(resultado.getString("bairro"));
                 cliente.setCidade(resultado.getString("cidade"));
-                cliente.setEstado(resultado.getString("estado"));
+                cliente.setEstado(resultado.getString("estado"));*/
                 cliente.setSituacao(resultado.getString("situacao"));
         }
     }
