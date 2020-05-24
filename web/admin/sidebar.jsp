@@ -26,8 +26,9 @@
             <h6 class="dropdown-header">Pedidos:</h6>
             <a class="dropdown-item" href="../listarComprasADM">Alterar Status</a>
           <h6 class="dropdown-header">Relatórios:</h6>
-          <a class="dropdown-item" href="#">Faturamento</a>
-          <a class="dropdown-item" href="#">Preferencia de Clientes</a>
+          <a class="dropdown-item" href="../listarFaturamento">Faturamento</a>
+          <a class="dropdown-item" href="../relatorioItens">Itens</a>
+          <a class="dropdown-item" href="../relatorioPreferencia">Preferencia de Clientes</a>
         </div>
       </li>
             <li class="nav-item dropdown">
