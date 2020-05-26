@@ -1,15 +1,9 @@
 package Controler;
 
-import DAO.ProdutoDAO;
-import DAO.GameDAO;
-import DAO.CamisetaDAO;
-import DAO.PacoteDAO;
+import DAO.CompraDAO;
 import DAO.RelatorioDAO;
-import Model.Produto;
-import Model.Game;
-import Model.Camiseta;
+import Model.Compra;
 import Model.ItensRelatorio;
-import Model.Pacote;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +14,8 @@ import java.util.List;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "RelatorioControle", urlPatterns = {
-    "/relatorioItens"
+    "/relatorioItens",
+    "/listarFaturamento"
 })
 
 public class ControllerRelatorios extends HttpServlet{
@@ -34,7 +29,9 @@ public class ControllerRelatorios extends HttpServlet{
 
             if (uri.equals(request.getContextPath() + "/relatorioItens")) {
                 relatorioItens(request, response);
-            }
+            } else if (uri.equals(request.getContextPath() + "/listarFaturamento")) {
+                listarComprasFinalizadas(request, response);
+            }  
             } catch (Exception e) {
                 e.printStackTrace();
                 response.sendRedirect("Erro.jsp");
@@ -49,6 +46,16 @@ public class ControllerRelatorios extends HttpServlet{
         request.setAttribute("todosItens", todosItens);
         
         request.getRequestDispatcher("admin/relatorioItensTotais.jsp").forward(request, response);
+
+    }
+    
+    private void listarComprasFinalizadas(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        CompraDAO dao = new CompraDAO();
+
+        List<Compra> todasComprasFinalizadas = dao.consultarComprasFinalizadas();
+        request.setAttribute("todasComprasFinalizadas", todasComprasFinalizadas);
+        
+        request.getRequestDispatcher("admin/relatorioFaturamento.jsp").forward(request, response);
 
     }
     

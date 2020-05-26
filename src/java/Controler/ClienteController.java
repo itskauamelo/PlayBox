@@ -51,7 +51,7 @@ public class ClienteController extends HttpServlet {
             String uri = request.getRequestURI();
 
             if (uri.equals(request.getContextPath() + "/excluirCliente")) {
-                excluir(request, response);
+                desativar(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarCliente")) {
                 listarTodos(request, response);
             } else if (uri.equals(request.getContextPath() + "/pagamento")) {
@@ -182,13 +182,15 @@ public class ClienteController extends HttpServlet {
         
     }
 
-    private void excluir(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+    private void desativar(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
         Cliente cliente = new Cliente();
         ClienteDAO dao = new ClienteDAO();
         cliente.setId(Integer.valueOf(request.getParameter("id")));
 
         dao.consultarporId(cliente);
         dao.Desativar(cliente);
+        
+        response.sendRedirect(request.getContextPath());
         
     }
 
@@ -226,7 +228,6 @@ public class ClienteController extends HttpServlet {
         ClienteDAO dao = new ClienteDAO();
         dao.adicionarEndereco(endereco);
         
-
         response.sendRedirect("pagamento");
         
     }

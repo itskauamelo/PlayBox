@@ -55,7 +55,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<input type="submit" class="submit" value="Entrar" name="acao">
+										<input type="submit" class="submit" value="Entrar" id="btnEntrar" name="acao">
 									</div>
 								</form>
 								<div class="sign-up-txt">
