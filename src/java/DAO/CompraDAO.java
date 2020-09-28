@@ -10,9 +10,11 @@ import java.util.List;
 import Model.Compra;
 import Util.ConectaBanco;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -38,6 +40,12 @@ public class CompraDAO {
         PreparedStatement comando = con.prepareStatement("UPDATE compra SET statusfk = ? WHERE id = ?");
         comando.setInt(1, compra.getStatus());
         comando.setInt(2, compra.getId());
+        comando.execute();
+    }
+        public void statusPago(Compra compra) throws ClassNotFoundException, SQLException {
+        Connection con = ConectaBanco.getConexao();
+        PreparedStatement comando = con.prepareStatement("UPDATE compra SET statusfk = 2 WHERE id = ?");
+        comando.setInt(1, compra.getId());
         comando.execute();
     }
     
@@ -69,8 +77,7 @@ public class CompraDAO {
         return ultimaCompra;
     }
     
-    public List<Compra> consultarTodas() throws ClassNotFoundException, SQLException {
-
+    public List<Compra> consultarTodas() throws ClassNotFoundException, SQLException {  
         List<Compra> todasCompras;
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement

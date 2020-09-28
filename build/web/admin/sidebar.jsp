@@ -28,6 +28,7 @@
           <h6 class="dropdown-header">Relatórios:</h6>
           <a class="dropdown-item" href="../listarFaturamento">Faturamento</a>
           <a class="dropdown-item" href="../relatorioItens">Itens</a>
+          <a class="dropdown-item" href="../relatorioClientes">Clientes</a>
           <a class="dropdown-item" href="../relatorioPreferencia">Preferencia de Clientes</a>
         </div>
       </li>

@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Kaua.Morateli
  */
 public class Cliente {
-    
+    private Date datahora; 
     private int id;
     private String cpf;
     private String nomecompleto;
@@ -26,7 +26,8 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int id, String cpf, String nomecompleto, Date datanascimento, String genero, String email, String senha, String celular, String situacao) {
+    public Cliente(Date datahora, int id, String cpf, String nomecompleto, Date datanascimento, String genero, String email, String senha, String celular, String situacao) {
+        this.datahora = datahora;
         this.id = id;
         this.cpf = cpf;
         this.nomecompleto = nomecompleto;
@@ -36,6 +37,14 @@ public class Cliente {
         this.senha = senha;
         this.celular = celular;
         this.situacao = situacao;
+    }
+
+    public Date getDatahora() {
+        return datahora;
+    }
+
+    public void setDatahora(Date datahora) {
+        this.datahora = datahora;
     }
 
     public int getId() {
@@ -109,7 +118,5 @@ public class Cliente {
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
-    
-    
 
 }

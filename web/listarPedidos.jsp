@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="Model.Cliente"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -301,7 +302,8 @@
                         <tr style="position:center;">
                             <td class="conteudo" style="width: 30px"><img src="img/pack.png" style="width:40px;"</td>
                         <td class="conteudo">#<a href="mostrarPedido?id=${com.id}" style="font-weight: bold">${com.id}</div></td></a>
-                            <a><td class="conteudo">Realizado em ${com.data}</td></a>
+                            <!--<a><td class="conteudo">Realizado em ${com.data}</td></a>-->
+                            <a><td class="conteudo">Realizado em <fmt:formatDate pattern="dd/MM/yyyy" value="${com.data}" /></td></a>
                             <a><td class="conteudo" style="text-align:right;"><h96 style="font-weight: bold">R$ ${com.total}0</h96></td></a>
                             <a><td class="conteudo">${statusNome}</td></a>
                         </tr>

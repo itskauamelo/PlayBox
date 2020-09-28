@@ -111,9 +111,10 @@ public class ClienteDAO {
             while (resultado.next()) {
                 Cliente c = new Cliente();
                 c.setId(resultado.getInt("id"));
+                c.setSituacao(resultado.getString("situacao"));
                 c.setCpf(resultado.getString("cpf"));
                 c.setNomecompleto(resultado.getString("nomecompleto"));
-                c.setDatanascimento(resultado.getDate(""));
+                c.setDatanascimento(resultado.getDate("datanascimento"));
                 c.setGenero(resultado.getString("genero"));
                 c.setEmail(resultado.getString("email"));
                 c.setSenha(resultado.getString("senha"));
@@ -128,7 +129,6 @@ public class ClienteDAO {
                 c.setBairro(resultado.getString("bairro"));
                 c.setCidade(resultado.getString("cidade"));
                 c.setEstado(resultado.getString("estado"));*/
-                c.setSituacao(resultado.getString("situacao"));
                 
                 todosClientes.add(c);
             }
@@ -301,6 +301,7 @@ public class ClienteDAO {
 
         if (resultado.next()) {
                 cliente.setId(resultado.getInt("id"));
+                cliente.setSituacao(resultado.getString("situacao"));
                 cliente.setCpf(resultado.getString("cpf"));
                 cliente.setNomecompleto(resultado.getString("nomecompleto"));
                 cliente.setDatanascimento(resultado.getDate("datanascimento"));
@@ -318,7 +319,32 @@ public class ClienteDAO {
                 cliente.setBairro(resultado.getString("bairro"));
                 cliente.setCidade(resultado.getString("cidade"));
                 cliente.setEstado(resultado.getString("estado"));*/
-                cliente.setSituacao(resultado.getString("situacao"));
         }
+    }
+    
+    public List<Cliente> consultarClientesCadastrados() throws ClassNotFoundException, SQLException {
+
+        List<Cliente> todosClientesCadastrados;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("SELECT * from log_novo_cliente");
+            ResultSet resultado = comando.executeQuery();
+            todosClientesCadastrados = new ArrayList<>();
+            while (resultado.next()) {
+                Cliente c = new Cliente();
+                c.setDatahora(resultado.getDate("datahora"));
+                c.setId(resultado.getInt("id"));
+                c.setSituacao(resultado.getString("situacao"));
+                c.setCpf(resultado.getString("cpf"));
+                c.setNomecompleto(resultado.getString("nomecompleto"));
+                c.setDatanascimento(resultado.getDate("datanascimento"));
+                c.setGenero(resultado.getString("genero"));
+                c.setEmail(resultado.getString("email"));
+                c.setSenha(resultado.getString("senha"));
+                c.setCelular(resultado.getString("celular"));
+                
+                todosClientesCadastrados.add(c);
+            }
+        }
+        return todosClientesCadastrados;
     }
 }
