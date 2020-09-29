@@ -124,6 +124,13 @@ public class CompraDAO {
         comando.setInt(1, compra.getId());
         comando.execute();
     }
+        
+        public void cancelarPedido(Compra compra) throws ClassNotFoundException, SQLException {
+        Connection con = ConectaBanco.getConexao();
+        PreparedStatement comando = con.prepareStatement("UPDATE compra SET statusFk = 6 WHERE id = ?");
+        comando.setInt(1, compra.getId());
+        comando.execute();
+    }
     
     public void consultarporId(Compra compra) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
