@@ -92,8 +92,8 @@
                                     <a><td class="conteudo">${statusNome}</td></a>
                                     <a>
                                         <td>
-                                            <form action="aprovarPagamento?id=${com.id}" method="POST">
-                                                <input class="btn btn-primary btn-block" style="background-color:green" value="Aprovar" type="submit"/>
+                                            <form onsubmit="return valida()" id="formulario" action="aprovarPagamento?id=${com.id}" method="POST">
+                                                <button class="btn btn-primary btn-block" style="background-color:green" value="Aprovar" type="submit"/>Aprovar</button>
                                             </form>
                                         </td>
                                     </a>
@@ -151,7 +151,19 @@
 
                             </c:choose>
 
-                        </c:forEach>                           
+                        </c:forEach>
+                                    
+                         <script>
+                            //----------------Valida Formulario-----------------
+                            function valida() {
+                                var resultado = confirm("Deseja aprovar o pagamento?");
+                                if (resultado == true) {
+                                    return true;
+                                }else {                                   
+                                    return false;
+                                }
+                            }
+                        </script>           
                     </table>
                     <!-- Area Chart Example-->
                     <!-- /.container-fluid -->

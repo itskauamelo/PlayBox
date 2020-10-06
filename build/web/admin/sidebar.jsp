@@ -12,7 +12,7 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.jsp">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Home</span>
         </a>
@@ -58,12 +58,12 @@
       </li>
       
             <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="../listarCamisetas">
           <i class="fas fa-fw fa-tshirt"></i>
           <span>Camisetas</span></a>
                 
             <li class="nav-item">
-        <a class="nav-link" href="produtos.html">
+        <a class="nav-link" href="../listarGames">
           <i class="fas fa-fw fa-gamepad"></i>
           <span>Games</span></a>
                 

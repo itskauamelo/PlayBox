@@ -72,23 +72,23 @@
         </ol>
         
         <div class="card-body">
-        <form action="../cadastrarProduto" method="POST">
+        <form onsubmit="return valida()" action="../cadastrarProduto" method="POST">
             <label for="txtNome">Nome</label>
             <input type="text" id="txtNome" name="txtNome" class="form-control" required="required"><br>
             <label for="txtDescricao">Descrição</label>
             <input type="text" id="txtDescricao" name="txtDescricao" class="form-control" required="required"><br>
-            <form action ="../repo/upladFoto.jsp">
             <label for="txtImagem">Imagem</label>
             <input accept="image/*" type="file" id="txtImagem" name="txtImagem" class="form-control" required="required"><br>
             <label for="optSituacao">Situação</label>
-            <select name="optSituacao" id="optSituacao" class="custom-select custom-select-sm form-control form-control-sm">
+            <select name="optSituacao" id="optSituacao" class="custom-select custom-select-sm form-control form-control-sm" required>
+                <option value="" disabled selected>Selecione a situação...</option>
                 <option value="ATIVO">ATIVO</option>
                 <option value="INATIVO">INATIVO</option>
             </select>
             <br><br><label for="txtQuantidade">Quantidade</label>
             <input type="number" id="txtQuantidade" name="txtQuantidade" min="0" class="form-control" required="required"><br>
             <label for="txtPreco">Preco</label>
-            <input type="text" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" />
+            <input required type="text" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" />
              <br>
              <br>
              <button class="btn btn-primary btn-medio" id="btngravar" type="submit" name="gravar" value="Gravar">Cadastrar</button>
@@ -98,6 +98,18 @@
         </div>
 
     </div>
+        
+        <script>
+                    function valida() {
+                        var resultado = confirm("Deseja cadastrar um novo produto?");
+                        if (resultado == true) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                </script>
+        
     <!-- /.content-wrapper -->
 
   </div>

@@ -16,7 +16,7 @@ public class ProdutoDAO {
     public void cadastrar(Produto produto) throws ClassNotFoundException, SQLException {
         
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO produto VALUES (NEXTVAL('id_produto'),?,?,?,?,?,?)");
+            PreparedStatement comando = con.prepareStatement("INSERT INTO produto VALUES (NEXTVAL('id_item'),?,?,?,?,?,?)");
             comando.setString(1, produto.getNome());
             comando.setString(2, produto.getDescricao());
             comando.setString(3, produto.getImagem());

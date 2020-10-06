@@ -72,15 +72,31 @@
                         <button class="btn btn-primary btn-medio" type="submit">Emitir</button>
                     </form>-->
 
-                    <div class="row" >
-                        <div class="col-md-3">
-                            <h4>De</h4>
-                            <input type="date" class="form-control" id="datefilterfrom" data-date-split-input="true">
+                    <div class="row" >  
+                        <div class="col-md-1">
+                            <select color="green" id="selectfilter" class="custom-select custom-select-sm form-control form-control-sm">
+                                <option value="" disabled selected>Filtrar Por</option>
+                                <option value="1">Data</option>
+                                <option value="2">Nome</option>
+                            </select>
                         </div>
-                        <div class="col-md-3">
-                            <h4>Até</h4>
-                            <input type="date" class="form-control" id="datefilterto" data-date-split-input="true">
+
+                        <div id="filtrodata" class="row">
+                            <div class="col-md-6">
+                                <h4>De</h4>
+                                <input type="date" class="form-control" id="datefilterfrom" data-date-split-input="true">
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Até</h4>
+                                <input type="date" class="form-control" id="datefilterto" data-date-split-input="true">
+                            </div>
                         </div>
+
+                        <div id="filtronome" class="col-md-3">
+                            <h4>Nome</h4>
+                            <input id="txtnome" type="text" class="form-control">
+                        </div>
+
                     </div>
                     <br>
                     <table id="tabela" class="tabela" border="1">
@@ -88,13 +104,11 @@
                             <tr>
                                 <th class="cabecalho">Data de Registro</th> 
                                 <th class="cabecalho">Id</th> 
-                                <th class="cabecalho">Situação</th>
                                 <th class="cabecalho">CPF</th>
                                 <th class="cabecalho">Nome</th>
                                 <th class="cabecalho">Data de Nascimento</th>
                                 <th class="cabecalho">Genero</th>
                                 <th class="cabecalho">Email</th>
-                                <th class="cabecalho">Senha</th>
                                 <th class="cabecalho">Celular</th>
                             </tr>
                         </thead>
@@ -103,13 +117,11 @@
                                 <tr>
                                     <td class="conteudo" align="center"><fmt:formatDate pattern="dd/MM/yyyy" value="${c.datahora}" /></td>
                                     <td class="conteudo" align="center">${c.id}</td>
-                                    <td class="conteudo" align="center">${c.situacao}</td>
                                     <td class="conteudo" align="center">${c.cpf}</td>
                                     <td class="conteudo" align="center">${c.nomecompleto}</td>
                                     <td class="conteudo" align="center"><fmt:formatDate pattern="dd/MM/yyyy" value="${c.datanascimento}" /></td>               
                                     <td class="conteudo" align="center">${c.genero}</td>
                                     <td class="conteudo" align="center">${c.email}</td>
-                                    <td class="conteudo" align="center">${c.senha}</td>
                                     <td class="conteudo" align="center">${c.celular}</td>
                                     <!--<td class="conteudo" align="center"><a href="iniciarEdicaoProduto?id=${c.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>        <a href="excluirProduto?id=${p.id}"><img style="height: 25px; width: 25px;" src="images/5599.png" alt="" id="iconTable"/></a></td>-->
                                 </tr>
@@ -117,15 +129,88 @@
                         </tbody>
                     </table>
                     <script>
+                        //-----------------Combo de Filtros---------------------
+                        //Se não for nem 1 nem 2 esconde as duas
+                        $("#filtrodata").hide();
+                        $("#filtronome").hide();
+
+                        $(document).ready(function () {
+                            var valor = $(this).val().toUpperCase();
+                            //Chama o evento após selecionar um valor
+                            $('#selectfilter').on('change', function () {
+                                //Verifica se o valor é igual a 1 e mostra
+                                if (this.value == '1')
+                                {
+                                    $("#filtrodata").show();
+                                    $('#limparfiltro').show();
+                                    $("#filtronome").hide();
+
+                                    $("#tabela tbody tr").show();
+                                    $(nth).each(function () {
+                                        if ($(this).text().toUpperCase().indexOf(valor) < 0) {
+                                            $(this).parent().hide();
+                                        }
+                                    });
+
+                                }
+
+                                else if (this.value == '2')
+                                {
+                                    $("#filtronome").show();
+                                    $('#limparfiltro').show();
+                                    $("#filtrodata").hide();
+
+                                    $("#tabela tbody tr").show();
+                                    $(nth).each(function () {
+                                        if ($(this).text().toUpperCase().indexOf(valor) < 0) {
+                                            $(this).parent().hide();
+                                        }
+                                    });
+                                } else if (this.value == '0')
+                                {
+                                    $("#filtrodata").hide();
+                                    $("#filtronome").hide();
+
+                                    $("#tabela tbody tr").show();
+                                    $(nth).each(function () {
+                                        if ($(this).text().toUpperCase().indexOf(valor) < 0) {
+                                            $(this).parent().hide();
+                                        }
+                                    });
+
+                                    alert("Favor selecione um filtro");
+                                }
+                            });
+                        });
+                        //-----------------Filtro Por Nome----------------------
+                        $(function () {
+                                $("#txtnome").keyup(function () {        
+                                        //var index = $(this).parent().index();
+                                i = 4;
+                                        var nth = "#tabela td:nth-child(" + i + ")";
+                                        var valor = $(this).val().toUpperCase();
+                                        $("#tabela tbody tr").show();
+                                        $(nth).each(function () {
+                                                if ($(this).text().toUpperCase().indexOf(valor) < 0) {
+                                                        $(this).parent().hide();
+                                                }
+                                        });
+                                });
+ 
+                                //$("#tabela input").blur(function () {
+                            //        $(this).val("");
+                                //});
+                        });
+                        //-----------------Filtro Por Data----------------------
                         function filterRows() {
                             var from = $('#datefilterfrom').val();
                             var to = $('#datefilterto').val();
 
-                            if (!from && !to) { // no value for from and to
+                            if (!from && !to) { 
                                 return;
                             }
 
-                            from = from || '1970-01-01'; // default from to a old date if it is not set
+                            from = from || '1970-01-01'; 
                             to = to || '2999-12-31';
 
                             var dateFrom = moment(from);
@@ -134,7 +219,7 @@
                             $('#tabela tbody tr').each(function (i, tr) {
                                 var val = $(tr).find("td:nth-child(1)").text();
                                 var dateVal = moment(val, "DD/MM/YYYY");
-                                var visible = (dateVal.isBetween(dateFrom, dateTo, null, [])) ? "" : "none"; // [] for inclusive
+                                var visible = (dateVal.isBetween(dateFrom, dateTo, null, [])) ? "" : "none"; 
                                 $(tr).css('display', visible);
                             });
                         }

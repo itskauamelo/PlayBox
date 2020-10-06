@@ -32,7 +32,7 @@ public class GameDAO {
 
         List<Game> todosGames;
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("SELECT * FROM games ORDER BY id WHERE situacao = ''");
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM games WHERE situacao = 'ATIVO' ORDER BY id");
             ResultSet resultado = comando.executeQuery();
             todosGames = new ArrayList<>();
             while (resultado.next()) {
