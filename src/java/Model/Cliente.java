@@ -22,11 +22,12 @@ public class Cliente {
     private String senha;
     private String celular;
     private String situacao;
+    private String assinatura;
 
     public Cliente() {
     }
 
-    public Cliente(Date datahora, int id, String cpf, String nomecompleto, Date datanascimento, String genero, String email, String senha, String celular, String situacao) {
+    public Cliente(Date datahora, int id, String cpf, String nomecompleto, Date datanascimento, String genero, String email, String senha, String celular, String situacao, String assinatura) {
         this.datahora = datahora;
         this.id = id;
         this.cpf = cpf;
@@ -37,6 +38,7 @@ public class Cliente {
         this.senha = senha;
         this.celular = celular;
         this.situacao = situacao;
+        this.assinatura = assinatura;
     }
 
     public Date getDatahora() {
@@ -118,5 +120,15 @@ public class Cliente {
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
+
+    public String getAssinatura() {
+        return assinatura;
+    }
+
+    public void setAssinatura(String assinatura) {
+        this.assinatura = assinatura;
+    }
+
+
 
 }

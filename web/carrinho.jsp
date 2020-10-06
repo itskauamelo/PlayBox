@@ -159,30 +159,30 @@
     <br><br>
     <br><br>
 
-            <div style="margin-left: 100px; margin-right: 100px;">
+    
+        
+    <script>
+        $('#assinatura').hide();
+    </script>
 
+    
+    
+            <div style="margin-left: 100px; margin-right: 100px;">
+            <div class="col-sm-4">
+            <a href="indexLogado.jsp" title="Continuar"><i class="fa fa-shopping-basket" aria-hidden="true"></i> < Continuar Comprando</a>
+            </div><br><br><br>
             <h1><a>Meu Carrinho</a></h1>
             <br>
             <br>
             <table class="table table-striped" style>
-                
-                <c:if test="${cart.lineItemCount==0}">
-                    <tr>
-                        <td colspan="4">
-                            <font size="2" face="Verdana, Arial, Helvetica, sans-serif"/>
-                            - Você ainda não possui produtos no carrinho-
-                            <br/>
-                        </td>
-                    </tr>
-                </c:if>
-                
+
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Img</th>
-                        <th>Produto</th>
-                        <th>Camiseta</th>
+                        <th>Item</th>
                         <th>Preço</th>
+                        <th>Remover</th>
                     </tr>
                 </thead>
 
@@ -194,16 +194,6 @@
                        <td>${status.count}</td>
                        <td><img src="" width="40"></td>
                        <td>${pacote.nome}</td>
-                       <td>
-                           <select style="color: black;" id="optTamanho" name="optTamanho">
-                               <option disabled="disabled" selected>Escolha um tamanho</option>
-                               <option value ="P">P</option>
-                               <option value ="M">M</option>
-                               <option value ="G">G</option>
-                               <option value ="GG">GG</option>
-                               <option value ="GGX">GGX</option>
-                           </select>
-                       </td>
 
                        <td><c:set var="total" value="${total + pacote.preco}"></c:set>
                        <fmt:formatNumber type="currency" currencySymbol="R$" value="${pacote.preco}"></fmt:formatNumber>
@@ -214,25 +204,27 @@
                             </a>
                         </td>
                    </tr>
+                   
                    </c:forEach>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colspan="5">Total</th>
+                        <th colspan="4">Total</th>
                         <th><fmt:formatNumber type="currency" currencySymbol="R$" value="${total}"></fmt:formatNumber></th>
                     </tr>
                 </tfoot>
             </table>
             Frete: Gratis
                     <br><br><br>
-            <div class="col-sm-4">
-            <a href="indexLogado.jsp" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Continuar Comprando</a>
-            </div><br><br><br>
-            <div class="price-button">
+                    <div id="assinatura" class="col-sm-4">
                 <form method="POST">
-            <a href="finalizarCompra" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Continuar</a>
+            <a href="finalizarAssinatura" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Adquirir assinatura</a>
                 </form></div>
-            <br>
+            <div class="col-sm-4">
+                <form method="POST">
+            <a href="finalizarCompra" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Compra Avulsa</a>
+                </form></div>
+                    <br><br><br>
             ⠀<img src="img/pagamentos.png" alt="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto" title="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto">
             </div>
     
@@ -331,6 +323,7 @@
 
     <!-- Google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEspZc-GBwxrJtw4vS3GjhAzIv7gHVbXw&callback=initMap"></script>
-
+    
+   
 </body>
 </html>

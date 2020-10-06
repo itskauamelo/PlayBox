@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Model.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 import Model.Compra;
@@ -29,6 +30,18 @@ public class CompraDAO {
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk) VALUES (NEXTVAL('id_compra'), now(),?,'1')");           
             //comando.setString(1, compra.getCarrinho().toString());
+            //comando.setString(2, compra.getCliente().toString());
+            comando.setDouble(1, compra.getTotal());
+            comando.execute();
+        }
+    }
+    
+    public void cadastrarAssinatura(Cliente cliente) throws ClassNotFoundException, SQLException {
+            
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente (assinatura) VALUES (?)");
+            Compra compra = new Compra();
+            comando.setString(1, compra.getCarrinho().toString());
             //comando.setString(2, compra.getCliente().toString());
             comando.setDouble(1, compra.getTotal());
             comando.execute();
