@@ -22,6 +22,8 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  
 </head>
 
 <body id="page-top">

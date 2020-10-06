@@ -9,132 +9,145 @@
 
 <html>
 
-<head>
+    <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Playbox - Cadastrar Camiseta</title>
+        <title>Playbox - Cadastrar Camiseta</title>
 
-  <!-- Fonte Custom-->
-  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <!-- Fonte Custom-->
+        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-  <!-- Nivel página plugin css-->
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+        <!-- Nivel página plugin css-->
+        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
-  <!-- Style Custom p/ template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+        <!-- Style Custom p/ template-->
+        <link href="css/sb-admin.css" rel="stylesheet">
 
-</head>
+    </head>
 
 
-<body id="page-top">
-    
+    <body id="page-top">
+
         <%
-    Usuario usuario = (Usuario)session.getAttribute("usuarioAutenticado");
-    
-    if (usuario != null){
-    %>
-    
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+            Usuario usuario = (Usuario) session.getAttribute("usuarioAutenticado");
 
-    <a class="navbar-brand mr-1" href="index.jsp">PlayBox</a>
+            if (usuario != null) {
+        %>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
-    </button>
+        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
-          <h8>Bem-vindo, <%= usuario.getLogin()%> !</h8>
-        <%}%>
-        <div class="input-group-append">
-        </div>
-      </div>
-    </form>
+            <a class="navbar-brand mr-1" href="index.jsp">PlayBox</a>
 
-    <jsp:include page="/admin/navbar.jsp" />
-        
-    <jsp:include page="/admin/sidebar.jsp" />
+            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+                <i class="fas fa-bars"></i>
+            </button>
 
-    <div id="content-wrapper">
+            <!-- Navbar Search -->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <h8>Bem-vindo, <%= usuario.getLogin()%> !</h8>
+                        <%}%>
+                    <div class="input-group-append">
+                    </div>
+                </div>
+            </form>
 
-      <div class="container-fluid">
+            <jsp:include page="/admin/navbar.jsp" />
 
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active">Cadastrar Camiseta</li>
-        </ol>
-        
-        <div class="card-body">
-        <form action="../cadastrarCamiseta" method="POST">
-            <label for="txtNome">Nome</label>
-            <input type="text" id="txtNome" name="txtNome" class="form-control" required="required"><br>
-            <label for="txtDescricao">Descrição</label>
-            <input type="text" id="txtDescricao" name="txtDescricao" class="form-control" required="required"><br>
-            <label for="txtSexo">Sexo</label>
-            <input type="text" id="txtSexo" name="txtSexo" class="form-control" required="required"><br>
-            <label for="txtTamanho">Tamanho</label>
-            <input type="text" id="txtTamanho" name="txtTamanho" class="form-control" required="required"><br>
-            <label for="txtImagem">Imagem</label>
-            <input accept="image/*" type="file" id="txtImagem" name="txtImagem" class="form-control" required="required"><br>
-            <label for="optSituacao">Situação</label>
-            <select name="optSituacao" id="optSituacao" class="custom-select custom-select-sm form-control form-control-sm">
-                <option value="ATIVO">ATIVO</option>
-                <option value="INATIVO">INATIVO</option>
-            </select>
-            <br><br><label for="txtQuantidade">Quantidade</label>
-            <input type="number" id="txtQuantidade" name="txtQuantidade" min="0" class="form-control" required="required"><br>
-            <label for="txtPreco">Preço</label>
-            <input type="text" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" />
-             <br>
-             <br>
-             <button class="btn btn-primary btn-medio" id="btngravar" type="submit" name="gravar" value="Gravar">Cadastrar</button>
-             <br>
-             <br>
-        </form>
-        </div>
+            <jsp:include page="/admin/sidebar.jsp" />
 
-    </div>
-    <!-- /.content-wrapper -->
+            <div id="content-wrapper">
 
-  </div>
+                <div class="container-fluid">
+
+                    <!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item active">Cadastrar Camiseta</li>
+                    </ol>
+
+                    <div class="card-body">
+                        <form onsubmit='return valida()' action="../cadastrarCamiseta" method="POST">
+                            <label for="txtNome">Nome</label>
+                            <input type="text" id="txtNome" name="txtNome" class="form-control" required="required"><br>
+                            <label for="txtDescricao">Descrição</label>
+                            <input type="text" id="txtDescricao" name="txtDescricao" class="form-control" required="required"><br>
+                            <label for="txtSexo">Sexo</label>
+                            <input type="text" id="txtSexo" name="txtSexo" class="form-control" required="required"><br>
+                            <label for="txtTamanho">Tamanho</label>
+                            <input type="text" id="txtTamanho" name="txtTamanho" class="form-control" required="required"><br>
+                            <label for="txtImagem">Imagem</label>
+                            <input accept="image/*" type="file" id="txtImagem" name="txtImagem" class="form-control" required="required"><br>
+                            <label for="optSituacao">Situação</label>
+                            <select name="optSituacao" id="optSituacao" class="custom-select custom-select-sm form-control form-control-sm" required>
+                                <option value="" disabled selected>Selecione uma situação...</option>
+                                <option value="ATIVO">ATIVO</option>
+                                <option value="INATIVO">INATIVO</option>
+                            </select>
+                            <br><br><label for="txtQuantidade">Quantidade</label>
+                            <input type="number" id="txtQuantidade" name="txtQuantidade" min="0" class="form-control" required="required"><br>
+                            <label for="txtPreco">Preço</label>
+                            <input type="text" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" required>
+
+                            <div>
+                                <button class="btn btn-primary btn-medio" id="btngravar" type="submit" name="gravar" value="Gravar">Cadastrar</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+                <!-- /.content-wrapper -->
+
+            </div>
+            
+            <script>
+                function valida() {
+                                var resultado = confirm("Deseja cadastrar uma nova camiseta?");
+                                if (resultado == true) {
+                                    return true;
+                                }else {                                   
+                                    return false;
+                                }
+                            }
+            </script>
+            
             <jsp:include page="/admin/footer.jsp"/>
-  <!-- /#wrapper -->
+            <!-- /#wrapper -->
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-  <br>
-  <br>
-  <br>
-  <jsp:include page="/admin/logoutModal.jsp" />
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+            <br>
+            <br>
+            <br>
+            <jsp:include page="/admin/logoutModal.jsp" />
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="../vendor/jquery/jquery.min.js"></script>
+            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Page level plugin JavaScript-->
-  <script src="../vendor/chart.js/Chart.min.js"></script>
-  <script src="../vendor/datatables/jquery.dataTables.js"></script>
-  <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+            <!-- Page level plugin JavaScript-->
+            <script src="../vendor/chart.js/Chart.min.js"></script>
+            <script src="../vendor/datatables/jquery.dataTables.js"></script>
+            <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="../js/sb-admin.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="../js/sb-admin.min.js"></script>
 
-  <!-- Demo scripts for this page-->
-  <script src="../js/demo/datatables-demo.js"></script>
-  <script src="../js/demo/chart-area-demo.js"></script>
+            <!-- Demo scripts for this page-->
+            <script src="../js/demo/datatables-demo.js"></script>
+            <script src="../js/demo/chart-area-demo.js"></script>
 
-</body>
+    </body>
 
 </html>

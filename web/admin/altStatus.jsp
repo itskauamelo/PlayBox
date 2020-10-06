@@ -28,6 +28,8 @@
         <!-- Custom styles for this template-->
         <link href="css/sb-admin.css" rel="stylesheet">
 
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        
     </head>
 
     <body id="page-top">
@@ -157,7 +159,7 @@
                                 <li class="breadcrumb-item"><a href="listarProdutos">Listar Produto</a></li>
                             </ol>
                             <div class="card-body" >
-                                <form method="POST" action="alterarStatus">
+                                <form name="form" id="formulario" method="POST" action="alterarStatus">
                                     <div class="form-group">
                                         <div class="form-row">
                                         </div>
@@ -171,15 +173,15 @@
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <br>
-                                            <select name="optStatus" id="optStatus">
-                                                <option disabled selected>Alterar para:</option>
+                                            <select name="optStatus" id="optStatus" required>
+                                                <option value="" disabled selected>Alterar para:</option>
                                                 <option value="3">Pedido despachado p/ transportadora</option>
                                                 <option value="4">Pedido em transporte</option>
                                                 <option value="5">Pedido entregue</option>
                                             </select>
                                         </div>
                                     </div><br>
-                                    <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar">Alterar Status</button>
+                                    <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar" onclick="valida()">Alterar Status</button>
                                 </form>
                             </div>
                             <br>
@@ -213,7 +215,7 @@
                                 <li class="breadcrumb-item"><a href="listarProdutos">Listar Produto</a></li>
                             </ol>
                             <div class="card-body" >
-                                <form method="POST" action="alterarStatus">
+                                <form name="form" id="formulario" method="POST" action="alterarStatus">
                                     <div class="form-group">
                                         <div class="form-row">
                                         </div>
@@ -227,14 +229,14 @@
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <br>
-                                            <select name="optStatus" id="optStatus">
-                                                <option disabled selected>Alterar para:</option>
+                                            <select name="optStatus" id="optStatus" required>
+                                                <option value="" disabled selected>Alterar para:</option>
                                                 <option value="4">Pedido em transporte</option>
                                                 <option value="5">Pedido entregue</option>
                                             </select>
                                         </div>
                                     </div><br>
-                                    <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar">Alterar Status</button>
+                                    <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar" onclick="valida()">Alterar Status</button>
                                 </form>
                             </div>
                             <br>
@@ -268,7 +270,7 @@
                                 <li class="breadcrumb-item"><a href="listarProdutos">Listar Produto</a></li>
                             </ol>
                             <div class="card-body" >
-                                <form method="POST" action="alterarStatus">
+                                <form name="form" id="formulario" method="POST" action="alterarStatus">
                                     <div class="form-group">
                                         <div class="form-row">
                                         </div>
@@ -282,13 +284,13 @@
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <br>
-                                            <select name="optStatus" id="optStatus">
-                                                <option disabled selected>Alterar para:</option>
+                                            <select name="optStatus" id="optStatus" required>
+                                                <option value="" disabled selected>Alterar para:</option>
                                                 <option value="5">Pedido entregue</option>
                                             </select>
                                         </div>
                                     </div><br>
-                                    <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar">Alterar Status</button>
+                                    <button class="btn btn-primary btn-block" id="btngravar" type="submit" name="confirmar" value="Gravar" onclick="valida()">Alterar Status</button>
                                 </form>
                             </div>
                             <br>
@@ -317,6 +319,45 @@
 
             </c:choose>
 
+            <script type="text/javascript">
+
+                function valida() {
+                var select = document.getElementById('optStatus');
+                var value = select.options[select.selectedIndex].value;              
+                    if (value == "") {
+                        $("#formulario").submit(false);                       
+                        return;
+                    }  
+                    var resultado = confirm("Deseja realmente alterar o status atual?");
+                    if (resultado == true && value != "") {                                                
+                            alert('Status alterado com sucesso');
+                            document.form.submit();
+                            $("#formulario").submit(true); 
+                    }
+                }
+                //function beforeSubmit() {
+                //  var combobox = document.getElementById("optStatus");
+
+                //if (combobox.options[combobox.selectedIndex].value == "") {
+                //  alert("Selecione um status para prosseguir");//your before submit logic
+                //return false;
+                //} else {
+                //    $("#formulario").submit();
+                //}
+                //}
+
+                //--------------------Valida Seleção----------------------------
+                //function valida() {
+                //  var combobox = document.getElementById("optStatus");
+                //if (combobox.options[combobox.selectedIndex].value == "") {
+
+                //  $('#formulario').submit;
+                //alert('Selecione um status para prosseguir');
+                //return false;
+
+                //}
+                //}
+            </script>
 
             <!-- /#wrapper -->
 

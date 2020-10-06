@@ -326,20 +326,18 @@ public class ClienteDAO {
 
         List<Cliente> todosClientesCadastrados;
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("SELECT * from log_novo_cliente");
+            PreparedStatement comando = con.prepareStatement("select id,datahora,cpf,nomecompleto,datanascimento,genero,email,celular from log_novo_cliente");
             ResultSet resultado = comando.executeQuery();
             todosClientesCadastrados = new ArrayList<>();
             while (resultado.next()) {
-                Cliente c = new Cliente();
-                c.setDatahora(resultado.getDate("datahora"));
+                Cliente c = new Cliente();                
                 c.setId(resultado.getInt("id"));
-                c.setSituacao(resultado.getString("situacao"));
+                c.setDatahora(resultado.getDate("datahora"));
                 c.setCpf(resultado.getString("cpf"));
                 c.setNomecompleto(resultado.getString("nomecompleto"));
                 c.setDatanascimento(resultado.getDate("datanascimento"));
                 c.setGenero(resultado.getString("genero"));
                 c.setEmail(resultado.getString("email"));
-                c.setSenha(resultado.getString("senha"));
                 c.setCelular(resultado.getString("celular"));
                 
                 todosClientesCadastrados.add(c);

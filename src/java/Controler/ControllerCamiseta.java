@@ -26,7 +26,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 })
 
 public class ControllerCamiseta extends HttpServlet{
-    
+    /*
     private File diretorio;
     
     
@@ -84,7 +84,7 @@ public class ControllerCamiseta extends HttpServlet{
 		File uploadedFile = new File(diretorio, fileName);
 	    item.write(uploadedFile);
 	}
-    
+    */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
