@@ -106,7 +106,7 @@
                     <div class="btn-group dropdown">
                         
                         <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                            <span class="text"><i class="fa fa-user"></i> Bem-vindo, <%= cliente.getNomecompleto()%>  </span>
+                            <span class="text"><i class="fa fa-user"></i> Bem-vindo, <%= cliente.getNomecompleto()%> </span>
                         </button>
                         <%}%>
                         
@@ -160,12 +160,6 @@
     <br><br>
 
     
-        
-    <script>
-        $('#assinatura').hide();
-    </script>
-
-    
     
             <div style="margin-left: 100px; margin-right: 100px;">
             <div class="col-sm-4">
@@ -189,7 +183,7 @@
                 <tbody>
                    <c:set var="total" value="0"></c:set>
                    <c:forEach items="${carrinho.pacotesNoCarrinho}" var="pacote" varStatus="status" >
-                       
+
                    <tr>
                        <td>${status.count}</td>
                        <td><img src="" width="40"></td>
@@ -216,13 +210,10 @@
             </table>
             Frete: Gratis
                     <br><br><br>
-                    <div id="assinatura" class="col-sm-4">
-                <form method="POST">
-            <a href="finalizarAssinatura" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Adquirir assinatura</a>
-                </form></div>
+
             <div class="col-sm-4">
                 <form method="POST">
-            <a href="finalizarCompra" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Compra Avulsa</a>
+            <a href="finalizarCompra" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Assinar :)</a>
                 </form></div>
                     <br><br><br>
             ⠀<img src="img/pagamentos.png" alt="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto" title="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto">
