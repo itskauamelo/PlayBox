@@ -36,14 +36,13 @@ public class CompraDAO {
         }
     }
     
-    public void cadastrarAssinatura(Cliente cliente) throws ClassNotFoundException, SQLException {
+    public void assinatura(Cliente cliente) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente (assinatura) VALUES (?)");
+            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente (assinatura, cobranca) VALUES (?, ) WHERE nomecompleto = ?");
             Compra compra = new Compra();
             comando.setString(1, compra.getCarrinho().toString());
-            //comando.setString(2, compra.getCliente().toString());
-            comando.setDouble(1, compra.getTotal());
+            comando.setString(2, cliente.getNomecompleto());
             comando.execute();
         }
     }

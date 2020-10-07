@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/PlayBox/web/carrinho.jsp</file>
+            <file>file:/C:/PlayBox/src/java/Controler/ControllerCompra.java</file>
+            <file>file:/C:/PlayBox/src/java/Model/CompraItem.java</file>
+            <file>file:/C:/PlayBox/nbproject/build-impl.xml</file>
+            <file>file:/C:/PlayBox/src/java/DAO/CompraDAO.java</file>
+            <file>file:/C:/PlayBox/src/java/Util/UploadImagem.java</file>
+            <file>file:/C:/PlayBox/src/java/Util/JobQuartz.java</file>
+            <file>file:/C:/PlayBox/src/java/Controler/ControleAcessoCliente.java</file>
+            <file>file:/C:/PlayBox/src/java/Model/Cliente.java</file>
+            <file>file:/C:/PlayBox/src/java/Util/ConectaBanco.java</file>
+            <file>file:/C:/PlayBox/src/java/Model/Compra.java</file>
+            <file>file:/C:/PlayBox/src/java/Model/Cartao.java</file>
+        </group>
     </open-files>
 </project-private>

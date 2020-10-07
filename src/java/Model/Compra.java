@@ -15,7 +15,7 @@ import java.util.Date;
 public class Compra {
     
     private int id;
-    private Carrinho carrinho;
+    private String carrinho;
     private Date data;
     private int status;
     private String cliente;
@@ -27,7 +27,7 @@ public class Compra {
     public Compra() {
     }
 
-    public Compra(int id, Carrinho carrinho, Date data, String cliente, int enderecoentrega, int metodopagamento, int cartaocredito, double total) {
+    public Compra(int id, String carrinho, Date data, String cliente, int enderecoentrega, int metodopagamento, int cartaocredito, double total) {
         this.id = id;
         this.carrinho = carrinho;
         this.data = data;
@@ -51,11 +51,11 @@ public class Compra {
         this.id = id;
     }
 
-    public Carrinho getCarrinho() {
+    public String getCarrinho() {
         return carrinho;
     }
 
-    public void setCarrinho(Carrinho carrinho) {
+    public void setCarrinho(String carrinho) {
         this.carrinho = carrinho;
     }
 

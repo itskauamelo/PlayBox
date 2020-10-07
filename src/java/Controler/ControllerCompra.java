@@ -27,7 +27,6 @@ import javax.swing.JOptionPane;
  */
 @WebServlet(name = "ControllerCompra", urlPatterns = {
     "/finalizarCompra",
-    "/finalizarAssinatura",
     "/minhasCompras",
     "/fecharCompra",
     "/compraFinalizada",
@@ -66,8 +65,6 @@ public class ControllerCompra extends HttpServlet {
 
             if (uri.equals(request.getContextPath() + "/finalizarCompra")) {
                 finalizarCompra(request, response);
-            } else if (uri.equals(request.getContextPath() + "/finalizarAssinatura" )) {
-                finalizarAssinatura(request, response);
             } else if (uri.equals(request.getContextPath() + "/compraFinalizada")) {
                 listarUltimaCompra(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarCompras")) {
@@ -90,28 +87,13 @@ public class ControllerCompra extends HttpServlet {
         Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
 
         Compra compra = new Compra();
-        compra.setTotal(carrinho.calcularTotal());
-        CompraDAO dao = new CompraDAO();
-
-        dao.cadastrar(compra);
-
-        request.getSession().removeAttribute("carrinho");
-
-        response.sendRedirect("pagamento");
-
-    }
-    
-    private void finalizarAssinatura(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
-
-        Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
-
-        Compra compra = new Compra();
         Cliente cliente = new Cliente();
         compra.setTotal(carrinho.calcularTotal());
+//        cliente.setId();
         CompraDAO dao = new CompraDAO();
 
         dao.cadastrar(compra);
-        dao.cadastrarAssinatura(cliente);
+        dao.assinatura(cliente);
 
         request.getSession().removeAttribute("carrinho");
 
