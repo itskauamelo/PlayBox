@@ -16,13 +16,15 @@ public class Carrinho {
     
     private int id;
     private double total;
+    private double totalAss;
 
     public Carrinho() {
     }
 
-    public Carrinho(int id, double total) {
+    public Carrinho(int id, double total, double totalAss) {
         this.id = id;
         this.total = total;
+        this.totalAss = totalAss;
     }
 
     public Carrinho(int id) {
@@ -42,8 +44,16 @@ public class Carrinho {
         return total;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setTotal(double totalAss) {
+        this.totalAss = totalAss;
+    }
+    
+    public double getTotalAss() {
+        return totalAss;
+    }
+
+    public void setTotalAss(double totalAss) {
+        this.totalAss = totalAss;
     }
     
     private List<Pacote> pacotesNoCarrinho = new ArrayList<>();
@@ -52,15 +62,28 @@ public class Carrinho {
         pacotesNoCarrinho.add(pacote);
     }
     
+    private List<Assinatura> assinaturaNoCarrinho = new ArrayList<>();
+    
+    public void addAssinatura(Assinatura assinatura) {
+        assinaturaNoCarrinho.add(assinatura);
+    }
+    
     public List<Pacote> getPacotesNoCarrinho() {
         return pacotesNoCarrinho;
+    }
+    
+    public List<Assinatura> getAssinaturaNoCarrinho() {
+        return assinaturaNoCarrinho;
     }
 
     public void remover(Pacote pacoteARemover) {
         pacotesNoCarrinho.remove(pacoteARemover);
     }
     
-
+    public void removerAssinatura(Assinatura assinaturaARemover) {
+        assinaturaNoCarrinho.remove(assinaturaARemover);
+    }
+    
     public double calcularTotal() {
         
         total = 0;
@@ -68,6 +91,16 @@ public class Carrinho {
             total += pacote.getPreco();
         }
         return total;
+        
+    }
+    
+    public double precoAssinatura() {
+        
+        totalAss = 0;
+        for (Assinatura assinatura : assinaturaNoCarrinho) {
+            totalAss += assinatura.getPreco();
+        }
+        return totalAss;
         
     }
 

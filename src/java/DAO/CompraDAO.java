@@ -36,13 +36,24 @@ public class CompraDAO {
         }
     }
     
-    public void assinatura(Cliente cliente) throws ClassNotFoundException, SQLException {
+    public void cadastrarAss(Compra compra) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO cliente (assinatura, cobranca) VALUES (?, ) WHERE nomecompleto = ?");
+            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk) VALUES (NEXTVAL('id_compra'), now(),?,'1')");           
+            //comando.setString(1, compra.getCarrinho().toString());
+            //comando.setString(2, compra.getCliente().toString());
+            comando.setDouble(1, compra.getTotal());
+            comando.execute();
+        }
+    }
+    
+    public void assinatura(Cliente objcliente) throws ClassNotFoundException, SQLException {
+            
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("UPDATE cliente SET cobranca = 1, assinatura = ? WHERE id = ?");
             Compra compra = new Compra();
-            comando.setString(1, compra.getCarrinho().toString());
-            comando.setString(2, cliente.getNomecompleto());
+            comando.setString(1, compra.getCarrinho());
+            comando.setInt(2, objcliente.getId());
             comando.execute();
         }
     }
@@ -178,6 +189,28 @@ public class CompraDAO {
         return todasComprasFinalizadas;
     }
     
+    public List<Compra> consultarMinhasCompras(Cliente objcliente) throws ClassNotFoundException, SQLException {
+        List<Compra> todasCompras;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement
+            ("SELECT id, datahora, valor, statusfk FROM compra where clientefk = ? ORDER BY datahora DESC");
+            comando.setInt(1, objcliente.getId());
+            ResultSet resultado = comando.executeQuery();
+            todasCompras = new ArrayList<>();
+            while (resultado.next()) {
+                Compra c = new Compra();
+                c.setId(resultado.getInt("id"));
+                c.setData(resultado.getDate("datahora"));
+                c.setTotal(resultado.getDouble("valor"));
+                c.setStatus(resultado.getInt("statusfk"));
+                
+                todasCompras.add(c);
+            }
+        }
+        return todasCompras;
+    }
+}
+    
     /*public List<Compra> listarComprasUsuario(Cliente cliente) {
         
         List<Compra> comprasUsuario = new ArrayList<>();
@@ -191,4 +224,3 @@ public class CompraDAO {
         Collections.sort(comprasUsuario, Compra.ordenar_por_data_desc);
         return comprasUsuario;
     }*/
-}

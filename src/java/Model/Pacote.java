@@ -13,6 +13,7 @@ public class Pacote {
     
     public int id;
     public String nome;
+    public String assinatura;
     public String jogo;
     public String camiseta;
     public String brinde1;
@@ -21,14 +22,21 @@ public class Pacote {
     public String brinde4;
     public String brinde5;
     public String situacao;
+    public int quantidade;
     public double preco;
 
     public Pacote() {
     }
 
-    public Pacote(int id, String nome, String jogo, String camiseta, String brinde1, String brinde2, String brinde3, String brinde4, String brinde5, String situacao, double preco) {
+    public Pacote(int id, String nome) {
         this.id = id;
         this.nome = nome;
+    }
+
+    public Pacote(int id, String nome, String assinatura, String jogo, String camiseta, String brinde1, String brinde2, String brinde3, String brinde4, String brinde5, String situacao, int quantidade, double preco) {
+        this.id = id;
+        this.nome = nome;
+        this.assinatura = assinatura;
         this.jogo = jogo;
         this.camiseta = camiseta;
         this.brinde1 = brinde1;
@@ -37,12 +45,8 @@ public class Pacote {
         this.brinde4 = brinde4;
         this.brinde5 = brinde5;
         this.situacao = situacao;
+        this.quantidade = quantidade;
         this.preco = preco;
-    }
-
-    public Pacote(int id, String nome) {
-        this.id = id;
-        this.nome = nome;
     }
 
     public int getId() {
@@ -59,6 +63,14 @@ public class Pacote {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getAssinatura() {
+        return assinatura;
+    }
+
+    public void setAssinatura(String assinatura) {
+        this.assinatura = assinatura;
     }
 
     public String getJogo() {
@@ -125,6 +137,14 @@ public class Pacote {
         this.situacao = situacao;
     }
 
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
     public double getPreco() {
         return preco;
     }
@@ -132,7 +152,8 @@ public class Pacote {
     public void setPreco(double preco) {
         this.preco = preco;
     }
-
+    
+    
     
         @Override
     public boolean equals(Object obj) {

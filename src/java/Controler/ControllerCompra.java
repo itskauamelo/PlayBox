@@ -19,6 +19,7 @@ import Model.Cliente;
 import Model.Compra;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +28,7 @@ import javax.swing.JOptionPane;
  */
 @WebServlet(name = "ControllerCompra", urlPatterns = {
     "/finalizarCompra",
+    "/finalizarAssinatura",
     "/minhasCompras",
     "/fecharCompra",
     "/compraFinalizada",
@@ -35,6 +37,7 @@ import javax.swing.JOptionPane;
     "/iniciarAltStatus",
     "/alterarStatus",
     "/mostrarPedido",
+    "/removerAssinatura",
     "/aprovarPagamento"
 })
 
@@ -65,10 +68,12 @@ public class ControllerCompra extends HttpServlet {
 
             if (uri.equals(request.getContextPath() + "/finalizarCompra")) {
                 finalizarCompra(request, response);
+            } else if (uri.equals(request.getContextPath() + "/finalizarAssinatura")) {
+                finalizarAssinatura(request, response);
             } else if (uri.equals(request.getContextPath() + "/compraFinalizada")) {
                 listarUltimaCompra(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarCompras")) {
-                listarTodas(request, response);
+                listarComprasCliente(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarComprasADM")) {
                 listarTodasADM(request, response);
             } else if (uri.equals(request.getContextPath() + "/mostrarPedido")) {
@@ -87,15 +92,31 @@ public class ControllerCompra extends HttpServlet {
         Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
 
         Compra compra = new Compra();
-        Cliente cliente = new Cliente();
         compra.setTotal(carrinho.calcularTotal());
-//        cliente.setId();
         CompraDAO dao = new CompraDAO();
 
         dao.cadastrar(compra);
-        dao.assinatura(cliente);
-
         request.getSession().removeAttribute("carrinho");
+
+        response.sendRedirect("pagamento");
+
+    }
+    
+    private void finalizarAssinatura(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
+
+        Carrinho carrinho = (Carrinho) request.getSession().getAttribute("assinatura");
+
+        Compra compra = new Compra();
+        compra.setTotal(carrinho.precoAssinatura());
+        
+        HttpSession sessaoCliente = request.getSession();
+        Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
+        CompraDAO dao = new CompraDAO();
+
+        dao.cadastrarAss(compra);
+        dao.assinatura(clienteAutenticado);
+
+        request.getSession().removeAttribute("assinatura");
 
         response.sendRedirect("pagamento");
 
@@ -160,6 +181,19 @@ public class ControllerCompra extends HttpServlet {
 
         List<Compra> todasCompras = dao.consultarTodas();
         request.setAttribute("todasCompras", todasCompras);
+
+        request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
+
+    }
+    
+        private void listarComprasCliente(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        CompraDAO dao = new CompraDAO();
+
+        HttpSession sessaoCliente = request.getSession();
+        Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
+             
+        List<Compra> minhasCompras = dao.consultarMinhasCompras(clienteAutenticado);
+        request.setAttribute("minhasCompras", minhasCompras);
 
         request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
 

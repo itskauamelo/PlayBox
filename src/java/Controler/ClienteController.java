@@ -37,6 +37,8 @@ import javax.servlet.http.HttpServletResponse;
     "/cadastrarFk",
     "/relatorioPreferencia",
     "/minhaConta",
+    "/bemvindo",
+    "/inicio",
     "/alterarSenha"
 })
 
@@ -64,6 +66,10 @@ public class ClienteController extends HttpServlet {
                 relatorioPreferencia(request, response);
             } else if (uri.equals(request.getContextPath() + "/minhaConta")) {
                 minhaConta(request, response);
+            } else if (uri.equals(request.getContextPath() + "/bemvindo")) {
+                bemvindo(request, response);
+            } else if (uri.equals(request.getContextPath() + "/inicio")) {
+                inicio(request, response);
             } else {
                 listarTodos(request, response);
             }
@@ -283,4 +289,11 @@ public class ClienteController extends HttpServlet {
         request.getRequestDispatcher("admin/relatorioPreferencia.jsp").forward(request, response);
     }
     
+    private void bemvindo(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        request.getRequestDispatcher("indexLogado.jsp").forward(request, response);
+    }
+    
+    private void inicio(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
 }

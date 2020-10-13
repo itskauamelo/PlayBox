@@ -108,6 +108,7 @@ public class ControllerPacote extends HttpServlet{
     private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
         Pacote pacote = new Pacote();
         pacote.setNome(request.getParameter("txtNome"));
+        pacote.setAssinatura(request.getParameter("txtAssinatura"));
         pacote.setJogo(request.getParameter("optJogo"));
         pacote.setCamiseta(request.getParameter("optCamiseta"));
         pacote.setBrinde1(request.getParameter("optBrinde1"));
@@ -117,6 +118,7 @@ public class ControllerPacote extends HttpServlet{
         pacote.setBrinde5(request.getParameter("optBrinde5"));
         pacote.setSituacao(request.getParameter("optSituacao"));
         pacote.setPreco(Double.parseDouble(request.getParameter("txtPreco")));
+        pacote.setQuantidade(Integer.valueOf(request.getParameter("txtQuantidade")));
         
         PacoteDAO dao = new PacoteDAO();
         dao.cadastrar(pacote);
@@ -182,7 +184,8 @@ public class ControllerPacote extends HttpServlet{
         rd.forward(request, response);
     }
 
-    private void confirmarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+        //revisar metodo abaixo (alterar nome campo p/ atender quantidade)
+        private void confirmarEdicao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
         Pacote pacote = new Pacote();
         PacoteDAO dao = new PacoteDAO();
         pacote.setId(Integer.valueOf(request.getParameter("id")));
@@ -195,7 +198,7 @@ public class ControllerPacote extends HttpServlet{
         pacote.setBrinde4(request.getParameter("brinde4"));
         pacote.setBrinde5(request.getParameter("brinde5"));
         pacote.setSituacao(request.getParameter("situacao"));
-        pacote.setPreco(Double.valueOf(request.getParameter("preco")));
+        pacote.setQuantidade(Integer.valueOf(request.getParameter("txtQuantidade")));
 
         dao.Editar(pacote);
         response.sendRedirect("listarPacotes");

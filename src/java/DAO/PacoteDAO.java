@@ -17,6 +17,7 @@ public class PacoteDAO {
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
             ("        INSERT INTO pacote VALUES (NEXTVAL('id_pacote'), ?, \n" +
+            "        (SELECT id FROM assinatura WHERE nome = ?), \n" +
             "        (SELECT id FROM games WHERE nome = ?), \n" +
             "        (SELECT id FROM camiseta WHERE nome = ?), \n" +
             "        (SELECT id FROM produto WHERE nome = ?), \n" +
@@ -27,6 +28,7 @@ public class PacoteDAO {
             "        ?, ?)");
             
             comando.setString(1, pacote.getNome());
+            comando.setString(2, pacote.getAssinatura());
             comando.setString(2, pacote.getJogo());
             comando.setString(3, pacote.getCamiseta());
             comando.setString(4, pacote.getBrinde1());
@@ -65,21 +67,28 @@ public void subtrairQuantidade(Pacote pacote) throws SQLException, ClassNotFound
         try(Connection con = ConectaBanco.getConexao()){
             PreparedStatement comando = con.prepareStatement
 
-            ("UPDATE games SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE camiseta SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;");
+            ("UPDATE games SET quantidade = quantidade - ? WHERE nome = ?;"
+            + "UPDATE camiseta SET quantidade = quantidade - ? WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - ? WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - ? WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - ? WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - ? WHERE nome = ?;"
+            + "UPDATE produto SET quantidade = quantidade - ? WHERE nome = ?;");
 
-            comando.setString(1, pacote.getJogo());
-            comando.setString(2, pacote.getCamiseta());
-            comando.setString(3, pacote.getBrinde1());
-            comando.setString(4, pacote.getBrinde2());
-            comando.setString(5, pacote.getBrinde3());
-            comando.setString(6, pacote.getBrinde4());
-            comando.setString(7, pacote.getBrinde5());
+            comando.setInt(1, pacote.getQuantidade());
+            comando.setString(2, pacote.getJogo());
+            comando.setInt(3, pacote.getQuantidade());
+            comando.setString(4, pacote.getCamiseta());
+            comando.setInt(5, pacote.getQuantidade());
+            comando.setString(6, pacote.getBrinde1());
+            comando.setInt(7, pacote.getQuantidade());
+            comando.setString(8, pacote.getBrinde2());
+            comando.setInt(9, pacote.getQuantidade());
+            comando.setString(10, pacote.getBrinde3());
+            comando.setInt(11, pacote.getQuantidade());
+            comando.setString(12, pacote.getBrinde4());
+            comando.setInt(13, pacote.getQuantidade());
+            comando.setString(14, pacote.getBrinde5());
 
             comando.execute();
         }      

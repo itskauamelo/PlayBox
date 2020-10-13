@@ -43,7 +43,7 @@ public class ControleAcessoCliente extends HttpServlet {
                     sessaoCliente.setAttribute("clienteAutenticado", clienteAutenticado);
                     
                     //Redireciona para a pagina princiapal
-                    response.sendRedirect("indexLogado.jsp");
+                    response.sendRedirect("bemvindo");
                     
                 } 
                 else {
@@ -54,7 +54,7 @@ public class ControleAcessoCliente extends HttpServlet {
             } else if (acao.equals("Sair")) {
                 HttpSession sessaoCliente = request.getSession();
                 sessaoCliente.removeAttribute("clienteAutenticado");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("inicio");
             }
         } catch (Exception erro) {
             RequestDispatcher rd = request.getRequestDispatcher("Erro.jsp");
