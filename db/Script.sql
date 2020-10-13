@@ -35,9 +35,6 @@ SELECT * FROM usuario
 
 ---------------------------PRODUTO----------------------------
 
-CREATE SEQUENCE id_item;
-
-
 CREATE TABLE produto (
 	id INT,
 	nome VARCHAR NOT NULL,
@@ -50,17 +47,17 @@ CREATE TABLE produto (
 	CONSTRAINT idPk_produto PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE id_produto;
+
     
-INSERT INTO produto VALUES (NEXTVAL('id_item'), 'Caneca Dragon Ball', 'brinde_legal', 'img', 'ATIVO', 1, 15.0);
-INSERT INTO produto VALUES (NEXTVAL('id_item'), 'Pulseira Pokemon Plus', 'brinde_legal', 'img', 'ATIVO', 1, 150.0);
-INSERT INTO produto VALUES (NEXTVAL('id_item'), 'Action Figure Finn Star Wars', 'brinde_legal', 'img', 'ATIVO', 1, 60.0);
-INSERT INTO produto VALUES (NEXTVAL('id_item'), 'Gift Card Xbox Live Pass 100LiveCredits', 'brinde_legal', 'img', 'ATIVO', 1, 100.0);
-INSERT INTO produto VALUES (NEXTVAL('id_item'), 'Chaveiro Escudo Zelda Marjoras Mask', 'brinde_legal', 'img', 'ATIVO', 1, 7.0);
+INSERT INTO produto VALUES (NEXTVAL('id_produto'), 'Caneca Dragon Ball', 'brinde_legal', 'img', 'ATIVO', 1, 15.0);
+INSERT INTO produto VALUES (NEXTVAL('id_produto'), 'Pulseira Pokemon Plus', 'brinde_legal', 'img', 'ATIVO', 1, 150.0);
+INSERT INTO produto VALUES (NEXTVAL('id_produto'), 'Action Figure Finn Star Wars', 'brinde_legal', 'img', 'ATIVO', 1, 60.0);
+INSERT INTO produto VALUES (NEXTVAL('id_produto'), 'Gift Card Xbox Live Pass 100LiveCredits', 'brinde_legal', 'img', 'ATIVO', 1, 100.0);
+INSERT INTO produto VALUES (NEXTVAL('id_produto'), 'Chaveiro Escudo Zelda Marjoras Mask', 'brinde_legal', 'img', 'ATIVO', 1, 7.0);
 
 
 SELECT * FROM produto
-
-
 
 ---------------------------GAMES----------------------------
 
@@ -80,9 +77,10 @@ CREATE TABLE games
 );
 
 CREATE SEQUENCE id_game;
-INSERT INTO games VALUES (NEXTVAL('id_item'), 'God of War III', 'brinde_legal', 'PS', 'img', 'ATIVO', 1, 2.0);
-INSERT INTO games VALUES (NEXTVAL('id_item'), 'GTA V', 'brinde_legal', 'Xbox', 'img', 'ATIVO', 1, 2.0);
-INSERT INTO games VALUES (NEXTVAL('id_item'), 'Dragon Ball Z', 'brinde_legal', 'PC', 'img', 'ATIVO', 1, 2.0);
+
+INSERT INTO games VALUES (NEXTVAL('id_game'), 'God of War III', 'brinde_legal', 'PS', 'img', 'ATIVO', 1, 2.0);
+INSERT INTO games VALUES (NEXTVAL('id_game'), 'GTA V', 'brinde_legal', 'Xbox', 'img', 'ATIVO', 1, 2.0);
+INSERT INTO games VALUES (NEXTVAL('id_game'), 'Dragon Ball Z', 'brinde_legal', 'PC', 'img', 'ATIVO', 1, 2.0);
 
 select * from games
 ---------------------------CAMISETA----------------------------
@@ -105,9 +103,29 @@ CREATE TABLE camiseta
 
 CREATE SEQUENCE id_camiseta;
 
-INSERT INTO camiseta VALUES (NEXTVAL('id_item'), 'Camiseta', 'Zelda', 'Masculino', 'P', 'img', 'ATIVO', 1, 20.0);
+INSERT INTO camiseta VALUES (NEXTVAL('id_camiseta'), 'Camiseta', 'Zelda', 'Masculino', 'P', 'img', 'ATIVO', 1, 20.0);
 
 select * from camiseta
+
+---------------------------------ASSINATURA-----------------------------------
+
+CREATE TABLE assinatura (
+
+    id INT,
+    nome VARCHAR NOT NULL,
+    preco FLOAT NOT NULL,
+	
+	CONSTRAINT idAssinaturaPk PRIMARY KEY (id)
+
+);
+
+CREATE SEQUENCE id_assinatura;
+
+INSERT INTO assinatura VALUES (NEXTVAL('id_assinatura'),'Ouro',60);
+INSERT INTO assinatura VALUES (NEXTVAL('id_assinatura'),'Prata',40);
+INSERT INTO assinatura VALUES (NEXTVAL('id_assinatura'),'Bronze',20);
+
+select * from assinatura
 ---------------------------------CLIENTE-----------------------------------
 
 CREATE TABLE cliente (
@@ -123,12 +141,14 @@ CREATE TABLE cliente (
     assinaturaFk INT,
     cobranca INT,
 
-    CONSTRAINT idClientePk PRIMARY KEY (id)
-    CONSTRAINT assinaturaFk FOREIGN KEY (assinaturaFk) REFERENCES Assinatura (id)
+    CONSTRAINT idClientePk PRIMARY KEY (id),
+    CONSTRAINT assinaturaFk FOREIGN KEY (assinaturaFk) REFERENCES assinatura (id)
 
 );
 
     CREATE SEQUENCE id_cliente;
+	
+	select * from cliente
 
 ---------------------------------CARTAO DE CREDITO-----------------------------------
 
@@ -148,6 +168,8 @@ CREATE TABLE cartaocredito (
 );
 
     CREATE SEQUENCE id_cartaocredito
+	
+	select * from cartaocredito
 
 
 ---------------------------------ENDERECO-----------------------------------
@@ -170,20 +192,7 @@ CREATE TABLE endereco (
 
 CREATE SEQUENCE id_endereco
 
-
-
----------------------------------ASSINATURA-----------------------------------
-
-CREATE TABLE assinatura (
-
-    id INT,
-    nome VARCHAR NOT NULL,
-    preco FLOAT NOT NULL
-
-);
-
-CREATE SEQUENCE id_assinatura;
-
+select * from endereco
 
 ------------------------------- PACOTE---------------------------------
 
@@ -215,7 +224,7 @@ CREATE TABLE pacote (
 
     CREATE SEQUENCE id_pacote;
 
-    INSERT INTO pacote VALUES (NEXTVAL('id_pacote'), 'Ouro', 
+    INSERT INTO pacote VALUES (NEXTVAL('id_pacote'), 1,'Ouro', 
     (SELECT id FROM games WHERE nome = 'God of War III'), 
     (SELECT id FROM camiseta WHERE nome = 'Camiseta'), 
     (SELECT id FROM produto WHERE nome = 'Caneca Dragon Ball'), 
@@ -242,6 +251,7 @@ CREATE TABLE preferencia (
 
     CREATE SEQUENCE id_preferencia
 
+select * from preferencia
     -------------------------------METODO PAGAMENTO---------------------------------
 
 CREATE TABLE MetodoPagamento (
@@ -256,6 +266,8 @@ CREATE SEQUENCE id_metodopagamento
 
 INSERT INTO MetodoPagamento VALUES (NEXTVAL('id_metodopagamento'), 'Boleto');
 INSERT INTO MetodoPagamento VALUES (NEXTVAL('id_metodopagamento'), 'Cartao de Credito');
+
+select * from MetodoPagamento
 
 
     -------------------------------STATUS---------------------------------
@@ -274,6 +286,10 @@ INSERT INTO status values (NEXTVAL('id_status'),'Separando pedido');
 INSERT INTO status values (NEXTVAL('id_status'),'Pedido despachado p/ transportadora');
 INSERT INTO status values (NEXTVAL('id_status'),'Pedido em transporte');
 INSERT INTO status values (NEXTVAL('id_status'),'Pedido entregue');
+INSERT INTO status values (NEXTVAL('id_status'),'Pedido Cancelado');
+
+select * from status
+
 
     -------------------------------COMPRA---------------------------------
 
@@ -300,35 +316,36 @@ CREATE TABLE compra (
 CREATE SEQUENCE id_compra AS int START WITH 1000 INCREMENT BY 1 ;
 
 
+
 ----------------------INSERTS COMPRA-----------------------------
 INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 50, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-05-08', 50, 5, 1, 1, 2, 1);
 	
 	INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 60, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-05-08', 60, 5, 1, 1, 2, 1);
 	
 	INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 70, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-05-08', 70, 5, 1, 1, 2, 1);
 	
 	INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 60, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-04-08', 60, 5, 1, 1, 2, 1);
 	
 	INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 50, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-04-08', 50, 5, 1, 1, 2, 1);
     INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 50, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-03-08', 50, 5, 1, 1, 2, 1);
 	
 	INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 60, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-02-08', 60, 5, 1, 1, 2, 1);
 	
 	INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 70, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-01-08', 70, 5, 1, 1, 2, 1);
 	
 	INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 60, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-01-08', 60, 5, 1, 1, 2, 1);
 	
 	INSERT INTO compra (id, datahora, valor, statusfk, clientefk, enderecoentregafk, metodopagamentofk, cartaocreditofk)
-	VALUES (NEXTVAL('id_compra'), '2020-05-08', 50, 5, 1, 11, 2, 2);
+	VALUES (NEXTVAL('id_compra'), '2020-01-08', 50, 5, 1, 1, 2, 1);
 
 --funciona
 UPDATE compra c
@@ -399,9 +416,38 @@ AS $$
 $$ LANGUAGE plpgsql;
  
 CREATE TRIGGER executa_log_edicao_usuarios
-AFTER UPDATE ON tb_usuarios
-    FOR EACH ROW EXECUTE PROCEDURE log_edicao_usuario();
+AFTER UPDATE ON usuario
+    FOR EACH ROW EXECUTE PROCEDURE log_edicao_clientes();
 
+----------------- TABELA, FUNCTION E TRIGGER PARA GUARDAR TODOS DADOS DE NOVOS CLIENTES ----------------------
 
+CREATE TABLE log_novo_cliente (
+    datahora DATE,
+    id INT,
+    situacao VARCHAR,
+    cpf VARCHAR NOT NULL,
+    nomecompleto VARCHAR NOT NULL,
+    datanascimento VARCHAR NOT NULL,
+    genero VARCHAR NOT NULL,
+    email VARCHAR NOT NULL,
+    senha VARCHAR NOT NULL,
+    celular VARCHAR NOT NULL
+    
+);
+CREATE FUNCTION data_cadastro()
+RETURNS trigger
+AS $$
+    BEGIN
+		INSERT INTO log_novo_cliente VALUES (NOW(),NEW.id, NEW.situacao, NEW.cpf, NEW.nomecompleto, NEW.datanascimento, NEW.genero, NEW.email, NEW.senha, NEW.celular);        
+        RETURN NEW;
+    END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER data_cadastro_novo_cliente
+AFTER INSERT
+ON cliente
+FOR EACH ROW EXECUTE PROCEDURE data_cadastro();
+
+select * from log_novo_cliente
 
 ----------------- FUNCTION PARA NÃO AUTORIZAR EXCLUSÃO DO USER ADMIN ----------------------
