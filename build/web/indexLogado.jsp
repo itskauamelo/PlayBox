@@ -1,5 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="Model.Cliente"%>
+<%@page import="Model.Assinatura"%>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -257,6 +259,8 @@
             </div>
         </div>
     </div>
+    
+    
     <!-- Section pricing -->
     <div class="standard-section section-pricing" id="plano">
         <div class="container">
@@ -273,7 +277,7 @@
                     <div data-100p-top="transform[swing]:translateX(-25px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">
                         <div class="price-item price-basic">
                             <div class="price-header">
-                                <h3>R$ <strong>40</strong> / mes</h3>
+                                <h3>R$ <strong>50</strong> / mes</h3>
                             </div>
                             <div class="price-description">Bronze</div>
                             <div class="price-image">
@@ -288,7 +292,7 @@
                                 <li> 1 (um) brinde</li>
                             </ul>
                             <div class="price-button">
-                                <a href="adicionarCarrinho?id=13" class="btn btn-primary btn-block" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-bronze" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
@@ -297,7 +301,7 @@
                     <div data-100p-top="transform[swing]:translateY(-25px);opacity[swing]:0" data-75p-top="transform[swing]:translateY(0);opacity[swing]:1">
                         <div class="price-item price-gold">
                             <div class="price-header">
-                                <h3>R$ <strong>50</strong> / mes</h3>
+                                <h3>R$ <strong>60</strong> / mes</h3>
                             </div>
                             <div class="price-description">Prata</div>
                             <div class="price-image">
@@ -316,7 +320,7 @@
                                 <li> 3 (três) brindes</li>
                             </ul>
                             <div class="price-button">
-                                <a href="adicionarCarrinho?id=8" class="btn btn-primary btn-block" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-prata" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
@@ -328,7 +332,7 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="price-header">
-                                <h3>R$ <strong>60</strong> / mes</h3>
+                                <h3>R$ <strong>70</strong> / mes</h3>
                             </div>
                             <div class="price-description">Ouro</div>
                             <div class="price-image">
@@ -347,7 +351,7 @@
                                 <li> 5 (cinco) brindes</li>
                             </ul>
                             <div class="price-button">
-                                <a href="adicionarCarrinho?id=11" class="btn btn-primary btn-block" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
+                                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-ouro" title="Quero esse"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Quero esse</a>
                             </div>
                         </div>
                     </div>
@@ -355,7 +359,72 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="modal-bronze" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Escolha entre as opções abaixo</h3>
+                </div>
+                <form method="post" action="#">
+                    <div class="modal-body">
+                        <div class="checkbox">
+                            <label>
+                                Você deseja:
+                                    <div class="modal-footer">
+                                        <a href="assinar?id=1" type="submit" class="btn btn-primary"><i class="fa fa-play-circle" aria-hidden="true"></i> Assinar caixa</a> ou <a href="adicionarCarrinho?id=13" type="submit" class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Comprar Avulso</a>
+                                    </div>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-prata" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Escolha entre as opções abaixo</h3>
+                </div>
+                <form method="post" action="#">
+                    <div class="modal-body">
+                        <div class="checkbox">
+                            <label>
+                                Você deseja:
+                                    <div class="modal-footer">
+                                        <a href="assinar?id=2" type="submit" class="btn btn-primary"><i class="fa fa-play-circle" aria-hidden="true"></i> Assinar caixa</a> ou <a href="adicionarCarrinho?id=8" type="submit" class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Comprar Avulso</a>
+                                    </div>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-ouro" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Escolha entre as opções abaixo</h3>
+                </div>
+                <form method="post" action="#">
+                    <div class="modal-body">
+                        <div class="checkbox">
+                            <label>
+                                Você deseja:
+                                    <div class="modal-footer">
+                                        <a href="assinar?id=3" type="submit" class="btn btn-primary"><i class="fa fa-play-circle" aria-hidden="true"></i> Assinar caixa</a> ou <a href="adicionarCarrinho?id=11" type="submit" class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Comprar Avulso</a>
+                                    </div>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Section send us message (contact form) -->
     <div class="standard-section section-promo section-send-us-message" id="mandamensagem">
         <div class="triangle triangle-up" data-100p-top="top[swing]:-54px" data-75p-top="top[swing]:-24px">
@@ -373,7 +442,7 @@
             <div class="text-center" data-100p-top="transform[swing]:translateX(-50px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">
                 <div class="section-icon"><span><i class="fa fa-envelope"></i></span></div>
             </div>
-            <p class="section-description text-center lead">Não hesite em <span class="highlight">nos contatar</span>. Se você tem alguma pergunta referente aos serviços da <span class="highlight"><span class="main-color">P</span>laybo<span class="main-color">X</span></span> ou outro <span class="highlight">serviço</span> você pode utilizar o <span class="highlight">formulário abaixo</span>. Nós iremos responde-lo de maneira mais rapida que o <strong>Sonic</strong>!</p>
+            <p class="section-description text-center lead">Não hesite em <span class="highlight">nos contatar</span>. Se você tem alguma pergunta referente aos serviços da <span class="highlight"><span class="main-color">P</span>laybo<span class="main-color">X</span></span> ou outro <span class="highlight">serviço</span> você pode utilizar o <span class="highlight">formulário abaixo</span></p>
             <form class="form-container form" method="POST" action="#">
                 <div class="overlay"></div>
                 <div class="form-content">

@@ -181,12 +181,37 @@
                 </thead>
 
                 <tbody>
+                   
+
+                    
                    <c:set var="total" value="0"></c:set>
                    <c:forEach items="${carrinho.pacotesNoCarrinho}" var="pacote" varStatus="status" >
 
+                    <c:choose>
+                        <c:when test="${pacote.nome == 'Bronze'}">
+
+                            <c:set var = "img" scope = "session" value = "${'bronze.png'}"/>
+
+                        </c:when>
+                        
+                        <c:when test="${pacote.nome == 'Prata'}">
+
+                            <c:set var = "img" scope = "session" value = "${'prata.png'}"/>
+
+                        </c:when>
+                        
+                        <c:when test="${pacote.nome == 'Ouro'}">
+
+                            <c:set var = "img" scope = "session" value = "${'ouro.png'}"/>
+
+                        </c:when>
+                        
+                    </c:choose>
+                       
+                      
                    <tr>
                        <td>${status.count}</td>
-                       <td><img src="" width="40"></td>
+                       <td><img src="img/${img}" width="40"></td>
                        <td>${pacote.nome}</td>
 
                        <td><c:set var="total" value="${total + pacote.preco}"></c:set>
@@ -213,7 +238,7 @@
 
             <div class="col-sm-4">
                 <form method="POST">
-            <a href="finalizarCompra" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Assinar :)</a>
+            <a href="finalizarAssinatura" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Comprar :)</a>
                 </form></div>
                     <br><br><br>
             ⠀<img src="img/pagamentos.png" alt="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto" title="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto">

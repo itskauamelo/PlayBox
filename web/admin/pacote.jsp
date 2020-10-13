@@ -176,11 +176,13 @@
                     <%
                         List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
                     %>
-
                     <div class="card-body">
                         <form onsubmit="return valida()" action="../cadastrarPacote" method="POST">
                             <label for="txtNome">Nome do Pacote</label>
-                            <select onchange="exibir_ocultar(this)" id="txtNome" name="txtNome" class="form-control" required>
+                            <input type="text" id="txtNome" name="txtNome" class="form-control" style="display:inline-block" required>
+                            
+                            <label for="txtAssinatura">Assinatura</label>
+                            <select onchange="exibir_ocultar(this)" id="txtAssinatura" name="txtAssinatura" class="form-control" required>
                                 <option value="" disabled selected>Selecione o nome do pacote</option>
                                 <option value="Bronze">Bronze</option>
                                 <option value="Prata">Prata</option>
@@ -280,8 +282,10 @@
                                 <option value="ATIVO">ATIVO</option>
                                 <option value="INATIVO">INATIVO</option>
                             </select>
+                            <label for="txtQuantidade">Quantidade</label>
+                            <input type="number" min="0" step="1" id="txtQuantidade" name="txtQuantidade" class="form-control" style="display:inline-block" required>
                             <label for="txtPreco">Preço</label>
-                            <input type="text" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" required>
+                            <input type="number" min="0" step="1" id="txtPreco" name="txtPreco" class="dinheiro form-control" style="display:inline-block" required>
                             <br>
                             <br>
                             <button class="btn btn-primary btn-medio" id="btngravar" type="submit" name="gravar" value="Gravar">Cadastrar</button>
@@ -290,7 +294,7 @@
                         </form>
                     </div>
                     <script>
-                        $('#txtNome').on('change', function () {
+                        $('#txtAssinatura').on('change', function () {
 
                             if (this.value == "Bronze") {
                                 $('#optBrinde1').show();
