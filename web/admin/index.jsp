@@ -74,8 +74,41 @@
                     </ol>
 
                     <div class="col-md-5">
-                        <canvas id="myChart"></canvas> 
+                        <canvas id="myChart"></canvas>
                     </div>
+                    <div class="col-md-4">
+                        <canvas id="pizza" width="1024" height="768"></canvas>
+                    </div>
+                  
+                    <script>
+                        
+                    var data = [
+                    {
+                        value: 300,
+                        color:"#F7464A",
+                        highlight: "#FF5A5E",
+                        label: "Red"
+                    },
+                    {
+                        value: 50,
+                        color: "#46BFBD",
+                        highlight: "#5AD3D1",
+                        label: "Green"
+                    },
+                    {
+                        value: 100,
+                        color: "#FDB45C",
+                        highlight: "#FFC870",
+                        label: "Yellow"
+                    }
+                ];
+
+                var ctx = document.getElementById("pizza").getContext("2d");
+                new Chart(ctx).Pie(data);
+                //new Chart(ctx).Doughnut(data);
+                        
+                    </script>
+                    
 
                     <script>
                         var ctx = document.getElementById('myChart').getContext('2d');
@@ -84,7 +117,7 @@
                             type: 'bar',
 
                             data: {
-                                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
+                                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro'],
                                 datasets: [{
                                         label: 'Pacotes Vendidos',
                                         backgroundColor: 'rgb(000, 200, 200)',
@@ -159,6 +192,8 @@
             <!-- Demo scripts for this page-->
             <script src="../js/demo/datatables-demo.js"></script>
             <script src="../js/demo/chart-area-demo.js"></script>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+            <script src="js/pizza.js"></script>
 
     </body>
 
