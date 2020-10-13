@@ -295,7 +295,7 @@
                     </div>
                     <div class="col-cadastro col-md-8">
                         <form method="POST">
-                        <a href="finalizarCompra" style="background-color: greenyellow" type="submit" class="btn btn-primary btn-block">Assinar</a>  
+                        <a href="finalizarAssinatura" style="background-color: greenyellow" type="submit" class="btn btn-primary btn-block">Assinar</a>  
                         </form><br>
                         <a href="removerDoCarrinhoAssinatura?id=${assinatura.id}" type="button" class="btn btn-primary btn-block">Voltar</a>      
                           </c:forEach>                     

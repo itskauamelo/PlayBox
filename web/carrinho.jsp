@@ -238,7 +238,7 @@
 
             <div class="col-sm-4">
                 <form method="POST">
-            <a href="finalizarAssinatura" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Comprar :)</a>
+            <a href="finalizarCompra" class="btn btn-primary btn-block dropdown-toggle" title="Continuar"><i class="fa fa-play" aria-hidden="true"></i> Comprar :)</a>
                 </form></div>
                     <br><br><br>
             ⠀<img src="img/pagamentos.png" alt="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto" title="Visa | Mastercard | Diners | Amex | Hipercard | Elo | Itaú | Bradesco | Banco do Brasil | HSBC | Boleto">

@@ -104,19 +104,18 @@ public class ControllerCompra extends HttpServlet {
     
     private void finalizarAssinatura(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
 
-        Carrinho carrinho = (Carrinho) request.getSession().getAttribute("assinatura");
-
+        Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
         Compra compra = new Compra();
-        compra.setTotal(carrinho.precoAssinatura());
+        CompraDAO dao = new CompraDAO();
+        compra.setTotalAss(carrinho.precoAssinatura());
         
         HttpSession sessaoCliente = request.getSession();
         Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
-        CompraDAO dao = new CompraDAO();
 
         dao.cadastrarAss(compra);
-        dao.assinatura(clienteAutenticado);
+        //dao.assinatura(clienteAutenticado);
 
-        request.getSession().removeAttribute("assinatura");
+        request.getSession().removeAttribute("carrinho");
 
         response.sendRedirect("pagamento");
 
