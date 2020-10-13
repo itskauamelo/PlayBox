@@ -7,40 +7,24 @@ package Model;
 
 /**
  *
- * @author Renato Alberti
+ * @author Kaua Morateli
  */
-public class Pacote {
+public class Assinatura {
     
     public int id;
     public String nome;
-    public String jogo;
-    public String camiseta;
-    public String brinde1;
-    public String brinde2;
-    public String brinde3;
-    public String brinde4;
-    public String brinde5;
-    public String situacao;
     public double preco;
 
-    public Pacote() {
+    public Assinatura() {
     }
 
-    public Pacote(int id, String nome, String jogo, String camiseta, String brinde1, String brinde2, String brinde3, String brinde4, String brinde5, String situacao, double preco) {
+    public Assinatura(int id, String nome, double preco) {
         this.id = id;
         this.nome = nome;
-        this.jogo = jogo;
-        this.camiseta = camiseta;
-        this.brinde1 = brinde1;
-        this.brinde2 = brinde2;
-        this.brinde3 = brinde3;
-        this.brinde4 = brinde4;
-        this.brinde5 = brinde5;
-        this.situacao = situacao;
         this.preco = preco;
     }
 
-    public Pacote(int id, String nome) {
+    public Assinatura(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -61,70 +45,6 @@ public class Pacote {
         this.nome = nome;
     }
 
-    public String getJogo() {
-        return jogo;
-    }
-
-    public void setJogo(String jogo) {
-        this.jogo = jogo;
-    }
-
-    public String getCamiseta() {
-        return camiseta;
-    }
-
-    public void setCamiseta(String camiseta) {
-        this.camiseta = camiseta;
-    }
-
-    public String getBrinde1() {
-        return brinde1;
-    }
-
-    public void setBrinde1(String brinde1) {
-        this.brinde1 = brinde1;
-    }
-
-    public String getBrinde2() {
-        return brinde2;
-    }
-
-    public void setBrinde2(String brinde2) {
-        this.brinde2 = brinde2;
-    }
-
-    public String getBrinde3() {
-        return brinde3;
-    }
-
-    public void setBrinde3(String brinde3) {
-        this.brinde3 = brinde3;
-    }
-
-    public String getBrinde4() {
-        return brinde4;
-    }
-
-    public void setBrinde4(String brinde4) {
-        this.brinde4 = brinde4;
-    }
-
-    public String getBrinde5() {
-        return brinde5;
-    }
-
-    public void setBrinde5(String brinde5) {
-        this.brinde5 = brinde5;
-    }
-
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
     public double getPreco() {
         return preco;
     }
@@ -133,12 +53,11 @@ public class Pacote {
         this.preco = preco;
     }
 
-    
         @Override
     public boolean equals(Object obj) {
         try {
-            Pacote p = (Pacote) obj;
-            return p.getId() == id;
+            Assinatura a = (Assinatura) obj;
+            return a.getId() == id;
         } catch (Exception e) {
             return false;
         }

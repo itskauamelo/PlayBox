@@ -1,6 +1,6 @@
 package DAO;
 
-import Model.Pacote;
+import Model.Assinatura;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -10,166 +10,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PacoteDAO {
+public class AssinaturaDAO {
 
-    public void cadastrar(Pacote pacote) throws ClassNotFoundException, SQLException {
+    public Assinatura consultarPorIdCarrinho(int id) throws ClassNotFoundException, SQLException {
+        List<Assinatura> todasAssinaturas = consultarTodos();
         
-        try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement
-            ("        INSERT INTO pacote VALUES (NEXTVAL('id_pacote'), ?, \n" +
-            "        (SELECT id FROM games WHERE nome = ?), \n" +
-            "        (SELECT id FROM camiseta WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?),\n" +
-            "        ?, ?)");
-            
-            comando.setString(1, pacote.getNome());
-            comando.setString(2, pacote.getJogo());
-            comando.setString(3, pacote.getCamiseta());
-            comando.setString(4, pacote.getBrinde1());
-            comando.setString(5, pacote.getBrinde2());
-            comando.setString(6, pacote.getBrinde3());
-            comando.setString(7, pacote.getBrinde4());
-            comando.setString(8, pacote.getBrinde5());
-            comando.setString(9, pacote.getSituacao());
-            comando.setDouble(10, pacote.getPreco());
-            
-            comando.execute();
+        for (Assinatura assinatura : todasAssinaturas) {
+            if (assinatura.getId() == id) 
+                return assinatura;
         }
+        return null;
     }
+    
+    public List<Assinatura> consultarTodos() throws ClassNotFoundException, SQLException {
 
-    public List<Pacote> consultarTodos() throws ClassNotFoundException, SQLException {
-
-        List<Pacote> todosPacotes;
+        List<Assinatura> todasAssinaturas;
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
-            ("select id, nome, preco from pacote");
+            ("SELECT id, nome, preco FROM assinatura");
             ResultSet resultado = comando.executeQuery();
-            todosPacotes = new ArrayList<>();
+            todasAssinaturas = new ArrayList<>();
             while (resultado.next()) {
-                Pacote p = new Pacote();
-                p.setId(resultado.getInt("id"));
-                p.setNome(resultado.getString("nome"));
-                p.setPreco(resultado.getDouble("preco"));
+                Assinatura a = new Assinatura();
+                a.setId(resultado.getInt("id"));
+                a.setNome(resultado.getString("nome"));
+                a.setPreco(resultado.getDouble("preco"));
                 
-                todosPacotes.add(p);
+                todasAssinaturas.add(a);
             }
         }
-        return todosPacotes;
+        return todasAssinaturas;
     }
-    
-public void subtrairQuantidade(Pacote pacote) throws SQLException, ClassNotFoundException {
-        try(Connection con = ConectaBanco.getConexao()){
-            PreparedStatement comando = con.prepareStatement
-
-            ("UPDATE games SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE camiseta SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;"
-            + "UPDATE produto SET quantidade = quantidade - 1 WHERE nome = ?;");
-
-            comando.setString(1, pacote.getJogo());
-            comando.setString(2, pacote.getCamiseta());
-            comando.setString(3, pacote.getBrinde1());
-            comando.setString(4, pacote.getBrinde2());
-            comando.setString(5, pacote.getBrinde3());
-            comando.setString(6, pacote.getBrinde4());
-            comando.setString(7, pacote.getBrinde5());
-
-            comando.execute();
-        }      
-    }
-    
-    public void Editar(Pacote pacote) throws ClassNotFoundException, SQLException {
-        Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("UPDATE Pacote SET nome = ?, jogo = ?, camiseta = ?, brinde1 = ?,brinde2 = ?,brinde3 = ?,brinde4 = ?, brinde5 = ?, situacao = ?, preco = ? WHERE id = ?");
-        comando.setString(1, pacote.getNome());
-        comando.setString(2, pacote.getJogo());
-        comando.setString(3, pacote.getCamiseta());
-        comando.setString(4, pacote.getBrinde1());
-        comando.setString(5, pacote.getBrinde2());
-        comando.setString(6, pacote.getBrinde3());
-        comando.setString(7, pacote.getBrinde4());
-        comando.setString(8, pacote.getBrinde5());
-        comando.setString(9, pacote.getSituacao());
-        comando.setDouble(10, pacote.getPreco());
-        comando.setInt(11, pacote.getId());
-        comando.execute();
-    }
-
-    public void Excluir(Pacote pacote) throws ClassNotFoundException, SQLException {
-        Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("UPDATE pacote SET situacao = 'INATIVO' WHERE id = ?");
-        comando.setInt(1, pacote.getId());
-        comando.execute();
-    }
-
-    public void consultarporId(Pacote pacote) throws ClassNotFoundException, SQLException {
-        Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("SELECT * FROM pacote WHERE id = ?");
-        comando.setInt(1, pacote.getId());
-        ResultSet resultado = comando.executeQuery();
-
-        if (resultado.next()) {
-            pacote.setNome(resultado.getString("nome"));
-            pacote.setJogo(resultado.getString("gameFk"));
-            pacote.setCamiseta(resultado.getString("camisetaFk"));
-            pacote.setBrinde1(resultado.getString("brindeFk1"));
-            pacote.setBrinde2(resultado.getString("brindeFk2"));
-            pacote.setBrinde3(resultado.getString("brindeFk3"));
-            pacote.setBrinde4(resultado.getString("brindeFk4"));
-            pacote.setBrinde5(resultado.getString("brindeFk5"));
-            pacote.setSituacao(resultado.getString("situacao"));
-            pacote.setPreco(resultado.getDouble("preco"));
-            pacote.setId(resultado.getInt("id"));
-        }
-    }
-
-    public Pacote consultarPorIdCarrinho(int id) throws ClassNotFoundException, SQLException {
-        List<Pacote> todosPacotes = consultarTodos();
-        
-        for (Pacote pacote : todosPacotes) {
-            if (pacote.getId() == id) 
-                return pacote;
-        }
-        return null;
-    }
-    
-    public Pacote cadastrarCarrinho(int id) throws ClassNotFoundException, SQLException {
-        List<Pacote> todosPacotes = consultarTodos();
-        Connection con = ConectaBanco.getConexao();
-        for (Pacote pacote : todosPacotes) {
-            if (pacote.getId() == id) 
-            {
-            PreparedStatement comando = con.prepareStatement //ISSO AQUI
-            ("INSERT INTO carrinho VALUES (NEXTVAL('id_carrinho'),now(),?,(select id from pacote where id = ?))");
-            
-            comando.setDouble(1, pacote.getPreco());
-            comando.setInt(2, pacote.getId());
-            
-            comando.execute();
-                
-                
-            }
-        }
-        return null;
-    }
-        
-    public void removerCarrinho(int id) throws ClassNotFoundException, SQLException {
-        List<Pacote> todosPacotes = consultarTodos();
-        Connection con = ConectaBanco.getConexao();
-        for (Pacote pacote : todosPacotes) {
-            if (pacote.getId() == id)
-            {
-        PreparedStatement comando = con.prepareStatement("DELETE Pacote p FROM carrinho WHERE p.id = ?");
-        comando.setInt(1, pacote.getId());
-        comando.execute();
-    }
-    }
-    }
+   
 }
