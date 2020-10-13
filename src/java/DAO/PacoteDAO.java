@@ -16,28 +16,30 @@ public class PacoteDAO {
         
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
-            ("        INSERT INTO pacote VALUES (NEXTVAL('id_pacote'), ?, \n" +
-            "        (SELECT id FROM assinatura WHERE nome = ?), \n" +
-            "        (SELECT id FROM games WHERE nome = ?), \n" +
-            "        (SELECT id FROM camiseta WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?), \n" +
-            "        (SELECT id FROM produto WHERE nome = ?),\n" +
-            "        ?, ?)");
-            
-            comando.setString(1, pacote.getNome());
-            comando.setString(2, pacote.getAssinatura());
-            comando.setString(2, pacote.getJogo());
-            comando.setString(3, pacote.getCamiseta());
-            comando.setString(4, pacote.getBrinde1());
-            comando.setString(5, pacote.getBrinde2());
-            comando.setString(6, pacote.getBrinde3());
-            comando.setString(7, pacote.getBrinde4());
-            comando.setString(8, pacote.getBrinde5());
-            comando.setString(9, pacote.getSituacao());
-            comando.setDouble(10, pacote.getPreco());
+            ("        INSERT INTO pacote VALUES (NEXTVAL('id_pacote'),  \n" +
+"                    (SELECT id FROM assinatura WHERE nome = ?), \n" +
+"					?,   \n" +
+"                    (SELECT id FROM games WHERE nome = ?), \n" +
+"                    (SELECT id FROM camiseta WHERE nome = ?), \n" +
+"                    (SELECT id FROM produto WHERE nome = ?), \n" +
+"                    (SELECT id FROM produto WHERE nome = ?), \n" +
+"                    (SELECT id FROM produto WHERE nome = ?), \n" +
+"                    (SELECT id FROM produto WHERE nome = ?), \n" +
+"                    (SELECT id FROM produto WHERE nome = ?), \n" +
+"					?, ?, ?)");
+                      
+            comando.setString(1, pacote.getAssinatura());
+            comando.setString(2, pacote.getNome());
+            comando.setString(3, pacote.getJogo());
+            comando.setString(4, pacote.getCamiseta());
+            comando.setString(5, pacote.getBrinde1());
+            comando.setString(6, pacote.getBrinde2());
+            comando.setString(7, pacote.getBrinde3());
+            comando.setString(8, pacote.getBrinde4());
+            comando.setString(9, pacote.getBrinde5());
+            comando.setString(10, pacote.getSituacao());
+            comando.setInt(11, pacote.getQuantidade());
+            comando.setDouble(12, pacote.getPreco());
             
             comando.execute();
         }

@@ -226,7 +226,7 @@
                             </div>
                             <div id="optBrinde2" name="optBrinde2" style="display:none;"> 
                                 <label for="optBrinde2">Brinde 2</label>
-                                <select name="optBrinde2" id="optBrinde2" class="custom-select custom-select-sm form-control form-control-sm" required>
+                                <select name="optBrinde2" id="optBrinde2" class="custom-select custom-select-sm form-control form-control-sm">
                                     <option value="" disabled selected>Selecione um brinde...</option>
                                     <%
                                         for (Produto produto : produtos) {
@@ -239,7 +239,7 @@
                             </div>
                             <div id="optBrinde3" name="optBrinde3" style="display:none;"> 
                                 <label for="optBrinde3">Brinde 3</label>
-                                <select name="optBrinde3" id="optBrinde3" class="custom-select custom-select-sm form-control form-control-sm" required>
+                                <select name="optBrinde3" id="optBrinde3" class="custom-select custom-select-sm form-control form-control-sm">
                                     <option value="" disabled selected>Selecione um brinde...</option>
                                     <%
                                         for (Produto produto : produtos) {
@@ -252,7 +252,7 @@
                             </div>
                             <div id="optBrinde4" name="optBrinde4" style="display:none;"> 
                                 <label for="optBrinde4">Brinde 4</label>
-                                <select name="optBrinde4" id="optBrinde4" class="custom-select custom-select-sm form-control form-control-sm" required>
+                                <select name="optBrinde4" id="optBrinde4" class="custom-select custom-select-sm form-control form-control-sm">
                                     <option value="" disabled selected>Selecione um brinde...</option>
                                     <%
                                         for (Produto produto : produtos) {
@@ -265,7 +265,7 @@
                             </div>
                             <div id="optBrinde5" name="optBrinde5" style="display:none;"txt> 
                                 <label for="optBrinde5">Brinde 5</label>
-                                <select name="optBrinde5" id="optBrinde5" class="custom-select custom-select-sm form-control form-control-sm" required>
+                                <select name="optBrinde5" id="optBrinde5" class="custom-select custom-select-sm form-control form-control-sm">
                                     <option value="" disabled selected>Selecione um brinde...</option>
                                     <%
                                         for (Produto produto : produtos) {
@@ -319,7 +319,7 @@
                         });
 
                         function valida() {
-                            var resultado = confirm("Deseja cadastrar um novo jogo?");
+                            var resultado = confirm("Deseja cadastrar um novo pacote?");
                             if (resultado == true) {
                                 return true;
                             } else {
