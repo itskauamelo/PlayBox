@@ -265,7 +265,7 @@
                         </tr>
                         
                         <center> <ul> <h3 style="color: gold">SEUS PEDIDOS</h3> </ul> </center>
-                        <c:forEach items="${todasCompras}" var="com">
+                        <c:forEach items="${minhasCompras}" var="com">
 
                         <c:choose>
                         <c:when test="${com.status == '1'}">
