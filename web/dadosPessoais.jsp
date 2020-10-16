@@ -1,4 +1,10 @@
 <%-- 
+    Document   : dadosPessoais
+    Created on : 15/10/2020, 11:26:23
+    Author     : renat
+--%>
+
+<%-- 
     Document   : carrinho
     Created on : 08/03/2020, 16:54:31
     Author     : Kaua.Morateli
@@ -158,71 +164,121 @@
         <br><br>
         <br><br>
 
-        <div style="margin-left: 100px; margin-right: 100px;">
+        <div style="margin-left: 40px; margin-right: 40px;">
             <br>
             <center><h3 class="standard-header">Entrega e Pagamento</h3></center>
             <br>
             <br>
 
 
-            <div class="container">
+            <div class="container" style="margin-right: 2%; margin-left: 2%; display:inline-block;">
+                <div style="margin-right: 40%;">
+                    <div class="col-cadastro col-md-8">
+                        <center>
+                            <form method="POST" action="cadastrarEndereco">
 
-
-                <div class="row">
-
+                                <br>
+                                <h3 class="post-item-header"> Endereço </h3>
+                                <br>
+                                <label>CEP</label>
+                                <input type="text" id="txtCep" name="txtCep" maxlength="9" class="form-control" onblur="pesquisacep(this.value);" required/><br>
+                                <label>Rua</label>
+                                <input type="text" id="txtRua" name="txtRua" class="form-control" required><br>
+                                <label>Numero</label>
+                                <input type="text" id="txtNumero" name="txtNumero" class="form-control" required><br>
+                                <label>Complemento</label>
+                                <input type="text" id="txtComplemento" name="txtComplemento" class="form-control" required><br>
+                                <label>Bairro</label>
+                                <input type="text" id="txtBairro" name="txtBairro" class="form-control" required><br>
+                                <label>Cidade</label>
+                                <input type="text" id="txtCidade" name="txtCidade" class="form-control" required><br>
+                                <label>UF</label>
+                                <input type="text" id="txtUf" name="txtUf" maxlength="2" class="form-control" required><br>
+                                <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                                <div class="price-button">
+                                    <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Endereco"><i class="fa fa-map-marker" aria-hidden="true"></i> Adicionar Endereço</button>
+                                </div>
+                            </form>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-cadastro col-md-8">
                     <center>
-                        <form method="POST" action="fecharCompra">
-                            <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                        <h3 class="post-item-header">Cartão</h3>
+                        <div id="cartao">
+                            <form method="POST" action="cadastrarCartao">
+                                <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                                <script>
+                                    $(function () {
+                                        $('#txtNumeroCartao').validateCreditCard(function (result) {
+                                            $('.bandeira').html('Card type: ' + (result.card_type == null ? '-' : result.card_type.name)
+                                                    + '<br>Valid: ' + result.valid
+                                                    + '<br>Length valid: ' + result.length_valid
+                                                    + '<br>Luhn valid: ' + result.luhn_valid);
+                                        });
+                                    });
+                                </script>
 
-                            <p id="rcorners2">
-                                <label>Endereços cadastrados</label>
+                                <label>Bandeira</label>
+                                <select id="txtBandeira" name="txtBandeira" style="color: black">
+                                    <option disabled>Selecione a bandeira</option>
+                                    <option value="MasterCard">MasterCard</option>
+                                    <option value="Visa">Visa</option>
+                                    <option value="Elo">Elo</option>
+                                    <option value="Hipercard">Hipercard</option>
+                                    <option value="Diners Club">Diners Club</option>
+                                    <option value="American Express">American Express</option>
+                                    <option value="Maestro">Maestro</option>
+                                </select>
                                 <br>
-                                <c:forEach items="${todosEnderecos}" var="e">
-                                    <input type="checkbox" name="chkEndereco" id="chkEndereco" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}<br>
-                                </c:forEach>
-                            </p>
+                                <label>Numero do cartão</label>
+                                <input type="text" id="txtNumeroCartao" name="txtNumeroCartao" maxlength="16" style="color: black"> <!--<p class="bandeira"></p>--><br>
+                                <label>Nome impresso no cartão </label>
+                                <input type="text" id="txtNomeCartao" name="txtNomeCartao" style="color: black"> <br>
+                                <label>Validade</label><input type="text" id="txtValidadeCartao" name="txtValidadeCartao" size="5" maxlength="5" style="color: black"><br>
+                                <label>Codigo de segurança</label>
+                                <input type="password" id="txtCodigoCartao" name="txtCodigoCartao" maxlength="3" size="4" style="color: black"> <br>
+                                <div class="price-button">
+                                    <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Cartão"><i class="fa fa-credit-card" aria-hidden="true"></i> Adicionar cartão</button>
+                                </div>
+                            </form>
+                        </div>
+                    </center>
+                </div>
 
-                            <p id="rcorners2">
-                                <label>Pagamentos cadastrados</label>
-                                <br>
-                                <input type="radio" id="rbtMetodo" name="rbtMetodo" onclick="mostrarcartaoCad();" value="2"> Cartão de Crédito
-                                <input type="radio" id="rbtMetodo" name="rbtMetodo" onclick="mostrarboletoCad();" value="1"> Boleto Bancário
-                                <br><input type="checkbox" name="chkCartao" id="chkCartao" selected="false" value="7">
-                            <div id="cartaocad" style="display:none;">
-                                <c:forEach items="${todosCartoes}" var="c">
-                                    <input type="checkbox" name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****<br>
-                                </c:forEach>
+                <div style="margin-left: 40%;">
+                    <center>
+                        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
 
-                            </div>
-                            <div id="boletocad" style="display:none;">
+                        <p id="rcorners2">
+                            <label>Endereços cadastrados</label>
+                            <br>
+                            <c:forEach items="${meusEnderecos}" var="e">
+                                <a name="chkEndereco" id="chkEndereco" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}</a><br>
+                            </c:forEach>
+                        </p>
 
-                            </div>
-                            </p>
-                            <div class="price-button">
-                                <button class="btn btn-primary btn-block dropdown-toggle" title="Finalizar Compra"><i class="fa fa-credit-card" aria-hidden="true"></i> Finalizar Compra</button>
-                            </div>
-                        </form>
+                        <p id="rcorners2">
+                            <label>Cartões cadastrados</label>
+                            <br>                                                             
+                            <c:forEach items="${meusCartoes}" var="c">
+                                <a name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****</a><br>
+                            </c:forEach>
+                        </p>
                     </center> 
 
-                    <div class="col-cadastro col-md-8">
-                        <br>
-                        <style>
-                            #rcorners2 
-                            {
-                                border-radius: 25px;
-                                border: 2px solid #FFFFFF;
-                                padding: 20px; 
-                                width: 70%;
-                                height: auto;  
-                            }
-                        </style>                                    
-                    </div>                                              
+                    <style>
+                        #rcorners2 
+                        {   
+                            border-radius: 10px;
+                            border: 2px solid #FFFFFF;
+                            padding: 10px; 
+                            width: 50%;
+                            height: auto;  
+                        }
+                    </style>                                                                                
                 </div>
             </div>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
             <!-- Footer -->
             <footer class="footer text-center" id="follow-us">
                 <div class="container">
@@ -431,6 +487,6 @@
 
             <!-- Google maps -->
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEspZc-GBwxrJtw4vS3GjhAzIv7gHVbXw&callback=initMap"></script>
-
+        </div>
     </body>
 </html>

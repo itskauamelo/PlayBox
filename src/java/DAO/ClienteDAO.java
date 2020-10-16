@@ -229,6 +229,43 @@ public class ClienteDAO {
         return todosEnderecos;
     }
     
+    public List<Cartao> consultarMeusCartoes(Cliente objcliente) throws ClassNotFoundException, SQLException {
+
+        List<Cartao> todosCartoes;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM cartaocredito where clientefk = ? ORDER BY id");
+            comando.setInt(1, objcliente.getId());
+            ResultSet resultado = comando.executeQuery();
+            todosCartoes = new ArrayList<>();
+            while (resultado.next()) {
+                Cartao c = new Cartao();
+                c.setId(resultado.getInt("id"));
+                c.setBandeira(resultado.getString("bandeira"));
+                todosCartoes.add(c);
+            }
+        }
+        return todosCartoes;
+    }
+    
+    public List<Endereco> consultarMeusEnderecos(Cliente objcliente) throws ClassNotFoundException, SQLException {
+
+        List<Endereco> todosEnderecos;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM endereco where clientefk = ? ORDER BY id");
+            comando.setInt(1, objcliente.getId());
+            ResultSet resultado = comando.executeQuery();
+            todosEnderecos = new ArrayList<>();
+            while (resultado.next()) {
+                Endereco e = new Endereco();
+                e.setId(resultado.getInt("id"));
+                e.setCep(Integer.valueOf(resultado.getString("cep")));
+                e.setNumero(Integer.valueOf(resultado.getString("numero")));
+                todosEnderecos.add(e);
+            }
+        }
+        return todosEnderecos;
+    }
+    
     public List<Preferencia> consultarTodasPreferencias() throws ClassNotFoundException, SQLException {
 
         List<Preferencia> todasPreferencias;

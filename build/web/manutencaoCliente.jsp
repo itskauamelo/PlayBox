@@ -112,7 +112,7 @@
                                         - <a href="minhaConta"> Minha conta </a> -
                                     </div>
                                     <div class="form-group has-feedback">
-                                        - <a href="#"> Pedidos </a> -
+                                        - <a href="listarCompras"> Pedidos </a> -
                                     </div>
                                     <div class="form-group has-feedback">
                                         - <a href="#"> Dados Pessoais </a> -

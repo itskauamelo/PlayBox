@@ -21,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ClienteControle", urlPatterns = {
     "/cadastrarCliente",
@@ -34,6 +35,7 @@ import javax.servlet.http.HttpServletResponse;
     "/cadastrarCartao",
     "/pagamento",
     "/cadastrarEndereco",
+    "/listarMeusEndCart",
     "/cadastrarFk",
     "/relatorioPreferencia",
     "/minhaConta",
@@ -58,6 +60,8 @@ public class ClienteController extends HttpServlet {
                 listarTodos(request, response);
             } else if (uri.equals(request.getContextPath() + "/pagamento")) {
                 listarTodosEnderecos(request, response);
+            } else if (uri.equals(request.getContextPath() + "/listarMeusEndCart")) {
+                listarMeusEndCart(request, response);
             } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoCliente")) {
                 iniciarEdicao(request, response);
             } else if (uri.equals(request.getContextPath() + "/iniciarAlteracaoSenha")) {
@@ -90,7 +94,7 @@ public class ClienteController extends HttpServlet {
                 cadastrarCartao(request, response);
             } else if (uri.equals(request.getContextPath() + "/cadastrarEndereco")) {
                 cadastrarEndereco(request, response);
-            } else if (uri.equals(request.getContextPath() + "/alterarSenha")) {
+            }  else if (uri.equals(request.getContextPath() + "/alterarSenha")) {
                 confirmarEdicaoSenha(request, response);
             } else if (uri.equals(request.getContextPath() + "/ativarCadastro")) {
                 ativarCadastro(request, response);
@@ -214,7 +218,7 @@ public class ClienteController extends HttpServlet {
         ClienteDAO dao = new ClienteDAO();
         dao.adicionarCartao(cartao);
 
-        response.sendRedirect("pagamento");
+        response.sendRedirect("listarMeusEndCart");
 
     }
     
@@ -234,7 +238,7 @@ public class ClienteController extends HttpServlet {
         ClienteDAO dao = new ClienteDAO();
         dao.adicionarEndereco(endereco);
         
-        response.sendRedirect("pagamento");
+        response.sendRedirect("listarMeusEndCart");
         
     }
     
@@ -280,6 +284,23 @@ public class ClienteController extends HttpServlet {
         request.setAttribute("todosCartoes", todosCartoes);
         request.getRequestDispatcher("metodoPagamento.jsp").forward(request, response);
     }
+    
+    private void listarMeusEndCart(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        ClienteDAO dao = new ClienteDAO();
+
+        HttpSession sessaoCliente = request.getSession();
+        Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
+        
+      //List<Compra> minhasCompras = dao.consultarMinhasCompras(clienteAutenticado);
+        List<Endereco> MeusEnderecos = dao.consultarMeusEnderecos(clienteAutenticado);
+        List<Cartao> MeusCartoes = dao.consultarMeusCartoes(clienteAutenticado);
+        
+        request.setAttribute("meusEnderecos", MeusEnderecos);
+        request.setAttribute("meusCartoes", MeusCartoes);
+        
+        request.getRequestDispatcher("dadosPessoais.jsp").forward(request, response);
+    }
+    
     
     private void relatorioPreferencia(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         ClienteDAO dao = new ClienteDAO();

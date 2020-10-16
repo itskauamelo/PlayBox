@@ -115,7 +115,7 @@
                                         - <a href="listarCompras"> Pedidos </a> -
                                     </div>
                                     <div class="form-group has-feedback">
-                                        - <a href="#"> Dados Pessoais </a> -
+                                        - <a href="listarMeusEndCart"> Dados Pessoais </a> -
                                     </div>
                                     <div class="form-group has-feedback">
                                         - <a href="#" data-toggle="modal" data-target="#modal-logout"> Sair </a> -
