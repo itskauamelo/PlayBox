@@ -1,6 +1,7 @@
 package DAO;
 
 import Model.Assinatura;
+import Model.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -20,6 +21,34 @@ public class AssinaturaDAO {
                 return assinatura;
         }
         return null;
+    }
+    
+        public void inserirAssinatura(int id, Cliente objcliente) throws ClassNotFoundException, SQLException {
+        
+            try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("UPDATE cliente SET assinatura = ? WHERE id = ?");
+            comando.setInt(1, id);
+            comando.setInt(2, objcliente.getId());
+            comando.execute();
+        }
+    }
+        
+    public List<Assinatura> consultarMinhaAssinatura(Cliente objcliente) throws ClassNotFoundException, SQLException {
+        List<Assinatura> aAssinatura;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement
+            ("SELECT assinatura FROM cliente where id = ?");
+            comando.setInt(1, objcliente.getId());
+            ResultSet resultado = comando.executeQuery();
+            aAssinatura = new ArrayList<>();
+            while (resultado.next()) {
+                Assinatura a = new Assinatura();
+                a.setId(resultado.getInt("id"));
+                
+                aAssinatura.add(a);
+            }
+        }
+        return aAssinatura;
     }
     
     public List<Assinatura> consultarTodos() throws ClassNotFoundException, SQLException {

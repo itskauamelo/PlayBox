@@ -128,6 +128,9 @@
                                             - <a href="listarCompras"> Pedidos </a> -
                                         </div>
                                         <div class="form-group has-feedback">
+                                            - <a href="listarAssinatura"> Assinatura </a> -
+                                        </div>
+                                        <div class="form-group has-feedback">
                                             - <a href="listarMeusEndCart"> Dados Pessoais </a> -
                                         </div>
                                         <div class="form-group has-feedback">

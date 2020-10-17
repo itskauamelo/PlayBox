@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Model.Assinatura;
 import Model.Cliente;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,8 @@ public class CompraDAO {
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement("UPDATE cliente SET cobranca = 1, assinatura = ? WHERE id = ?");
             Compra compra = new Compra();
-            comando.setString(1, compra.getCarrinho());
+            Assinatura assinatura = new Assinatura();
+            comando.setInt(1, assinatura.getId());
             comando.setInt(2, objcliente.getId());
             comando.execute();
         }
@@ -140,7 +142,7 @@ public class CompraDAO {
         }
         return todasComprasPagamento;
     }
-    
+
         public void aprovarPagamento(Compra compra) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("UPDATE compra SET statusFk = 2 WHERE id = ?");
@@ -209,6 +211,8 @@ public class CompraDAO {
         }
         return todasCompras;
     }
+    
+
 }
     
     /*public List<Compra> listarComprasUsuario(Cliente cliente) {

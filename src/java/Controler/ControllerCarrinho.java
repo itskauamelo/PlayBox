@@ -9,6 +9,7 @@ import DAO.AssinaturaDAO;
 import DAO.PacoteDAO;
 import Model.Assinatura;
 import Model.Carrinho;
+import Model.Cliente;
 import Model.Pacote;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -79,12 +81,19 @@ public class ControllerCarrinho extends HttpServlet {
     }
     
     private void assinar(HttpServletRequest request, HttpServletResponse response) {
+        
         try {
             int id = Integer.parseInt(request.getParameter("id")); 
-
+            
+            HttpSession sessaoCliente = request.getSession();
+            Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
+            
+            
             AssinaturaDAO dao = new AssinaturaDAO();
             Assinatura AssinaturaAdicionar = dao.consultarPorIdCarrinho(id);
             
+            dao.inserirAssinatura(id, clienteAutenticado);
+           
             Carrinho carrinho = (Carrinho) request.getSession(true).getAttribute("carrinho"); 
             
             if (carrinho == null){ 

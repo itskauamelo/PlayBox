@@ -5,8 +5,10 @@
  */
 package Controler;
 
+import DAO.AssinaturaDAO;
 import DAO.ClienteDAO;
 import DAO.CompraDAO;
+import Model.Assinatura;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -33,6 +35,7 @@ import javax.swing.JOptionPane;
     "/fecharCompra",
     "/compraFinalizada",
     "/listarCompras",
+    "/listarAssinatura",
     "/listarComprasADM",
     "/iniciarAltStatus",
     "/alterarStatus",
@@ -74,6 +77,8 @@ public class ControllerCompra extends HttpServlet {
                 listarUltimaCompra(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarCompras")) {
                 listarComprasCliente(request, response);
+            } else if (uri.equals(request.getContextPath() + "/listarAssinatura")) {
+                listarAssinaturaCliente(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarComprasADM")) {
                 listarTodasADM(request, response);
             } else if (uri.equals(request.getContextPath() + "/mostrarPedido")) {
@@ -113,8 +118,8 @@ public class ControllerCompra extends HttpServlet {
         Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
 
         dao.cadastrarAss(compra);
-        //dao.assinatura(clienteAutenticado);
-
+        dao.assinatura(clienteAutenticado);
+        
         request.getSession().removeAttribute("carrinho");
 
         response.sendRedirect("pagamento");
@@ -195,6 +200,19 @@ public class ControllerCompra extends HttpServlet {
         request.setAttribute("minhasCompras", minhasCompras);
 
         request.getRequestDispatcher("listarPedidos.jsp").forward(request, response);
+
+    }
+        
+        private void listarAssinaturaCliente(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        AssinaturaDAO dao = new AssinaturaDAO();
+
+        HttpSession sessaoCliente = request.getSession();
+        Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
+             
+        List<Assinatura> minhaAssinatura = dao.consultarMinhaAssinatura(clienteAutenticado);
+        request.setAttribute("minhaAssinatura", minhaAssinatura);
+
+        request.getRequestDispatcher("listarAssinatura.jsp").forward(request, response);
 
     }
 
