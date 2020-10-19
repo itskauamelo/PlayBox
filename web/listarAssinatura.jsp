@@ -45,8 +45,13 @@
     <link rel="icon" href="img/favicon.png" type="image/png">
 
 </head>
-
-<body>
+            <%
+    Cliente cliente = (Cliente)session.getAttribute("clienteAutenticado");
+    
+    if (cliente != null){
+    %>
+<body data-spy="scroll" data-offset="122" data-target="#main-menu" data-skrollr="true">
+   
 
     <!-- Preloader -->
     <div class="loader-overlay">
@@ -62,36 +67,28 @@
         </div>
     </div>
 
-    <!-- trocar cor vai aqui dps -->
+    <!-- Color switcher -->
 
     <!-- Navbar -->
-    <div class="navbar navbar-inverse">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="triangle">
             <i class="fa fa-angle-double-down" aria-hidden="true"></i>
         </div>
-        <!-- Topbar inicio -->
+
+
+        <!-- Topbar -->
         <div class="header-top clearfix">
             <div class="container">
                 <ul class="list-inline social-links">
                     <li>
                         <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
-                    </li><li class="hidden-xs">
-                        <a href="#" title="Skype"><i class="fa fa-skype"></i></a>
-                    </li><li class="hidden-xxs">
-                        <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                    </li><li class="hidden-xxs">
-                        <a href="#" title="Google +"><i class="fa fa-google-plus"></i></a>
                     </li><li>
                         <a href="#" title="Youtube"><i class="fa fa-youtube-play"></i></a>
                     </li><li>
                         <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                    </li>
                 </ul>
                 <div class="header-top-dropdown">
                     <div class="btn-group dropdown">
-                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                            <span class="text"><i class="fa fa-search"></i> Procurar</span>
-                        </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
                                 <form class="search-box" action="#">
@@ -104,68 +101,37 @@
                         </ul>
                     </div>
                     <div class="btn-group dropdown">
+                        
                         <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                            <span class="text"><i class="fa fa-shopping-cart"></i> Carrinho</span>
+                            <span class="text"><i class="fa fa-user"></i> Bem-vindo, <%= cliente.getNomecompleto()%> </span>
                         </button>
+                        <%}%>
+                        
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
-                                <form class="search-box" action="#">
-                                    <div class="form-group has-feedback no-margin">
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <a href="#" class="btn btn-primary btn-block" title="Ver todos" data-toggle="modal" data-target="#order-modal"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Ver todos</a>
-                                    </div>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="btn-group dropdown">
-                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                            <span class="text"><i class="fa fa-user"></i> Login</span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li>
-                                <form class="login-form" action="#">
+
+                                
+                                <div class="text-center">
                                     <div class="form-group has-feedback">
-                                        <input type="text" class="form-control" placeholder="Username">
-                                        <i class="fa fa-user form-control-feedback"></i>
+                                        - <a href="minhaConta"> Minha conta </a> -
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <input type="password" class="form-control" placeholder="Password">
-                                        <i class="fa fa-lock form-control-feedback"></i>
+                                        - <a href="listarCompras"> Pedidos </a> -
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-block">
-                                        <span class="text">Entrar <i class="fa fa-arrow-right"></i></span>
-                                    </button>
-                                    <h3 class="text-center">ou</h3>
-                                    <button type="submit" class="btn btn-primary btn-block">
-                                        <span class="text">Inscrever-se <i class="fa fa-arrow-right"></i></span>
-                                    </button>
-                                    <p class="text-center"><a href="#" title="Reset password">Esqueceu sua senha?</a></p>
-                                    <h3 class="text-center">Entrar com rede social</h3>
-                                    <ul class="list-inline text-center">
-                                        <li>
-                                            <a href="#" title="Login with Facebook"><span class="icon-circle-small"><i class="fa fa-facebook"></i></span></a>
-                                        </li><li>
-                                            <a href="#" title="Login with Twitter"><span class="icon-circle-small"><i class="fa fa-twitter"></i></span></a>
-                                        </li><li>
-                                            <a href="#" title="Login with Google +"><span class="icon-circle-small"><i class="fa fa-google-plus"></i></span></a>
-                                        </li>
-                                    </ul>
-                                </form>
+                                    <div class="form-group has-feedback">
+                                        - <a href="listarMeusEndCart"> Dados Pessoais </a> -
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        - <a href="#" data-toggle="modal" data-target="#modal-logout"> Sair </a> -
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div><!-- Topbar final -->
+        </div>
+        <!-- Topbar final -->
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
@@ -268,7 +234,7 @@
                         <c:forEach items="${minhaAssinatura}" var="com">
                         <tr style="position:center;">
                             <td class="conteudo" style="width: 30px"><img src="img/pack.png" style="width:40px;"</td>
-                        <td class="conteudo"><a style="font-weight: bold">${com.id}</td></a>
+                        <td class="conteudo"><a style="font-weight: bold"></td></a>
                         <a><td class="conteudo">
                         </c:forEach>
                                     <button type="submit" class="btn btn-primary btn-block">
