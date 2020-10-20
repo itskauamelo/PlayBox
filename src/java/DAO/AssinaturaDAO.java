@@ -26,7 +26,7 @@ public class AssinaturaDAO {
         public void inserirAssinatura(int id, Cliente objcliente) throws ClassNotFoundException, SQLException {
         
             try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("UPDATE cliente SET assinatura = ? WHERE id = ?");
+            PreparedStatement comando = con.prepareStatement("UPDATE cliente SET assinaturafk = ? WHERE id = ?");
             comando.setInt(1, id);
             comando.setInt(2, objcliente.getId());
             comando.execute();
@@ -37,14 +37,13 @@ public class AssinaturaDAO {
         List<Assinatura> aAssinatura;
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
-            ("SELECT assinatura FROM cliente where id = ?");
+            ("SELECT assinaturafk FROM cliente WHERE id = ?");
             comando.setInt(1, objcliente.getId());
             ResultSet resultado = comando.executeQuery();
             aAssinatura = new ArrayList<>();
             while (resultado.next()) {
                 Assinatura a = new Assinatura();
-                a.setId(resultado.getInt("id"));
-                
+                a.setId(resultado.getInt("assinaturafk"));
                 aAssinatura.add(a);
             }
         }

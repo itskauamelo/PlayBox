@@ -13,6 +13,7 @@ import Model.Cliente;
 import Model.Pacote;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -26,7 +27,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Kaua.Morateli
  */
-    @WebServlet(name = "ControllerCarrinho", urlPatterns = {"/ControllerCarrinho",
+    @WebServlet(name = "ControllerCarrinho", urlPatterns = {
+    "/ControllerCarrinho",
     "/adicionarCarrinho", 
     "/removerCarrinho",
     "/assinar",
@@ -108,8 +110,8 @@ public class ControllerCarrinho extends HttpServlet {
             Logger.getLogger(ControllerCarrinho.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     
-        
     private void removerDoCarrinho(HttpServletRequest request, HttpServletResponse response) {
         try {
             int id = Integer.parseInt(request.getParameter("id"));

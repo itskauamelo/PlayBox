@@ -231,15 +231,41 @@
                         </tr>
                         
                         <center> <ul> <h3 style="color: gold">ASSINATURA</h3> </ul> </center>
+                        <h2>Essas são suas assinaturas ativas</h2>
                         <c:forEach items="${minhaAssinatura}" var="com">
+                        <c:choose>
+                        
+                        <c:when test="${com.id == '1'}">
+                            
+                        <c:set var = "statusNome" scope = "session" value = "${'BRONZE'}"/>
+                        <c:set var = "img" scope = "session" value = "${'bronze.png'}"/>
+                        
+                        </c:when>
+                        
+                        <c:when test="${com.id == '2'}">
+                            
+                        <c:set var = "statusNome" scope = "session" value = "${'PRATA'}"/>
+                        <c:set var = "img" scope = "session" value = "${'prata.png'}"/>
+                        
+                        </c:when>
+                        
+                        <c:otherwise>
+                            
+                            <c:set var = "statusNome" scope = "session" value = "${'OURO'}"/>
+                            <c:set var = "img" scope = "session" value = "${'ouro.png'}"/>
+                            
+                        </c:otherwise>
+                        </c:choose>
+                        
+                        
                         <tr style="position:center;">
-                            <td class="conteudo" style="width: 30px"><img src="img/pack.png" style="width:40px;"</td>
-                        <td class="conteudo"><a style="font-weight: bold"></td></a>
+                            <td class="conteudo" style="width: 30px"><img src="img/${img}" style="width:40px;"</td>
+                        <td class="conteudo">${statusNome}<a style="font-weight: bold"></td></a>
                         <a><td class="conteudo">
                         </c:forEach>
-                                    <button type="submit" class="btn btn-primary btn-block">
-                                        <span class="text">Cancelar <i class="fa fa-close"></i></span>
-                                    </button>
+
+
+                                <a href="removerAssinatura?id=${com.id}" class="btn btn-primary btn-block"><i class="fa fa-close"></i>Cancelar</a>
                                 
                             </td></a>
                         </tr>
