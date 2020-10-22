@@ -237,8 +237,8 @@
                         
                         <c:when test="${com.id == '1'}">
                             
-                        <c:set var = "statusNome" scope = "session" value = "${'BRONZE'}"/>
-                        <c:set var = "img" scope = "session" value = "${'bronze.png'}"/>
+                        <c:set var = "statusNome" scope = "session" value = "${'OURO'}"/>
+                        <c:set var = "img" scope = "session" value = "${'ouro.png'}"/>
                         
                         </c:when>
                         
@@ -251,8 +251,8 @@
                         
                         <c:otherwise>
                             
-                            <c:set var = "statusNome" scope = "session" value = "${'OURO'}"/>
-                            <c:set var = "img" scope = "session" value = "${'ouro.png'}"/>
+                            <c:set var = "statusNome" scope = "session" value = "${'BRONZE'}"/>
+                            <c:set var = "img" scope = "session" value = "${'bronze.png'}"/>
                             
                         </c:otherwise>
                         </c:choose>

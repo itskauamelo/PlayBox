@@ -372,7 +372,7 @@
                             <label>
                                 Você deseja:
                                     <div class="modal-footer">
-                                        <a href="assinar?id=1" type="submit" class="btn btn-primary"><i class="fa fa-play-circle" aria-hidden="true"></i> Assinar caixa</a> ou <a href="adicionarCarrinho?id=13" type="submit" class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Comprar Avulso</a>
+                                        <a href="assinar?id=3" type="submit" class="btn btn-primary"><i class="fa fa-play-circle" aria-hidden="true"></i> Assinar caixa</a> ou <a href="adicionarCarrinho?id=13" type="submit" class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Comprar Avulso</a>
                                     </div>
                             </label>
                         </div>
@@ -416,7 +416,7 @@
                             <label>
                                 Você deseja:
                                     <div class="modal-footer">
-                                        <a href="assinar?id=3" type="submit" class="btn btn-primary"><i class="fa fa-play-circle" aria-hidden="true"></i> Assinar caixa</a> ou <a href="adicionarCarrinho?id=11" type="submit" class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Comprar Avulso</a>
+                                        <a href="assinar?id=1" type="submit" class="btn btn-primary"><i class="fa fa-play-circle" aria-hidden="true"></i> Assinar caixa</a> ou <a href="adicionarCarrinho?id=11" type="submit" class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Comprar Avulso</a>
                                     </div>
                             </label>
                         </div>

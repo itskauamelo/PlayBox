@@ -37,13 +37,13 @@ public class CompraDAO {
         }
     }
     
-    public void cadastrarAss(Compra compra) throws ClassNotFoundException, SQLException {
+    public void cadastrarAss(Compra compra, Cliente objcliente) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk) VALUES (NEXTVAL('id_compra'), now(),?,'1')");           
+            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk, clientefk) VALUES (NEXTVAL('id_compra'), now(),?,'1',?)");           
             //comando.setString(1, compra.getCarrinho().toString());
-            //comando.setString(2, compra.getCliente().toString());
             comando.setDouble(1, compra.getTotalAss());
+            comando.setInt(2, objcliente.getId());
             comando.execute();
         }
     }
@@ -51,11 +51,9 @@ public class CompraDAO {
     public void assinatura(Cliente objcliente) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("UPDATE cliente SET cobranca = 1, assinatura = ? WHERE id = ?");
+            PreparedStatement comando = con.prepareStatement("UPDATE cliente SET cobranca = 1 WHERE id = ?");
             Compra compra = new Compra();
-            Assinatura assinatura = new Assinatura();
-            comando.setInt(1, assinatura.getId());
-            comando.setInt(2, objcliente.getId());
+            comando.setInt(1, objcliente.getId());
             comando.execute();
         }
     }

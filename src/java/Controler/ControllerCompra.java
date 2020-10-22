@@ -117,7 +117,7 @@ public class ControllerCompra extends HttpServlet {
         HttpSession sessaoCliente = request.getSession();
         Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
 
-        dao.cadastrarAss(compra);
+        dao.cadastrarAss(compra, clienteAutenticado);
         dao.assinatura(clienteAutenticado);
         
         request.getSession().removeAttribute("carrinho");
@@ -158,8 +158,8 @@ public class ControllerCompra extends HttpServlet {
 
         Compra compra = new Compra();
         compra.setCliente(request.getParameter("txtIdCliente"));
-        ClienteDAO daocli = new ClienteDAO();
-        daocli.cadastrarFk(compra);
+        /*ClienteDAO daocli = new ClienteDAO();
+        daocli.cadastrarFk(compra);*/
 
         compra.setEnderecoentrega(Integer.valueOf(request.getParameter("chkEndereco")));
         compra.setMetodopagamento(Integer.valueOf(request.getParameter("rbtMetodo")));
