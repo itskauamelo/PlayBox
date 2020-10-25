@@ -154,20 +154,7 @@
         </div>
  
         <div class="container">
-            <div class="recol">
-            <ul class="side-menu">
-                <center><br>
-                    <a class="link-menu">Pedidos</a><br>
-                    <center>_______________</center><br>
-                    <a class="link-menu">Minha Conta</a><br>
-                    <center>_______________</center><br>
-                    <a class="link-menu">Atendimento</a><br>
-                    <center>_______________</center><br>
-                    <a class="link-menu">Sair</a><br><br>
-                </center>
-
-            </ul>
-            </div>
+        <jsp:include page="/elementos/menuCliente.jsp"/>
             
             <div class="row">
                 <div class="col-cadastro" style="margin-top: -300px;">
@@ -181,18 +168,18 @@
                         <label>Nome Completo: </label>
                         <input type="text" class="form-control" id="nome" name="nome" value="${cliente.nomecompleto}"><br>
                         <label>Genero: </label>
-                        <select id="genero" name="genero" class="form-control" style="color: black;">
+                        <select id="genero" name="genero" class="form-control" style="color: black;" required>
                         <option disabled selected required>Selecione genero</option>                  
                         <option value="F">Feminino</option>
                         <option value="M">Masculino</option>
                         <option value="O">Outros</option>
                         </select><br>
                         <label>Data de Nascimento: </label>
-                        <input type="date" class="form-control" id="datanascimento" name="datanascimento" value="${cliente.datanascimento}"><br>
+                        <input type="date" class="form-control" id="datanascimento" name="datanascimento" required value="${cliente.datanascimento}"><br>
                         <label>Email: </label>
-                        <input type="email" class="form-control" id="email" name="email" value="${cliente.email}"><br>
+                        <input type="email" class="form-control" required id="email" name="email" value="${cliente.email}"><br>
                         <label>Celular: </label>
-                        <input type="text" OnKeyPress="formatar('##-#####-####', this)" class="form-control" id="celular" name="celular" value="${cliente.celular}"><br>
+                        <input type="text" required OnKeyPress="formatar('##-#####-####', this)" class="form-control" id="celular" name="celular" value="${cliente.celular}"><br>
                         </div>
                         <div style="margin-left: 340px;">
                         <button class="btn btn-primary" title="Criar Conta" id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Alterar</a>
@@ -209,6 +196,13 @@
 
     <br><br><br>
 
+                <script>
+                    function confirmacao() {
+                        alert("Dados atualizados com sucesso");
+                    }
+                </script>
+    
+    
     <!-- Footer -->
     <footer class="footer footer-gray text-center" id="follow-us">
         <div class="container">

@@ -57,7 +57,7 @@
                 </div>
             </form>
 
-            <jsp:include page="/admin/navbar.jsp" />
+            <jsp:include page="/admin/navbar.jsp"/>
 
             <jsp:include page="/admin/sidebar.jsp" />
 

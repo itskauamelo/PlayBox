@@ -239,7 +239,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-cadastro col-md-8">
-                    <form action="cadastrarPesquisaCancelamento" method="POST">                
+                    <form onsubmit='return confirmacao()' action="cadastrarPesquisaCancelamento" method="POST">                
                     <p class="section-description text-center lead">Antes de finalizarmos a sua assinatura gostaríamos de saber o seu <span class="highlight">sentimento</span>.
                         de prazer ou decepção com os nossos produtos para que assim nós da <span class="highlight"><span class="main-color">P</span>laybo<span class="main-color">X</span><span class="highlight"></span></span>possamos sempre melhorar o nosso <strong> desempenho </strong>! <br>(Lembrando que o preenchimento abaixo nao é obrigatório e voce pode pular essa etapa clicando em PULAR)</p>
                     <br>
@@ -324,7 +324,11 @@
             </form><a class="btn btn-primary" href="inicio"><i class="fa fa-close" aria-hidden="true"></i> Pular</a></button>
         </div>
     </div>
-
+                <script>
+                    function confirmacao() {
+                        alert("Obrigado pelo envio da pesquisa");
+                    }
+                </script>
 
     <br><br><br>
 

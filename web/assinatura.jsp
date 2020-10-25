@@ -278,7 +278,7 @@
                                             <td>${assinatura.nome}</td>
 
                                             <td>
-                                                <c:set var="totalAss" value="${totalAss + assinatura.preco}"></c:set>
+                                                <c:set var="total" value="${totalAss + assinatura.preco}"></c:set>
                                                 <fmt:formatNumber type="currency" currencySymbol="R$" value="${assinatura.preco}"></fmt:formatNumber>
                                             </td>
                                         </tr>
@@ -287,7 +287,7 @@
                                 <tfoot>
                                     <tr>
                                         <th colspan="3">Total</th>
-                                        <th><fmt:formatNumber type="currency" currencySymbol="R$" value="${totalAss}"></fmt:formatNumber></th>
+                                        <th><fmt:formatNumber type="currency" currencySymbol="R$" value="${total}"></fmt:formatNumber></th>
                                     </tr>
                                 </tfoot>
                             </table>

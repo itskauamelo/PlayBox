@@ -41,6 +41,20 @@ public class Cliente {
         this.assinatura = assinatura;
     }
 
+    public Cliente(int id, String cpf, String nomecompleto, Date datanascimento, String genero, String email, String senha, String celular, String situacao) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nomecompleto = nomecompleto;
+        this.datanascimento = datanascimento;
+        this.genero = genero;
+        this.email = email;
+        this.senha = senha;
+        this.celular = celular;
+        this.situacao = situacao;
+    }
+    
+    
+
     public Date getDatahora() {
         return datahora;
     }

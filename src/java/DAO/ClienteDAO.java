@@ -67,7 +67,7 @@ public class ClienteDAO {
             
             comando.setString(1, cliente.getCpf());
             comando.setString(2, cliente.getNomecompleto());
-            comando.setDate(3, (Date) cliente.getDatanascimento()); // validar isso aqui pq eu to em choque
+            comando.setDate(3, (Date) cliente.getDatanascimento());
             comando.setString(4, cliente.getGenero());
             comando.setString(5, cliente.getEmail());
             comando.setString(6, cliente.getSenha());

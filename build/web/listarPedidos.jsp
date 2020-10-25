@@ -242,21 +242,7 @@
         </div>
  
         <div class="container">
-            <div class="recol">
-            <ul class="side-menu">
-                <center><br>
-                    <a class="link-menu">Pedidos</a><br>
-                    <center>_______________</center><br>
-                    <a class="link-menu">Dados Pessoais</a><br>
-                    <center>_______________</center><br>
-                    <a class="link-menu">Atendimento</a><br>
-                    <center>_______________</center><br>
-                    <a class="link-menu">Sair</a><br><br>
-                </center>
-
-            </ul>
-            </div>
-            
+            <jsp:include page="/elementos/menuCliente.jsp"/>
             <div class="row">
                 <div class="col-cadastro" style="margin-top: -300px;">
 

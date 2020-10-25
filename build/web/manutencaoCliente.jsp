@@ -170,25 +170,6 @@
                     </ul>
                 </div>
 
-                <div class="recol">
-                    <h3>Assinatura Atual</h3>
-                    <table id="tabela">
-                        <tr>                
-                            <th class="cabecalho">Nome</th>              
-                            <th class="cabecalho">Preco</th>
-                            <th class="cabecalho">Editar</th>
-
-                        </tr>
-                        <c:forEach items="${minhaAssinatura}" var="ass">
-                            <tr>              
-                                <td class="conteudo" align="center">${ass.nome}</td>
-                                <td class="conteudo" align="center">${ass.preco}</td>
-                                <td class="conteudo" align="center"><a href="iniciarEdicaoAssinatura?id=${ass.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                </div>
-
                 <div class="row">
                     <div class="col-cadastro" style="margin-top: -300px;">
                         <BR>

@@ -87,8 +87,8 @@ public class Carrinho {
     public double calcularTotal() {
         
         total = 0;
-        for (Pacote pacote : pacotesNoCarrinho) {
-            total += pacote.getPreco();
+        for (Assinatura assinatura : assinaturaNoCarrinho) {
+            total += assinatura.getPreco();
         }
         return total;
         

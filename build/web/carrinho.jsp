@@ -185,22 +185,22 @@
 
                     
                    <c:set var="total" value="0"></c:set>
-                   <c:forEach items="${carrinho.pacotesNoCarrinho}" var="pacote" varStatus="status" >
+                   <c:forEach items="${carrinho.assinaturaNoCarrinho}" var="assinatura" varStatus="status" >
 
                     <c:choose>
-                        <c:when test="${pacote.nome == 'Bronze'}">
+                        <c:when test="${assinatura.nome == 'BRONZE'}">
 
                             <c:set var = "img" scope = "session" value = "${'bronze.png'}"/>
 
                         </c:when>
                         
-                        <c:when test="${pacote.nome == 'Prata'}">
+                        <c:when test="${assinatura.nome == 'PRATA'}">
 
                             <c:set var = "img" scope = "session" value = "${'prata.png'}"/>
 
                         </c:when>
                         
-                        <c:when test="${pacote.nome == 'Ouro'}">
+                        <c:when test="${assinatura.nome == 'OURO'}">
 
                             <c:set var = "img" scope = "session" value = "${'ouro.png'}"/>
 
@@ -212,13 +212,13 @@
                    <tr>
                        <td>${status.count}</td>
                        <td><img src="img/${img}" width="40"></td>
-                       <td>${pacote.nome}</td>
+                       <td>${assinatura.nome}</td>
 
-                       <td><c:set var="total" value="${total + pacote.preco}"></c:set>
-                       <fmt:formatNumber type="currency" currencySymbol="R$" value="${pacote.preco}"></fmt:formatNumber>
+                       <td><c:set var="total" value="${totalAss + assinatura.preco}"></c:set>
+                       <fmt:formatNumber type="currency" currencySymbol="R$" value="${assinatura.preco}"></fmt:formatNumber>
                        </td>
                        <td>
-                            <a href="removerCarrinho?id=${pacote.id}">
+                            <a href="removerCarrinho?id=${assinatura.id}">
                             <span class="glyphicon glyphicon-remove icone-botao"></span>
                             </a>
                         </td>
