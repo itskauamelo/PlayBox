@@ -177,7 +177,7 @@
                             <p id="rcorners2">
                                 <label>Endereços cadastrados</label>
                                 <br>
-                                <c:forEach items="${todosEnderecos}" var="e">
+                                <c:forEach items="${meusEnderecos}" var="e">
                                     <input type="checkbox" name="chkEndereco" id="chkEndereco" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}<br>
                                 </c:forEach>
                             </p>
@@ -189,7 +189,7 @@
                                 <input type="radio" id="rbtMetodo" name="rbtMetodo" onclick="mostrarboletoCad();" value="1"> Boleto Bancário
                                 <br><input type="checkbox" name="chkCartao" id="chkCartao" selected="false" value="7">
                             <div id="cartaocad" style="display:none;">
-                                <c:forEach items="${todosCartoes}" var="c">
+                                <c:forEach items="${meusCartoes}" var="c">
                                     <input type="checkbox" name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****<br>
                                 </c:forEach>
 

@@ -26,13 +26,13 @@ import java.text.SimpleDateFormat;
 public class CompraDAO {
 
 
-    public void cadastrar(Compra compra) throws ClassNotFoundException, SQLException {
+    public void cadastrar(Compra compra, Cliente objcliente) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk) VALUES (NEXTVAL('id_compra'), now(),?,'1')");           
+            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk, clientefk) VALUES (NEXTVAL('id_compra'), now(),?,'1',?)");           
             //comando.setString(1, compra.getCarrinho().toString());
-            //comando.setString(2, compra.getCliente().toString());
             comando.setDouble(1, compra.getTotal());
+            comando.setInt(2, objcliente.getId());
             comando.execute();
         }
     }

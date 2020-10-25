@@ -11,6 +11,7 @@ import DAO.ClienteDAO;
 import Model.Cartao;
 import Model.Cliente;
 import Model.Endereco;
+import Model.Pesquisa;
 import Model.Preferencia;
 import java.io.IOException;
 import java.sql.Date;
@@ -27,11 +28,13 @@ import javax.servlet.http.HttpSession;
     "/cadastrarCliente",
     "/listarCliente",
     "/excluirCliente",
+    "/removerAss",
     "/iniciarEdicaoCliente",
     "/iniciarAlteracaoSenha",
     "/editarCliente",
     "/ativarCadastro",
     "/cadastrarPreferencia",
+    "/cadastrarPesquisaCancelamento",
     "/cadastrarCartao",
     "/pagamento",
     "/cadastrarEndereco",
@@ -41,6 +44,7 @@ import javax.servlet.http.HttpSession;
     "/minhaConta",
     "/bemvindo",
     "/inicio",
+    "/formPesquisaCancelamento",
     "/alterarSenha"
 })
 
@@ -56,10 +60,12 @@ public class ClienteController extends HttpServlet {
 
             if (uri.equals(request.getContextPath() + "/excluirCliente")) {
                 desativar(request, response);
+            } else if (uri.equals(request.getContextPath() + "/removerAss")) {
+                removerAssinatura(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarCliente")) {
                 listarTodos(request, response);
             } else if (uri.equals(request.getContextPath() + "/pagamento")) {
-                listarTodosEnderecos(request, response);
+                listarMeusEnderecosCartoes(request, response);
             } else if (uri.equals(request.getContextPath() + "/listarMeusEndCart")) {
                 listarMeusEndCart(request, response);
             } else if (uri.equals(request.getContextPath() + "/iniciarEdicaoCliente")) {
@@ -74,6 +80,8 @@ public class ClienteController extends HttpServlet {
                 bemvindo(request, response);
             } else if (uri.equals(request.getContextPath() + "/inicio")) {
                 inicio(request, response);
+            } else if (uri.equals(request.getContextPath() + "/formPesquisaCancelamento")) {
+                formPesquisaCancelamento(request, response);
             } else {
                 listarTodos(request, response);
             }
@@ -100,7 +108,9 @@ public class ClienteController extends HttpServlet {
                 ativarCadastro(request, response);
             } else if (uri.equals(request.getContextPath() + "/cadastrarPreferencia" )) {
                 cadastrarPreferencia(request, response);
-            } else if (uri.equals(request.getContextPath() + "/editarCliente" )) {
+            } else if (uri.equals(request.getContextPath() + "/cadastrarPesquisaCancelamento")) {
+                cadastrarPesquisaCancelamento(request, response);
+            } else if (uri.equals(request.getContextPath() + "/editarCliente")) {
                 confirmarEdicao(request, response);
             }
             else {
@@ -141,6 +151,23 @@ public class ClienteController extends HttpServlet {
         
         ClienteDAO dao = new ClienteDAO();
         dao.cadastrarpreferencia(preferencia);
+        
+        response.sendRedirect(request.getContextPath());
+   
+    }
+    
+    private void cadastrarPesquisaCancelamento(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
+        
+        Pesquisa pesquisa = new Pesquisa();
+        
+        pesquisa.setAvaliacao1(request.getParameter("rate1"));
+        pesquisa.setAvaliacao2(request.getParameter("rate2"));
+        pesquisa.setAvaliacao3(request.getParameter("rate3"));
+        pesquisa.setAvaliacao4(request.getParameter("rate4"));
+        pesquisa.setAvaliacao5(request.getParameter("rate5"));
+        
+        ClienteDAO dao = new ClienteDAO();
+        dao.cadastrarPesquisa(pesquisa);
         
         response.sendRedirect(request.getContextPath());
    
@@ -203,20 +230,33 @@ public class ClienteController extends HttpServlet {
         response.sendRedirect(request.getContextPath());
         
     }
+    
+    private void removerAssinatura(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
+        ClienteDAO dao = new ClienteDAO();
+        
+        HttpSession sessaoCliente = request.getSession();
+        Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
+        
+        dao.removerAssinatura(clienteAutenticado);
+        
+        response.sendRedirect("formPesquisaCancelamento");
+    }
 
     private void cadastrarCartao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
 
+        HttpSession sessaoCliente = request.getSession();
+        Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
+        
         Cartao cartao = new Cartao();
-
+      
         cartao.setBandeira(request.getParameter("txtBandeira"));
         cartao.setNumero(request.getParameter("txtNumeroCartao"));
         cartao.setNomecartao(request.getParameter("txtNomeCartao"));
         cartao.setValidade(request.getParameter("txtValidadeCartao"));
-        cartao.setCodigo(Integer.valueOf(request.getParameter("txtCodigoCartao")));
-        cartao.setCliente(request.getParameter("txtIdCliente"));
+        cartao.setCodigo(Integer.valueOf(request.getParameter("txtCodigoCartao")));        
 
-        ClienteDAO dao = new ClienteDAO();
-        dao.adicionarCartao(cartao);
+        ClienteDAO dao = new ClienteDAO();   
+        dao.adicionarCartao(cartao, clienteAutenticado);
 
         response.sendRedirect("listarMeusEndCart");
 
@@ -224,6 +264,9 @@ public class ClienteController extends HttpServlet {
     
     private void cadastrarEndereco(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {
 
+        HttpSession sessaoCliente = request.getSession();
+        Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
+        
         Endereco endereco = new Endereco();
 
         endereco.setCep(Integer.valueOf(request.getParameter("txtCep")));
@@ -232,11 +275,10 @@ public class ClienteController extends HttpServlet {
         endereco.setComplemento(request.getParameter("txtComplemento"));
         endereco.setBairro(request.getParameter("txtBairro"));
         endereco.setCidade(request.getParameter("txtCidade"));
-        endereco.setUf(request.getParameter("txtUf"));
-        endereco.setCliente(request.getParameter("txtIdCliente"));
+        endereco.setUf(request.getParameter("txtUf"));       
 
         ClienteDAO dao = new ClienteDAO();
-        dao.adicionarEndereco(endereco);
+        dao.adicionarEndereco(endereco, clienteAutenticado);
         
         response.sendRedirect("listarMeusEndCart");
         
@@ -274,14 +316,18 @@ public class ClienteController extends HttpServlet {
         
     }
     
-    
-    private void listarTodosEnderecos(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+    private void listarMeusEnderecosCartoes(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         ClienteDAO dao = new ClienteDAO();
 
-        List<Endereco> todosEnderecos = dao.consultarTodosEnderecos();
-        List<Cartao> todosCartoes = dao.consultarTodosCartoes();
-        request.setAttribute("todosEnderecos", todosEnderecos);
-        request.setAttribute("todosCartoes", todosCartoes);
+        HttpSession sessaoCliente = request.getSession();
+        Cliente clienteAutenticado = (Cliente) sessaoCliente.getAttribute("clienteAutenticado");
+        
+        List<Endereco> MeusEnderecos = dao.consultarMeusEnderecos(clienteAutenticado);
+        List<Cartao> MeusCartoes = dao.consultarMeusCartoes(clienteAutenticado);
+        
+        request.setAttribute("meusEnderecos", MeusEnderecos);
+        request.setAttribute("meusCartoes", MeusCartoes);
+        
         request.getRequestDispatcher("metodoPagamento.jsp").forward(request, response);
     }
     
@@ -316,5 +362,9 @@ public class ClienteController extends HttpServlet {
     
     private void inicio(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
+    
+    private void formPesquisaCancelamento(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        request.getRequestDispatcher("FormCancelamento.jsp").forward(request, response);
     }
 }

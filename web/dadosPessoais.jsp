@@ -4,12 +4,6 @@
     Author     : renat
 --%>
 
-<%-- 
-    Document   : carrinho
-    Created on : 08/03/2020, 16:54:31
-    Author     : Kaua.Morateli
---%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -197,7 +191,6 @@
                                 <input type="text" id="txtCidade" name="txtCidade" class="form-control" required><br>
                                 <label>UF</label>
                                 <input type="text" id="txtUf" name="txtUf" maxlength="2" class="form-control" required><br>
-                                <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
                                 <div class="price-button">
                                     <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Endereco"><i class="fa fa-map-marker" aria-hidden="true"></i> Adicionar Endereço</button>
                                 </div>
@@ -209,8 +202,7 @@
                     <center>
                         <h3 class="post-item-header">Cartão</h3>
                         <div id="cartao">
-                            <form method="POST" action="cadastrarCartao">
-                                <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                            <form method="POST" action="cadastrarCartao">                                
                                 <script>
                                     $(function () {
                                         $('#txtNumeroCartao').validateCreditCard(function (result) {

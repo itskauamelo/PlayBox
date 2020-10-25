@@ -22,8 +22,8 @@ import org.quartz.TriggerBuilder;
  *
  * @author Kaua.Morateli
  */
-public class JobQuartz /*implements Job*/ {
-/*
+public class JobQuartz implements Job {
+
 JobDetail jobDetail = JobBuilder.newJob(JobQuartz.class)
 				.withIdentity("job", "grupo")
 				.build();
@@ -50,6 +50,6 @@ Trigger trigger = TriggerBuilder.newTrigger()
         } catch (SQLException ex) {
             Logger.getLogger(JobQuartz.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+    }
 }
     

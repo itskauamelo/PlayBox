@@ -1,5 +1,8 @@
+<%@page import="Model.Produto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="Model.Cliente"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -21,6 +24,7 @@
 
     <!-- Carregar styles -->
     <link href="assets/loaders.css-master/loaders.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- styles -->
     <link href="css/yellow.css" media="screen" rel="stylesheet" type="text/css" title="yellow">
@@ -167,7 +171,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- Logo inicio -->
-                <a class="navbar-brand" href="index.jsp" title="PlayBoX">
+                <a class="navbar-brand" href="index.html" title="PlayBoX">
                     <i class="fa fa-gamepad" aria-hidden="true"></i><span class="main-color">P</span>laybo<span class="main-color">X</span>
                 </a><!-- Logo final -->
             </div>
@@ -175,7 +179,7 @@
             <div class="collapse navbar-collapse" id="main-menu">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.jsp">
+                        <a href="#home">
                             <span class="main-link">Inicio</span>
                             <span class="additional-info-link bracket">
                                 inicio da jornada
@@ -183,7 +187,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="index.jsp#about">
+                        <a href="#about">
                             <span class="main-link">Serviço</span>
                             <span class="additional-info-link bracket">
                                 como funciona
@@ -191,7 +195,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="index.jsp#plano">
+                        <a href="#plano">
                             <span class="main-link">Planos </span>
                             <span class="additional-info-link bracket">
                                 nossos planos
@@ -199,7 +203,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="index.jsp#mandamensagem">
+                        <a href="#mandamensagem">
                             <span class="main-link">Contato </span>
                             <span class="additional-info-link bracket">
                                 fale com a gente
@@ -210,7 +214,7 @@
                         <a href="#">
                             <span class="main-link">Loja</span>
                             <span class="additional-info-link bracket">
-                                EM BREVE
+                                alguns produtos
                             </span>
                         </a>
                     </li>
@@ -227,49 +231,100 @@
         <div class="single-page-header single-page-blog-header">
             <div class="overlay"></div>
             <div class="container">
-                <h2 class="digit-header">Inscreva-se</h2>
-                <h3 class="signature-header"><small>Entre<strong> Gamers</strong></small></h3>
+                <h2 class="digit-header">Formulário de Cancelamento :(</h2>
+                <h3 class="signature-header"><small>Ao Preencher nosso formulário você<strong> Gamer</strong> nós ajuda a sempre melhorar nossos produtos</small></h3>
             </div>
             <div class="single-page-header-bg"></div>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-cadastro col-md-8">
-                    <form action="cadastrarCliente" method="POST"> 
-                    <h2 class="post-item-header"><a title="Inscrição">Inscrição</a></h2>
+                    <form action="cadastrarPesquisaCancelamento" method="POST">                
+                    <p class="section-description text-center lead">Antes de finalizarmos a sua assinatura gostaríamos de saber o seu <span class="highlight">sentimento</span>.
+                        de prazer ou decepção com os nossos produtos para que assim nós da <span class="highlight"><span class="main-color">P</span>laybo<span class="main-color">X</span><span class="highlight"></span></span>possamos sempre melhorar o nosso <strong> desempenho </strong>! <br>(Lembrando que o preenchimento abaixo nao é obrigatório e voce pode pular essa etapa clicando em PULAR)</p>
                     <br>
-                    <label>CPF</label>
-                    <input type="text" id="txtCpf" name="txtCpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" class="form-control"><br>
-                    <label>Nome Completo</label>
-                    <input type="text" id="txtNomecompleto" name="txtNomecompleto" class="form-control"><br>
-                    <label>Data de Nascimento</label>
-                    <input type="date" id="txtData" name="txtData" class="form-control"><br>
-                    <label>Genero</label>
-                    <select id="optGenero" name="optGenero" class="form-control" style="color: black;">
-                        <option>Selecione genero</option>                  
-                        <option value="F">Feminino</option>
-                        <option value="M">Masculino</option>
-                        <option value="O">Outros</option>
-                    </select><br>
-                    <label>Email</label>
-                    <input type="email" id="txtEmail" name="txtEmail" class="form-control"><br>
-                    <label>Senha</label>
-                    <input type="password" id="txtSenha" name="txtSenha" class="form-control"><br>
-                    <label>Confirmar senha</label>
-                    <input type="password" class="form-control"><br>
-                    <label>Celular</label>
-                    <input type="text" id="txtCelular" name="txtCelular" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" class="form-control"><br>
-                            <div class="centrocadastro">
-        <button class="btn btn-primary" title="Criar Conta" id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Criar Conta</a>     
-        </div>
-                    </form>
+                    <label>1- Qual a probabilidade de você indicar nossos serviços para um amigo(a)?</label><br>
                     
+<div class="rate">
+    <input type="radio" id="star15" name="rate1" value="5" />
+    <label for="star15" title="text">5 stars</label>
+    <input type="radio" id="star14" name="rate1" value="4" />
+    <label for="star14" title="text">4 stars</label>
+    <input type="radio" id="star13" name="rate1" value="3" />
+    <label for="star13" title="text">3 stars</label>
+    <input type="radio" id="star12" name="rate1" value="2" />
+    <label for="star12" title="text">2 stars</label>
+    <input type="radio" id="star11" name="rate1" value="1" />
+    <label for="star11" title="text">1 star</label>
+  </div>
+                    <br><br>
+                    <label>2- Como você avalia a qualidade do atendimento ao cliente realizado pela gente?</label><br>
+<div class="rate">
+    <input type="radio" id="star25" name="rate2" value="5" />
+    <label for="star25" title="text">5 stars</label>
+    <input type="radio" id="star24" name="rate2" value="4" />
+    <label for="star24" title="text">4 stars</label>
+    <input type="radio" id="star23" name="rate2" value="3" />
+    <label for="star23" title="text">3 stars</label>
+    <input type="radio" id="star22" name="rate2" value="2" />
+    <label for="star22" title="text">2 stars</label>
+    <input type="radio" id="star21" name="rate2" value="1" />
+    <label for="star21" title="text">1 star</label>
+</div><br>
+<br><br>
+                    <label>3- Qual seu grau de satisfação com os produtos recebidos?</label><br>
+<div class="rate">
+    <input type="radio" id="star35" name="rate3" value="5" />
+    <label for="star35" title="text">5 stars</label>
+    <input type="radio" id="star34" name="rate3" value="4" />
+    <label for="star34" title="text">4 stars</label>
+    <input type="radio" id="star33" name="rate3" value="3" />
+    <label for="star33" title="text">3 stars</label>
+    <input type="radio" id="star32" name="rate3" value="2" />
+    <label for="star32" title="text">2 stars</label>
+    <input type="radio" id="star31" name="rate3" value="1" />
+    <label for="star31" title="text">1 star</label>
+</div>          <br><br>
+                    <br>
+                    <label>4- Referente a entrega (prazo, embalagem) qual nota voce daria?</label><br>
+<div class="rate">
+    <input type="radio" id="star45" name="rate4" value="5" />
+    <label for="star45" title="text">5 stars</label>
+    <input type="radio" id="star44" name="rate4" value="4" />
+    <label for="star44" title="text">4 stars</label>
+    <input type="radio" id="star43" name="rate4" value="3" />
+    <label for="star43" title="text">3 stars</label>
+    <input type="radio" id="star42" name="rate4" value="2" />
+    <label for="star42" title="text">2 stars</label>
+    <input type="radio" id="star41" name="rate4" value="1" />
+    <label for="star41" title="text">1 star</label>
+</div>           
+                    <br><br><br>
+                    <label>5- Como você classifica sua relação conosco durante nosso periodo juntos?</label><br>
+<div class="rate">
+    <input type="radio" id="star55" name="rate5" value="5" />
+    <label for="star55" title="text">5 stars</label>
+    <input type="radio" id="star54" name="rate5" value="4" />
+    <label for="star54" title="text">4 stars</label>
+    <input type="radio" id="star53" name="rate5" value="3" />
+    <label for="star53" title="text">3 stars</label>
+    <input type="radio" id="star52" name="rate5" value="2" />
+    <label for="star52" title="text">2 stars</label>
+    <input type="radio" id="star51" name="rate5" value="1" />
+    <label for="star51" title="text">1 star</label>
+</div>           
+                    <br>
+                 
+                    <br>         
                 </div>
             </div>
         </div>
-
+        <div class="centrocadastro">
+            <button class="btn btn-primary" title="Enviar pesquisa" id="btngavar" type="submit" name="gravar" value="Gravar"><i class="fa fa-plus" aria-hidden="true"></i> Enviar pesquisa</a></button> <br> <br> 
+            </form><a class="btn btn-primary" href="inicio"><i class="fa fa-close" aria-hidden="true"></i> Pular</a></button>
+        </div>
     </div>
-</form>
+
 
     <br><br><br>
 
@@ -325,6 +380,29 @@
           
         }
     </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $('.jogo').click(function () {
+               var text = "";
+               $('.jogo:checked').each(function () {
+                   text += $(this).val() + ',';
+               });
+           });
+        });
+
+    </script>
+
+    <script>
+        var limit = 1;
+        $('input.jogo').on('change', function(evt) {
+        if($(this).siblings(':checked').length >= limit) {
+        this.checked = false;
+   }
+});
+    </script>
+
 
 </body>
 </html>

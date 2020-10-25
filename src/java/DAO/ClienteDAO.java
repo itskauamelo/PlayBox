@@ -9,6 +9,7 @@ import Model.Cartao;
 import Model.Cliente;
 import Model.Compra;
 import Model.Endereco;
+import Model.Pesquisa;
 import Model.Preferencia;
 import Util.ConectaBanco;
 import java.sql.Connection;
@@ -101,6 +102,21 @@ public class ClienteDAO {
         }
     }
     
+    public void cadastrarPesquisa(Pesquisa pesquisa) throws ClassNotFoundException, SQLException {
+        
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("INSERT INTO pesquisacancelamento VALUES (NEXTVAL('id_pesquisa'),?,?,?,?,?)");
+            
+            comando.setString(1, pesquisa.getAvaliacao1());
+            comando.setString(2, pesquisa.getAvaliacao2());
+            comando.setString(3, pesquisa.getAvaliacao3());
+            comando.setString(4, pesquisa.getAvaliacao4());
+            comando.setString(5, pesquisa.getAvaliacao5());
+            
+            comando.execute();
+        }
+    }
+    
     public List<Cliente> consultarTodos() throws ClassNotFoundException, SQLException {
 
         List<Cliente> todosClientes;
@@ -147,40 +163,40 @@ public class ClienteDAO {
         }
     }
     
-    public void adicionarCartao(Cartao cartao) throws ClassNotFoundException, SQLException {
-        
+    public void adicionarCartao(Cartao cartao, Cliente objcliente) throws ClassNotFoundException, SQLException {
+
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO cartaocredito VALUES (NEXTVAL('id_cartaocredito'), ?, ?, ?, ?, ?, (SELECT id FROM cliente WHERE nomecompleto = ?))");
-            
+            PreparedStatement comando = con.prepareStatement("INSERT INTO cartaocredito VALUES (NEXTVAL('id_cartaocredito'), ?, ?, ?, ?, ?, ?)");
+
             comando.setString(1, cartao.getNumero());
             comando.setString(2, cartao.getNomecartao());
             comando.setString(3, cartao.getValidade());
             comando.setInt(4, cartao.getCodigo());
             comando.setString(5, cartao.getBandeira());
-            comando.setString(6, cartao.getCliente());
+            comando.setInt(6, objcliente.getId());
 
             comando.execute();
         }
     }
     
     public void cadastrarFk(Compra compra) throws ClassNotFoundException, SQLException {
-        
+
         try (Connection con = ConectaBanco.getConexao()) { //ARRUMAR
-            PreparedStatement comando = con.prepareStatement("UPDATE compra\n" +
-            "SET clienteFk = (SELECT id FROM Cliente WHERE nomecompleto= ?)\n" +
-            "WHERE id IN (SELECT MAX(ID) FROM compra)");
-            
+            PreparedStatement comando = con.prepareStatement("UPDATE compra\n"
+                    + "SET clienteFk = (SELECT id FROM Cliente WHERE nomecompleto= ?)\n"
+                    + "WHERE id IN (SELECT MAX(ID) FROM compra)");
+
             comando.setString(1, compra.getCliente());
 
             comando.execute();
         }
     }
     
-    public void adicionarEndereco(Endereco endereco) throws ClassNotFoundException, SQLException {
-        
-        try (Connection con = ConectaBanco.getConexao()) { 
-            PreparedStatement comando = con.prepareStatement("INSERT INTO endereco VALUES (NEXTVAL('id_endereco'), ?, ?, ?, ?, ?, ?, ?, (SELECT id FROM cliente WHERE nomecompleto = ?))");
-            
+    public void adicionarEndereco(Endereco endereco, Cliente objcliente) throws ClassNotFoundException, SQLException {
+
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("INSERT INTO endereco VALUES (NEXTVAL('id_endereco'), ?, ?, ?, ?, ?, ?, ?, ?)");
+
             comando.setInt(1, endereco.getCep());
             comando.setString(2, endereco.getRua());
             comando.setInt(3, endereco.getNumero());
@@ -188,7 +204,7 @@ public class ClienteDAO {
             comando.setString(5, endereco.getBairro());
             comando.setString(6, endereco.getCidade());
             comando.setString(7, endereco.getUf());
-            comando.setString(8, endereco.getCliente());
+            comando.setInt(8, objcliente.getId());
 
             comando.execute();
         }
@@ -317,6 +333,14 @@ public class ClienteDAO {
         comando.execute();
     }
     
+        public void removerAssinatura(Cliente objcliente) throws SQLException, ClassNotFoundException {
+        Connection con = ConectaBanco.getConexao();
+        PreparedStatement comando = con.prepareStatement("UPDATE cliente SET assinaturaFK = NULL, cobranca = NULL WHERE id = ?");
+        comando.setInt(1, objcliente.getId());
+        comando.execute();
+            
+    }
+    
         public void Editar(Cliente cliente) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("UPDATE cliente SET cpf = ?, nomecompleto = ?, genero = ?, datanascimento = ?, email = ?, celular = ? WHERE id = ?");
@@ -382,4 +406,6 @@ public class ClienteDAO {
         }
         return todosClientesCadastrados;
     }
+
+
 }

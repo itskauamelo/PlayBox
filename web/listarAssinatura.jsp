@@ -231,7 +231,7 @@
                         </tr>
                         
                         <center> <ul> <h3 style="color: gold">ASSINATURA</h3> </ul> </center>
-                        <h2>Essas são suas assinaturas ativas</h2>
+                        <h2>Essa é sua assinatura ativa</h2>
                         <c:forEach items="${minhaAssinatura}" var="com">
                         <c:choose>
                         
@@ -248,11 +248,18 @@
                         <c:set var = "img" scope = "session" value = "${'prata.png'}"/>
                         
                         </c:when>
-                        
-                        <c:otherwise>
+                            
+                        <c:when test="${com.id == '1'}">
                             
                             <c:set var = "statusNome" scope = "session" value = "${'BRONZE'}"/>
                             <c:set var = "img" scope = "session" value = "${'bronze.png'}"/>
+                        
+                        </c:when>
+                        
+                        <c:otherwise>
+                            
+                        <c:set var = "statusNome" scope = "session" value = "${'Você não possui nenhuma assinatura :( <br> Você pode adquirir uma <a> clicando aqui </a> '}"/>
+                        <c:set var = "img" scope = "session" value = "${'x.png'}"/>
                             
                         </c:otherwise>
                         </c:choose>
@@ -262,11 +269,36 @@
                             <td class="conteudo" style="width: 30px"><img src="img/${img}" style="width:40px;"</td>
                         <td class="conteudo">${statusNome}<a style="font-weight: bold"></td></a>
                         <a><td class="conteudo">
-                        </c:forEach>
-
-
-                                <a href="removerAssinatura?id=${com.id}" class="btn btn-primary btn-block"><i class="fa fa-close"></i>Cancelar</a>
+                                <div class="botaocancelar" style="display:block">
+                                    <a href="#" data-toggle="modal" data-target="#modal-cancelar" class="btn btn-primary btn-block"><i class="fa fa-close"></i>Cancelar</a>
+                                </div>
                                 
+                     
+        <div class="modal fade" id="modal-cancelar" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Cancelar Assinatura</h3>
+                </div>
+                <form method="post" action="#">
+                    <div class="modal-body">
+                        <div class="checkbox">
+                            <label>
+                                Tem certeza que deseja cancelar sua assinatura? :(
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="removerAss?id=${com.id}" class="btn btn-primary"><i class="fa fa-sign-out" aria-hidden="true"></i> Sim</a><button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+                                
+                        </c:forEach>      
+    
                             </td></a>
                         </tr>
                     </table>

@@ -167,7 +167,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- Logo inicio -->
-                <a class="navbar-brand" href="index.html" title="PlayBoX">
+                <a class="navbar-brand" href="index.jsp" title="PlayBoX">
                     <i class="fa fa-gamepad" aria-hidden="true"></i><span class="main-color">P</span>laybo<span class="main-color">X</span>
                 </a><!-- Logo final -->
             </div>
@@ -175,7 +175,7 @@
             <div class="collapse navbar-collapse" id="main-menu">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#home">
+                        <a href="index.jsp">
                             <span class="main-link">Inicio</span>
                             <span class="additional-info-link bracket">
                                 inicio da jornada
@@ -183,7 +183,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#about">
+                        <a href="index.jsp#about">
                             <span class="main-link">Serviço</span>
                             <span class="additional-info-link bracket">
                                 como funciona
@@ -191,7 +191,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#plano">
+                        <a href="index.jsp#plano">
                             <span class="main-link">Planos </span>
                             <span class="additional-info-link bracket">
                                 nossos planos
@@ -199,7 +199,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#mandamensagem">
+                        <a href="index.jsp#mandamensagem">
                             <span class="main-link">Contato </span>
                             <span class="additional-info-link bracket">
                                 fale com a gente
@@ -210,7 +210,7 @@
                         <a href="#">
                             <span class="main-link">Loja</span>
                             <span class="additional-info-link bracket">
-                                alguns produtos
+                                EM BREVE
                             </span>
                         </a>
                     </li>

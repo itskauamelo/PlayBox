@@ -252,6 +252,24 @@ CREATE TABLE preferencia (
     CREATE SEQUENCE id_preferencia
 
 select * from preferencia
+
+---------------------------------- PESQUISA ----------------------------
+
+CREATE TABLE pesquisacancelamento (
+
+	id INT,
+	avaliacao1 VARCHAR NOT NULL,
+	avaliacao2 VARCHAR NOT NULL,
+	avaliacao3 VARCHAR NOT NULL,
+	avaliacao4 VARCHAR NOT NULL,
+	avaliacao5 VARCHAR NOT NULL,
+	
+	CONSTRAINT idPesquisaPk PRIMARY KEY (id)
+
+);
+
+CREATE SEQUENCE id_pesquisa
+
     -------------------------------METODO PAGAMENTO---------------------------------
 
 CREATE TABLE MetodoPagamento (
