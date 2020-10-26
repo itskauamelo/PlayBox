@@ -41,7 +41,7 @@ import javax.swing.JOptionPane;
     "/alterarStatus",
     "/mostrarPedido",
     "/removerAssinatura",
-    "/aprovarPagamento"
+    "/aprovarPagamento",
 })
 
 public class ControllerCompra extends HttpServlet {
@@ -57,7 +57,7 @@ public class ControllerCompra extends HttpServlet {
                 alterarStatus(request, response);
             } else if (uri.equals(request.getContextPath() + "/aprovarPagamento")) {
                 aprovarPagamento(request, response);
-            }
+            } 
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("Erro.jsp");
@@ -85,7 +85,7 @@ public class ControllerCompra extends HttpServlet {
                 mostrarPedido(request, response);
             } else if (uri.equals(request.getContextPath() + "/iniciarAltStatus")) {
                 iniciarAltStatus(request, response);
-            }
+            }  
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("Erro.jsp");

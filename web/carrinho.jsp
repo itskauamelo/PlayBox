@@ -214,7 +214,7 @@
                        <td><img src="img/${img}" width="40"></td>
                        <td>${assinatura.nome}</td>
 
-                       <td><c:set var="total" value="${totalAss + assinatura.preco}"></c:set>
+                       <td><c:set var="total" value="${total + assinatura.preco}"></c:set>
                        <fmt:formatNumber type="currency" currencySymbol="R$" value="${assinatura.preco}"></fmt:formatNumber>
                        </td>
                        <td>

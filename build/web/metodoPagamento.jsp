@@ -175,7 +175,7 @@
                                 <c:forEach items="${meusEnderecos}" var="e">
                                     <input type="checkbox" name="chkEndereco" id="chkEndereco" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}<br>
                                 </c:forEach>
-                                    <a href="">Cadastrar endereços</a>
+                                    <a href="listarMeusEndCart">Cadastrar endereços</a>
                             </p>
 
                             <p id="rcorners2">
@@ -188,7 +188,7 @@
                                 <c:forEach items="${meusCartoes}" var="c">
                                     <input type="checkbox" name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****<br>
                                 </c:forEach>
-                                    <a href="">Cadastrar cartões</a>
+                                    <a href="listarMeusEndCart">Cadastrar cartões</a>
                             </div>
                             <div id="boletocad" style="display:none;">
 

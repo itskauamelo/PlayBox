@@ -6,6 +6,7 @@ import DAO.RelatorioDAO;
 import Model.Cliente;
 import Model.Compra;
 import Model.ItensRelatorio;
+import Model.Pesquisa;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,8 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet(name = "RelatorioControle", urlPatterns = {
     "/relatorioItens",
     "/listarFaturamento",
-    "/relatorioClientes"
+    "/relatorioClientes",
+    "/relatorioPesquisaSatisfacao"
 })
 
 public class ControllerRelatorios extends HttpServlet{
@@ -36,7 +38,9 @@ public class ControllerRelatorios extends HttpServlet{
                 listarComprasFinalizadas(request, response);
             } else if (uri.equals(request.getContextPath() + "/relatorioClientes")) {
                 relatorioClientes(request, response);
-            }   
+            } else if (uri.equals(request.getContextPath() + "/relatorioPesquisaSatisfacao")) {
+                relatorioPesquisaSatisfacao(request, response);
+            }  
             } catch (Exception e) {
                 e.printStackTrace();
                 response.sendRedirect("Erro.jsp");
@@ -71,6 +75,15 @@ public class ControllerRelatorios extends HttpServlet{
         request.setAttribute("todosClientes", todosClientes);
         
         request.getRequestDispatcher("admin/relatorioClientes.jsp").forward(request, response);
-    }   
+    } 
+    
+    private void relatorioPesquisaSatisfacao(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        ClienteDAO dao = new ClienteDAO();
+
+        List<Pesquisa> todasPesquisas = dao.consultarPesquisasCadastradas();
+        request.setAttribute("todasPesquisas", todasPesquisas);
+        
+        request.getRequestDispatcher("admin/relatorioPesquisa.jsp").forward(request, response);
+    }
 } 
 

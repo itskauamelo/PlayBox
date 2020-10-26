@@ -25,9 +25,9 @@ import java.util.List;
  * @author Kaua.Morateli
  */
 public class ClienteDAO {
-        
+
     private static final String AUTENTICA_CLIENTE = "SELECT * FROM cliente WHERE email=? AND senha=?";
-    
+
     public Cliente autenticaCliente(Cliente cliente) throws ClassNotFoundException {
         Cliente clienteAutenticado = null;
         Connection conexao = null;
@@ -61,10 +61,10 @@ public class ClienteDAO {
     }
 
     public void cadastrar(Cliente cliente) throws ClassNotFoundException, SQLException {
-        
+
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement("INSERT INTO cliente VALUES (NEXTVAL('id_cliente'),'DESATIVADO',?,?,?,?,?,?,?)");
-            
+
             comando.setString(1, cliente.getCpf());
             comando.setString(2, cliente.getNomecompleto());
             comando.setDate(3, (Date) cliente.getDatanascimento());
@@ -82,41 +82,41 @@ public class ClienteDAO {
             comando.setString(15, cliente.getBairro());
             comando.setString(16, cliente.getCidade());
             comando.setString(17, cliente.getEstado());*/
-            
+
             comando.execute();
         }
     }
-    
+
     public void cadastrarpreferencia(Preferencia preferencia) throws ClassNotFoundException, SQLException {
-        
+
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement("INSERT INTO preferencia VALUES (NEXTVAL('id_preferencia'),?,?,?,?,?)");
-            
+
             comando.setString(1, preferencia.getPreferencia1());
             comando.setString(2, preferencia.getPreferencia2());
             comando.setString(3, preferencia.getPreferencia3());
             comando.setString(4, preferencia.getHorasjogo());
             comando.setString(5, preferencia.getJogoonline());
-            
+
             comando.execute();
         }
     }
-    
+
     public void cadastrarPesquisa(Pesquisa pesquisa) throws ClassNotFoundException, SQLException {
-        
+
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement("INSERT INTO pesquisacancelamento VALUES (NEXTVAL('id_pesquisa'),?,?,?,?,?)");
-            
+
             comando.setString(1, pesquisa.getAvaliacao1());
             comando.setString(2, pesquisa.getAvaliacao2());
             comando.setString(3, pesquisa.getAvaliacao3());
             comando.setString(4, pesquisa.getAvaliacao4());
             comando.setString(5, pesquisa.getAvaliacao5());
-            
+
             comando.execute();
         }
     }
-    
+
     public List<Cliente> consultarTodos() throws ClassNotFoundException, SQLException {
 
         List<Cliente> todosClientes;
@@ -145,24 +145,24 @@ public class ClienteDAO {
                 c.setBairro(resultado.getString("bairro"));
                 c.setCidade(resultado.getString("cidade"));
                 c.setEstado(resultado.getString("estado"));*/
-                
+
                 todosClientes.add(c);
             }
         }
         return todosClientes;
     }
-    
+
     public void ativarCadastro(Cliente cliente) throws ClassNotFoundException, SQLException {
-        
+
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement("UPDATE cliente SET situacao = 'ATIVO' WHERE cpf = ?");
-            
+
             comando.setString(1, cliente.getCpf());
 
             comando.execute();
         }
     }
-    
+
     public void adicionarCartao(Cartao cartao, Cliente objcliente) throws ClassNotFoundException, SQLException {
 
         try (Connection con = ConectaBanco.getConexao()) {
@@ -178,7 +178,7 @@ public class ClienteDAO {
             comando.execute();
         }
     }
-    
+
     public void cadastrarFk(Compra compra) throws ClassNotFoundException, SQLException {
 
         try (Connection con = ConectaBanco.getConexao()) { //ARRUMAR
@@ -191,7 +191,7 @@ public class ClienteDAO {
             comando.execute();
         }
     }
-    
+
     public void adicionarEndereco(Endereco endereco, Cliente objcliente) throws ClassNotFoundException, SQLException {
 
         try (Connection con = ConectaBanco.getConexao()) {
@@ -209,7 +209,7 @@ public class ClienteDAO {
             comando.execute();
         }
     }
-    
+
     public List<Cartao> consultarTodosCartoes() throws ClassNotFoundException, SQLException {
 
         List<Cartao> todosCartoes;
@@ -226,7 +226,7 @@ public class ClienteDAO {
         }
         return todosCartoes;
     }
-    
+
     public List<Endereco> consultarTodosEnderecos() throws ClassNotFoundException, SQLException {
 
         List<Endereco> todosEnderecos;
@@ -244,7 +244,7 @@ public class ClienteDAO {
         }
         return todosEnderecos;
     }
-    
+
     public List<Cartao> consultarMeusCartoes(Cliente objcliente) throws ClassNotFoundException, SQLException {
 
         List<Cartao> todosCartoes;
@@ -262,7 +262,7 @@ public class ClienteDAO {
         }
         return todosCartoes;
     }
-    
+
     public List<Endereco> consultarMeusEnderecos(Cliente objcliente) throws ClassNotFoundException, SQLException {
 
         List<Endereco> todosEnderecos;
@@ -281,7 +281,7 @@ public class ClienteDAO {
         }
         return todosEnderecos;
     }
-    
+
     public List<Preferencia> consultarTodasPreferencias() throws ClassNotFoundException, SQLException {
 
         List<Preferencia> todasPreferencias;
@@ -316,8 +316,7 @@ public class ClienteDAO {
         comando.execute();
     }
 
-*/
-    
+     */
     public void EditarSenha(Cliente cliente) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("UPDATE cliente SET senha = ? WHERE id = ?");
@@ -332,22 +331,22 @@ public class ClienteDAO {
         comando.setInt(1, cliente.getId());
         comando.execute();
     }
-    
-        public void removerAssinatura(Cliente objcliente) throws SQLException, ClassNotFoundException {
+
+    public void removerAssinatura(Cliente objcliente) throws SQLException, ClassNotFoundException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("UPDATE cliente SET assinaturaFK = NULL, cobranca = NULL WHERE id = ?");
         comando.setInt(1, objcliente.getId());
         comando.execute();
-            
+
     }
-    
-        public void Editar(Cliente cliente) throws ClassNotFoundException, SQLException {
+
+    public void Editar(Cliente cliente) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("UPDATE cliente SET cpf = ?, nomecompleto = ?, genero = ?, datanascimento = ?, email = ?, celular = ? WHERE id = ?");
         comando.setString(1, cliente.getCpf());
         comando.setString(2, cliente.getNomecompleto());
         comando.setString(3, cliente.getGenero());
-        comando.setDate(4, (Date) cliente.getDatanascimento()); 
+        comando.setDate(4, (Date) cliente.getDatanascimento());
         comando.setString(5, cliente.getEmail());
         comando.setString(6, cliente.getCelular());
         comando.setInt(7, cliente.getId());
@@ -361,15 +360,15 @@ public class ClienteDAO {
         ResultSet resultado = comando.executeQuery();
 
         if (resultado.next()) {
-                cliente.setId(resultado.getInt("id"));
-                cliente.setSituacao(resultado.getString("situacao"));
-                cliente.setCpf(resultado.getString("cpf"));
-                cliente.setNomecompleto(resultado.getString("nomecompleto"));
-                cliente.setDatanascimento(resultado.getDate("datanascimento"));
-                cliente.setGenero(resultado.getString("genero"));
-                cliente.setEmail(resultado.getString("email"));
-                cliente.setSenha(resultado.getString("senha"));
-                cliente.setCelular(resultado.getString("celular"));/*
+            cliente.setId(resultado.getInt("id"));
+            cliente.setSituacao(resultado.getString("situacao"));
+            cliente.setCpf(resultado.getString("cpf"));
+            cliente.setNomecompleto(resultado.getString("nomecompleto"));
+            cliente.setDatanascimento(resultado.getDate("datanascimento"));
+            cliente.setGenero(resultado.getString("genero"));
+            cliente.setEmail(resultado.getString("email"));
+            cliente.setSenha(resultado.getString("senha"));
+            cliente.setCelular(resultado.getString("celular"));/*
                 cliente.setEndidentific(resultado.getString("endidentific"));
                 cliente.setNomedestinatario(resultado.getString("nomedestinatario"));
                 cliente.setCep(resultado.getString("cep"));
@@ -382,7 +381,7 @@ public class ClienteDAO {
                 cliente.setEstado(resultado.getString("estado"));*/
         }
     }
-    
+
     public List<Cliente> consultarClientesCadastrados() throws ClassNotFoundException, SQLException {
 
         List<Cliente> todosClientesCadastrados;
@@ -391,7 +390,7 @@ public class ClienteDAO {
             ResultSet resultado = comando.executeQuery();
             todosClientesCadastrados = new ArrayList<>();
             while (resultado.next()) {
-                Cliente c = new Cliente();                
+                Cliente c = new Cliente();
                 c.setId(resultado.getInt("id"));
                 c.setDatahora(resultado.getDate("datahora"));
                 c.setCpf(resultado.getString("cpf"));
@@ -400,12 +399,31 @@ public class ClienteDAO {
                 c.setGenero(resultado.getString("genero"));
                 c.setEmail(resultado.getString("email"));
                 c.setCelular(resultado.getString("celular"));
-                
+
                 todosClientesCadastrados.add(c);
             }
         }
         return todosClientesCadastrados;
     }
 
+    public List<Pesquisa> consultarPesquisasCadastradas() throws ClassNotFoundException, SQLException {
 
+        List<Pesquisa> todasPesquisas;
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM pesquisacancelamento");
+            ResultSet resultado = comando.executeQuery();
+            todasPesquisas = new ArrayList<>();
+            while (resultado.next()) {
+                Pesquisa p = new Pesquisa();
+                p.setAvaliacao1(resultado.getString("avaliacao1"));
+                p.setAvaliacao2(resultado.getString("avaliacao2"));
+                p.setAvaliacao3(resultado.getString("avaliacao3"));
+                p.setAvaliacao4(resultado.getString("avaliacao4"));
+                p.setAvaliacao5(resultado.getString("avaliacao5"));
+                
+                todasPesquisas.add(p);
+            }
+        }
+        return todasPesquisas;
+    }
 }

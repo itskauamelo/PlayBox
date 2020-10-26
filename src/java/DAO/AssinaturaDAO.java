@@ -69,5 +69,5 @@ public class AssinaturaDAO {
         }
         return todasAssinaturas;
     }
-   
+
 }

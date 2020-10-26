@@ -28,6 +28,8 @@
         <!-- Custom styles for this template-->
         <link href="css/sb-admin.css" rel="stylesheet">
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
     </head>
 
     <body id="page-top">
@@ -94,7 +96,49 @@
                         </c:forEach>
                     </table>
 
+                    <div class="col-md-5">
+                        <canvas id="myChart"></canvas>
+                    </div>
+
                     <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var nomes = [];
+                        var qtd = [];
+                        <c:forEach items="${todasCamisetas}" var="c">
+
+                        nomes.push('${c.nome}');
+                        qtd.push('${c.quantidade}');
+                        
+                        var chart = new Chart(ctx, {
+
+                            type: 'bar',
+                            data: {
+
+                                labels: nomes,
+                                datasets: [{
+                                        label: 'Camisetas',
+                                        backgroundColor: 'rgb(000, 150, 200)',
+                                        borderColor: 'rgb(000, 000, 10)',
+                                        data: qtd
+                                    }]
+                            },
+                            options: {
+                                tooltips: {enabled: false},
+                                hover: {mode: null},
+                                
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                        </c:forEach>
+
+
+                        console.log(nomes);
                         function valida() {
                             var resultado = confirm("Deseja desativar esta camiseta?");
                             if (resultado == true) {
