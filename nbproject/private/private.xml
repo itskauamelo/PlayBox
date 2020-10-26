@@ -3,29 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PlayBox/web/preferenciaCliente.jsp</file>
+            <file>file:/C:/PlayBox/web/admin/EdPacote.jsp</file>
             <file>file:/C:/PlayBox/src/java/Controler/ClienteController.java</file>
-            <file>file:/C:/PlayBox/src/java/DAO/CamisetaDAO.java</file>
-            <file>file:/C:/PlayBox/src/java/Model/Preferencia.java</file>
-            <file>file:/C:/PlayBox/web/inscricao.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Controler/ControllerCamiseta.java</file>
-            <file>file:/C:/PlayBox/src/java/Util/JobQuartz.java</file>
-            <file>file:/C:/PlayBox/src/java/DAO/AssinaturaDAO.java</file>
+            <file>file:/C:/PlayBox/web/admin/game.jsp</file>
+            <file>file:/C:/PlayBox/web/admin/index.jsp</file>
             <file>file:/C:/PlayBox/web/assinatura.jsp</file>
-            <file>file:/C:/PlayBox/web/dadosPessoais.jsp</file>
             <file>file:/C:/PlayBox/web/indexLogado.jsp</file>
             <file>file:/C:/PlayBox/src/java/Controler/ControllerCompra.java</file>
+            <file>file:/C:/PlayBox/web/edCliente.jsp</file>
+            <file>file:/C:/PlayBox/src/java/Util/ValidadorCobrancaJob.java</file>
+            <file>file:/C:/PlayBox/src/java/Model/Carrinho.java</file>
+            <file>file:/C:/PlayBox/web/FormCancelamento.jsp</file>
+            <file>file:/C:/PlayBox/web/admin/listarProdutos.jsp</file>
+            <file>file:/C:/PlayBox/web/manutencaoCliente.jsp</file>
+            <file>file:/C:/PlayBox/web/listarAssinatura.jsp</file>
+            <file>file:/C:/PlayBox/web/elementos/menuCliente.jsp</file>
+            <file>file:/C:/PlayBox/web/carrinho.jsp</file>
+            <file>file:/C:/PlayBox/src/java/Model/Assinatura.java</file>
+            <file>file:/C:/PlayBox/src/java/Util/ValidadorJob.java</file>
+            <file>file:/C:/PlayBox/src/java/Util/JobQuartz.java</file>
+            <file>file:/C:/PlayBox/src/java/Model/Cliente.java</file>
+            <file>file:/C:/PlayBox/web/teste.jsp</file>
+            <file>file:/C:/PlayBox/web/dadosPessoais.jsp</file>
+            <file>file:/C:/PlayBox/web/admin/EdProd.jsp</file>
+            <file>file:/C:/PlayBox/web/loja.jsp</file>
             <file>file:/C:/PlayBox/web/metodoPagamento.jsp</file>
             <file>file:/C:/PlayBox/src/java/DAO/CompraDAO.java</file>
-            <file>file:/C:/PlayBox/src/java/Model/Pesquisa.java</file>
-            <file>file:/C:/PlayBox/src/java/DAO/ClienteDAO.java</file>
-            <file>file:/C:/PlayBox/web/FormCancelamento.jsp</file>
             <file>file:/C:/PlayBox/web/listarPedidos.jsp</file>
             <file>file:/C:/PlayBox/src/java/Controler/ControllerCarrinho.java</file>
+            <file>file:/C:/PlayBox/src/java/Util/ConectaBanco.java</file>
             <file>file:/C:/PlayBox/src/java/Model/Compra.java</file>
-            <file>file:/C:/PlayBox/web/listarAssinatura.jsp</file>
-            <file>file:/C:/PlayBox/web/manutencaoCliente.jsp</file>
-            <file>file:/C:/PlayBox/web/index.jsp</file>
+            <file>file:/C:/PlayBox/src/java/Util/CobrancaJob.java</file>
         </group>
     </open-files>
 </project-private>
