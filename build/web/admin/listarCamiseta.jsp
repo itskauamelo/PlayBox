@@ -108,7 +108,6 @@
 
                         nomes.push('${c.nome}');
                         qtd.push('${c.quantidade}');
-                        
                         var chart = new Chart(ctx, {
 
                             type: 'bar',
@@ -123,15 +122,30 @@
                                     }]
                             },
                             options: {
+                                events: ['click'],
                                 tooltips: {enabled: false},
                                 hover: {mode: null},
                                 
+                                legend: {
+                                    display: true,
+                                    labels: {
+                                        fontColor: 'rgb(000, 000, 000)'
+                                    }
+                                },
+                                layout: {
+                                    padding: {
+                                        left: 50,
+                                        right: 50,
+                                        top: 0,
+                                        bottom: 0
+                                    }
+                                },
                                 scales: {
                                     yAxes: [{
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }]
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
                                 }
                             }
                         });

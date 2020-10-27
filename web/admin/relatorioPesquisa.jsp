@@ -28,6 +28,8 @@
         <!-- Custom styles for this template-->
         <link href="css/sb-admin.css" rel="stylesheet">
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
     </head>
 
     <body id="page-top">
@@ -84,6 +86,81 @@
                         </c:forEach>
 
                     </table>
+
+                    <div class="col-md-5">
+                        <canvas id="myChartIndicacao"></canvas>
+                    </div>
+
+                    <div class="col-md-5">
+                        <canvas id="myChartQualidade"></canvas>
+                    </div>
+
+                    <script>
+                        var ctx = document.getElementById('myChartIndicacao').getContext('2d');
+                        //var nomes = [];
+                        var qtd = [];
+
+                        <c:forEach items="${todasPesquisas}" var="p">
+                        //nomes.push('');                                               
+                        qtd.push(${p.avaliacao1});                                           
+                        
+                        var chart = new Chart(ctx, {
+
+                            type: 'pie',
+                            data: {
+                                labels: ['5','4','3','2','1'],
+                                datasets: [{
+                                        labels: 'Indicação',
+                                        backgroundColor: 'rgb(000, 150, 200)',
+                                        borderColor: 'rgb(000, 000, 10)',
+                                        data: qtd
+                                    }]
+                            },
+                            options: {
+                                //events: ['click'],
+                                cutoutPercentage: 50,
+                                yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                            }
+                        });
+                        </c:forEach>
+                    </script>
+
+                    <script>
+                        var ctx = document.getElementById('myChartQualidade').getContext('2d');
+                        //var nomes = [];
+                        var qtd = [];
+
+                        <c:forEach items="${todasPesquisas}" var="p">
+                        //nomes.push('');                                               
+                        qtd.push(${p.avaliacao2});
+
+                        var chart = new Chart(ctx, {
+
+                            type: 'pie',
+                            data: {
+//, 'Qualidade', 'Satisfação', 'Prazo', 'Relação'
+                                labels: ['Indicação'],
+                                datasets: [{
+                                        label: 'Camisetas',
+                                        backgroundColor: 'rgb(000, 150, 200)',
+                                        borderColor: 'rgb(000, 000, 10)',
+                                        data: qtd
+                                    }]
+                            },
+                            options: {
+                                yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                            }
+                        });
+                        </c:forEach>
+                    </script>
                     <br><br><br><br><br>
                     <!-- Area Chart Example-->
                     <!-- /.container-fluid -->
