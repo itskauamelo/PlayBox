@@ -33,7 +33,7 @@ public class CamisetaDAO {
 
         List<Camiseta> todasCamisetas;
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("SELECT * FROM camiseta ORDER BY id");
+            PreparedStatement comando = con.prepareStatement("SELECT * FROM camiseta WHERE situacao = 'ATIVO' ORDER BY id");
             ResultSet resultado = comando.executeQuery();
             todasCamisetas = new ArrayList<>();
             while (resultado.next()) {
