@@ -5,6 +5,9 @@
  */
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Kaua.Morateli
@@ -67,5 +70,8 @@ public class Pesquisa {
     public void setAvaliacao5(String avaliacao5) {
         this.avaliacao5 = avaliacao5;
     }
+    
+    
+    private List<Pesquisa> pesquisasFeitas = new ArrayList<>();
     
 }
