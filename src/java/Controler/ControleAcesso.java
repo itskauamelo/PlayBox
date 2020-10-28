@@ -1,5 +1,9 @@
 package Controler;
 
+import DAO.CamisetaDAO;
+import DAO.GameDAO;
+import DAO.PacoteDAO;
+import DAO.ProdutoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -10,6 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import Model.Usuario;
 import DAO.UsuarioDAO;
+import Model.Camiseta;
+import Model.Game;
+import Model.Pacote;
+import Model.Produto;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -42,8 +51,26 @@ public class ControleAcesso extends HttpServlet {
                     HttpSession sessaoUsuario = request.getSession();
                     sessaoUsuario.setAttribute("usuarioAutenticado", usuarioAutenticado);
                     
+                    CamisetaDAO daoCamiseta = new CamisetaDAO();
+                    GameDAO daoGame = new GameDAO();                    
+                    PacoteDAO daoPacote = new PacoteDAO();                    
+                    ProdutoDAO daoProduto = new ProdutoDAO();                    
+
+                    List<Camiseta> todasCamisetas = daoCamiseta.consultarTodos();
+                    request.setAttribute("todasCamisetas", todasCamisetas);
+
+                    List<Game> todosGames = daoGame.consultarTodos();
+                    request.setAttribute("todosGames", todosGames); 
+                    
+                    List<Pacote> todosPacotes = daoPacote.consultarTodos();
+                    request.setAttribute("todosPacotes", todosPacotes);
+                    
+                    List<Produto> todosProdutos = daoProduto.consultarTodos();
+                    request.setAttribute("todosProdutos", todosProdutos);
+                    
                     //Redireciona para a pagina princiapal
-                    response.sendRedirect("admin/index.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("admin/index.jsp");
+                    rd.forward(request, response);
                     
                 } 
                 else {

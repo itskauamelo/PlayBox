@@ -23,26 +23,26 @@
 
     <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/PlayBox/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <!-- Lightbox styles -->
-    <link href="assets/lightbox2-master/dist/css/lightbox.min.css" rel="stylesheet">
+    <link href="/PlayBox/assets/lightbox2-master/dist/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Carregar styles -->
-    <link href="assets/loaders.css-master/loaders.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/PlayBox/assets/loaders.css-master/loaders.min.css" media="screen" rel="stylesheet" type="text/css">
 
     <!-- styles -->
-    <link href="css/yellow.css" media="screen" rel="stylesheet" type="text/css" title="yellow">
-    <link href="css/pink.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="pink">
-    <link href="css/orange.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="orange">
-    <link href="css/red.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="red">
-    <link href="css/green.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="green">
-    <link href="css/blue.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="blue">
+    <link href="/PlayBox/css/yellow.css" media="screen" rel="stylesheet" type="text/css" title="yellow">
+    <link href="/PlayBox/css/pink.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="pink">
+    <link href="/PlayBox/css/orange.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="orange">
+    <link href="/PlayBox/css/red.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="red">
+    <link href="/PlayBox/css/green.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="green">
+    <link href="/PlayBox/css/blue.min.css" media="screen" rel="alternate stylesheet" type="text/css" title="blue">
 
     <!-- Modernizr -->
-    <script type="text/javascript" src="js/modernizr-custom.min.js"></script>
+    <script type="text/javascript" src="/PlayBox/js/modernizr-custom.min.js"></script>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="icon" href="/PlayBox/img/favicon.png" type="image/png">
 
 </head>
 
@@ -341,13 +341,13 @@
     </div>
 
     <!-- jQuery -->
-    <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="/PlayBox/js/jquery-3.1.0.min.js"></script>
 
     <!-- Bootstrap -->
-    <script type="text/javascript" src="assets/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/PlayBox/assets/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
 
     <!-- Custom JS -->
-    <script type="text/javascript" src="js/custom.min.js"></script>
+    <script type="text/javascript" src="/PlayBox/js/custom.min.js"></script>
 
     <script>
         function formatar(mascara, documento){

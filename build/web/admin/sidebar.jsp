@@ -24,13 +24,13 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                     <h6 class="dropdown-header">Pedidos:</h6>
-                    <a class="dropdown-item" href="../listarComprasADM">Alterar Status</a>
+                    <a class="dropdown-item" href="/PlayBox/listarComprasADM">Alterar Status</a>
                     <h6 class="dropdown-header">Relatórios:</h6>
-                    <a class="dropdown-item" href="../listarFaturamento">Faturamento</a>
-                    <a class="dropdown-item" href="../relatorioItens">Itens</a>
-                    <a class="dropdown-item" href="../relatorioClientes">Clientes</a>
-                    <a class="dropdown-item" href="../relatorioPreferencia">Preferencia de Clientes</a>
-                    <a class="dropdown-item" href="../relatorioPesquisaSatisfacao">Pesquisa de Satisfação</a>
+                    <a class="dropdown-item" href="/PlayBox/listarFaturamento">Faturamento</a>
+                    <a class="dropdown-item" href="/PlayBox/relatorioItens">Itens</a>
+                    <a class="dropdown-item" href="/PlayBox/relatorioClientes">Clientes</a>
+                    <a class="dropdown-item" href="/PlayBox/relatorioPreferencia">Preferencia de Clientes</a>
+                    <a class="dropdown-item" href="/PlayBox/relatorioPesquisaSatisfacao">Pesquisa de Satisfação</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -48,28 +48,28 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../listarUsuario">
+                <a class="nav-link" href="/PlayBox/listarUsuario">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Usuários</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../listarProdutos">
+                <a class="nav-link" href="/PlayBox/listarProdutos">
                     <i class="fas fa-fw fa-bone"></i>
                     <span>Brindes</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="../listarCamisetas">
+                <a class="nav-link" href="/PlayBox/listarCamisetas">
                     <i class="fas fa-fw fa-tshirt"></i>
                     <span>Camisetas</span></a>
 
             <li class="nav-item">
-                <a class="nav-link" href="../listarGames">
+                <a class="nav-link" href="/PlayBox/listarGames">
                     <i class="fas fa-fw fa-gamepad"></i>
                     <span>Games</span></a>
 
             <li class="nav-item">
-                <a class="nav-link" href="../listarPacotes">
+                <a class="nav-link" href="/PlayBox/listarPacotes">
                     <i class="fas fa-fw fa-gift"></i>
                     <span>Pacotes</span></a>
             </li>

@@ -99,16 +99,16 @@
                         var ctx = document.getElementById('myChartIndicacao').getContext('2d');
                         //var nomes = [];
                         var qtd = [];
-
+                                                 
                         <c:forEach items="${todasPesquisas}" var="p">
-                        //nomes.push('');                                               
-                        qtd.push(${p.avaliacao1});                                           
+                        //nomes.push('');
+                        qtd.push(${p.avaliacao1});
                         
                         var chart = new Chart(ctx, {
 
                             type: 'pie',
                             data: {
-                                labels: ['5','4','3','2','1'],
+                                labels: ['5', '4', '3', '2', '1'],
                                 datasets: [{
                                         labels: 'Indicação',
                                         backgroundColor: 'rgb(000, 150, 200)',
@@ -117,6 +117,7 @@
                                     }]
                             },
                             options: {
+                                events: ['click'],
                                 //events: ['click'],
                                 cutoutPercentage: 50,
                                 yAxes: [{
@@ -126,7 +127,7 @@
                                     }]
                             }
                         });
-                        </c:forEach>
+                        </c:forEach> 
                     </script>
 
                     <script>
@@ -152,6 +153,7 @@
                                     }]
                             },
                             options: {
+                                events: ['click'],
                                 yAxes: [{
                                         ticks: {
                                             beginAtZero: true

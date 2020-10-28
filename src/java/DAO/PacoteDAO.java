@@ -50,7 +50,7 @@ public class PacoteDAO {
         List<Pacote> todosPacotes;
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
-            ("select id, nome, preco from pacote");
+            ("select id, nome, preco, quantidade from pacote");
             ResultSet resultado = comando.executeQuery();
             todosPacotes = new ArrayList<>();
             while (resultado.next()) {
@@ -58,6 +58,7 @@ public class PacoteDAO {
                 p.setId(resultado.getInt("id"));
                 p.setNome(resultado.getString("nome"));
                 p.setPreco(resultado.getDouble("preco"));
+                p.setQuantidade(resultado.getInt("quantidade"));
                 
                 todosPacotes.add(p);
             }

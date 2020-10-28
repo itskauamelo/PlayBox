@@ -18,13 +18,13 @@
         <title>Playbox - Dashboard</title>
 
         <!-- Fonte Custom-->
-        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="/PlayBox/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
         <!-- Nivel página plugin css-->
-        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="/PlayBox/admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
         <!-- Style Custom p/ template-->
-        <link href="css/sb-admin.css" rel="stylesheet">
+        <link href="/PlayBox/admin/css/sb-admin.css" rel="stylesheet">
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
@@ -73,37 +73,157 @@
                         <li class="breadcrumb-item active">Início</li>
                     </ol>
 
-                    <div class="col-md-5">
-                        <canvas id="myChart"></canvas>
-                    </div>
+                    <style type="text/css">
+                        .canvasMaior { 
+                            width: 800px;
+                            heigth: 400px;
+                            float:left;
+                            position: relative;
+                        }
+                        .canvas { 
+                            width: 400px;
+                            heigth: 400px;
+                            float:left;
+                        }
+                    </style>
+
+                        <div class="canvasMaior">
+                            <canvas id="myChartPacotes"></canvas>
+                        </div>
+                        <div class="canvasMaior">
+                            <canvas id="myChartProdutos"></canvas>
+                        </div>
+                        <br><br>
+                        <div class="canvasMaior">
+                            <canvas id="myChartGames"></canvas>
+                        </div>
+                        <div class="canvasMaior">
+                            <canvas id="myChartCamisetas"></canvas>
+                        </div>
 
                     <script>
-                        //--------------------Chart em barra-------------------------
-                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var ctx = document.getElementById('myChartPacotes').getContext('2d');
                         var nomes = [];
                         var qtd = [];
-                        <c:forEach items="${todasCamisetas}" var="c">
 
-                        nomes.push('${c.nome}');
-                        qtd.push('${c.quantidade}');
+
+                        <c:forEach items="${todosPacotes}" var="p">
+                        nomes.push('${p.nome}');
+                        qtd.push(${p.quantidade});
+
+                        var chart = new Chart(ctx, {
+
+                            type: 'horizontalBar',
+                            data: {
+                                labels: nomes,
+                                datasets: [{
+                                        label: 'Pacotes',
+                                        backgroundColor: 'rgb(25, 140, 255)',
+                                        borderColor: 'rgb(000, 000, 000)',
+                                        data: qtd
+                                    }]
+                            },
+                            options: {
+                                events: ['click'],
+                                scales: {
+                                    xAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                }
+                            }
+                        });
+                        </c:forEach>
+                    </script>
+
+                    <script>
+                        var ctx = document.getElementById('myChartProdutos').getContext('2d');
+                        var nomes = [];
+                        var qtd = [];
+
+
+                        <c:forEach items="${todosProdutos}" var="p">
+                        nomes.push('${p.nome}');
+                        qtd.push(${p.quantidade});
+
+                        var chart = new Chart(ctx, {
+
+                            type: 'horizontalBar',
+                            data: {
+                                labels: nomes,
+                                datasets: [{
+                                        label: 'Brindes',
+                                        backgroundColor: 'rgb(003, 187, 133)',
+                                        borderColor: 'rgb(000, 000, 000)',
+                                        data: qtd
+                                    }]
+                            },
+                            options: {
+                                responsive: true,
+                                events: ['click'],
+                                cutoutPercentage: 50,
+                                legend: {
+                                    //position: 'bottom'
+                                },
+                                layout: {
+
+                                    padding: {
+                                        left: 25,
+                                        right: 0,
+                                        top: 0,
+                                        bottom: 0
+                                    }
+                                },
+                                scales: {
+                                    xAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                }
+                            }
+                        });
+                        </c:forEach>
+                    </script>
+
+                    <script>
+                        var ctx = document.getElementById('myChartGames').getContext('2d');
+                        var nomes = [];
+                        var qtd = [];
+
+
+                        <c:forEach items="${todosGames}" var="g">
+                        nomes.push('${g.nome}');
+                        qtd.push(${g.quantidade});
 
                         var chart = new Chart(ctx, {
 
                             type: 'bar',
                             data: {
-
                                 labels: nomes,
                                 datasets: [{
-                                        label: 'Camisetas',
-                                        backgroundColor: 'rgb(000, 150, 200)',
+                                        label: 'Jogos',
+                                        backgroundColor: 'rgb(200, 130, 200)',
                                         borderColor: 'rgb(000, 000, 10)',
                                         data: qtd
                                     }]
                             },
                             options: {
-                                tooltips: {enabled: false},
-                                hover: {mode: null},
-
+                                events: ['click'],
+                                cutoutPercentage: 50,
+                                legend: {
+                                    //position: 'bottom'
+                                },
+                                /*layout: {
+                                 
+                                 padding: {
+                                 left: 25,
+                                 right: 0,
+                                 top: 0,
+                                 bottom: 0
+                                 }
+                                 },*/
                                 scales: {
                                     yAxes: [{
                                             ticks: {
@@ -114,8 +234,56 @@
                             }
                         });
                         </c:forEach>
-                        //--------------------Chart em barra-------------------------
+                    </script>
 
+                    <script>
+                        var ctx = document.getElementById('myChartCamisetas').getContext('2d');
+                        var nomes = [];
+                        var qtd = [];
+
+
+                        <c:forEach items="${todasCamisetas}" var="c">
+                        nomes.push('${c.nome}');
+                        qtd.push(${c.quantidade});
+
+                        var chart = new Chart(ctx, {
+
+                            type: 'bar',
+                            data: {
+                                labels: nomes,
+                                datasets: [{
+                                        label: 'Camisetas',
+                                        backgroundColor: 'rgb(255, 102, 051)',
+                                        borderColor: 'rgb(000, 000, 000)',
+                                        data: qtd
+                                    }]
+                            },
+                            options: {
+                                responsive: true,
+                                events: ['click'],
+                                cutoutPercentage: 50,
+                                legend: {
+                                    //position: 'bottom'
+                                },
+                                layout: {
+
+                                    padding: {
+                                        left: 50,
+                                        right: 0,
+                                        top: 0,
+                                        bottom: 0
+                                    }
+                                },
+                                scales: {
+                                    yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                }
+                            }
+                        });
+                        </c:forEach>
                     </script> 
 
                     <!-- DataTables Example -->
@@ -163,25 +331,25 @@
             <jsp:include page="/admin/logoutModal.jsp" />
 
             <!-- Bootstrap core JavaScript-->
-            <script src="../vendor/jquery/jquery.min.js"></script>
-            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="/PlayBox/vendor/jquery/jquery.min.js"></script>
+            <script src="/PlayBox/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
             <!-- Core plugin JavaScript-->
-            <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+            <script src="/PlayBox/vendor/jquery-easing/jquery.easing.min.js"></script>
 
             <!-- Page level plugin JavaScript-->
-            <script src="../vendor/chart.js/Chart.min.js"></script>
-            <script src="../vendor/datatables/jquery.dataTables.js"></script>
-            <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+            <script src="/PlayBox/vendor/chart.js/Chart.min.js"></script>
+            <script src="/PlayBox/vendor/datatables/jquery.dataTables.js"></script>
+            <script src="/PlayBox/vendor/datatables/dataTables.bootstrap4.js"></script>
 
             <!-- Custom scripts for all pages-->
-            <script src="../js/sb-admin.min.js"></script>
+            <script src="/PlayBox/js/sb-admin.min.js"></script>
 
             <!-- Demo scripts for this page-->
-            <script src="../js/demo/datatables-demo.js"></script>
-            <script src="../js/demo/chart-area-demo.js"></script>
+            <script src="/PlayBox/js/demo/datatables-demo.js"></script>
+            <script src="/PlayBox/js/demo/chart-area-demo.js"></script>
             <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
-            <script src="js/pizza.js"></script>
+            <!--<script src="/PlayBox/admin/js/pizza.js"></script>-->
 
     </body>
 
