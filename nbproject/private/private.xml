@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PlayBox/src/java/Model/Assinatura.java</file>
             <file>file:/C:/PlayBox/src/java/DAO/RelatorioDAO.java</file>
-            <file>file:/C:/PlayBox/web/carrinho.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Model/Carrinho.java</file>
-            <file>file:/C:/PlayBox/src/java/Model/Pesquisa.java</file>
-            <file>file:/C:/PlayBox/web/admin/relatorioPesquisa.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Model/ItensRelatorio.java</file>
-            <file>file:/C:/PlayBox/src/java/DAO/ClienteDAO.java</file>
-            <file>file:/C:/PlayBox/src/java/Model/Cliente.java</file>
-            <file>file:/C:/PlayBox/src/java/Util/ConectaBanco.java</file>
-            <file>file:/C:/PlayBox/test/DAO/ProdutoDAOTest.java</file>
+            <file>file:/C:/PlayBox/src/java/DAO/ProdutoDAO.java</file>
+            <file>file:/C:/PlayBox/src/java/Controler/ControleAcesso.java</file>
+            <file>file:/C:/PlayBox/web/admin/listarPacotes.jsp</file>
+            <file>file:/C:/PlayBox/web/admin/relatorioQuantClientes.jsp</file>
+            <file>file:/C:/PlayBox/web/admin/index.jsp</file>
+            <file>file:/C:/PlayBox/src/java/Controler/ControllerRelatorios.java</file>
+            <file>file:/C:/PlayBox/src/java/Controler/ControllerProduto.java</file>
         </group>
     </open-files>
 </project-private>
