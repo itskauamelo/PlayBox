@@ -32,6 +32,7 @@
                     <a class="dropdown-item" href="/PlayBox/relatorioPreferencia">Preferencia de Clientes</a>
                     <a class="dropdown-item" href="/PlayBox/relatorioPesquisaSatisfacao">Pesquisa de Satisfação</a>
                     <a class="dropdown-item" href="/PlayBox/relatorioQuantClientes">Quantidade clientes</a>
+                    <a class="dropdown-item" href="/PlayBox/relatorioVendas">Vendas Mensal</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

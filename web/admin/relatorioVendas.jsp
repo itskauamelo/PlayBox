@@ -31,6 +31,8 @@
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     </head>
 
@@ -71,55 +73,108 @@
                     <h6>Data Inicial: <input type="date"><p> Data Final:  <input type="date"><br><br></h6>
                         <button class="btn btn-primary btn-medio" type="submit">Emitir</button>
                     </form>-->
-<!--
-                    <div class="row" >  
-                        <div class="col-md-1">
-                            <select color="green" id="selectfilter" class="custom-select custom-select-sm form-control form-control-sm">
-                                <option value="" disabled selected>Filtrar Por</option>
-                                <option value="1">Data</option>
-                                <option value="2">Nome</option>
-                            </select>
-                        </div>
-
-                        <div id="filtrodata" class="row">
-                            <div class="col-md-6">
-                                <h4>De</h4>
-                                <input type="date" class="form-control" id="datefilterfrom" data-date-split-input="true">
-                            </div>
-                            <div class="col-md-6">
-                                <h4>Até</h4>
-                                <input type="date" class="form-control" id="datefilterto" data-date-split-input="true">
-                            </div>
-                        </div>
-
-                        <div id="filtronome" class="col-md-3">
-                            <h4>Nome</h4>
-                            <input id="txtnome" type="text" class="form-control">
-                        </div>
-
-                    </div>
+                    <!--
+                                        <div class="row" >  
+                                            <div class="col-md-1">
+                                                <select color="green" id="selectfilter" class="custom-select custom-select-sm form-control form-control-sm">
+                                                    <option value="" disabled selected>Filtrar Por</option>
+                                                    <option value="1">Data</option>
+                                                    <option value="2">Nome</option>
+                                                </select>
+                                            </div>
+                    
+                                            <div id="filtrodata" class="row">
+                                                <div class="col-md-6">
+                                                    <h4>De</h4>
+                                                    <input type="date" class="form-control" id="datefilterfrom" data-date-split-input="true">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4>Até</h4>
+                                                    <input type="date" class="form-control" id="datefilterto" data-date-split-input="true">
+                                                </div>
+                                            </div>
+                    
+                                            <div id="filtronome" class="col-md-3">
+                                                <h4>Nome</h4>
+                                                <input id="txtnome" type="text" class="form-control">
+                                            </div>
+                    
+                                        </div>
                     -->
                     <br>
-                    <table id="tabela" class="tabela" border="1">
+                    <table id="tabela" class="tabela" border="1" style="float:left">
                         <thead>
                             <tr>
-                            <th class="cabecalho">Quantidade</th>
-                            <th class="cabecalho">Mes</th>
-                            <th class="cabecalho">Ano</th>
+                                <th class="cabecalho">Quantidade</th>
+                                <th class="cabecalho">Mes</th>
+                                <th class="cabecalho">Ano</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${periodoVendas}" var="p">
-                            <tr>
-                                <td class="conteudo" align="center">${p.quantidade}</td>
-                                <td class="conteudo" align="center">${p.mes}</td>
-                                <td class="conteudo" align="center">${p.ano}</td>
-                            </tr>
-                        </c:forEach>
+                            <c:forEach items="${periodoVendas}" var="p">
+                                <tr>
+                                    <td class="conteudo" align="center">${p.quantidade}</td>
+                                    <td class="conteudo" align="center">${p.mes}</td>
+                                    <td class="conteudo" align="center">${p.ano}</td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
-                    
-                     
+
+                    <style type="text/css">
+                        .canvasMaior { 
+                            width: 800px;
+                            heigth: 400px;
+                            float:left;
+                            position: relative;
+                        }
+                        .canvas { 
+                            width: 400px;
+                            heigth: 400px;
+                            float:left;
+                        }
+                    </style>
+
+                    <div class="canvasMaior">
+                        <canvas id="myChartVendas"></canvas>
+                    </div>
+
+                    <script>
+                        var ctx = document.getElementById('myChartVendas').getContext('2d');
+                        var mes = [];
+                        var qtd = [];
+
+
+                        <c:forEach items="${periodoVendas}" var="v">
+                        mes.push('${v.mes}');
+                        qtd.push(${v.quantidade});
+
+                        var chart = new Chart(ctx, {
+
+                            type: 'line',
+                            data: {
+                                labels: mes,
+                                datasets: [{
+                                        label: 'Ano ${v.ano}',
+                                        backgroundColor: 'rgb(25, 140, 255)',
+                                        borderColor: 'rgb(000, 000, 000)',
+                                        data: qtd
+                                    }]
+                            },
+                            options: {
+                                events: ['click'],
+                                scales: {
+                                    xAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                }
+                            }
+                        });
+                        </c:forEach>
+                    </script>
+
                     <script>
                         //-----------------Combo de Filtros---------------------
                         //Se não for nem 1 nem 2 esconde as duas
@@ -144,9 +199,7 @@
                                         }
                                     });
 
-                                }
-
-                                else if (this.value == '2')
+                                } else if (this.value == '2')
                                 {
                                     $("#filtronome").show();
                                     $('#limparfiltro').show();
@@ -198,11 +251,11 @@
                             var from = $('#datefilterfrom').val();
                             var to = $('#datefilterto').val();
 
-                            if (!from && !to) { 
+                            if (!from && !to) {
                                 return;
                             }
 
-                            from = from || '1970-01-01'; 
+                            from = from || '1970-01-01';
                             to = to || '2999-12-31';
 
                             var dateFrom = moment(from);
@@ -211,7 +264,7 @@
                             $('#tabela tbody tr').each(function (i, tr) {
                                 var val = $(tr).find("td:nth-child(1)").text();
                                 var dateVal = moment(val, "DD/MM/YYYY");
-                                var visible = (dateVal.isBetween(dateFrom, dateTo, null, [])) ? "" : "none"; 
+                                var visible = (dateVal.isBetween(dateFrom, dateTo, null, [])) ? "" : "none";
                                 $(tr).css('display', visible);
                             });
                         }

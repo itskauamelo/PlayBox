@@ -67,7 +67,7 @@ public class RelatorioDAO {
                         "       MES,\n" +
                         "       EXTRACT(MONTH FROM datahora),\n" +
                         "       EXTRACT(YEAR FROM datahora) \n" +
-                        "ORDER BY Quantidade desc"
+                        "ORDER BY mes"
                     );
             ResultSet resultado = comando.executeQuery();
             periodoVendas = new ArrayList<>();
