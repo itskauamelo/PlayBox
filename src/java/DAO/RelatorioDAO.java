@@ -1,6 +1,8 @@
 package DAO;
 
+import Model.Compra;
 import Model.ItensRelatorio;
+import Model.Relatorio;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -48,5 +50,69 @@ public class RelatorioDAO {
         return todosItens;
     }
     
+        public List<Relatorio> getConsultarPeriodoVenda() throws ClassNotFoundException, SQLException {
 
+        List<Relatorio> periodoVendas;
+        
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement
+                    (
+                        "SELECT\n" +
+                        "       COUNT(clientefk) AS Quantidade,\n" +
+                        "       EXTRACT(MONTH FROM datahora) mes,\n" +
+                        "       EXTRACT(YEAR FROM datahora) ano\n" +
+                        " \n" +
+                        "  FROM compra\n" +
+                        "  GROUP BY\n" +
+                        "       MES,\n" +
+                        "       EXTRACT(MONTH FROM datahora),\n" +
+                        "       EXTRACT(YEAR FROM datahora) \n" +
+                        "ORDER BY Quantidade desc"
+                    );
+            ResultSet resultado = comando.executeQuery();
+            periodoVendas = new ArrayList<>();
+            while (resultado.next()) {
+                Relatorio v = new Relatorio();
+                v.setQuantidade(resultado.getString("quantidade"));
+                v.setMes(resultado.getString("mes"));
+                v.setAno(resultado.getString("ano"));
+                
+                periodoVendas.add(v);
+            }
+            }
+        return periodoVendas;
+}
+        
+        public List<Relatorio> getQuantClientes() throws ClassNotFoundException, SQLException {
+
+        List<Relatorio> quantClientesMes;
+        
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement
+                    (
+                        "SELECT\n" +
+                        "       COUNT(id) AS Quantidade,\n" +
+                        "       EXTRACT(MONTH FROM datahora) mes,\n" +
+                        "       EXTRACT(YEAR FROM datahora) ano\n" +
+                        " \n" +
+                        "FROM log_novo_cliente\n" +
+                        "GROUP BY\n" +
+                        "       MES,\n" +
+                        "       EXTRACT(MONTH FROM datahora),\n" +
+                        "       EXTRACT(YEAR FROM datahora) \n" +
+                        "ORDER BY Quantidade desc;"
+                    );
+            ResultSet resultado = comando.executeQuery();
+            quantClientesMes = new ArrayList<>();
+            while (resultado.next()) {
+                Relatorio r = new Relatorio();
+                r.setQuantidade(resultado.getString("quantidade"));
+                r.setMes(resultado.getString("mes"));
+                r.setAno(resultado.getString("ano"));
+                
+                quantClientesMes.add(r);
+            }
+            }
+        return quantClientesMes;
+}
 }
