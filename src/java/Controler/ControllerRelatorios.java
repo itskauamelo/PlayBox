@@ -7,12 +7,14 @@ import Model.Cliente;
 import Model.Compra;
 import Model.ItensRelatorio;
 import Model.Pesquisa;
+import Model.Relatorio;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 
@@ -20,7 +22,9 @@ import javax.servlet.annotation.WebServlet;
     "/relatorioItens",
     "/listarFaturamento",
     "/relatorioClientes",
-    "/relatorioPesquisaSatisfacao"
+    "/relatorioPesquisaSatisfacao",
+    "/relatorioVendas",
+    "/relatorioQuantClientes"
 })
 
 public class ControllerRelatorios extends HttpServlet{
@@ -38,7 +42,11 @@ public class ControllerRelatorios extends HttpServlet{
                 listarComprasFinalizadas(request, response);
             } else if (uri.equals(request.getContextPath() + "/relatorioClientes")) {
                 relatorioClientes(request, response);
-            } else if (uri.equals(request.getContextPath() + "/relatorioPesquisaSatisfacao")) {
+            } else if (uri.equals(request.getContextPath() + "/relatorioVendas")) {
+                relatorioVendas(request, response);
+            } else if (uri.equals(request.getContextPath() + "/relatorioQuantClientes")) {
+                relatorioQuantClientes(request, response);
+            } else  if (uri.equals(request.getContextPath() + "/relatorioPesquisaSatisfacao")) {
                 relatorioPesquisaSatisfacao(request, response);
             }  
             } catch (Exception e) {
@@ -46,6 +54,7 @@ public class ControllerRelatorios extends HttpServlet{
                 response.sendRedirect("Erro.jsp");
             }
     }
+    
 
     private void relatorioItens(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         RelatorioDAO dao = new RelatorioDAO();
@@ -55,6 +64,28 @@ public class ControllerRelatorios extends HttpServlet{
         request.setAttribute("todosItens", todosItens);
         
         request.getRequestDispatcher("admin/relatorioItensTotais.jsp").forward(request, response);
+
+    }
+    
+    private void relatorioVendas(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        RelatorioDAO dao = new RelatorioDAO();
+
+        List<Relatorio> periodoVendas = dao.getConsultarPeriodoVenda();
+        
+        request.setAttribute("periodoVendas", periodoVendas);
+        
+        request.getRequestDispatcher("admin/relatorioVendas.jsp").forward(request, response);
+
+    }
+    
+    private void relatorioQuantClientes(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        RelatorioDAO dao = new RelatorioDAO();
+
+        List<Relatorio> quantClientesMes = dao.getQuantClientes();
+        
+        request.setAttribute("quantClientesMes", quantClientesMes);
+        
+        request.getRequestDispatcher("admin/relatorioQuantClientes.jsp").forward(request, response);
 
     }
     
