@@ -58,8 +58,8 @@ public class Carrinho {
     
     private List<Pacote> pacotesNoCarrinho = new ArrayList<>();
     
-    public void addPacote(Pacote pacote) {
-        pacotesNoCarrinho.add(pacote);
+    public void addPacote(Assinatura assinatura) {
+        assinaturaNoCarrinho.add(assinatura);
     }
     
     private List<Assinatura> assinaturaNoCarrinho = new ArrayList<>();
@@ -68,16 +68,16 @@ public class Carrinho {
         assinaturaNoCarrinho.add(assinatura);
     }
     
-    public List<Pacote> getPacotesNoCarrinho() {
-        return pacotesNoCarrinho;
+    public List<Assinatura> getPacotesNoCarrinho() {
+        return assinaturaNoCarrinho;
     }
     
     public List<Assinatura> getAssinaturaNoCarrinho() {
         return assinaturaNoCarrinho;
     }
 
-    public void remover(Pacote pacoteARemover) {
-        pacotesNoCarrinho.remove(pacoteARemover);
+    public void remover(Assinatura assinaturaARemover) {
+        assinaturaNoCarrinho.remove(assinaturaARemover);
     }
     
     public void removerAssinatura(Assinatura assinaturaARemover) {

@@ -116,11 +116,11 @@ public class ControllerCarrinho extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
 
-            PacoteDAO dao = new PacoteDAO();
-            Pacote pacoteARemover = dao.consultarPorIdCarrinho(id);
+            AssinaturaDAO dao = new AssinaturaDAO();
+            Assinatura assinaturaARemover = dao.consultarPorIdCarrinho(id);
 
             Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
-            carrinho.remover(pacoteARemover);
+            carrinho.remover(assinaturaARemover);
             response.sendRedirect("carrinho");
         
         } catch (Exception ex) {
