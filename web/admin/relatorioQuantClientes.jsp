@@ -101,7 +101,10 @@
                     
                                         </div>
                     -->
+                    <button onclick="esconder()">Esconder/Mostrar Tabela</button>
                     <br>
+                    <br>
+                    <div id="myDIV">
                     <table id="tabela" class="tabela" border="1" style="float:left;">
                         <thead>
                             <tr>
@@ -120,7 +123,20 @@
                             </c:forEach>
                         </tbody>
                     </table>
-
+                    </div>
+                    
+                    <script>
+                          function esconder() {
+                          var x = document.getElementById("myDIV");
+                          if (x.style.display === "none") {
+                            x.style.display = "block";
+                          } else {
+                            x.style.display = "none";
+                          }
+                        }
+                    </script>
+                    
+                    
                     <style type="text/css">
                         .canvasMaior { 
                             width: 800px;

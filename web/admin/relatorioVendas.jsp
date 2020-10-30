@@ -101,8 +101,11 @@
                     
                                         </div>
                     -->
+                    <button onclick="esconder()">Esconder/ Tabela</button>
                     <br>
-                    <table id="tabela" class="tabela" border="1" style="float:left">
+                    <br>
+                    <div id="myDIV">
+                        <table id="tabela" class="tabela" border="1" style="float:left">
                         <thead>
                             <tr>
                                 <th class="cabecalho">Quantidade</th>
@@ -120,6 +123,20 @@
                             </c:forEach>
                         </tbody>
                     </table>
+                    </div>
+                    
+                    <p></p>
+                    
+                    <script>
+                          function esconder() {
+                          var x = document.getElementById("myDIV");
+                          if (x.style.display === "none") {
+                            x.style.display = "block";
+                          } else {
+                            x.style.display = "none";
+                          }
+                        }
+                    </script>
 
                     <style type="text/css">
                         .canvasMaior { 
@@ -136,18 +153,20 @@
                     </style>
 
                     <div class="canvasMaior">
-                        <canvas id="myChartVendas"></canvas>
+                        <canvas id="myChartVendas2020"></canvas>
+                        <canvas id="myChartVendas2019"></canvas>
+                        <canvas id="myChartVendasPie"></canvas>
                     </div>
 
                     <script>
-                        var ctx = document.getElementById('myChartVendas').getContext('2d');
+                        var ctx = document.getElementById('myChartVendas2020').getContext('2d');
                         var mes = [];
                         var qtd = [];
 
 
                         <c:forEach items="${periodoVendas}" var="v">
                         mes.push('${v.mes}');
-                        qtd.push(${v.quantidade});
+                        qtd.push(${v.quantidade}); 
 
                         var chart = new Chart(ctx, {
 
@@ -156,10 +175,10 @@
                                 labels: mes,
                                 datasets: [{
                                         label: 'Ano ${v.ano}',
-                                        backgroundColor: 'rgb(25, 140, 255)',
-                                        borderColor: 'rgb(000, 000, 000)',
+                                        borderColor: 'rgb(25, 140, 255)',
                                         data: qtd
-                                    }]
+                                    },
+                                        ]
                             },
                             options: {
                                 events: ['click'],
@@ -174,6 +193,79 @@
                         });
                         </c:forEach>
                     </script>
+                    
+                    
+                                        <script>
+                        var ctx = document.getElementById('myChartVendasPie').getContext('2d');
+                        //var nomes = [];
+                        var qtd = [];
+                                                 
+                        <c:forEach items="${periodoVendas}" var="v">
+                        //nomes.push('');
+                        qtd.push(${v.quantidade}); 
+                        
+                        var chart = new Chart(ctx, {
+
+                            type: 'pie',
+                            data: {
+                                labels: ['5', '4', '3', '2', '1'],
+                                datasets: [{
+                                        labels: 'Vendas',
+                                        backgroundColor: 'rgb(000, 150, 200)',
+                                        borderColor: 'rgb(000, 000, 10)',
+                                        data: qtd
+                                    }]
+                            },
+                            options: {
+                                events: ['click'],
+                                //events: ['click'],
+                                cutoutPercentage: 50,
+                                yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                            }
+                        });
+                        </c:forEach> 
+                    </script>
+                    
+                                        <script>
+                        var ctx = document.getElementById('myChartVendas2019').getContext('2d');
+                        var mes = [];
+                        var qtd = [];
+
+
+                        <c:forEach items="${periodoVendas}" var="v">
+                        mes.push('${v.mes}');
+                        qtd.push(${v.quantidade}); 
+
+                        var chart = new Chart(ctx, {
+
+                            type: 'line',
+                            data: {
+                                labels: mes,
+                                datasets: [{
+                                        label: 'Ano ${v.ano}',
+                                        borderColor: 'rgb(255, 103, 135)',
+                                        data: qtd
+                                    },
+                                        ]
+                            },
+                            options: {
+                                events: ['click'],
+                                scales: {
+                                    xAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                }
+                            }
+                        });
+                        </c:forEach>
+                    </script>
+                    
 
                     <script>
                         //-----------------Combo de Filtros---------------------

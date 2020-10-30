@@ -14,6 +14,7 @@ public class Relatorio {
     public String quantidade;
     public String mes;
     public String ano;
+    public String mesano;
 
     public Relatorio() {
     }
@@ -22,6 +23,13 @@ public class Relatorio {
         this.quantidade = quantidade;
         this.mes = mes;
         this.ano = ano;
+    }
+
+    public Relatorio(String quantidade, String mes, String ano, String mesano) {
+        this.quantidade = quantidade;
+        this.mes = mes;
+        this.ano = ano;
+        this.mesano = mesano;
     }
 
     public String getQuantidade() {
@@ -46,6 +54,14 @@ public class Relatorio {
 
     public void setAno(String ano) {
         this.ano = ano;
+    }
+
+    public String getMesano() {
+        return mesano;
+    }
+
+    public void setMesano(String mesano) {
+        this.mesano = mesano;
     }
 
 }
