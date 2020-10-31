@@ -138,7 +138,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- Logo -->
-                <a class="navbar-brand" href="index.html" title="PlayBoX">
+                <a class="navbar-brand" href="indexLogado.jsp" title="PlayBoX">
                     <i class="fa fa-gamepad" aria-hidden="true"></i><span class="main-color">P</span>laybo<span class="main-color">X</span>
                 </a><!-- Logo end -->
             </div>
@@ -204,7 +204,7 @@
                 <h1 class="system-header">{O clube de assinatura gamer}</h1>
                 <p class="section-description">A <span class="highlight"><span class="main-color">P</span>laybo<span class="main-color">X</span></span> é um clube de assinatura <span class="highlight">Gamer.</span> Ao assinar você garante todos os meses na sua casa <span class="highlight">produtos exclusivos e licenciados</span> dos principais universos da cultura gamer desenvolvidos por uma curadoria interna da nossa propria equipe, de gamers para gamers. </p>
 
-                <a href="#" class="btn-border btn-primary" title="Play" data-toggle="modal" data-target="#order-modal">
+                <a href="#plano" class="btn-border btn-primary" title="Play">
                     <span class="btn btn-primary btn-lg"><i class="fa fa-play" aria-hidden="true"></i> Play</span>
                 </a>
             </div>

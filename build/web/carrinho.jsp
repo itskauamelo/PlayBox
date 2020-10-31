@@ -228,8 +228,8 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colspan="4">Total</th>
-                        <th><fmt:formatNumber type="currency" currencySymbol="R$" value="${total}"></fmt:formatNumber></th>
+                        <th colspan="3">Total</th>
+                        <th><fmt:formatNumber type="currency" currencySymbol="R$" value=""></fmt:formatNumber>${total} R$</th>
                     </tr>
                 </tfoot>
             </table>

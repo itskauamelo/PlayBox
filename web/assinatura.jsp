@@ -46,7 +46,11 @@
         <link rel="icon" href="img/favicon.png" type="image/png">
 
     </head>
+    <%
+        Cliente cliente = (Cliente) session.getAttribute("clienteAutenticado");
 
+        if (cliente != null) {
+    %>
     <body>
 
         <!-- Preloader -->
@@ -91,20 +95,9 @@
                     <div class="header-top-dropdown">
                         <div class="btn-group dropdown">
                             <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                <span class="text"><i class="fa fa-search"></i> Procurar</span>
+                                <span class="text"><i class="fa fa-user"></i> Bem-vindo, <%= cliente.getNomecompleto()%> </span>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <form class="search-box" action="#">
-                                        <div class="form-group has-feedback no-margin">
-                                            <input type="text" class="form-control" placeholder="Procurar">
-                                            <i class="fa fa-search form-control-feedback"></i>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="btn-group dropdown">
+                            <%}%>
                             <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
                                 <span class="text"><i class="fa fa-shopping-cart"></i> Carrinho</span>
                             </button>
@@ -126,44 +119,7 @@
                                     </form>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="btn-group dropdown">
-                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                <span class="text"><i class="fa fa-user"></i> Login</span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <form class="login-form" action="#">
-                                        <div class="form-group has-feedback">
-                                            <input type="text" class="form-control" placeholder="Username">
-                                            <i class="fa fa-user form-control-feedback"></i>
-                                        </div>
-                                        <div class="form-group has-feedback">
-                                            <input type="password" class="form-control" placeholder="Password">
-                                            <i class="fa fa-lock form-control-feedback"></i>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-block">
-                                            <span class="text">Entrar <i class="fa fa-arrow-right"></i></span>
-                                        </button>
-                                        <h3 class="text-center">ou</h3>
-                                        <button type="submit" class="btn btn-primary btn-block">
-                                            <span class="text">Inscrever-se <i class="fa fa-arrow-right"></i></span>
-                                        </button>
-                                        <p class="text-center"><a href="#" title="Reset password">Esqueceu sua senha?</a></p>
-                                        <h3 class="text-center">Entrar com rede social</h3>
-                                        <ul class="list-inline text-center">
-                                            <li>
-                                                <a href="#" title="Login with Facebook"><span class="icon-circle-small"><i class="fa fa-facebook"></i></span></a>
-                                            </li><li>
-                                                <a href="#" title="Login with Twitter"><span class="icon-circle-small"><i class="fa fa-twitter"></i></span></a>
-                                            </li><li>
-                                                <a href="#" title="Login with Google +"><span class="icon-circle-small"><i class="fa fa-google-plus"></i></span></a>
-                                            </li>
-                                        </ul>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
+                        </div>                                             
                     </div>
                 </div>
             </div><!-- Topbar final -->
@@ -181,50 +137,52 @@
                     </a><!-- Logo final -->
                 </div>
                 <!-- Menu principal -->
-                <div class="collapse navbar-collapse" id="main-menu">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="#home">
-                                <span class="main-link">Inicio</span>
-                                <span class="additional-info-link bracket">
-                                    inicio da jornada
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#about">
-                                <span class="main-link">Serviço</span>
-                                <span class="additional-info-link bracket">
-                                    como funciona
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#plano">
-                                <span class="main-link">Planos </span>
-                                <span class="additional-info-link bracket">
-                                    nossos planos
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#mandamensagem">
-                                <span class="main-link">Contato </span>
-                                <span class="additional-info-link bracket">
-                                    fale com a gente
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="main-link">Loja</span>
-                                <span class="additional-info-link bracket">
-                                    alguns produtos
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <c:forEach items="${carrinho.assinaturaNoCarrinho}" var="assinatura" varStatus="status" >
+                    <div class="collapse navbar-collapse" id="main-menu">                  
+                        <ul class="nav navbar-nav">                       
+                            <li>
+                                <a href="removerDoCarrinhoAssinatura?id=${assinatura.id}">
+                                    <span class="main-link">Inicio</span>
+                                    <span class="additional-info-link bracket">
+                                        inicio da jornada
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="removerDoCarrinhoAssinatura?id=${assinatura.id}">
+                                    <span class="main-link">Serviço</span>
+                                    <span class="additional-info-link bracket">
+                                        como funciona
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="removerDoCarrinhoAssinatura?id=${assinatura.id}">
+                                    <span class="main-link">Planos </span>
+                                    <span class="additional-info-link bracket">
+                                        nossos planos
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="removerDoCarrinhoAssinatura?id=${assinatura.id}">
+                                    <span class="main-link">Contato </span>
+                                    <span class="additional-info-link bracket">
+                                        fale com a gente
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="main-link">Loja</span>
+                                    <span class="additional-info-link bracket">
+                                        alguns produtos
+                                    </span>
+                                </a>
+                            </li>                                  
+                        </ul>             
+                    </div>
+                </c:forEach>
                 <!-- Final menu -->
             </div>
         </div>
@@ -235,130 +193,130 @@
             <div class="container">
                 <div class="row">
                     <div class="col-cadastro col-md-8"> <br>
-                            <h1>Assinatura </h1>
-                            <table class="table table-striped" style>
+                        <h1>Assinatura </h1>
+                        <table class="table table-striped" style>
 
-                                <thead>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Img</th>
+                                    <th>Item</th>
+                                    <th>Preço</th>                                       
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <c:set var="totalAss" value="0"></c:set>
+                                <c:forEach items="${carrinho.assinaturaNoCarrinho}" var="assinatura" varStatus="status" >
+
+                                    <c:choose>
+                                        <c:when test="${assinatura.nome == 'BRONZE'}">
+
+                                            <c:set var = "img" scope = "session" value = "${'bronze.png'}"/>
+
+                                        </c:when>
+
+                                        <c:when test="${assinatura.nome == 'PRATA'}">
+
+                                            <c:set var = "img" scope = "session" value = "${'prata.png'}"/>
+
+                                        </c:when>
+
+                                        <c:when test="${assinatura.nome == 'OURO'}">
+
+                                            <c:set var = "img" scope = "session" value = "${'ouro.png'}"/>
+
+                                        </c:when>
+
+                                    </c:choose>
+
                                     <tr>
-                                        <th>#</th>
-                                        <th>Img</th>
-                                        <th>Item</th>
-                                        <th>Preço</th>                                       
-                                    </tr>
-                                </thead>
+                                        <td>${status.count}</td>
+                                        <td><img src="img/${img}" width="40"></td>
+                                        <td>${assinatura.nome}</td>
 
-                                <tbody>
-                                    <c:set var="totalAss" value="0"></c:set>
-                                    <c:forEach items="${carrinho.assinaturaNoCarrinho}" var="assinatura" varStatus="status" >
-
-                                        <c:choose>
-                                            <c:when test="${assinatura.nome == 'BRONZE'}">
-
-                                                <c:set var = "img" scope = "session" value = "${'bronze.png'}"/>
-
-                                            </c:when>
-
-                                            <c:when test="${assinatura.nome == 'PRATA'}">
-
-                                                <c:set var = "img" scope = "session" value = "${'prata.png'}"/>
-
-                                            </c:when>
-
-                                            <c:when test="${assinatura.nome == 'OURO'}">
-
-                                                <c:set var = "img" scope = "session" value = "${'ouro.png'}"/>
-
-                                            </c:when>
-
-                                        </c:choose>
-                                        
-                                        <tr>
-                                            <td>${status.count}</td>
-                                            <td><img src="img/${img}" width="40"></td>
-                                            <td>${assinatura.nome}</td>
-
-                                            <td>
-                                                <c:set var="total" value="${totalAss + assinatura.preco}"></c:set>
-                                                <fmt:formatNumber type="currency" currencySymbol="R$" value="${assinatura.preco}"></fmt:formatNumber>
+                                        <td>
+                                            <c:set var="total" value="${totalAss + assinatura.preco}"></c:set>
+                                            <fmt:formatNumber type="currency" currencySymbol="R$" value="${assinatura.preco}"></fmt:formatNumber>
                                             </td>
                                         </tr>
-                                    
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th colspan="3">Total</th>
-                                        <th><fmt:formatNumber type="currency" currencySymbol="R$" value="${total}"></fmt:formatNumber></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                                    Frete: Gratis <br> <br>
-                    </div>
-                    <div class="col-cadastro col-md-8">
-                        <form method="POST">
-                        <a href="finalizarAssinatura" style="background-color: greenyellow" type="submit" class="btn btn-primary btn-block">Assinar</a>  
-                        </form><br>
-                        <a href="removerDoCarrinhoAssinatura?id=${assinatura.id}" type="button" class="btn btn-primary btn-block">Voltar</a>      
-                          </c:forEach>                     
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3">Total</th>
+                                            <th><fmt:formatNumber type="currency" currencySymbol="R$" value="${total}"></fmt:formatNumber></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                Frete: Gratis <br> <br>
+                            </div>
+                            <div class="col-cadastro col-md-8">
+                                <form method="POST">
+                                    <a href="finalizarAssinatura" style="background-color: greenyellow" type="submit" class="btn btn-primary btn-block">Assinar</a>  
+                                </form><br>
+                                <a href="removerDoCarrinhoAssinatura?id=${assinatura.id}" type="button" class="btn btn-primary btn-block">Voltar</a>      
+                        </c:forEach>                     
                     </div>
                 </div>
             </div>
         </div>
-                                   
 
-    <br><br><br>
 
-    <!-- Footer -->
-    <footer class="footer footer-gray text-center" id="follow-us">
-        <div class="container">
-            <ul class="list-inline">
-                <li>
-                    <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                </li>
-                <li>
-                    <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li>
-                    <a href="#" title="Dribble"><i class="fa fa-dribbble"></i></a>
-                </li>
-                <li>
-                    <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                </li>
-                <li>
-                    <a href="#" title="RSS"><i class="fa fa-rss"></i></a>
-                </li>
-            </ul>
-            <p> &copy; 2020 <a href="http://www.umc.br/home">UMC</a></p>
+        <br><br><br>
+
+        <!-- Footer -->
+        <footer class="footer footer-gray text-center" id="follow-us">
+            <div class="container">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" title="Dribble"><i class="fa fa-dribbble"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" title="RSS"><i class="fa fa-rss"></i></a>
+                    </li>
+                </ul>
+                <p> &copy; 2020 <a href="http://www.umc.br/home">UMC</a></p>
+            </div>
+        </footer>
+
+        <!-- Subir toda página -->
+        <div id="toTop" class="to-top">
+            <a href="#" class="To the top">
+                <i class="fa fa-angle-up"></i>
+            </a>
         </div>
-    </footer>
 
-    <!-- Subir toda página -->
-    <div id="toTop" class="to-top">
-        <a href="#" class="To the top">
-            <i class="fa fa-angle-up"></i>
-        </a>
-    </div>
+        <!-- jQuery -->
+        <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+        <!-- Bootstrap -->
+        <script type="text/javascript" src="assets/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap -->
-    <script type="text/javascript" src="assets/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+        <!-- Custom JS -->
+        <script type="text/javascript" src="js/custom.min.js"></script>
 
-    <!-- Custom JS -->
-    <script type="text/javascript" src="js/custom.min.js"></script>
+        <script>
+            function formatar(mascara, documento) {
+                var i = documento.value.length;
+                var saida = mascara.substring(0, 1);
+                var texto = mascara.substring(i)
 
-    <script>
-        function formatar(mascara, documento) {
-            var i = documento.value.length;
-            var saida = mascara.substring(0, 1);
-            var texto = mascara.substring(i)
+                if (texto.substring(0, 1) != saida) {
+                    documento.value += texto.substring(0, 1);
+                }
 
-            if (texto.substring(0, 1) != saida) {
-                documento.value += texto.substring(0, 1);
             }
+        </script>
 
-        }
-    </script>
-
-</body>
+    </body>
 </html>

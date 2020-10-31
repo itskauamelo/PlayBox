@@ -41,11 +41,11 @@
                     <span>Cadastros</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                    <a class="dropdown-item" name="btnCadastroUser" href="usuario.jsp">Usuários</a>
-                    <a class="dropdown-item" href="produto.jsp">Brindes</a>
-                    <a class="dropdown-item" href="camiseta.jsp">Camiseta</a>
-                    <a class="dropdown-item" href="game.jsp">Game</a>
-                    <a class="dropdown-item" href="../form/cadastroPacote">Pacotes</a>
+                    <a class="dropdown-item" name="btnCadastroUser" href="/PlayBox/admin/usuario.jsp">Usuários</a>
+                    <a class="dropdown-item" href="/PlayBox/admin/produto.jsp">Brindes</a>
+                    <a class="dropdown-item" href="/PlayBox/admin/camiseta.jsp">Camiseta</a>
+                    <a class="dropdown-item" href="/PlayBox/admin/game.jsp">Game</a>
+                    <a class="dropdown-item" href="/PlayBox/form/cadastroPacote">Pacotes</a>
 
                 </div>
             </li>

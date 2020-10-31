@@ -182,11 +182,11 @@
                                 scales: {
                                     yAxes: [{
                                             ticks: {
-                                                beginAtZero: true,
+                                                beginAtZero: true,                                              
                                                 callback: function (value) {
                                                     if (Number.isInteger(value)) {
                                                         return value;
-                                                    }
+                                            }
                                                 },
                                                 stepSize: 1
                                             }

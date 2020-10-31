@@ -397,7 +397,7 @@
             <div class="text-center" data-100p-top="transform[swing]:translateX(-50px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">
                 <div class="section-icon"><span><i class="fa fa-envelope"></i></span></div>
             </div>
-            <p class="section-description text-center lead">Não hesite em <span class="highlight">nos contatar</span>. Se você tem alguma pergunta referente aos serviços da <span class="highlight"><span class="main-color">P</span>laybo<span class="main-color">X</span></span> ou outro <span class="highlight">serviço</span> você pode utilizar o <span class="highlight">formulário abaixo</span>. Nós iremos responde-lo de maneira mais rapida que o <strong>Sonic</strong>!</p>
+            <p class="section-description text-center lead">Não hesite em <span class="highlight">nos contatar</span>. Se você tem alguma pergunta referente aos serviços da <span class="highlight"><span class="main-color">P</span>laybo<span class="main-color">X</span></span> ou outro <span class="highlight">serviço</span> você pode utilizar o <span class="highlight">formulário abaixo.</span></p>
             <form class="form-container form" method="POST" action="#">
                 <div class="overlay"></div>
                 <div class="form-content">

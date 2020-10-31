@@ -68,90 +68,13 @@
                 </div>
             </form>
 
-            <!-- Navbar -->
-            <ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bell fa-fw"></i>
-                        <span class="badge badge-danger">9+</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-envelope fa-fw"></i>
-                        <span class="badge badge-danger">7</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user-circle fa-fw"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="#">Activity Log</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                    </div>
-                </li>
-            </ul>
+            <jsp:include page="/admin/navbar.jsp" />
 
+            <jsp:include page="/admin/sidebar.jsp" />
+            
         </nav>
 
         <div id="wrapper">
-
-            <!-- Sidebar -->
-            <ul class="sidebar navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Controles</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                        <h6 class="dropdown-header">Login Screens:</h6>
-                        <a class="dropdown-item" href="login.html">Login</a>
-                        <a class="dropdown-item" href="register.html">Register</a>
-                        <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="dropdown-divider"></div>
-                        <h6 class="dropdown-header">Other Pages:</h6>
-                        <a class="dropdown-item" href="404.html">404 Page</a>
-                        <a class="dropdown-item" href="blank.html">Blank Page</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="usuario.html">
-                        <i class="fas fa-fw fa-user"></i>
-                        <span>Usuários</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="produtos.html">
-                        <i class="fas fa-fw fa-bone"></i>
-                        <span>Produtos</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="produtos.html">
-                        <i class="fas fa-fw fa-gift"></i>
-                        <span>Pacotes</span></a>
-                </li>
-            </ul>
 
             <div id="content-wrapper">
 
@@ -180,7 +103,7 @@
                         <form onsubmit="return valida()" action="../cadastrarPacote" method="POST">
                             <label for="txtNome">Nome do Pacote</label>
                             <input type="text" id="txtNome" name="txtNome" class="form-control" style="display:inline-block" required>
-                            
+
                             <label for="txtAssinatura">Assinatura</label>
                             <select onchange="exibir_ocultar(this)" id="txtAssinatura" name="txtAssinatura" class="form-control" required>
                                 <option value="" disabled selected>Selecione o nome do pacote</option>
@@ -338,7 +261,7 @@
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
-
+            
             <!-- Logout Modal-->
             <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -357,7 +280,7 @@
                     </div>
                 </div>
             </div>
-
+        </div>
     </body>
 
 </html>

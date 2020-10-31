@@ -168,9 +168,21 @@
             <br>
 
 
+            <style type="text/css">
+                .line { 
+                    float:left;
+                    position: relative;
+                }
+                .canvas { 
+                    width: 400px;
+                    heigth: 400px;
+                    float:left;
+                }
+            </style>
+
             <div class="container" style="margin-right: 2%; margin-left: 2%; display:inline-block;">
                 <div style="margin-right: 40%;">
-                    <div class="col-cadastro col-md-8">
+                    <div class="line" style="margin-left: 20%;">
                         <center>
                             <form method="POST" action="cadastrarEndereco">
 
@@ -197,8 +209,9 @@
                             </form>
                         </center>
                     </div>
-                </div>
-                <div class="col-cadastro col-md-8">
+                </div>             
+
+                <div class="line" style="margin-left: 10%;">
                     <center>
                         <h3 class="post-item-header">Cartão</h3>
                         <div id="cartao">
@@ -241,26 +254,27 @@
                     </center>
                 </div>
 
-                <div style="margin-left: 40%;">
-                    <center>
-                        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
+                <div class="line" style="margin-left: 5%; width: 800px;
+                     heigth: 400px; position: absolut">
 
-                        <p id="rcorners2">
-                            <label>Endereços cadastrados</label>
-                            <br>
-                            <c:forEach items="${meusEnderecos}" var="e">
-                                <a name="chkEndereco" id="chkEndereco" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}</a><br>
-                            </c:forEach>
-                        </p>
+                    <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
 
-                        <p id="rcorners2">
-                            <label>Cartões cadastrados</label>
-                            <br>                                                             
-                            <c:forEach items="${meusCartoes}" var="c">
-                                <a name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****</a><br>
-                            </c:forEach>
-                        </p>
-                    </center> 
+                    <p id="rcorners2">
+                        <label>Endereços cadastrados</label>
+                        <br>
+                        <c:forEach items="${meusEnderecos}" var="e">
+                            <a name="chkEndereco" id="chkEndereco" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}</a><br>
+                        </c:forEach>
+                    </p>
+
+                    <p id="rcorners2">
+                        <label>Cartões cadastrados</label>
+                        <br>                                                             
+                        <c:forEach items="${meusCartoes}" var="c">
+                            <a name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****</a><br>
+                        </c:forEach>
+                    </p>
+
 
                     <style>
                         #rcorners2 
