@@ -109,23 +109,13 @@
                         <thead>
                             <tr>
                                 <th class="cabecalho">Quantidade</th>
-                                <th class="cabecalho">Mes</th>
-                                <th class="cabecalho">Ano</th>
+                                <th class="cabecalho">Mes/Ano</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <c:forEach items="${periodoVendas}" var="p">
-                                <tr>
-                                    <td class="conteudo" align="center">${p.quantidade}</td>
-                                    <td class="conteudo" align="center">${p.mes}</td>
-                                    <td class="conteudo" align="center">${p.ano}</td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
+
                     </table>
                     </div>
                     
-                    <p></p>
                     
                     <script>
                           function esconder() {
@@ -146,8 +136,8 @@
                             position: relative;
                         }
                         .canvas { 
-                            width: 400px;
-                            heigth: 400px;
+                            width: 600px;
+                            heigth: 600px;
                             float:left;
                         }
                     </style>
@@ -155,28 +145,34 @@
                     <div class="canvasMaior">
                         <canvas id="myChartVendas2020"></canvas>
                         <canvas id="myChartVendas2019"></canvas>
-                        <canvas id="myChartVendasPie"></canvas>
+                    </div>
+                    <br>
+                    <div class="canvas">
+                        <h3>                      Qtd Vendas por Status</h3><br>
+                        <canvas id="myChartVendasPie"></canvas><br>
+                        <h3>                      Qtd Vendas por Assinatura</h3><br>
+                        <canvas id="myChartAssinaturaPie"></canvas>
                     </div>
 
                     <script>
-                        var ctx = document.getElementById('myChartVendas2020').getContext('2d');
-                        var mes = [];
-                        var qtd = [];
+                        var ctx1 = document.getElementById('myChartVendas2020').getContext('2d');
+                        var mesano1 = [];
+                        var qtd1 = [];
 
 
-                        <c:forEach items="${periodoVendas}" var="v">
-                        mes.push('${v.mes}');
-                        qtd.push(${v.quantidade}); 
+                        <c:forEach items="${periodoVendas2020}" var="v1">
+                        mesano1.push('${v1.mesano}');
+                        qtd1.push(${v1.quantidade}); 
 
-                        var chart = new Chart(ctx, {
+                        var chart1 = new Chart(ctx1, {
 
                             type: 'line',
                             data: {
-                                labels: mes,
+                                labels: mesano1,
                                 datasets: [{
-                                        label: 'Ano ${v.ano}',
+                                        label: 'Ano 2020',
                                         borderColor: 'rgb(25, 140, 255)',
-                                        data: qtd
+                                        data: qtd1
                                     },
                                         ]
                             },
@@ -193,30 +189,75 @@
                         });
                         </c:forEach>
                     </script>
+                   
+                  
+                    <script>
+                        var ctx2 = document.getElementById('myChartVendas2019').getContext('2d');
+                        var mesano2 = [];
+                        var qtd2 = [];
+
+
+                        <c:forEach items="${periodoVendas2019}" var="v2">
+                        mesano2.push('${v2.mesano}');
+                        qtd2.push(${v2.quantidade}); 
+
+                        var chart2 = new Chart(ctx2, {
+
+                            type: 'line',
+                            data: {
+                                labels: mesano2,
+                                datasets: [{
+                                        label: 'Ano 2019',
+                                        borderColor: 'rgb(255, 103, 135)',
+                                        data: qtd2
+                                    },
+                                        ]
+                            },
+                            options: {
+                                events: ['click'],
+                                scales: {
+                                    yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true,
+                                                callback: function (value) {
+                                                    if (Number.isInteger(value)) {
+                                                        return value;
+                                                    }
+                                                },
+                                                stepSize: 1
+                                            }
+                                        }]
+                                }
+                            }
+                        });
+                        </c:forEach>
+                    </script>
                     
-                    
-                                        <script>
-                        var ctx = document.getElementById('myChartVendasPie').getContext('2d');
-                        //var nomes = [];
-                        var qtd = [];
+                                        
+                    <script>
+                        var ctx3 = document.getElementById('myChartVendasPie').getContext('2d');
+                        var x = [];
+                        var y = [];
                                                  
-                        <c:forEach items="${periodoVendas}" var="v">
-                        //nomes.push('');
-                        qtd.push(${v.quantidade}); 
+                        <c:forEach items="${assCliente}" var="a">
+                        x.push('${a.status}');
+                        y.push(${a.quantidade});
                         
-                        var chart = new Chart(ctx, {
+                        var chart = new Chart(ctx3, {
 
                             type: 'pie',
                             data: {
-                                labels: ['5', '4', '3', '2', '1'],
+                                labels: ['Cancelado', 'Vendido', 'Aguardando Pagamento'],
                                 datasets: [{
-                                        labels: 'Vendas',
-                                        backgroundColor: 'rgb(000, 150, 200)',
-                                        borderColor: 'rgb(000, 000, 10)',
-                                        data: qtd
+                                        backgroundColor: ["#686868", "#F36281", "#198CFF"],
+                                       
+                                        data: y
                                     }]
                             },
                             options: {
+                                legend: {
+                                    position: 'bottom'
+                                },
                                 events: ['click'],
                                 //events: ['click'],
                                 cutoutPercentage: 50,
@@ -227,143 +268,48 @@
                                     }]
                             }
                         });
-                        </c:forEach> 
+                        </c:forEach>
+                            
                     </script>
                     
-                                        <script>
-                        var ctx = document.getElementById('myChartVendas2019').getContext('2d');
-                        var mes = [];
-                        var qtd = [];
+                    <script>
+                        var ctx4 = document.getElementById('myChartAssinaturaPie').getContext('2d');
+                        var z = [];
+                        var w = [];
+                                                 
+                        <c:forEach items="${vendas2020}" var="t">
+                        z.push('${t.assinatura}');
+                        w.push(${t.quantidade});
+                        
+                        var chart = new Chart(ctx4, {
 
-
-                        <c:forEach items="${periodoVendas}" var="v">
-                        mes.push('${v.mes}');
-                        qtd.push(${v.quantidade}); 
-
-                        var chart = new Chart(ctx, {
-
-                            type: 'line',
+                            type: 'pie',
                             data: {
-                                labels: mes,
+                                labels: ['Bronze', 'Prata', 'Ouro'],
                                 datasets: [{
-                                        label: 'Ano ${v.ano}',
-                                        borderColor: 'rgb(255, 103, 135)',
-                                        data: qtd
-                                    },
-                                        ]
+                                        backgroundColor: ["#b87333", "#c0c0c0", "#FFD700"],
+                                       
+                                        data: w
+                                    }]
                             },
                             options: {
+                                legend: {
+                                    position: 'bottom'
+                                },
                                 events: ['click'],
-                                scales: {
-                                    xAxes: [{
-                                            ticks: {
-                                                beginAtZero: true
-                                            }
-                                        }]
-                                }
+                                //events: ['click'],
+                                cutoutPercentage: 50,
+                                yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
                             }
                         });
                         </c:forEach>
+                            
                     </script>
                     
-
-                    <script>
-                        //-----------------Combo de Filtros---------------------
-                        //Se não for nem 1 nem 2 esconde as duas
-                        $("#filtrodata").hide();
-                        $("#filtronome").hide();
-
-                        $(document).ready(function () {
-                            var valor = $(this).val().toUpperCase();
-                            //Chama o evento após selecionar um valor
-                            $('#selectfilter').on('change', function () {
-                                //Verifica se o valor é igual a 1 e mostra
-                                if (this.value == '1')
-                                {
-                                    $("#filtrodata").show();
-                                    $('#limparfiltro').show();
-                                    $("#filtronome").hide();
-
-                                    $("#tabela tbody tr").show();
-                                    $(nth).each(function () {
-                                        if ($(this).text().toUpperCase().indexOf(valor) < 0) {
-                                            $(this).parent().hide();
-                                        }
-                                    });
-
-                                } else if (this.value == '2')
-                                {
-                                    $("#filtronome").show();
-                                    $('#limparfiltro').show();
-                                    $("#filtrodata").hide();
-
-                                    $("#tabela tbody tr").show();
-                                    $(nth).each(function () {
-                                        if ($(this).text().toUpperCase().indexOf(valor) < 0) {
-                                            $(this).parent().hide();
-                                        }
-                                    });
-                                } else if (this.value == '0')
-                                {
-                                    $("#filtrodata").hide();
-                                    $("#filtronome").hide();
-
-                                    $("#tabela tbody tr").show();
-                                    $(nth).each(function () {
-                                        if ($(this).text().toUpperCase().indexOf(valor) < 0) {
-                                            $(this).parent().hide();
-                                        }
-                                    });
-
-                                    alert("Favor selecione um filtro");
-                                }
-                            });
-                        });
-                        //-----------------Filtro Por Nome----------------------
-                        $(function () {
-                                $("#txtnome").keyup(function () {        
-                                        //var index = $(this).parent().index();
-                                i = 4;
-                                        var nth = "#tabela td:nth-child(" + i + ")";
-                                        var valor = $(this).val().toUpperCase();
-                                        $("#tabela tbody tr").show();
-                                        $(nth).each(function () {
-                                                if ($(this).text().toUpperCase().indexOf(valor) < 0) {
-                                                        $(this).parent().hide();
-                                                }
-                                        });
-                                });
- 
-                                //$("#tabela input").blur(function () {
-                            //        $(this).val("");
-                                //});
-                        });
-                        //-----------------Filtro Por Data----------------------
-                        function filterRows() {
-                            var from = $('#datefilterfrom').val();
-                            var to = $('#datefilterto').val();
-
-                            if (!from && !to) {
-                                return;
-                            }
-
-                            from = from || '1970-01-01';
-                            to = to || '2999-12-31';
-
-                            var dateFrom = moment(from);
-                            var dateTo = moment(to);
-
-                            $('#tabela tbody tr').each(function (i, tr) {
-                                var val = $(tr).find("td:nth-child(1)").text();
-                                var dateVal = moment(val, "DD/MM/YYYY");
-                                var visible = (dateVal.isBetween(dateFrom, dateTo, null, [])) ? "" : "none";
-                                $(tr).css('display', visible);
-                            });
-                        }
-
-                        $('#datefilterfrom').on("change", filterRows);
-                        $('#datefilterto').on("change", filterRows);
-                    </script>
                     <!-- Area Chart Example-->
                     <!-- /.container-fluid -->
 

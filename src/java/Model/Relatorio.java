@@ -15,6 +15,8 @@ public class Relatorio {
     public String mes;
     public String ano;
     public String mesano;
+    public String status;
+    public String assinatura;
 
     public Relatorio() {
     }
@@ -31,6 +33,31 @@ public class Relatorio {
         this.ano = ano;
         this.mesano = mesano;
     }
+
+    public String getAssinatura() {
+        return assinatura;
+    }
+
+    public void setAssinatura(String assinatura) {
+        this.assinatura = assinatura;
+    }
+
+    public Relatorio(String quantidade, String status) {
+        this.quantidade = quantidade;
+        this.status = status;
+    }
+    
+    
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
 
     public String getQuantidade() {
         return quantidade;

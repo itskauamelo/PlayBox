@@ -70,10 +70,15 @@ public class ControllerRelatorios extends HttpServlet{
     private void relatorioVendas(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
         RelatorioDAO dao = new RelatorioDAO();
 
-        List<Relatorio> periodoVendas = dao.getConsultarPeriodoVenda();
+        List<Relatorio> periodoVendas2020 = dao.getConsultarPeriodoVenda2020();
+        List<Relatorio> periodoVendas2019 = dao.getConsultarPeriodoVenda2019();
+        List<Relatorio> vendas2020 = dao.getPedidosStatus();
+        List<Relatorio> assCliente = dao.getAssinaturaQuant();
         
-        request.setAttribute("periodoVendas", periodoVendas);
-        
+        request.setAttribute("periodoVendas2020", periodoVendas2020);
+        request.setAttribute("periodoVendas2019", periodoVendas2019);
+        request.setAttribute("vendas2020", vendas2020);
+        request.setAttribute("assCliente", assCliente);
         request.getRequestDispatcher("admin/relatorioVendas.jsp").forward(request, response);
 
     }
