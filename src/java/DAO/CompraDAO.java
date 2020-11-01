@@ -155,6 +155,27 @@ public class CompraDAO {
         "WHERE datahora < CURRENT_DATE - 5 AND statusfk = 1");
         comando.execute();
     }
+        
+        public void renovarAssinatura() throws ClassNotFoundException, SQLException {
+        Connection con = ConectaBanco.getConexao();
+        PreparedStatement comando = con.prepareStatement(
+                "INSERT INTO COMPRA\n" +
+                "(id, datahora, valor, statusfk, clientefk,\n" +
+                "enderecoentregafk, metodopagamentofk, cartaocreditofk)\n" +
+                "SELECT \n" +
+                "NEXTVAL('id_compra'), \n" +
+                "	now(), \n" +
+                "	c.valor, \n" +
+                "	1, \n" +
+                "	c.clientefk,\n" +
+                "	c.enderecoentregafk, \n" +
+                "	c.metodopagamentofk, \n" +
+                "	c.cartaocreditofk\n" +
+                "FROM compra c, cliente cli\n" +
+                "WHERE cli.id = c.clienteFK\n" +
+                "AND cli.cobranca = 1 AND cli.situacao = 'ATIVO' LIMIT 1");
+        comando.execute();
+    }
     
     public void consultarporId(Compra compra) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();

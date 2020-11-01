@@ -145,7 +145,7 @@
                                     <a><td class="conteudo" style="text-align:right;"><h96 style="font-weight: bold">R$ ${com.total}0</h96></td></a>
                                     <a><td class="conteudo">${statusNome}</td></a>   
                                     <td><img src="images/Entregue.png">Finalizado</td>
-                                    <link rel="icon" href="images/Entregue.png" type="image/png">
+                                    <img href="images/Entregue.png">
                                     </tr>
                                 </c:otherwise>
 
@@ -167,6 +167,7 @@
                     </table>
                     <!-- Area Chart Example-->
                     <!-- /.container-fluid -->
+                    <br><br><br>
 
                     <!-- Sticky Footer -->
                     <footer class="sticky-footer">
