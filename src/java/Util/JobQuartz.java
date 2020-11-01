@@ -43,10 +43,20 @@ public class JobQuartz {
                             .withIdentity("validadorJOB", "grupo01")
                             .build();
             
+            JobDetail jobRenovacao = JobBuilder.newJob(ValidadorRenovacao.class)
+                            .withIdentity("validadorRenovacao", "grupo02")
+                            .build();
+            
             Trigger trigger = TriggerBuilder.newTrigger()
                               .withIdentity("validadorTRIGGER", "grupo01")
                               .withSchedule(CronScheduleBuilder.cronSchedule("0 0 0 * * ?"))
                               .build();
+            
+            Trigger triggerRenovacao = TriggerBuilder.newTrigger()
+                              .withIdentity("validadorTRIGGERRenovacao", "grupo02")
+                              .withSchedule(CronScheduleBuilder.cronSchedule("0 12 15 * *"))
+                              .build();
+            
             
             scheduler.scheduleJob(job, trigger);
             
