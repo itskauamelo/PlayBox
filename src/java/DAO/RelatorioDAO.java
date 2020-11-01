@@ -170,7 +170,7 @@ public class RelatorioDAO {
                     + "FROM compra WHERE to_char(datahora, 'YYYY') = '2019'\n"
                     + "GROUP BY \n"
                     + "		mesano\n"
-                    + "ORDER BY mesano asc"
+                    + "ORDER BY mesano desc"
             );
             ResultSet resultado = comando.executeQuery();
             periodoVendas2019 = new ArrayList<>();
