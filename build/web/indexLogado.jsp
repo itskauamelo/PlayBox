@@ -265,6 +265,7 @@
     <div class="standard-section section-pricing" id="plano">
         <div class="container">
             <div class="text-center">
+                <h2>Conheça nossa <a href="termoassinatura.jsp">Politica de aquisição da Assinatura</h2></a><br>
                 <h3 class="standard-subheader bracket" data-100p-top="transform[swing]:translateX(-25px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">nossos planos</h3>
                 <h2 class="standard-header" data-100p-top="transform[swing]:translateX(25px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">Planos</h2>
             </div>

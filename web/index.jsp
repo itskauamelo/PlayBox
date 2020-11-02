@@ -281,10 +281,12 @@
             </div>
         </div>
     </div>
+    
     <!-- Section pricing -->
     <div class="standard-section section-pricing" id="plano">
         <div class="container">
             <div class="text-center">
+                <h2>Conheça nossa <a href="termoassinatura.jsp">Politica de aquisição da Assinatura</h2></a><br>
                 <h3 class="standard-subheader bracket" data-100p-top="transform[swing]:translateX(-25px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">nossos planos</h3>
                 <h2 class="standard-header" data-100p-top="transform[swing]:translateX(25px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">Planos</h2>
             </div>
@@ -398,22 +400,18 @@
                 <div class="section-icon"><span><i class="fa fa-envelope"></i></span></div>
             </div>
             <p class="section-description text-center lead">Não hesite em <span class="highlight">nos contatar</span>. Se você tem alguma pergunta referente aos serviços da <span class="highlight"><span class="main-color">P</span>laybo<span class="main-color">X</span></span> ou outro <span class="highlight">serviço</span> você pode utilizar o <span class="highlight">formulário abaixo.</span></p>
-            <form class="form-container form" method="POST" action="#">
+            <form class="form-container form" method="POST" action="ServletMail">
                 <div class="overlay"></div>
                 <div class="form-content">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div data-100p-top="transform[swing]:translateX(-25px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">
                                 <div class="form-group has-feedback">
-                                    <input type="text" class="form-control" placeholder="Seu nome">
-                                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <input type="email" class="form-control" placeholder="Seu e-mail">
+                                    <input type="email" name="email" class="form-control" placeholder="Seu e-mail">
                                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                                 </div>
                                 <div class="form-group has-feedback">
-                                    <input type="text" class="form-control" placeholder="Seu celular">
+                                    <input type="text" name="assunto" class="form-control" placeholder="Assunto">
                                     <span class="glyphicon glyphicon-phone form-control-feedback"></span>
                                 </div>
                             </div>
@@ -421,7 +419,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div data-100p-top="transform[swing]:translateX(25px);opacity[swing]:0" data-75p-top="transform[swing]:translateX(0);opacity[swing]:1">
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="3" cols="40" placeholder="Sua mensagem"></textarea>
+                                    <textarea class="form-control" name="mensagem" rows="3" cols="40" placeholder="Sua mensagem"></textarea>
                                 </div>
                             </div>
                         </div>
