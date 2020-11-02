@@ -71,15 +71,13 @@
                     
                     <button onclick="esconder()" class="btn btn-success btn-xs">Tabela de Prefrencias</button>
                     
-                    <div style="display: none" id="myDIV">
+                    <div style="display: none; width: 50%" id="myDIV">
                         <table id="tabela" class="table">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Pref. 1</th>
                                     <th scope="col">Pref. 2</th>
                                     <th scope="col">Pref. 3</th>
-                                    <th scope="col">Horas jogo</th>
-                                    <th scope="col">Jogo Online</th>
                                 </tr>
                             </thead>
 
@@ -88,18 +86,39 @@
                                     <td>${p.preferencia1}</td>
                                     <td>${p.preferencia2}</td>          
                                     <td>${p.preferencia3}</td>
-                                    <td>${p.horasjogo}</td>
-                                    <td>${p.jogoonline}</td>
                                 </tr>
                             </c:forEach>
 
                         </table>
+                    <style type="text/css">
+                        .canvasMaior { 
+                            width: 750px;
+                            heigth: 350px;
+                            float:left;
+                            position: relative;
+                        }
+                        .canvas { 
+                            width: 550px;
+                            heigth: 550px;
+                            float:left;
+                        }
+                    </style>
+                        
                     </div>
 
-                    <div class="col-md-5">
-                        <canvas id="myChart"></canvas>
+                                        <div class="canvas">
+                        <h3>                      Horas de Jogo</h3><br>
+                        <canvas id="myChartHorasJogo"></canvas><br>
+                        <h3>                      Jogo Online</h3><br>
+                        <canvas id="myChartJogoOnline"></canvas><br>
                     </div>
+                    
 
+                    
+
+
+
+<!--
                     <script>
                         var ctx = document.getElementById('myChart').getContext('2d');
                         //var nomes = [];
@@ -142,7 +161,89 @@
                             }
                         });
                         </c:forEach>
+                    </script>-->
+
+
+
+
+
+                                        
+                    <script>
+                        var ctx3 = document.getElementById('myChartJogoOnline').getContext('2d');
+                        var z = [];
+                        var w = [];
+                                                 
+                        <c:forEach items="${jogoOnline}" var="j">
+                        z.push('${j.jogoonline}');
+                        w.push(${j.quantidade});
+                        
+                        var chart = new Chart(ctx3, {
+
+                            type: 'pie',
+                            data: {
+                                labels: z,
+                                datasets: [{
+                                        backgroundColor: ["#0ecfc2", "#9b411c"],
+                                       
+                                        data: w
+                                    }]
+                            },
+                            options: {
+                                legend: {
+                                    position: 'bottom'
+                                },
+                                events: ['click'],
+                                //events: ['click'],
+                                cutoutPercentage: 50,
+                                yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                            }
+                        });
+                        </c:forEach>
+                            
                     </script>
+                    
+                    <script>
+                        var ctx3 = document.getElementById('myChartHorasJogo').getContext('2d');
+                        var x = [];
+                        var y = [];
+                                                 
+                        <c:forEach items="${horasJogo}" var="t">
+                        x.push('${t.horasjogo}');
+                        y.push(${t.quantidade});
+                        
+                        var chart = new Chart(ctx3, {
+
+                            type: 'pie',
+                            data: {
+                                labels: ['1 a 2 hrs', '3 a 4 hrs', '5 a 7 hrs', 'Mais'],
+                                datasets: [{
+                                        backgroundColor: ["#016155", "#0ecfc2", "#d18053", "#9b411c"],
+                                       
+                                        data: y
+                                    }]
+                            },
+                            options: {
+                                legend: {
+                                    position: 'bottom'
+                                },
+                                events: ['click'],
+                                //events: ['click'],
+                                cutoutPercentage: 50,
+                                yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                            }
+                        });
+                        </c:forEach>
+                            
+                    </script>
+                    
 
                     <br><br><br><br><br>
                     <!-- Area Chart Example-->

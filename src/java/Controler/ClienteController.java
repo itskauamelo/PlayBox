@@ -40,7 +40,6 @@ import javax.servlet.http.HttpSession;
     "/cadastrarEndereco",
     "/listarMeusEndCart",
     "/cadastrarFk",
-    "/relatorioPreferencia",
     "/minhaConta",
     "/bemvindo",
     "/inicio",
@@ -72,8 +71,6 @@ public class ClienteController extends HttpServlet {
                 iniciarEdicao(request, response);
             } else if (uri.equals(request.getContextPath() + "/iniciarAlteracaoSenha")) {
                 iniciarAlteracaoSenha(request,response);
-            } else if (uri.equals(request.getContextPath() + "/relatorioPreferencia")) {
-                relatorioPreferencia(request, response);
             } else if (uri.equals(request.getContextPath() + "/minhaConta")) {
                 minhaConta(request, response);
             } else if (uri.equals(request.getContextPath() + "/bemvindo")) {
@@ -345,15 +342,6 @@ public class ClienteController extends HttpServlet {
         request.setAttribute("meusCartoes", MeusCartoes);
         
         request.getRequestDispatcher("dadosPessoais.jsp").forward(request, response);
-    }
-    
-    
-    private void relatorioPreferencia(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
-        ClienteDAO dao = new ClienteDAO();
-
-        List<Preferencia> todasPreferencias = dao.consultarTodasPreferencias();
-        request.setAttribute("todasPreferencias", todasPreferencias);
-        request.getRequestDispatcher("admin/relatorioPreferencia.jsp").forward(request, response);
     }
     
     private void bemvindo(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {

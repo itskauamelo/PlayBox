@@ -18,6 +18,8 @@ public class Relatorio {
     public String status;
     public String assinatura;
     public String valor;
+    public String horasjogo;
+    public String jogoonline;
 
     public Relatorio() {
     }
@@ -33,6 +35,22 @@ public class Relatorio {
         this.mes = mes;
         this.ano = ano;
         this.mesano = mesano;
+    }
+
+    public String getHorasjogo() {
+        return horasjogo;
+    }
+
+    public void setHorasjogo(String horasjogo) {
+        this.horasjogo = horasjogo;
+    }
+
+    public String getJogoonline() {
+        return jogoonline;
+    }
+
+    public void setJogoonline(String jogoonline) {
+        this.jogoonline = jogoonline;
     }
     
     public String getAssinatura() {
@@ -55,8 +73,6 @@ public class Relatorio {
         this.quantidade = quantidade;
         this.status = status;
     }
-    
-    
 
     public String getStatus() {
         return status;
@@ -65,8 +81,6 @@ public class Relatorio {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
 
     public String getQuantidade() {
         return quantidade;

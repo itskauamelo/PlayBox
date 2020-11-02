@@ -7,6 +7,7 @@ import Model.Cliente;
 import Model.Compra;
 import Model.ItensRelatorio;
 import Model.Pesquisa;
+import Model.Preferencia;
 import Model.Relatorio;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -24,7 +25,8 @@ import javax.servlet.annotation.WebServlet;
     "/relatorioClientes",
     "/relatorioPesquisaSatisfacao",
     "/relatorioVendas",
-    "/relatorioQuantClientes"
+    "/relatorioQuantClientes",
+    "/relatorioPreferencia",
 })
 
 public class ControllerRelatorios extends HttpServlet{
@@ -44,9 +46,11 @@ public class ControllerRelatorios extends HttpServlet{
                 relatorioClientes(request, response);
             } else if (uri.equals(request.getContextPath() + "/relatorioVendas")) {
                 relatorioVendas(request, response);
+            } else if (uri.equals(request.getContextPath() + "/relatorioPreferencia")) {
+                relatorioPreferencia(request, response);
             } else if (uri.equals(request.getContextPath() + "/relatorioQuantClientes")) {
                 relatorioQuantClientes(request, response);
-            } else  if (uri.equals(request.getContextPath() + "/relatorioPesquisaSatisfacao")) {
+            } else if (uri.equals(request.getContextPath() + "/relatorioPesquisaSatisfacao")) {
                 relatorioPesquisaSatisfacao(request, response);
             }  
             } catch (Exception e) {
@@ -124,5 +128,21 @@ public class ControllerRelatorios extends HttpServlet{
         
         request.getRequestDispatcher("admin/relatorioPesquisa.jsp").forward(request, response);
     }
+    
+    
+        private void relatorioPreferencia(HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException, ServletException {
+        ClienteDAO dao = new ClienteDAO();
+        RelatorioDAO dao1 = new RelatorioDAO();
+
+        List<Preferencia> todasPreferencias = dao.consultarTodasPreferencias();
+        List<Relatorio> jogoOnline = dao1.getJogoOnline();
+        List<Relatorio> horasJogo = dao1.getQuantHorasJogo();
+        request.setAttribute("todasPreferencias", todasPreferencias);
+        request.setAttribute("jogoOnline", jogoOnline);
+        request.setAttribute("horasJogo", horasJogo);
+        
+        request.getRequestDispatcher("admin/relatorioPreferencia.jsp").forward(request, response);
+    }
+    
 } 
 

@@ -105,6 +105,59 @@ public class RelatorioDAO {
         return vendas2020;
 
     }
+    
+    public List<Relatorio> getQuantHorasJogo() throws ClassNotFoundException, SQLException {
+
+        List<Relatorio> horasJogo;
+
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement(
+                "SELECT \n" +
+                "COUNT(ID) AS Quantidade,\n" +
+                "horasjogo as Horas\n" +
+                "FROM preferencia WHERE horasjogo IN ('1 a 2 hrs', '3 a 4 hrs', '5 a 7 hrs', 'Mais')\n" +
+                "GROUP BY Horas"
+            );
+            ResultSet resultado = comando.executeQuery();
+            horasJogo = new ArrayList<>();
+            while (resultado.next()) {
+                Relatorio t = new Relatorio();
+                t.setQuantidade(resultado.getString("quantidade"));
+                t.setHorasjogo(resultado.getString("horas"));
+
+                horasJogo.add(t);
+            }
+        }
+        return horasJogo;
+
+    }
+    
+    public List<Relatorio> getJogoOnline() throws ClassNotFoundException, SQLException {
+
+        List<Relatorio> jogoOnline;
+
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement(
+                "SELECT \n" +
+                "COUNT(ID) AS Quantidade,\n" +
+                "jogoonline as Online\n" +
+                "FROM preferencia WHERE jogoonline IN ('Sim', 'Não')\n" +
+                "GROUP BY Online"
+            );
+            ResultSet resultado = comando.executeQuery();
+            jogoOnline = new ArrayList<>();
+            while (resultado.next()) {
+                Relatorio t = new Relatorio();
+                t.setQuantidade(resultado.getString("quantidade"));
+                t.setJogoonline(resultado.getString("online"));
+
+                jogoOnline.add(t);
+            }
+        }
+        return jogoOnline;
+
+    }
+    
     public List<Relatorio> getAssinaturaQuant() throws ClassNotFoundException, SQLException {
 
         List<Relatorio> assCliente;
