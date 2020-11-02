@@ -24,20 +24,23 @@ public class Compra {
     private int cartaocredito;
     private double total;
     private double totalAss;
+    private String tipoCompra;
 
     public Compra() {
     }
 
-    public Compra(int id, String carrinho, Date data, String cliente, int enderecoentrega, int metodopagamento, int cartaocredito, double total, double totalAss) {
+    public Compra(int id, String carrinho, Date data, int status, String cliente, int enderecoentrega, int metodopagamento, int cartaocredito, double total, double totalAss, String tipoCompra) {
         this.id = id;
         this.carrinho = carrinho;
         this.data = data;
+        this.status = status;
         this.cliente = cliente;
         this.enderecoentrega = enderecoentrega;
         this.metodopagamento = metodopagamento;
         this.cartaocredito = cartaocredito;
         this.total = total;
         this.totalAss = totalAss;
+        this.tipoCompra = tipoCompra;
     }
 
     public Compra(int id, int status) {
@@ -125,6 +128,14 @@ public class Compra {
         this.totalAss = totalAss;
     }
     
+    public String getTipoCompra() {
+        return tipoCompra;
+    }
+
+    public void setTipoCompra(String tipoCompra) {
+        this.tipoCompra = tipoCompra;
+    }
+    
 /*
     public static Comparator<Compra> getOrdenar_por_data_desc() {
         return ordenar_por_data_desc;
@@ -143,4 +154,5 @@ public class Compra {
         
         }
     };*/
+
 }

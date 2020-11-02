@@ -321,6 +321,7 @@ CREATE TABLE compra (
     enderecoEntregaFk INT,
     metodoPagamentoFk INT,
     cartaocreditoFk INT,
+    tipoCompra VARCHAR NOT NULL
 
     CONSTRAINT idCompraPk PRIMARY KEY (id),
     CONSTRAINT statusFK FOREIGN KEY (statusFK) REFERENCES status (id),

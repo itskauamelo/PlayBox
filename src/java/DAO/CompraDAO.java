@@ -29,7 +29,7 @@ public class CompraDAO {
     public void cadastrar(Compra compra, Cliente objcliente) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk, clientefk) VALUES (NEXTVAL('id_compra'), now(),?,'1',?)");           
+            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk, clientefk, tipoCompra) VALUES (NEXTVAL('id_compra'), now(),?,'1',?,'AVULSO')");           
             //comando.setString(1, compra.getCarrinho().toString());
             comando.setDouble(1, compra.getTotal());
             comando.setInt(2, objcliente.getId());
@@ -40,7 +40,7 @@ public class CompraDAO {
     public void cadastrarAss(Compra compra, Cliente objcliente) throws ClassNotFoundException, SQLException {
             
         try (Connection con = ConectaBanco.getConexao()) {
-            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk, clientefk) VALUES (NEXTVAL('id_compra'), now(),?,'1',?)");           
+            PreparedStatement comando = con.prepareStatement("INSERT INTO compra (id, datahora, valor, statusfk, clientefk, tipoCompra) VALUES (NEXTVAL('id_compra'), now(),?,'1',?, 'ASSINATURA')");           
             //comando.setString(1, compra.getCarrinho().toString());
             comando.setDouble(1, compra.getTotalAss());
             comando.setInt(2, objcliente.getId());
