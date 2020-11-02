@@ -71,6 +71,15 @@ public class CompraDAO {
         comando.setInt(1, compra.getId());
         comando.execute();
     }
+        
+        public void alterarAssinatura(Cliente objcliente) throws ClassNotFoundException, SQLException {
+
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement("UPDATE compra SET statusfk = 6  WHERE id = (SELECT MAX(id) FROM compra WHERE tipoCompra = 'ASSINATURA' AND clientefk = ? )");
+            comando.setInt(1, objcliente.getId());
+            comando.execute();
+        }
+    }
     
     public void fecharCompra(Compra compra) throws ClassNotFoundException, SQLException {
             
@@ -84,6 +93,8 @@ public class CompraDAO {
         }
     }
     
+     
+   
     public List<Compra> consultarUltimaCompra() throws ClassNotFoundException, SQLException {
 
         List<Compra> ultimaCompra;
@@ -158,10 +169,11 @@ public class CompraDAO {
         
         public void renovarAssinatura() throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement(
+        PreparedStatement comando = con.prepareStatement
+        (
                 "INSERT INTO COMPRA\n" +
                 "(id, datahora, valor, statusfk, clientefk,\n" +
-                "enderecoentregafk, metodopagamentofk, cartaocreditofk)\n" +
+                "enderecoentregafk, metodopagamentofk, cartaocreditofk, tipocompra)\n" +
                 "SELECT \n" +
                 "NEXTVAL('id_compra'), \n" +
                 "	now(), \n" +
@@ -170,10 +182,13 @@ public class CompraDAO {
                 "	c.clientefk,\n" +
                 "	c.enderecoentregafk, \n" +
                 "	c.metodopagamentofk, \n" +
-                "	c.cartaocreditofk\n" +
+                "	c.cartaocreditofk,\n" +
+                "	c.tipocompra\n" +
                 "FROM compra c, cliente cli\n" +
                 "WHERE cli.id = c.clienteFK\n" +
-                "AND cli.cobranca = 1 AND cli.situacao = 'ATIVO' LIMIT 1");
+                "AND cli.cobranca = 1 AND cli.situacao = 'ATIVO'\n" +
+                "AND c.statusfk = 5 AND c.tipoCompra = 'ASSINATURA' AND c.datahora = (CURRENT_DATE - INTERVAL '1' MONTH)"
+        );
         comando.execute();
     }
     
@@ -215,7 +230,7 @@ public class CompraDAO {
         List<Compra> todasCompras;
         try (Connection con = ConectaBanco.getConexao()) {
             PreparedStatement comando = con.prepareStatement
-            ("SELECT id, datahora, valor, statusfk FROM compra where clientefk = ? ORDER BY datahora DESC");
+            ("SELECT id, datahora, valor, statusfk FROM compra where clientefk = ? ORDER BY id DESC");
             comando.setInt(1, objcliente.getId());
             ResultSet resultado = comando.executeQuery();
             todasCompras = new ArrayList<>();

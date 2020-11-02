@@ -74,11 +74,14 @@ public class ControllerRelatorios extends HttpServlet{
         List<Relatorio> periodoVendas2019 = dao.getConsultarPeriodoVenda2019();
         List<Relatorio> vendas2020 = dao.getPedidosStatus();
         List<Relatorio> assCliente = dao.getAssinaturaQuant();
+        List<Relatorio> ganheiPerdiAss = dao.getGanheiPerdiAss();
+        
         
         request.setAttribute("periodoVendas2020", periodoVendas2020);
         request.setAttribute("periodoVendas2019", periodoVendas2019);
         request.setAttribute("vendas2020", vendas2020);
         request.setAttribute("assCliente", assCliente);
+        request.setAttribute("ganheiPerdiAss", ganheiPerdiAss);
         request.getRequestDispatcher("admin/relatorioVendas.jsp").forward(request, response);
 
     }
