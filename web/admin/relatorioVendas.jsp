@@ -101,20 +101,6 @@
                     
                                         </div>
                     -->
-                    <button onclick="esconder()">Esconder/ Tabela</button>
-                    <br>
-                    <br>
-                    <div id="myDIV">
-                        <table id="tabela" class="tabela" border="1" style="float:left">
-                        <thead>
-                            <tr>
-                                <th class="cabecalho">Quantidade</th>
-                                <th class="cabecalho">Mes/Ano</th>
-                            </tr>
-                        </thead>
-
-                    </table>
-                    </div>
                     
                     
                     <script>
@@ -130,21 +116,23 @@
 
                     <style type="text/css">
                         .canvasMaior { 
-                            width: 800px;
-                            heigth: 400px;
+                            width: 750px;
+                            heigth: 350px;
                             float:left;
                             position: relative;
                         }
                         .canvas { 
-                            width: 600px;
-                            heigth: 600px;
+                            width: 550px;
+                            heigth: 550px;
                             float:left;
                         }
                     </style>
+                    
 
                     <div class="canvasMaior">
                         <canvas id="myChartVendas2020"></canvas>
                         <canvas id="myChartVendas2019"></canvas>
+                        <canvas id="myChartGanheiPerdi"></canvas>
                     </div>
                     <br>
                     <div class="canvas">
@@ -153,7 +141,54 @@
                         <h3>                      Qtd Vendas por Assinatura</h3><br>
                         <canvas id="myChartAssinaturaPie"></canvas>
                     </div>
+                    
+                    
+   
+                    <script>
+                        var ctx4 = document.getElementById('myChartGanheiPerdi').getContext('2d');
+                        var r = [];
+                        var t = [];
 
+
+                        <c:forEach items="${ganheiPerdiAss}" var="v">
+                        r.push('${v.mesano}');
+                        t.push(${v.quantidade}); 
+
+                        var chart4 = new Chart(ctx4, {
+
+                            type: 'horizontalBar',
+                            data: {
+                                labels: r,
+                                datasets: [{
+                                        label: 'Perdas/Ganhos',
+                                        borderColor: 'rgb(64,121,49)',
+                                        backgroundColor: 'rgba(129,243,98, 0.4)',
+                                        borderWidth: 1,
+                                        data: t
+                                    },
+                                        ]
+                            },
+                            options: {
+                                events: ['click'],
+                                scales: {
+                                    xAxes: [{
+                                            ticks: {
+                                                beginAtZero: true,
+                                                callback: function (value) {
+                                                    if (Number.isInteger(value)) {
+                                                        return value;
+                                                    }
+                                                },
+                                                stepSize: 1
+                                            }
+                                        }]
+                                }
+                            }
+                        });
+                        </c:forEach>
+                    </script>
+                    
+                    
                     <script>
                         var ctx1 = document.getElementById('myChartVendas2020').getContext('2d');
                         var mesano1 = [];

@@ -157,7 +157,37 @@ public class RelatorioDAO {
         }
         return periodoVendas2020;
     }
+    
+    public List<Relatorio> getGanheiPerdiAss() throws ClassNotFoundException, SQLException {
 
+        List<Relatorio> ganheiPerdiAss;
+
+        try (Connection con = ConectaBanco.getConexao()) {
+            PreparedStatement comando = con.prepareStatement(
+                "SELECT\n" +
+                "	   COUNT(clientefk) AS Quantidade,\n" +
+                "	   CONCAT(EXTRACT(MONTH FROM datahora),'/',EXTRACT(YEAR FROM datahora)) AS mesAno,\n" +
+                "	   EXTRACT(YEAR FROM datahora) ano\n" +
+                "FROM compra WHERE compra.tipocompra = 'ASSINATURA'\n" +
+                "GROUP BY\n" +
+                "		MESANO,\n" +
+                "		EXTRACT(MONTH FROM datahora),\n" +
+                "		EXTRACT(YEAR FROM datahora)\n" +
+                "ORDER BY Ano desc"
+            );
+            ResultSet resultado = comando.executeQuery();
+            ganheiPerdiAss = new ArrayList<>();
+            while (resultado.next()) {
+                Relatorio ass = new Relatorio();
+                ass.setQuantidade(resultado.getString("quantidade"));
+                ass.setMesano(resultado.getString("mesano"));
+
+                ganheiPerdiAss.add(ass);
+            }
+        }
+        return ganheiPerdiAss;
+    }
+    
     public List<Relatorio> getConsultarPeriodoVenda2019() throws ClassNotFoundException, SQLException {
 
         List<Relatorio> periodoVendas2019;
