@@ -67,8 +67,16 @@
                         <li class="breadcrumb-item"><a href="listarUsuario">Listar Usuário</a></li>
                     </ol>
 
-
-
+                    <div id="filtrodata" class="row">
+                        <div class="col-md-2">
+                            <h4>De</h4>
+                            <input type="date" class="form-control" id="datefilterfrom" data-date-split-input="true">
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Até</h4>
+                            <input type="date" class="form-control" id="datefilterto" data-date-split-input="true">
+                        </div>
+                    </div>
 
                     <table id="tabela">
                         <tr>
@@ -152,19 +160,46 @@
                             </c:choose>
 
                         </c:forEach>
-                                    
-                         <script>
+
+                        <script>
                             //----------------Valida Formulario-----------------
                             function valida() {
                                 var resultado = confirm("Deseja aprovar o pagamento?");
                                 if (resultado == true) {
                                     return true;
-                                }else {                                   
+                                } else {
                                     return false;
                                 }
                             }
                         </script>           
                     </table>
+
+                    <script>
+                        function filterRows() {
+                            var from = $('#datefilterfrom').val();
+                            var to = $('#datefilterto').val();
+
+                            if (!from && !to) {
+                                return;
+                            }
+
+                            from = from || '1970-01-01';
+                            to = to || '2999-12-31';
+
+                            var dateFrom = moment(from);
+                            var dateTo = moment(to);
+
+                            $('#tabela tbody tr').each(function (i, tr) {
+                                var val = $(tr).find("td:nth-child(2)").text();
+                                var dateVal = moment(val, "DD/MM/YYYY");
+                                var visible = (dateVal.isBetween(dateFrom, dateTo, null, [])) ? "" : "none";
+                                $(tr).css('display', visible);
+                            });
+                        }
+
+                        $('#datefilterfrom').on("change", filterRows);
+                        $('#datefilterto').on("change", filterRows);
+                    </script>
                     <!-- Area Chart Example-->
                     <!-- /.container-fluid -->
                     <br><br><br>

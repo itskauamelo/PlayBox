@@ -76,7 +76,7 @@
                             <input type="date" class="form-control" id="datefilterto" data-date-split-input="true">
                         </div>
                     </div>
-
+                    <br>
                     <table id="tabela">
                         <thead>
                             <tr>

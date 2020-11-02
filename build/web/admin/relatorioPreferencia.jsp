@@ -55,31 +55,46 @@
             <div id="content-wrapper">
 
                 <div class="container-fluid">
-
+                   
+                    <script>
+                        function esconder() {
+                            var x = document.getElementById("myDIV");
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                            } else {
+                                x.style.display = "none";
+                            }
+                        }
+                    </script>
                     <!-- Breadcrumbs-->
                     <h1 style>Relatório de Preferência</h1><br>
-                    <table id="tabela" class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Pref. 1</th>
-                                <th scope="col">Pref. 2</th>
-                                <th scope="col">Pref. 3</th>
-                                <th scope="col">Horas jogo</th>
-                                <th scope="col">Jogo Online</th>
-                            </tr>
-                        </thead>
+                    
+                    <button onclick="esconder()" class="btn btn-success btn-xs">Tabela de Prefrencias</button>
+                    
+                    <div style="display: none" id="myDIV">
+                        <table id="tabela" class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Pref. 1</th>
+                                    <th scope="col">Pref. 2</th>
+                                    <th scope="col">Pref. 3</th>
+                                    <th scope="col">Horas jogo</th>
+                                    <th scope="col">Jogo Online</th>
+                                </tr>
+                            </thead>
 
-                        <c:forEach items="${todasPreferencias}" var="p">
-                            <tr>
-                                <td>${p.preferencia1}</td>
-                                <td>${p.preferencia2}</td>          
-                                <td>${p.preferencia3}</td>
-                                <td>${p.horasjogo}</td>
-                                <td>${p.jogoonline}</td>
-                            </tr>
-                        </c:forEach>
+                            <c:forEach items="${todasPreferencias}" var="p">
+                                <tr>
+                                    <td>${p.preferencia1}</td>
+                                    <td>${p.preferencia2}</td>          
+                                    <td>${p.preferencia3}</td>
+                                    <td>${p.horasjogo}</td>
+                                    <td>${p.jogoonline}</td>
+                                </tr>
+                            </c:forEach>
 
-                    </table>
+                        </table>
+                    </div>
 
                     <div class="col-md-5">
                         <canvas id="myChart"></canvas>
@@ -99,7 +114,7 @@
                             type: 'bar',
                             data: {
 
-                                labels: ['Aventura','Luta','RPG','Terror','Corrida','Ação','Esporte','Simulação','Estratégia'],
+                                labels: ['Aventura', 'Luta', 'RPG', 'Terror', 'Corrida', 'Ação', 'Esporte', 'Simulação', 'Estratégia'],
                                 datasets: [{
                                         label: 'Camisetas',
                                         backgroundColor: 'rgb(000, 150, 200)',
