@@ -64,105 +64,36 @@
 
                     <!-- Breadcrumbs-->
                     <h1 style>Relatório Pesquisa de Satisfação</h1><br>
-                    <table id="tabela" class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Pesquisa 1</th>
-                                <th scope="col">Pesquisa 2</th>
-                                <th scope="col">Pesquisa 3</th>
-                                <th scope="col">Pesquisa 4</th>
-                                <th scope="col">Pesquisa 5</th>                                                            
-                            </tr>
-                        </thead>
+                        <table id="tabela" class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Pesquisa 1</th>
+                                    <th scope="col">Pesquisa 2</th>
+                                    <th scope="col">Pesquisa 3</th>
+                                    <th scope="col">Pesquisa 4</th>
+                                    <th scope="col">Pesquisa 5</th>                                                            
+                                </tr>
+                            </thead>
 
-                        <c:forEach items="${todasPesquisas}" var="p">
-                            <tr>
-                                <td>${p.avaliacao1}</td>
-                                <td>${p.avaliacao2}</td>          
-                                <td>${p.avaliacao3}</td>
-                                <td>${p.avaliacao4}</td>
-                                <td>${p.avaliacao5}</td>
-                            </tr>
-                        </c:forEach>
-
-                    </table>
-
+                            <c:forEach items="${todasPesquisas}" var="p">
+                                <tr>
+                                    <td>${p.avaliacao1}x <i style="color: gold" class="fa fa-star" aria-hidden="true"></i></td>
+                                    <td>${p.avaliacao2}x <i style="color: gold" class="fa fa-star" aria-hidden="true"></i></td>          
+                                    <td>${p.avaliacao3}x <i style="color: gold" class="fa fa-star" aria-hidden="true"></i></td>
+                                    <td>${p.avaliacao4}x <i style="color: gold" class="fa fa-star" aria-hidden="true"></i></td>
+                                    <td>${p.avaliacao5}x <i style="color: gold" class="fa fa-star" aria-hidden="true"></i></td>
+                                </tr>
+                            </c:forEach>
+                                
+                        </table>
+                   
                     <div class="col-md-5">
                         <canvas id="myChartIndicacao"></canvas>
                     </div>
 
                     <div class="col-md-5">
                         <canvas id="myChartQualidade"></canvas>
-                    </div>
-
-                    <script>
-                        var ctx = document.getElementById('myChartIndicacao').getContext('2d');
-                        //var nomes = [];
-                        var qtd = [];
-                                                 
-                        <c:forEach items="${todasPesquisas}" var="p">
-                        //nomes.push('');
-                        qtd.push(${p.avaliacao1});
-                        
-                        var chart = new Chart(ctx, {
-
-                            type: 'pie',
-                            data: {
-                                labels: ['5', '4', '3', '2', '1'],
-                                datasets: [{
-                                        labels: 'Indicação',
-                                        backgroundColor: 'rgb(000, 150, 200)',
-                                        borderColor: 'rgb(000, 000, 10)',
-                                        data: qtd
-                                    }]
-                            },
-                            options: {
-                                events: ['click'],
-                                //events: ['click'],
-                                cutoutPercentage: 50,
-                                yAxes: [{
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }]
-                            }
-                        });
-                        </c:forEach> 
-                    </script>
-
-                    <script>
-                        var ctx = document.getElementById('myChartQualidade').getContext('2d');
-                        //var nomes = [];
-                        var qtd = [];
-
-                        <c:forEach items="${todasPesquisas}" var="p">
-                        //nomes.push('');                                               
-                        qtd.push(${p.avaliacao2});
-
-                        var chart = new Chart(ctx, {
-
-                            type: 'pie',
-                            data: {
-//, 'Qualidade', 'Satisfação', 'Prazo', 'Relação'
-                                labels: ['Indicação'],
-                                datasets: [{
-                                        label: 'Camisetas',
-                                        backgroundColor: 'rgb(000, 150, 200)',
-                                        borderColor: 'rgb(000, 000, 10)',
-                                        data: qtd
-                                    }]
-                            },
-                            options: {
-                                events: ['click'],
-                                yAxes: [{
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }]
-                            }
-                        });
-                        </c:forEach>
-                    </script>
+                    </div>                                                         
                     <br><br><br><br><br>
                     <!-- Area Chart Example-->
                     <!-- /.container-fluid -->

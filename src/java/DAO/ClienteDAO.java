@@ -420,7 +420,7 @@ public class ClienteDAO {
                 p.setAvaliacao3(resultado.getString("avaliacao3"));
                 p.setAvaliacao4(resultado.getString("avaliacao4"));
                 p.setAvaliacao5(resultado.getString("avaliacao5"));
-                
+
                 todasPesquisas.add(p);
             }
         }
