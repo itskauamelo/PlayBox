@@ -367,7 +367,6 @@ public class ClienteDAO {
             cliente.setDatanascimento(resultado.getDate("datanascimento"));
             cliente.setGenero(resultado.getString("genero"));
             cliente.setEmail(resultado.getString("email"));
-            cliente.setSenha(resultado.getString("senha"));
             cliente.setCelular(resultado.getString("celular"));/*
                 cliente.setEndidentific(resultado.getString("endidentific"));
                 cliente.setNomedestinatario(resultado.getString("nomedestinatario"));

@@ -149,7 +149,7 @@
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#home">
+                            <a href="bemvindo#home">
                                 <span class="main-link">Inicio</span>
                                 <span class="additional-info-link bracket">
                                     inicio da jornada
@@ -157,7 +157,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#about">
+                            <a href="bemvindo#about">
                                 <span class="main-link">Serviço</span>
                                 <span class="additional-info-link bracket">
                                     como funciona
@@ -165,7 +165,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#plano">
+                            <a href="bemvindo#plano">
                                 <span class="main-link">Planos </span>
                                 <span class="additional-info-link bracket">
                                     nossos planos
@@ -173,7 +173,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#mandamensagem">
+                            <a href="bemvindo#mandamensagem">
                                 <span class="main-link">Contato </span>
                                 <span class="additional-info-link bracket">
                                     fale com a gente
@@ -184,7 +184,7 @@
                             <a href="#">
                                 <span class="main-link">Loja</span>
                                 <span class="additional-info-link bracket">
-                                    alguns produtos
+                                    EM BREVE
                                 </span>
                             </a>
                         </li>

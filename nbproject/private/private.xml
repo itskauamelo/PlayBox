@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PlayBox/nbproject/build-impl.xml</file>
-            <file>file:/C:/PlayBox/web/admin/relatorioPesquisa.jsp</file>
-            <file>file:/C:/PlayBox/test/DAO/ProdutoDAOTest.java</file>
+            <file>file:/C:/PlayBox/web/listarPedidos.jsp</file>
+            <file>file:/C:/PlayBox/web/dadosPessoais.jsp</file>
+            <file>file:/C:/PlayBox/web/manutencaoCliente.jsp</file>
+            <file>file:/C:/PlayBox/web/listarAssinatura.jsp</file>
         </group>
     </open-files>
 </project-private>

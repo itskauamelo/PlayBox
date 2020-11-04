@@ -115,7 +115,7 @@
                                             - <a href="listarCompras"> Pedidos </a> -
                                         </div>
                                         <div class="form-group has-feedback">
-                                            - <a href="#"> Dados Pessoais </a> -
+                                            - <a href="listarMeusEndCart"> Dados Pessoais </a> -
                                         </div>
                                         <div class="form-group has-feedback">
                                             - <a href="#" data-toggle="modal" data-target="#modal-logout"> Sair </a> -
@@ -138,7 +138,7 @@
                     </button>
                     <!-- Logo -->
                     <a class="navbar-brand" href="index.html" title="PlayBoX" style="">
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<i class="fa fa-gamepad" aria-hidden="true"></i><span class="main-color">P</span>laybo<span class="main-color">X</span>
+                        <i class="fa fa-gamepad" aria-hidden="true"></i><span class="main-color">P</span>laybo<span class="main-color">X</span>
                     </a><!-- Logo final -->
                 </div>
                 <!-- Menu -->
@@ -154,28 +154,13 @@
             </div>
 
             <div class="container">
-                <div class="recol">
-                    <ul class="side-menu">
-                        <center><br>
-                            <a class="link-menu">Pedidos</a><br>
-                            <center>__</center><br>
-                            <a href="listarAssinatura">Minha Assinatura</a><br>
-                            <center>__</center><br>
-                            <a class="link-menu">Minha Conta</a><br>
-                            <center>__</center><br>
-                            <a class="link-menu">Atendimento</a><br>
-                            <center>__</center><br>
-                            <a class="link-menu">Sair</a><br><br>
-                        </center>
-                    </ul>
-                </div>
-
+                    <jsp:include page="/elementos/menuCliente.jsp"/>
                 <div class="row">
                     <div class="col-cadastro" style="margin-top: -300px;">
                         <BR>
                         •<a href="iniciarEdicaoCliente?id=<%=cliente.getId()%>"> EDITAR DADOS PESSOAIS</a><BR><BR>
-                        •<a href="/listarEnderecosAlteracao"> EDITAR ENDEREÇOS</a><BR><BR>
-                        •<a href="/listarCartoesAlteracao"> EDITAR CARTÕES DE CRÉDITO</a><BR><BR>
+                        •<a href="listarEnderecosAlteracao"> EDITAR ENDEREÇOS</a><BR><BR>
+                        •<a href="listarCartoesAlteracao"> EDITAR CARTÕES DE CRÉDITO</a><BR><BR>
                         •<a href="iniciarAlteracaoSenha?id=<%=cliente.getId()%>"> ALTERAR MINHA SENHA</a><BR><BR>
                     </div>
                     <div class="col-cadastro col-md-8">

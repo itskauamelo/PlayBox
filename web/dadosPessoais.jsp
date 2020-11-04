@@ -161,57 +161,66 @@
         <br><br>
         <br><br>
 
-        <div style="margin-left: 40px; margin-right: 40px;">
-            <br>
-            <center><h3 class="standard-header">Entrega e Pagamento</h3></center>
-            <br>
-            <br>
 
+        <br>
+    <center><h3 class="standard-header">Entrega e Pagamento</h3></center>
+    <br>
+    <br>
+    <div style="margin-left: 15%; margin-right: 15%;">
+        <div class="line">
+            <div>
+                <p id="rcorners2">
+                    <label>Endereços cadastrados</label>
+                    <br>
+                    <c:forEach items="${meusEnderecos}" var="e">
+                        <a name="chkEndereco" id="chkEndereco" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}</a><br>
+                    </c:forEach>
+                </p>
+            </div>
+            <div>
+                <p id="rcorners2">
+                    <label>Cartões cadastrados</label>
+                    <br>                                                             
+                    <c:forEach items="${meusCartoes}" var="c">
+                        <a name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****</a><br>
+                    </c:forEach>
+                </p>
+            </div>
+        </div>
+        <div class="line">
+            <div class="row">                        
+                <div class="line">
+                    <center>
+                        <form method="POST" action="cadastrarEndereco">
 
-            <style type="text/css">
-                .line { 
-                    float:left;
-                    position: relative;
-                }
-                .canvas { 
-                    width: 400px;
-                    heigth: 400px;
-                    float:left;
-                }
-            </style>
-
-            <div class="container" style="margin-right: 2%; margin-left: 2%; display:inline-block;">
-                <div style="margin-right: 40%;">
-                    <div class="line" style="margin-left: 20%;">
-                        <center>
-                            <form method="POST" action="cadastrarEndereco">
-
-                                <br>
-                                <h3 class="post-item-header"> Endereço </h3>
-                                <br>
-                                <label>CEP</label>
-                                <input type="text" id="txtCep" name="txtCep" maxlength="9" class="form-control" onblur="pesquisacep(this.value);" required/><br>
-                                <label>Rua</label>
-                                <input type="text" id="txtRua" name="txtRua" class="form-control" required><br>
-                                <label>Numero</label>
-                                <input type="text" id="txtNumero" name="txtNumero" class="form-control" required><br>
-                                <label>Complemento</label>
-                                <input type="text" id="txtComplemento" name="txtComplemento" class="form-control" required><br>
-                                <label>Bairro</label>
-                                <input type="text" id="txtBairro" name="txtBairro" class="form-control" required><br>
-                                <label>Cidade</label>
-                                <input type="text" id="txtCidade" name="txtCidade" class="form-control" required><br>
-                                <label>UF</label>
-                                <input type="text" id="txtUf" name="txtUf" maxlength="2" class="form-control" required><br>
-                                <div class="price-button">
-                                    <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Endereco"><i class="fa fa-map-marker" aria-hidden="true"></i> Adicionar Endereço</button>
-                                </div>
-                            </form>
-                        </center>
-                    </div>
-                </div>             
-
-                <div class="line" style="margin-left: 10%;">
+                            <br>
+                            <h3 class="post-item-header"> Endereço </h3>
+                            <br>
+                            <label>CEP</label>
+                            <input type="text" id="txtCep" name="txtCep" maxlength="9" class="form-control" onblur="pesquisacep(this.value);" required/><br>
+                            <label>Rua</label>
+                            <input type="text" id="txtRua" name="txtRua" class="form-control" required><br>
+                            <label>Numero</label>
+                            <input type="text" id="txtNumero" name="txtNumero" class="form-control" required><br>
+                            <label>Complemento</label>
+                            <input type="text" id="txtComplemento" name="txtComplemento" class="form-control" required><br>
+                            <label>Bairro</label>
+                            <input type="text" id="txtBairro" name="txtBairro" class="form-control" required><br>
+                            <label>Cidade</label>
+                            <input type="text" id="txtCidade" name="txtCidade" class="form-control" required><br>
+                            <label>UF</label>
+                            <input type="text" id="txtUf" name="txtUf" maxlength="2" class="form-control" required><br>
+                            <div class="price-button">
+                                <button class="btn btn-primary btn-block dropdown-toggle" title="Adicionar Endereco"><i class="fa fa-map-marker" aria-hidden="true"></i> Adicionar Endereço</button>
+                            </div>
+                        </form>
+                    </center>
+                </div>
+            </div>
+        </div>   
+        <div class="container">
+            <div class="row"> 
+                <div class="line">
                     <center>
                         <h3 class="post-item-header">Cartão</h3>
                         <div id="cartao">
@@ -253,126 +262,119 @@
                         </div>
                     </center>
                 </div>
-
-                <div class="line" style="margin-left: 5%; width: 800px;
-                     heigth: 400px; position: absolut">
-
-                    <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
-
-                    <p id="rcorners2">
-                        <label>Endereços cadastrados</label>
-                        <br>
-                        <c:forEach items="${meusEnderecos}" var="e">
-                            <a name="chkEndereco" id="chkEndereco" selected="false" value="${e.id}">CEP: ${e.cep}, Numero ${e.numero}</a><br>
-                        </c:forEach>
-                    </p>
-
-                    <p id="rcorners2">
-                        <label>Cartões cadastrados</label>
-                        <br>                                                             
-                        <c:forEach items="${meusCartoes}" var="c">
-                            <a name="chkCartao" id="chkCartao" selected="false" value="${c.id}">${c.bandeira} final ****</a><br>
-                        </c:forEach>
-                    </p>
-
-
-                    <style>
-                        #rcorners2 
-                        {   
-                            border-radius: 10px;
-                            border: 2px solid #FFFFFF;
-                            padding: 10px; 
-                            width: 50%;
-                            height: auto;  
-                        }
-                    </style>                                                                                
-                </div>
             </div>
-            <!-- Footer -->
-            <footer class="footer text-center" id="follow-us">
-                <div class="container">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" title="Dribble"><i class="fa fa-dribbble"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" title="RSS"><i class="fa fa-rss"></i></a>
-                        </li>
-                    </ul>
-                    <p> &copy; 2020 <a href="http://www.umc.br/home">UMC</a></p>
-                </div>
-            </footer>
+        </div>        
+        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">                  
 
-            <!-- Scroll to top button -->
-            <div id="toTop" class="to-top">
-                <a href="#" class="To the top">
-                    <i class="fa fa-angle-up"></i>
-                </a>
+        <style type="text/css">
+            .line { 
+                width: 400px;
+                heigth: 400px;
+                float:left;
+                mergin-leaft: 1px;
+                position: relative;
+            }
+            .canvas { 
+                width: 400px;
+                heigth: 400px;
+                float:left;
+            }
+        </style>
+        <style>
+            #rcorners2 
+            {   
+                border-radius: 10px;
+                border: 2px solid #FFFFFF;
+                padding: 10px; 
+                width: 50%;
+                height: auto;  
+            }
+        </style>            
+        <!-- Footer -->
+        <footer class="footer text-center" id="follow-us">
+            <div class="container">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" title="Dribble"><i class="fa fa-dribbble"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" title="RSS"><i class="fa fa-rss"></i></a>
+                    </li>
+                </ul>
+                <p> &copy; 2020 <a href="http://www.umc.br/home">UMC</a></p>
             </div>
+        </footer>
 
-            <div class="modal fade" id="modal-logout" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h3 class="modal-title">Sair</h3>
-                        </div>
-                        <form method="post" action="#">
-                            <div class="modal-body">
-                                <div class="checkbox">
-                                    <label>
-                                        Tem certeza que deseja Sair? :(
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="ControleAcessoCliente?acao=Sair" type="submit" class="btn btn-primary"><i class="fa fa-sign-out" aria-hidden="true"></i> Sim</a><button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                            </div>
-                        </form>
+        <!-- Scroll to top button -->
+        <div id="toTop" class="to-top">
+            <a href="#" class="To the top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+
+        <div class="modal fade" id="modal-logout" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">Sair</h3>
                     </div>
+                    <form method="post" action="#">
+                        <div class="modal-body">
+                            <div class="checkbox">
+                                <label>
+                                    Tem certeza que deseja Sair? :(
+                                </label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="ControleAcessoCliente?acao=Sair" type="submit" class="btn btn-primary"><i class="fa fa-sign-out" aria-hidden="true"></i> Sim</a><button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
 
-            <!-- jQuery -->
-            <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+        <!-- jQuery -->
+        <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 
-            <!-- Cartão de Credito -->
-            <script src="assets/jquery.creditCardValidator.js"></script>
+        <!-- Cartão de Credito -->
+        <script src="assets/jquery.creditCardValidator.js"></script>
 
-            <!-- Bootstrap -->
-            <script type="text/javascript" src="assets/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+        <!-- Bootstrap -->
+        <script type="text/javascript" src="assets/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
 
-            <!-- Lightbox -->
-            <script type="text/javascript" src="assets/lightbox2-master/dist/js/lightbox.min.js"></script>
+        <!-- Lightbox -->
+        <script type="text/javascript" src="assets/lightbox2-master/dist/js/lightbox.min.js"></script>
 
-            <!-- morris charts -->
-            <script type="text/javascript" src="assets/morris.js-0.5.1/morris.min.js"></script>
+        <!-- morris charts -->
+        <script type="text/javascript" src="assets/morris.js-0.5.1/morris.min.js"></script>
 
-            <!-- jQuery parallax -->
-            <script type="text/javascript" src="js/jquery.parallax-1.1.3-min.js"></script>
+        <!-- jQuery parallax -->
+        <script type="text/javascript" src="js/jquery.parallax-1.1.3-min.js"></script>
 
-            <!-- jQuery countdown -->
-            <script type="text/javascript" src="js/countdown.min.js"></script>
+        <!-- jQuery countdown -->
+        <script type="text/javascript" src="js/countdown.min.js"></script>
 
-            <!-- skrollr -->
-            <script type="text/javascript" src="js/skrollr.min.js"></script>
+        <!-- skrollr -->
+        <script type="text/javascript" src="js/skrollr.min.js"></script>
 
-            <!-- raphael -->
-            <script src="js/raphael.min.js"></script>
-
-
+        <!-- raphael -->
+        <script src="js/raphael.min.js"></script>
 
 
-            <script type="text/javascript" >
+
+
+        <script type="text/javascript" >
 
 
                                     function marcarboleto()
@@ -480,22 +482,22 @@
                                     }
                                     ;
 
-            </script>
+        </script>
 
-            <!-- particles -->
-            <script src="js/TweenLite.min.js"></script>
-            <script src="js/EasePack.min.js"></script>
-            <script src="js/rAF.min.js"></script>
-            <script src="js/particles.min.js"></script>
+        <!-- particles -->
+        <script src="js/TweenLite.min.js"></script>
+        <script src="js/EasePack.min.js"></script>
+        <script src="js/rAF.min.js"></script>
+        <script src="js/particles.min.js"></script>
 
-            <!-- Custom javascript -->
-            <script type="text/javascript" src="js/custom.min.js"></script>
+        <!-- Custom javascript -->
+        <script type="text/javascript" src="js/custom.min.js"></script>
 
-            <!-- Main page javascript -->
-            <script type="text/javascript" src="js/main.min.js"></script>
+        <!-- Main page javascript -->
+        <script type="text/javascript" src="js/main.min.js"></script>
 
-            <!-- Google maps -->
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEspZc-GBwxrJtw4vS3GjhAzIv7gHVbXw&callback=initMap"></script>
-        </div>
-    </body>
+        <!-- Google maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEspZc-GBwxrJtw4vS3GjhAzIv7gHVbXw&callback=initMap"></script>
+    </div>
+</body>
 </html>

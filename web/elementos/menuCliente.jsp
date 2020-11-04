@@ -9,13 +9,13 @@
 <div class="recol">
     <ul class="side-menu">
         <center><br>
-            <a href="listarCompras" class="link-menu">Pedidos</a><br>
+            <a class="link-menu" href="listarCompras" class="link-menu">Pedidos</a><br>
             <center>_______________</center><br>
-            <a href="listarAssinatura">Minha Assinatura</a><br>
+            <a class="link-menu" href="listarAssinatura">Minha Assinatura</a><br>
             <center>_______________</center><br>
-            <a class="link-menu">Minha Conta</a><br>
+            <a class="link-menu" href="minhaConta">Minha Conta</a><br>
             <center>_______________</center><br>
-            <a class="link-menu">Atendimento</a><br>
+            <a class="link-menu" href="bemvindo#mandamensagem">Atendimento</a><br>
             <center>_______________</center><br>
             <a href="#" data-toggle="modal" data-target="#modal-logout" class="link-menu">Sair</a><br><br>
         </center>
