@@ -67,11 +67,11 @@
                         <table id="tabela" class="table">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">Pesquisa 1</th>
-                                    <th scope="col">Pesquisa 2</th>
-                                    <th scope="col">Pesquisa 3</th>
-                                    <th scope="col">Pesquisa 4</th>
-                                    <th scope="col">Pesquisa 5</th>                                                            
+                                    <th scope="col">Possibilidade de indicação</th>
+                                    <th scope="col">Qualidade atendimento</th>
+                                    <th scope="col">Grau de satisfação</th>
+                                    <th scope="col">Entrega</th>
+                                    <th scope="col">Relação Cliente X Consumidor</th>                                                            
                                 </tr>
                             </thead>
 
