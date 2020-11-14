@@ -317,11 +317,11 @@ public class ClienteDAO {
     }
 
      */
-    public void EditarSenha(Cliente cliente) throws ClassNotFoundException, SQLException {
+    public void EditarSenha(Cliente cliente, Cliente objcliente) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("UPDATE cliente SET senha = ? WHERE id = ?");
         comando.setString(1, cliente.getSenha());
-        comando.setInt(2, cliente.getId());
+        comando.setInt(2, objcliente.getId());
         comando.execute();
     }
 
@@ -353,10 +353,10 @@ public class ClienteDAO {
         comando.execute();
     }
 
-    public void consultarporId(Cliente cliente) throws ClassNotFoundException, SQLException {
+    public void consultarporId(Cliente cliente, Cliente objcliente) throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement("SELECT * FROM cliente WHERE id = ?");
-        comando.setInt(1, cliente.getId());
+        comando.setInt(1, objcliente.getId());
         ResultSet resultado = comando.executeQuery();
 
         if (resultado.next()) {

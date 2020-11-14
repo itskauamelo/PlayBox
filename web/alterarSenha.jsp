@@ -173,7 +173,7 @@
                 <div class="col-cadastro" style="margin-top: -300px;">
                     <center> <ul> <h3 style="color: gold">ALTERAR SENHA</h3> </ul> </center>
                     <BR>
-                    <form method="POST" action="alterarSenha">
+                    <form onsubmit='return confirmacao()' method="POST" action="alterarSenha">
                         <div style="margin-left: 200px; margin-right: 200px;">
                         <input type="text" style="display:none;" class="form-control" id="id" name="id" value="${cliente.id}"><br>
                         <label>Nova senha: </label>
@@ -186,7 +186,11 @@
                     </form>
                 </div>
 
-       
+                           <script>
+                        function confirmacao() {
+                            alert("Senha alterada com sucesso!");
+                        }
+                    </script>
                         
             </div>
         </div>

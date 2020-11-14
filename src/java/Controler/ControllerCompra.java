@@ -40,7 +40,6 @@ import javax.swing.JOptionPane;
     "/iniciarAltStatus",
     "/alterarStatus",
     "/mostrarPedido",
-    "/removerAssinatura",
     "/aprovarPagamento",
 })
 
@@ -161,7 +160,7 @@ private void finalizarAssinatura(HttpServletRequest request, HttpServletResponse
     private void fecharCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
 
         Compra compra = new Compra();
-        compra.setCliente(request.getParameter("txtIdCliente"));
+//        compra.setCliente(request.getParameter("txtIdCliente"));
         /*ClienteDAO daocli = new ClienteDAO();
         daocli.cadastrarFk(compra);*/
 

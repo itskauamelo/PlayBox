@@ -158,7 +158,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-cadastro col-md-8">
-                    <form action="cadastrarCliente" method="POST"> 
+                    <form onsubmit='return confirmacao()' action="cadastrarCliente" method="POST"> 
                     <h2 class="post-item-header"><a title="Inscrição">Inscrição</a></h2>
                     <br>
                     <label>CPF</label>
@@ -219,6 +219,12 @@
             <p> &copy; 2020 <a href="http://www.umc.br/home">UMC</a></p>
         </div>
     </footer>
+    
+                               <script>
+                        function confirmacao() {
+                            alert("Cadastro efetuado!<br>Te enviamos um e-mail para ativar seu cadastro");
+                        }
+                    </script>
 
     <!-- Subir toda página -->
     <div id="toTop" class="to-top">
