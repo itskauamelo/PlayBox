@@ -13,7 +13,7 @@ import Model.Cliente;
 import Model.Endereco;
 import Model.Pesquisa;
 import Model.Preferencia;
-import Util.NOVOEmailUtility;
+import Util.Email;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -605,7 +605,7 @@ public class ClienteController extends HttpServlet {
 "</html>";
 
 		try {
-			NOVOEmailUtility.sendEmail(host, port, user, pass, recipient, subject,
+			Email.sendEmail(host, port, user, pass, recipient, subject,
 					content);
 		} catch (Exception ex) {
 			ex.printStackTrace();

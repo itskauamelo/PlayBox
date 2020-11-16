@@ -160,9 +160,6 @@ private void finalizarAssinatura(HttpServletRequest request, HttpServletResponse
     private void fecharCompra(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ClassNotFoundException, SQLException {
 
         Compra compra = new Compra();
-//        compra.setCliente(request.getParameter("txtIdCliente"));
-        /*ClienteDAO daocli = new ClienteDAO();
-        daocli.cadastrarFk(compra);*/
 
         compra.setEnderecoentrega(Integer.valueOf(request.getParameter("chkEndereco")));
         compra.setMetodopagamento(Integer.valueOf(request.getParameter("rbtMetodo")));

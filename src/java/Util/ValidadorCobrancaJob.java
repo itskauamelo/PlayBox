@@ -23,7 +23,7 @@ public class ValidadorCobrancaJob implements Job {
     @Override
     public void execute (JobExecutionContext arg0) throws JobExecutionException {
         
-        System.out.println("Verificando banco para aplicação de recorrencia de cobrança. Iniciado em: "+new Date());
+        System.out.println("Cancelando pedidos sem pagamento efetuado. Iniciado em: "+new Date());
         CompraDAO dao = new CompraDAO();
         try {
             dao.cancelarPedido();

@@ -23,7 +23,7 @@ public class ValidadorJob implements Job {
     @Override
     public void execute (JobExecutionContext arg0) throws JobExecutionException {
         
-        System.out.println("Iniciando validação dos dados no banco. Iniciado em: "+new Date());
+        System.out.println("Cancelando pedidos sem pagamento efetuado. Iniciado em: "+new Date());
         CompraDAO dao = new CompraDAO();
         try {
             dao.cancelarPedido();

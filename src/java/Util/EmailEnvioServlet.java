@@ -31,7 +31,7 @@ import javax.mail.internet.MimeMultipart;
  * @author Kaua.Morateli
  */
 @WebServlet(name = "NOVOEmailSendingServlet", urlPatterns = {"/NOVOEmailSendingServlet"})
-public class NOVOEmailSendingServlet extends HttpServlet {
+public class EmailEnvioServlet extends HttpServlet {
     	private String host;
 	private String port;
 	private String user;
@@ -511,7 +511,7 @@ public class NOVOEmailSendingServlet extends HttpServlet {
 		String resultMessage = "";
 
 		try {
-			NOVOEmailUtility.sendEmail(host, port, user, pass, recipient, subject,
+			Email.sendEmail(host, port, user, pass, recipient, subject,
 					content);
 			resultMessage = "The e-mail was sent successfully";
 		} catch (Exception ex) {

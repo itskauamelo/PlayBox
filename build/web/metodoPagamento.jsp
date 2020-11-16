@@ -167,7 +167,6 @@
 
                     <center>
                         <form method="POST" action="fecharCompra">
-                            <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">
 
                             <p id="rcorners2">
                                 <label>Endereços cadastrados</label>

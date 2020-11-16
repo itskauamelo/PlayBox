@@ -264,7 +264,7 @@
                 </div>
             </div>
         </div>        
-        <input style="display:none;" id="txtIdCliente" name="txtIdCliente" value="<%= cliente.getNomecompleto()%>">                  
+                  
 
         <style type="text/css">
             .line { 
@@ -292,6 +292,12 @@
         </style>            
         <!-- Footer -->
         <footer class="footer text-center" id="follow-us">
+            
+            <br><br><br>
+                                            <div class="price-button">
+                                    <a href="http://localhost:8080/PlayBox/pagamento" class="btn btn-primary btn-block dropdown-toggle" title="Voltar"><i class="fa fa-credit-card" aria-hidden="true"></i> Voltar</a>
+                                </div>
+            <br><br><br><br>
             <div class="container">
                 <ul class="list-inline">
                     <li>
