@@ -31,7 +31,7 @@
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     </head>
@@ -101,16 +101,16 @@
                     
                                         </div>
                     -->
-                    
-                    
+
+
                     <script>
-                          function esconder() {
-                          var x = document.getElementById("myDIV");
-                          if (x.style.display === "none") {
-                            x.style.display = "block";
-                          } else {
-                            x.style.display = "none";
-                          }
+                        function esconder() {
+                            var x = document.getElementById("myDIV");
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                            } else {
+                                x.style.display = "none";
+                            }
                         }
                     </script>
 
@@ -127,7 +127,7 @@
                             float:left;
                         }
                     </style>
-                    
+
 
                     <div class="canvasMaior">
                         <canvas id="myChartVendas2020"></canvas>
@@ -141,9 +141,9 @@
                         <h3>                      Qtd Vendas por Assinatura</h3><br>
                         <canvas id="myChartAssinaturaPie"></canvas>
                     </div>
-                    
-                    
-   
+
+
+
                     <script>
                         var ctx4 = document.getElementById('myChartGanheiPerdi').getContext('2d');
                         var r = [];
@@ -152,7 +152,7 @@
 
                         <c:forEach items="${ganheiPerdiAss}" var="v">
                         r.push('${v.mesano}');
-                        t.push(${v.quantidade}); 
+                        t.push(${v.quantidade});
 
                         var chart4 = new Chart(ctx4, {
 
@@ -166,7 +166,7 @@
                                         borderWidth: 1,
                                         data: t
                                     },
-                                        ]
+                                ]
                             },
                             options: {
                                 events: ['click'],
@@ -187,8 +187,8 @@
                         });
                         </c:forEach>
                     </script>
-                    
-                    
+
+
                     <script>
                         var ctx1 = document.getElementById('myChartVendas2020').getContext('2d');
                         var mesano1 = [];
@@ -197,7 +197,7 @@
 
                         <c:forEach items="${periodoVendas2020}" var="v1">
                         mesano1.push('${v1.mesano}');
-                        qtd1.push(${v1.quantidade}); 
+                        qtd1.push(${v1.quantidade});
 
                         var chart1 = new Chart(ctx1, {
 
@@ -208,8 +208,8 @@
                                         label: 'Ano 2020',
                                         borderColor: 'rgb(25, 140, 255)',
                                         data: qtd1
-                                    },
-                                        ]
+                                    }
+                                ]
                             },
                             options: {
                                 events: ['click'],
@@ -224,8 +224,8 @@
                         });
                         </c:forEach>
                     </script>
-                   
-                  
+
+
                     <script>
                         var ctx2 = document.getElementById('myChartVendas2019').getContext('2d');
                         var mesano2 = [];
@@ -234,7 +234,7 @@
 
                         <c:forEach items="${periodoVendas2019}" var="v2">
                         mesano2.push('${v2.mesano}');
-                        qtd2.push(${v2.quantidade}); 
+                        qtd2.push(${v2.quantidade});
 
                         var chart2 = new Chart(ctx2, {
 
@@ -245,8 +245,8 @@
                                         label: 'Ano 2019',
                                         borderColor: 'rgb(255, 103, 135)',
                                         data: qtd2
-                                    },
-                                        ]
+                                    }
+                                ]
                             },
                             options: {
                                 events: ['click'],
@@ -267,17 +267,17 @@
                         });
                         </c:forEach>
                     </script>
-                    
-                                        
+
+
                     <script>
                         var ctx3 = document.getElementById('myChartVendasPie').getContext('2d');
                         var x = [];
                         var y = [];
-                                                 
+
                         <c:forEach items="${assCliente}" var="a">
                         x.push('${a.status}');
                         y.push(${a.quantidade});
-                        
+
                         var chart = new Chart(ctx3, {
 
                             type: 'pie',
@@ -285,7 +285,7 @@
                                 labels: ['Cancelado', 'Vendido', 'Aguardando Pagamento'],
                                 datasets: [{
                                         backgroundColor: ["#686868", "#F36281", "#198CFF"],
-                                       
+
                                         data: y
                                     }]
                             },
@@ -304,18 +304,18 @@
                             }
                         });
                         </c:forEach>
-                            
+
                     </script>
-                    
+
                     <script>
                         var ctx4 = document.getElementById('myChartAssinaturaPie').getContext('2d');
                         var z = [];
                         var w = [];
-                                                 
+
                         <c:forEach items="${vendas2020}" var="t">
                         z.push('${t.assinatura}');
                         w.push(${t.quantidade});
-                        
+
                         var chart = new Chart(ctx4, {
 
                             type: 'pie',
@@ -323,7 +323,7 @@
                                 labels: ['Bronze', 'Prata', 'Ouro'],
                                 datasets: [{
                                         backgroundColor: ["#b87333", "#c0c0c0", "#FFD700"],
-                                       
+
                                         data: w
                                     }]
                             },
@@ -342,9 +342,9 @@
                             }
                         });
                         </c:forEach>
-                            
+
                     </script>
-                    
+
                     <!-- Area Chart Example-->
                     <!-- /.container-fluid -->
 

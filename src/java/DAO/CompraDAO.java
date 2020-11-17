@@ -167,7 +167,6 @@ public class CompraDAO {
         comando.execute();
     }
         
-        
         public void renovarAssinatura() throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();
         PreparedStatement comando = con.prepareStatement

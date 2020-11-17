@@ -3,30 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PlayBox/web/preferenciaCliente.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Controler/ClienteController.java</file>
-            <file>file:/C:/PlayBox/src/java/Util/RenovacaoJob.java</file>
-            <file>file:/C:/PlayBox/web/WEB-INF/web.xml</file>
-            <file>file:/C:/PlayBox/web/inscricao.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Util/ValidadorJob.java</file>
-            <file>file:/C:/PlayBox/src/java/Controler/ControllerCamiseta.java</file>
-            <file>file:/C:/PlayBox/src/java/Util/JobQuartz.java</file>
-            <file>file:/C:/PlayBox/web/alterarSenha.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Controler/ControllerGame.java</file>
-            <file>file:/C:/PlayBox/web/EmailForm.jsp</file>
-            <file>file:/C:/PlayBox/web/dadosPessoais.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Controler/ControllerProduto.java</file>
-            <file>file:/C:/PlayBox/src/java/Controler/ControllerCompra.java</file>
-            <file>file:/C:/PlayBox/src/java/Controler/ControllerPacote.java</file>
-            <file>file:/C:/PlayBox/src/java/Util/ValidadorCobrancaJob.java</file>
-            <file>file:/C:/PlayBox/web/metodoPagamento.jsp</file>
-            <file>file:/C:/PlayBox/src/java/DAO/CompraDAO.java</file>
-            <file>file:/C:/PlayBox/web/Result.jsp</file>
-            <file>file:/C:/PlayBox/src/java/Util/ValidadorRenovacao.java</file>
-            <file>file:/C:/PlayBox/src/java/DAO/ClienteDAO.java</file>
-            <file>file:/C:/PlayBox/src/java/Util/Email.java</file>
-            <file>file:/C:/PlayBox/src/java/Util/EmailEnvioServlet.java</file>
-            <file>file:/C:/PlayBox/src/java/Util/CobrancaJob.java</file>
+            <file>file:/C:/PlayBox/src/java/DAO/RelatorioDAO.java</file>
+            <file>file:/C:/PlayBox/web/admin/index.jsp</file>
+            <file>file:/C:/PlayBox/src/java/Controler/ControllerRelatorios.java</file>
+            <file>file:/C:/PlayBox/web/admin/relatorioVendas.jsp</file>
         </group>
     </open-files>
 </project-private>

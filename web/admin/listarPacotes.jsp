@@ -70,16 +70,16 @@
                         <tr>                
                             <th class="cabecalho">Id</th>
                             <th class="cabecalho">Nome</th>              
-                            <th class="cabecalho">Preco</th>
-                            <th class="cabecalho">Editar</th>
+                            <th class="cabecalho">Quantidade</th>              
+                            <th class="cabecalho">Preco/Uni.</th>
 
                         </tr>
                         <c:forEach items="${todosPacotes}" var="pac">
                             <tr>              
                                 <td class="conteudo" align="center">${pac.id}</td>
                                 <td class="conteudo" align="center">${pac.nome}</td>
+                                <td class="conteudo" align="center">${pac.quantidade}</td>
                                 <td class="conteudo" align="center">${pac.preco}</td>
-                                <td class="conteudo" align="center"><a href="iniciarEdicaoPacote?id=${pac.id}"><img style="height: 25px; width: 25px;"src="images/5594.png" alt=""  id="iconTable"/></a>
                             </tr>
                         </c:forEach>
                     </table>

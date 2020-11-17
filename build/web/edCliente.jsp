@@ -164,7 +164,7 @@
                             <div style="margin-left: 200px; margin-right: 200px;">
                                 <input type="text" style="display:none;" class="form-control" id="id" name="id" value="${cliente.id}"><br>
                                 <label>CPF: </label>
-                                <input type="text" class="form-control" id="cpf" name="cpf" value="${cliente.cpf}"><br>
+                                <input type="text" class="form-control" id="cpf" name="cpf" value="${cliente.cpf}" readonly><br>
                                 <label>Nome Completo: </label>
                                 <input type="text" class="form-control" id="nome" name="nome" value="${cliente.nomecompleto}"><br>
                                 <label>Genero: </label>

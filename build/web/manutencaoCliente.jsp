@@ -159,8 +159,8 @@
                     <div class="col-cadastro" style="margin-top: -300px;">
                         <BR>
                         •<a href="iniciarEdicaoCliente?id=<%=cliente.getId()%>"> EDITAR DADOS PESSOAIS</a><BR><BR>
-                        •<a href="listarEnderecosAlteracao"> EDITAR ENDEREÇOS</a><BR><BR>
-                        •<a href="listarCartoesAlteracao"> EDITAR CARTÕES DE CRÉDITO</a><BR><BR>
+                       <!-- •<a href="listarEnderecosAlteracao"> EDITAR ENDEREÇOS</a><BR><BR>
+                        •<a href="listarCartoesAlteracao"> EDITAR CARTÕES DE CRÉDITO</a><BR><BR>-->
                         •<a href="iniciarAlteracaoSenha?id=<%=cliente.getId()%>"> ALTERAR MINHA SENHA</a><BR><BR>
                     </div>
                     <div class="col-cadastro col-md-8">
