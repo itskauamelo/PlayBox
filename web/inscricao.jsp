@@ -222,7 +222,7 @@
     
                                <script>
                         function confirmacao() {
-                            alert("Cadastro efetuado!<br>Te enviamos um e-mail para ativar seu cadastro");
+                            alert("Cadastro efetuado!Te enviamos um e-mail para ativar seu cadastro");
                         }
                     </script>
 

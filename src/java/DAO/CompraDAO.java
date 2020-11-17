@@ -167,13 +167,6 @@ public class CompraDAO {
         comando.execute();
     }
         
-    public void cancelarPedido() throws ClassNotFoundException, SQLException {
-        Connection con = ConectaBanco.getConexao();
-        PreparedStatement comando = con.prepareStatement("UPDATE compra\n" +
-        "SET statusfk = 6\n" +
-        "WHERE datahora < CURRENT_DATE - 5 AND statusfk = 1");
-        comando.execute();
-    }
         
         public void renovarAssinatura() throws ClassNotFoundException, SQLException {
         Connection con = ConectaBanco.getConexao();

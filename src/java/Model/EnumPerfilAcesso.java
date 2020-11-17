@@ -7,8 +7,7 @@ package Model;
  */
 
 public enum EnumPerfilAcesso {
-
-    CLIENTE,
+    
     FUNCIONARIO,
     ADMINISTRADOR;
     

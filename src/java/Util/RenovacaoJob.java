@@ -46,6 +46,8 @@ public class RenovacaoJob {
             Trigger triggerRenovacao = TriggerBuilder.newTrigger()
                               .withIdentity("validadorTRIGGERRenovacao", "grupo02")
                               .withSchedule(CronScheduleBuilder.cronSchedule("0 0 12 15 1/1 ? *"))
+                    
+//    tempo de teste 0 * * ? * *       
                               .build();
             
             

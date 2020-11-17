@@ -35,7 +35,9 @@ public class CobrancaJob {
             
             Trigger trigger = TriggerBuilder.newTrigger()
                               .withIdentity("validadorcobrancaTRIGGER", "grupo01")
-                              .withSchedule(CronScheduleBuilder.cronSchedule("0 0 12 15 * ?"))
+                              .withSchedule(CronScheduleBuilder.cronSchedule("0 * * ? * *"))
+//                    0 * * ? * *
+//                    0 0 12 15 * ?
                               .build();
             
             scheduler.scheduleJob(job, trigger);

@@ -107,9 +107,9 @@
                             <label for="txtAssinatura">Assinatura</label>
                             <select onchange="exibir_ocultar(this)" id="txtAssinatura" name="txtAssinatura" class="form-control" required>
                                 <option value="" disabled selected>Selecione o nome do pacote</option>
-                                <option value="Bronze">Bronze</option>
-                                <option value="Prata">Prata</option>
-                                <option value="Ouro">Ouro</option>
+                                <option value="BRONZE">Bronze</option>
+                                <option value="PRATA">Prata</option>
+                                <option value="OURO">Ouro</option>
                             </select>
                             <label for="optJogo">Jogo</label>
                             <select name="optJogo" id="optJogo" class="custom-select custom-select-sm form-control form-control-sm" required>
@@ -219,14 +219,14 @@
                     <script>
                         $('#txtAssinatura').on('change', function () {
 
-                            if (this.value == "Bronze") {
+                            if (this.value == "BRONZE") {
                                 $('#optBrinde1').show();
                                 $('#optBrinde2').hide();
                                 $('#optBrinde3').hide();
                                 $('#optBrinde4').hide();
                                 $('#optBrinde5').hide();
                             } else
-                            if (this.value == "Prata") {
+                            if (this.value == "PRATA") {
                                 $('#optBrinde1').show();
                                 $('#optBrinde2').show();
                                 $('#optBrinde3').show();

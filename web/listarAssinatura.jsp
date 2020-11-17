@@ -235,7 +235,7 @@
 
                                     </c:when>
 
-                                    <c:when test="${com.id == '1'}">
+                                    <c:when test="${com.id == '3'}">
 
                                         <c:set var = "statusNome" scope = "session" value = "${'BRONZE'}"/>
                                         <c:set var = "img" scope = "session" value = "${'bronze.png'}"/>

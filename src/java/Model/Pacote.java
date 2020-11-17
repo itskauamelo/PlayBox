@@ -49,6 +49,24 @@ public class Pacote {
         this.preco = preco;
     }
 
+    public Pacote(String nome, String assinatura, String jogo, String camiseta, String brinde1, String brinde2, String brinde3, String brinde4, String brinde5, String situacao, int quantidade, double preco) {
+        this.nome = nome;
+        this.assinatura = assinatura;
+        this.jogo = jogo;
+        this.camiseta = camiseta;
+        this.brinde1 = brinde1;
+        this.brinde2 = brinde2;
+        this.brinde3 = brinde3;
+        this.brinde4 = brinde4;
+        this.brinde5 = brinde5;
+        this.situacao = situacao;
+        this.quantidade = quantidade;
+        this.preco = preco;
+    }
+    
+    
+    
+
     public int getId() {
         return id;
     }

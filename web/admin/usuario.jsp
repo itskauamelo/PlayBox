@@ -112,7 +112,6 @@
                                         <option value="" disabled selected>Selecione um Perfil...</option>
                                         <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                                         <option value="FUNCIONARIO">FUNCIONARIO</option>
-                                        <option value="CLIENTE">CLIENTE</option>
                                     </select>
                                 </div>
                             </div>

@@ -72,7 +72,6 @@ public class ControllerProduto extends HttpServlet{
         
         ProdutoDAO dao = new ProdutoDAO();
         dao.cadastrar(produto);
-        request.setAttribute("msg", "Produto Cadastrado!");
         
         response.sendRedirect("listarProdutos");
 
